@@ -345,8 +345,8 @@ Page({
   onPreviewSkuImage(e) {
     let _this = this;
     wx.previewImage({
-      current: _this.data.image_path,
-      urls: [_this.data.image_path]
+      current: _this.data.skuCoverImage,
+      urls: [_this.data.skuCoverImage]
     })
   },
 

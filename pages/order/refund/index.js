@@ -7,46 +7,66 @@ Page({
    */
   data: {
     applyStatus: [],
-    isLoading: true,
     dataType: -1,
-    page: 1,
-    no_more: false,
+
+    submsgSetting: {}, // 订阅消息配置
+
+    list: [], // 列表数据
+    page: 1, // 当前页码
+    isLoading: true, // 是否正在加载中
+    isLastPage: false, // 当前是最后一页
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad(options) {
+    let _this = this;
     // 设置swiper的高度
-    this.setSwiperHeight();
+    _this.setSwiperHeight();
+    // 获取订阅消息配置
+    _this.getSubmsgSetting();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow() {
+    let _this = this;
     // 获取退款/售后单列表
-    this.getRefundList();
+    _this.getRefundList();
   },
 
   /**
    * 获取退款/售后单列表
    */
-  getRefundList: function(isNextPage, page) {
+  getRefundList(isNextPage, page) {
     let _this = this;
     App._get('user.refund/lists', {
       state: _this.data.dataType,
       page: page || 1,
-    }, function(result) {
+    }, (result) => {
       // 创建页面数据
       _this.setData(_this.createData(result.data, isNextPage));
     });
   },
 
   /**
+   * 获取订阅消息配置
+   */
+  getSubmsgSetting() {
+    let _this = this;
+    App._get('wxapp.submsg/setting', {}, (result) => {
+      _this.setData({
+        submsgSetting: result.data.setting
+      });
+    });
+  },
+
+  /**
    * 创建页面数据
    */
-  createData: function(data, isNextPage) {
+  createData(data, isNextPage) {
     data['isLoading'] = false;
     // 列表数据
     let dataList = this.data.list;
@@ -67,7 +87,7 @@ Page({
   /**
    * 设置swiper的高度
    */
-  setSwiperHeight: function() {
+  setSwiperHeight() {
     // 获取系统信息(拿到屏幕宽度)
     let systemInfo = wx.getSystemInfoSync(),
       rpx = systemInfo.windowWidth / 750, // 计算rpx
@@ -81,7 +101,7 @@ Page({
   /** 
    * 点击tab切换 
    */
-  swichNav: function(e) {
+  swichNav(e) {
     let _this = this,
       current = e.target.dataset.current;
     if (_this.data.dataType == current) {
@@ -91,9 +111,9 @@ Page({
       dataType: current,
       list: {},
       page: 1,
-      no_more: false,
+      isLastPage: false,
       isLoading: true,
-    }, function() {
+    }, () => {
       // 获取退款/售后单列表
       _this.getRefundList();
     });
@@ -102,25 +122,50 @@ Page({
   /**
    * 下拉到底加载数据
    */
-  triggerDownLoad: function() {
+  onPageDown() {
+    let _this = this;
     // 已经是最后一页
-    if (this.data.page >= this.data.list.last_page) {
-      this.setData({
-        no_more: true
+    if (_this.data.page >= _this.data.list.last_page) {
+      _this.setData({
+        isLastPage: true
       });
       return false;
     }
     // 获取退款/售后单列表
-    this.getRefundList(true, ++this.data.page);
+    _this.getRefundList(true, ++_this.data.page);
   },
 
   /**
    * 跳转售后详情页
    */
-  triggerDetail: function(e) {
-    wx.navigateTo({
-      url: './detail/detail?order_refund_id=' + e.currentTarget.dataset.id
-    });
+  onTargetDetail(e) {
+    let _this = this;
+    // 跳转售后详情页
+    const onCallback = () => {
+      wx.navigateTo({
+        url: `./detail/detail?order_refund_id=${e.currentTarget.dataset.id}`
+      });
+    };
+    // 请求用户订阅消息
+    _this._onRequestSubscribeMessage(onCallback);
+  },
+
+  /**
+   * 订阅消息 => [售后状态通知]
+   */
+  _onRequestSubscribeMessage(callback) {
+    let _this = this;
+    let tmplItem = _this.data.submsgSetting.order.refund.template_id;
+    if (tmplItem.length > 0) {
+      wx.requestSubscribeMessage({
+        tmplIds: [tmplItem],
+        success(res) {},
+        fail(res) {},
+        complete(res) {
+          callback && callback();
+        },
+      });
+    }
   },
 
 })

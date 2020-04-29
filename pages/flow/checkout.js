@@ -66,6 +66,8 @@ Page({
 
     has_error: false,
     error_msg: '',
+
+    notRefresh: false, // 不允许刷新
   },
 
   /**
@@ -86,7 +88,7 @@ Page({
   onShow() {
     let _this = this;
     // 获取当前订单信息
-    _this.getOrderData();
+    !_this.data.notRefresh && _this.getOrderData();
   },
 
   /**
@@ -185,10 +187,9 @@ Page({
    */
   onSwichDelivery(e) {
     // 设置当前配送方式
-    let _this = this,
-      curDelivery = e.currentTarget.dataset.current;
+    let _this = this;
     _this.setData({
-      curDelivery
+      curDelivery: e.currentTarget.dataset.current
     });
     // 重新获取订单信息
     _this.getOrderData();
@@ -198,8 +199,14 @@ Page({
    * 快递配送：选择收货地址
    */
   onSelectAddress() {
+    let _this = this;
+    // 允许刷新
+    _this.setData({
+      notRefresh: false
+    });
+    // 跳转到选择自提点
     wx.navigateTo({
-      url: '../address/' + (this.data.exist_address ? 'index?from=flow' : 'create')
+      url: '../address/' + (_this.data.exist_address ? 'index?from=flow' : 'create')
     });
   },
 
@@ -209,6 +216,11 @@ Page({
   onSelectExtractPoint() {
     let _this = this,
       selectedId = _this.data.selectedShopId;
+    // 允许刷新
+    _this.setData({
+      notRefresh: false
+    });
+    // 跳转到选择自提点
     wx.navigateTo({
       url: '../_select/extract_point/index?selected_id=' + selectedId
     });
@@ -239,44 +251,8 @@ Page({
       return false;
     }
 
-    // 订单创建成功后回调--微信支付
-    let callback = result => {
-      if (result.code === -10) {
-        App.showError(result.msg, () => {
-          _this.redirectToOrderIndex();
-        });
-        return false;
-      }
-
-      // 发起微信支付
-      if (result.data.pay_type == PayTypeEnum.WECHAT.value) {
-        App.wxPayment({
-          payment: result.data.payment,
-          success: res => {
-            _this.redirectToOrderIndex();
-          },
-          fail: res => {
-            App.showError(result.msg.error, () => {
-              _this.redirectToOrderIndex();
-            });
-          },
-        });
-      }
-      // 余额支付
-      if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
-        App.showSuccess(result.msg.success, () => {
-          _this.redirectToOrderIndex();
-        });
-      }
-    };
-
     // 按钮禁用, 防止二次提交
     _this.data.disabled = true;
-
-    // 显示loading
-    wx.showLoading({
-      title: '正在处理...'
-    });
 
 
     let url = '';
@@ -320,7 +296,7 @@ Page({
       });
     }
 
-    // 创建订单-砍价活动
+    // 创建订单-秒杀商品
     if (options.order_type === 'sharp') {
       url = 'sharp.order/checkout';
       postData = Object.assign(postData, {
@@ -331,16 +307,84 @@ Page({
       });
     }
 
-    // 订单提交
-    App._post_form(url, postData, result => {
-      callback(result);
-    }, result => {}, () => {
-      wx.hideLoading();
-      // 解除按钮禁用
-      _this.data.disabled = false;
-    });
+    // 提交到后端
+    const onCommitCallback = () => {
+      // 显示loading
+      wx.showLoading({
+        title: '正在处理...'
+      });
+      // 订单提交
+      App._post_form(url, postData, result => {
+        _this._onSubmitCallback(result);
+      }, result => {}, () => {
+        wx.hideLoading();
+        // 解除按钮禁用
+        _this.data.disabled = false;
+      });
+      // 不允许刷新
+      _this.setData({
+        notRefresh: true
+      });
+    };
 
+    // 请求用户订阅消息
+    _this._onRequestSubscribeMessage(onCommitCallback);
   },
+
+  /**
+   * 请求用户订阅消息
+   */
+  _onRequestSubscribeMessage(onCommitCallback) {
+    let _this = this,
+      tmplIds = _this.data.setting.order_submsg;
+    if (tmplIds.length == 0) {
+      onCommitCallback();
+      return;
+    }
+    wx.requestSubscribeMessage({
+      tmplIds,
+      success(res) {},
+      fail(res) {},
+      complete(res) {
+        onCommitCallback();
+      },
+    });
+  },
+
+  /**
+   * 订单提交成功后回调
+   */
+  _onSubmitCallback(result) {
+    let _this = this;
+    // 订单创建成功后回调--微信支付
+    if (result.code === -10) {
+      App.showError(result.msg, () => {
+        _this.redirectToOrderIndex();
+      });
+      return false;
+    }
+    // 发起微信支付
+    if (result.data.pay_type == PayTypeEnum.WECHAT.value) {
+      App.wxPayment({
+        payment: result.data.payment,
+        success: res => {
+          _this.redirectToOrderIndex();
+        },
+        fail: res => {
+          App.showError(result.msg.error, () => {
+            _this.redirectToOrderIndex();
+          });
+        },
+      });
+    }
+    // 余额支付
+    if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
+      App.showSuccess(result.msg.success, () => {
+        _this.redirectToOrderIndex();
+      });
+    }
+  },
+
 
   /**
    * 表单验证

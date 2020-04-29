@@ -9,31 +9,48 @@ Page({
   data: {
     is_read: false,
     disabled: false,
+
+    submsgSetting: {}, // 订阅消息配置
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
+  onLoad(options) {
+    let _this = this;
+    // 获取订阅消息配置
+    _this.getSubmsgSetting();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow() {
+    let _this = this;
     // 获取分销商申请状态
-    this.getApplyState();
+    _this.getApplyState();
+  },
+
+  /**
+   * 获取订阅消息配置
+   */
+  getSubmsgSetting() {
+    let _this = this;
+    App._get('wxapp.submsg/setting', {}, (result) => {
+      _this.setData({
+        submsgSetting: result.data.setting
+      });
+    });
   },
 
   /**
    * 获取分销商申请状态
    */
-  getApplyState: function() {
+  getApplyState() {
     let _this = this;
     App._get('user.dealer/apply', {
       referee_id: _this.getRefereeid()
-    }, function(result) {
+    }, (result) => {
       let data = result.data;
       // 当前是否已经为分销商
       if (data.is_dealer) {
@@ -53,7 +70,7 @@ Page({
   /**
    * 显示申请协议
    */
-  toggleApplyLicense: function() {
+  toggleApplyLicense() {
     Dialog({
       title: '申请协议',
       message: this.data.license,
@@ -72,8 +89,9 @@ Page({
   /**
    * 已阅读
    */
-  toggleSetRead: function() {
-    this.setData({
+  toggleSetRead() {
+    let _this = this;
+    _this.setData({
       is_read: !this.data.is_read
     });
   },
@@ -81,12 +99,9 @@ Page({
   /**
    * 提交申请 
    */
-  formSubmit: function(e) {
+  onFormSubmit(e) {
     let _this = this,
       values = e.detail.value;
-
-    // 记录formId
-    App.saveFormId(e.detail.formId);
 
     // 验证姓名
     if (!values.name || values.name.length < 1) {
@@ -112,10 +127,10 @@ Page({
     });
 
     // 数据提交
-    App._post_form('user.dealer.apply/submit', values, function() {
+    App._post_form('user.dealer.apply/submit', values, () => {
       // 获取分销商申请状态
       _this.getApplyState();
-    }, null, function() {
+    }, null, () => {
       // 解除按钮禁用
       _this.setData({
         disabled: false
@@ -126,9 +141,7 @@ Page({
   /**
    * 去商城逛逛
    */
-  navigationToIndex: function(e) {
-    // 记录formId
-    App.saveFormId(e.detail.formId);
+  navigationToIndex(e) {
     // 跳转到首页
     wx.switchTab({
       url: '/pages/index/index',
@@ -136,9 +149,25 @@ Page({
   },
 
   /**
+   * 订阅消息通知
+   */
+  onSubMsg() {
+    let _this = this;
+    let tmplItem = _this.data.submsgSetting.dealer.apply.template_id;
+    if (tmplItem.length > 0) {
+      wx.requestSubscribeMessage({
+        tmplIds: [tmplItem],
+        success(res) {},
+        fail(res) {},
+        complete(res) {},
+      });
+    }
+  },
+
+  /**
    * 获取推荐人id
    */
-  getRefereeid: function() {
+  getRefereeid() {
     return wx.getStorageSync('referee_id');
   },
 

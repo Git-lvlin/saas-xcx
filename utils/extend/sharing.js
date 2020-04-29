@@ -1,4 +1,4 @@
-let App = getApp();
+const App = getApp();
 
 /**
  * 拼团扩展类

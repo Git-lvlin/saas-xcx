@@ -94,3 +94,13 @@ page {
 .dealer-boot .boot__submit {
   margin-top: 60rpx;
 }
+
+.boot__submsg {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #786cff;
+  line-height: 1.5;
+}
+.boot__submsg .iconfont {
+  margin-right: 6rpx;
+}

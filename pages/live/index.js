@@ -3,10 +3,6 @@ const App = getApp();
 // 工具类
 import Util from '../../utils/util.js';
 
-
-// 引用直播组件
-const livePlayer = requirePlugin('live-player-plugin');
-
 // 直播状态
 const LiveStatus = {
   101: {
@@ -104,6 +100,10 @@ Page({
    * mix: 因livePlayer.getLiveStatus接口需要间隔1分钟频率轮询, 用户二次进入时体验不佳, 暂不调用
    */
   setLiveStatusText(list) {
+
+    // 引用直播组件
+    const livePlayer = requirePlugin('live-player-plugin');
+
     let _this = this;
     let startIndex = _this.data.list.data.length - list.data.length;
 

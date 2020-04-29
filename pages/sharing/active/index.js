@@ -40,6 +40,33 @@ Page({
     _this.getSetting();
   },
 
+
+  /**
+   * 点击立即分享,请求订阅消息
+   */
+  onShare() {
+    let _this = this;
+    _this._onRequestSubscribeMessage();
+  },
+
+  /**
+   * 订阅消息 => [拼团进度通知]
+   */
+  _onRequestSubscribeMessage(callback) {
+    let _this = this;
+    let tmplItem = _this.data.setting.order_submsg.active_status;
+    if (tmplItem.length > 0) {
+      wx.requestSubscribeMessage({
+        tmplIds: [tmplItem],
+        success(res) {},
+        fail(res) {},
+        complete(res) {
+          callback && callback();
+        },
+      });
+    }
+  },
+
   /**
    * 获取拼团详情
    */
@@ -315,7 +342,7 @@ Page({
   },
 
   /**
-   * 加入购物车and立即购买
+   * 立即参团
    */
   onCheckout(e) {
     let _this = this;
@@ -323,16 +350,20 @@ Page({
     if (!_this._onVerify()) {
       return false;
     }
-    // 立即购买
-    wx.navigateTo({
-      url: '../checkout/index?' + util.urlEncode({
-        order_type: 20,
-        active_id: _this.data.detail.active_id,
-        goods_id: _this.data.goods.goods_id,
-        goods_num: _this.data.goods_num,
-        goods_sku_id: _this.data.goods_sku_id,
-      })
-    });
+    // 立即参团
+    const onCommitCallback = () => {
+      wx.navigateTo({
+        url: '../checkout/index?' + util.urlEncode({
+          order_type: 20,
+          active_id: _this.data.detail.active_id,
+          goods_id: _this.data.goods.goods_id,
+          goods_num: _this.data.goods_num,
+          goods_sku_id: _this.data.goods_sku_id,
+        })
+      });
+    };
+    // 请求用户订阅消息
+    _this._onRequestSubscribeMessage(onCommitCallback);
   },
 
   /**
@@ -361,8 +392,8 @@ Page({
   onPreviewSkuImage(e) {
     let _this = this;
     wx.previewImage({
-      current: _this.data.image_path,
-      urls: [_this.data.image_path]
+      current: _this.data.skuCoverImage,
+      urls: [_this.data.skuCoverImage]
     })
   },
 
