@@ -320,16 +320,18 @@ App({
 
   /**
    * 记录formId
+   * (因微信模板消息已下线，所以formId取消不再收集)
    */
   saveFormId(formId) {
-    let _this = this;
-    console.log('saveFormId');
-    if (formId === 'the formId is a mock one') {
-      return false;
-    }
-    _this._post_form('wxapp.formId/save', {
-      formId: formId
-    }, null, null, null, false);
+    return true;
+    // let _this = this;
+    // console.log('saveFormId');
+    // if (formId === 'the formId is a mock one') {
+    //   return false;
+    // }
+    // _this._post_form('wxapp.formId/save', {
+    //   formId: formId
+    // }, null, null, null, false);
   },
 
   /**

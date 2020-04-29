@@ -176,7 +176,7 @@ Page({
             _this.getOrderDetail(orderId);
           },
           fail() {
-            App.showError(result.msg.success);
+            App.showError(result.msg.error);
           },
         });
       }

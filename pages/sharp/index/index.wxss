@@ -139,7 +139,7 @@ page, .container {
 
 .goods-item .goods-info .goods-name {
   font-size: 28rpx;
-  min-height: 76rpx;
+  min-height: 72rpx;
   margin-bottom: 20rpx;
 }
 
