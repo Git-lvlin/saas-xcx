@@ -57,7 +57,8 @@
     "pages/bargain/goods/index",
     "pages/points/log/index",
     "pages/sharp/index/index",
-    "pages/sharp/goods/index"
+    "pages/sharp/goods/index",
+    "pages/live/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

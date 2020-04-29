@@ -73,4 +73,30 @@ module.exports = {
     return /(^[0-9]\d*$)/.test(value);
   },
 
+  /**
+   * 对Date的扩展，将 Date 转化为指定格式的String
+   * 月(Y)、月(m)、日(d)、小时(H)、分(M)、秒(S) 可以用 1-2 个占位符，
+   * 例子：
+   * dateFormat('YYYY-mm-dd HH:MM:SS', new Date()) ==> 2020-01-01 08:00:00
+   */
+  dateFormat(fmt, date) {
+    const opt = {
+      "Y+": date.getFullYear().toString(), // 年
+      "m+": (date.getMonth() + 1).toString(), // 月
+      "d+": date.getDate().toString(), // 日
+      "H+": date.getHours().toString(), // 时
+      "M+": date.getMinutes().toString(), // 分
+      "S+": date.getSeconds().toString() // 秒
+      // 有其他格式化字符需求可以继续添加，必须转化成字符串
+    };
+    let ret;
+    for (let k in opt) {
+      ret = new RegExp("(" + k + ")").exec(fmt);
+      if (ret) {
+        fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+      };
+    };
+    return fmt;
+  },
+
 };
