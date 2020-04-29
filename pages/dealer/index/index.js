@@ -7,7 +7,6 @@ Page({
    */
   data: {
     isData: false,
-
     words: {},
     user: {},
     dealer: {},
@@ -16,22 +15,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow() {
+    let _this = this;
     // 获取分销商中心数据
-    this.getDealerCenter();
+    _this.getDealerCenter();
   },
 
   /**
    * 获取分销商中心数据
    */
-  getDealerCenter: function() {
+  getDealerCenter() {
     let _this = this;
     App._get('user.dealer/center', {}, function(result) {
       let data = result.data;
@@ -47,7 +47,7 @@ Page({
   /**
    * 跳转到提现页面
    */
-  navigationToWithdraw: function() {
+  navigationToWithdraw() {
     wx.navigateTo({
       url: '../withdraw/apply/apply',
     })
@@ -56,7 +56,7 @@ Page({
   /**
    * 立即加入分销商
    */
-  triggerApply: function(e) {
+  triggerApply(e) {
     // 记录formId
     App.saveFormId(e.detail.formId);
     wx.navigateTo({

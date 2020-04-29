@@ -164,9 +164,9 @@
         <view class="buyNumber f-26">
           <text>购买数量</text>
         </view>
-        <view class="selectNumber">
+        <view class="select-number">
           <form bindsubmit="onDecGoodsNumber" report-submit="true">
-            <button formType="submit" class="default {{goods_num>1?'':' default-active'}}" type="default">-</button>
+            <button formType="submit" class="default {{goods_num>1?'':' disabled'}}" type="default">-</button>
           </form>
           <input bindinput="onInputGoodsNum" type="number" value="{{goods_num}}"></input>
           <form bindsubmit="onIncGoodsNumber" report-submit="true">

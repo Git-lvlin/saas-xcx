@@ -154,3 +154,45 @@
   color: #777;
   margin-top: 25rpx;
 }
+
+.select-number {
+  width: 202rpx;
+  height: 52rpx;
+  flex-direction: row;
+  border: 1rpx solid rgb(231, 231, 231);
+  border-radius: 5rpx;
+}
+
+.select-number .default {
+  float: left;
+  width: 60rpx;
+  height: 52rpx;
+  line-height: 48rpx;
+  padding: 0;
+  background: #fff;
+  color: #444;
+  font-size: 40rpx;
+  border-radius: unset;
+}
+
+.select-number .disabled {
+  background: #f7f7f7;
+  color: #ddd;
+}
+
+.select-number button:after {
+  content: none;
+  border: none;
+}
+
+.select-number input {
+  float: left;
+  width: 80rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  border-right: 1rpx solid #eee;
+  border-left: 1rpx solid #eee;
+  text-align: center;
+  font-size: 28rpx;
+  color: #444;
+}

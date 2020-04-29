@@ -76,8 +76,8 @@ view {
   font-size: 24rpx;
   line-height: 36rpx;
   border-radius: 5rpx;
-  color: #FF6464;
-  background: #FEEEEE;
+  color: #ff6464;
+  background: #feeeee;
   margin-left: 10rpx;
   margin-bottom: 10rpx;
   box-sizing: border-box;
@@ -422,7 +422,7 @@ view {
   margin: 0 20rpx 20rpx 0;
   border-radius: 8rpx;
   color: #888;
-  border: 1px solid #e6e6e6;
+  border: 1rpx solid #e6e6e6;
 }
 
 .goods-list-box .tmall-types .cartypelist .cartypeitem.cur {
@@ -463,4 +463,48 @@ view {
   color: #999;
   margin-left: 6rpx;
   TEXT-DECORATION: line-through;
+}
+
+/* 选择数量 */
+
+.select-number {
+  width: 202rpx;
+  height: 52rpx;
+  flex-direction: row;
+  border: 1rpx solid rgb(231, 231, 231);
+  border-radius: 5rpx;
+}
+
+.select-number .default {
+  float: left;
+  width: 60rpx;
+  height: 52rpx;
+  line-height: 48rpx;
+  padding: 0;
+  background: #fff;
+  color: #444;
+  font-size: 40rpx;
+  border-radius: unset;
+}
+
+.select-number .disabled {
+  background: #f7f7f7;
+  color: #ddd;
+}
+
+.select-number button:after {
+  content: none;
+  border: none;
+}
+
+.select-number input {
+  float: left;
+  width: 80rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  border-right: 1rpx solid #eee;
+  border-left: 1rpx solid #eee;
+  text-align: center;
+  font-size: 28rpx;
+  color: #444;
 }

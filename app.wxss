@@ -72,16 +72,7 @@ page {
   font-size: 30rpx;
 }
 
-.bargain-commont-bg {
-  background: rgba(0, 0, 0, 0.6);
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 20;
-}
-
+/*
 .selectNumber {
   height: 52rpx;
   flex-direction: row;
@@ -123,6 +114,7 @@ page {
   font-size: 28rpx;
   color: #444;
 }
+*/
 
 /* 返回顶部 */
 

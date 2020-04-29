@@ -111,9 +111,10 @@ Page({
    * 跳转到登录页
    */
   onLogin() {
-    wx.navigateTo({
-      url: '../login/login',
-    });
+    // wx.navigateTo({
+    //   url: '../login/login',
+    // });
+    App.doLogin();
   },
 
   /**

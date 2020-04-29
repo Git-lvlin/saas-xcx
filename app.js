@@ -82,7 +82,7 @@ App({
   /**
    * 执行用户登录
    */
-  doLogin() {
+  doLogin(delta) {
     // 保存当前页面
     let pages = getCurrentPages();
     if (pages.length) {
@@ -92,7 +92,7 @@ App({
     }
     // 跳转授权页面
     wx.navigateTo({
-      url: "/pages/login/login"
+      url: "/pages/login/login?delta=" + (delta || 1)
     });
   },
 
@@ -168,7 +168,7 @@ App({
           if (res.data.code === -1) {
             // 登录态失效, 重新登录
             wx.hideNavigationBarLoading();
-            _this.doLogin();
+            _this.doLogin(2);
           } else if (res.data.code === 0) {
             _this.showError(res.data.msg, function() {
               fail && fail(res);
@@ -222,7 +222,7 @@ App({
         if (res.data.code === -1) {
           // 登录态失效, 重新登录
           wx.hideNavigationBarLoading();
-          _this.doLogin();
+          _this.doLogin(1);
           return false;
         } else if (res.data.code === 0) {
           _this.showError(res.data.msg, function() {
