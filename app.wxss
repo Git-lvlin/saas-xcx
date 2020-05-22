@@ -24,7 +24,7 @@ page {
 .no-more {
   text-align: center;
   color: #737373;
-  padding: 10px 0;
+  padding: 20rpx 0;
 }
 
 .yoshop-notcont {

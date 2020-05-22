@@ -55,16 +55,19 @@ Page({
   _onRequestSubscribeMessage(callback) {
     let _this = this;
     let tmplItem = _this.data.setting.order_submsg.active_status;
-    if (tmplItem.length > 0) {
-      wx.requestSubscribeMessage({
-        tmplIds: [tmplItem],
-        success(res) {},
-        fail(res) {},
-        complete(res) {
-          callback && callback();
-        },
-      });
+
+    if (tmplItem.length == 0) {
+      callback && callback();
+      return;
     }
+    wx.requestSubscribeMessage({
+      tmplIds: [tmplItem],
+      success(res) {},
+      fail(res) {},
+      complete(res) {
+        callback && callback();
+      },
+    });
   },
 
   /**

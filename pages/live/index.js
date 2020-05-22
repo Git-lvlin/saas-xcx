@@ -197,7 +197,8 @@ Page({
   onTargetLiveRoomIndex(e) {
     let roomId = e.currentTarget.dataset.id;
     let customParams = {
-      path: 'pages/index/index'
+      path: 'pages/index/index',
+      referee_id: App.getUserId(), // 分销推荐人
     };
     wx.navigateTo({
       url: `plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id=${roomId}&custom_params=${encodeURIComponent(JSON.stringify(customParams))}`

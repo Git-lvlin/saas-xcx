@@ -133,16 +133,19 @@ Page({
       dealerSubmsg = _this.data.submsgSetting.dealer;
     dealerSubmsg.withdraw_01.template_id != '' && tmplIds.push(dealerSubmsg.withdraw_01.template_id);
     dealerSubmsg.withdraw_02.template_id != '' && tmplIds.push(dealerSubmsg.withdraw_02.template_id);
-    if (tmplIds.length > 0) {
-      wx.requestSubscribeMessage({
-        tmplIds,
-        success(res) {},
-        fail(res) {},
-        complete(res) {
-          callback && callback();
-        },
-      });
+
+    if (tmplIds.length == 0) {
+      callback && callback();
+      return;
     }
+    wx.requestSubscribeMessage({
+      tmplIds,
+      success(res) {},
+      fail(res) {},
+      complete(res) {
+        callback && callback();
+      },
+    });
   },
 
   /**

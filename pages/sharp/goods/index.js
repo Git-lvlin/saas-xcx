@@ -512,7 +512,7 @@ Page({
       sharp_goods_id: _this.data.sharp_goods_id,
     });
     return {
-      title: _this.data.detail.goods_name,
+      title: _this.data.goods.goods_name,
       path: `/pages/sharp/goods/index?${params}`
     };
   },
