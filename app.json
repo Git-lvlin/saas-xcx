@@ -13,7 +13,6 @@
     "pages/user/index",
     "pages/user/wallet/index",
     "pages/user/wallet/balance/log",
-    "pages/user/recharge/index",
     "pages/user/recharge/order/index",
     "pages/user/coupon/coupon",
     "pages/user/help/index",
@@ -107,7 +106,7 @@
   },
   "plugins": {
     "live-player-plugin": {
-      "version": "1.0.15",
+      "version": "1.0.16",
       "provider": "wx2b03c6e691cd7370"
     }
   },
