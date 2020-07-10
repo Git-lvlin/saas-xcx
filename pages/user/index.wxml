@@ -140,5 +140,8 @@
         </view>
       </button>
     </form>
+    <view wx:if="{{isLogin}}" class="no-login-btn">
+      <button class="btn-normal" lang="zh_CN" catchtap="onLogout">退出</button>
+    </view>
   </view>
 </view>

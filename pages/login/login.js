@@ -6,7 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    options: {}
+
+    isLogin: false,
+    mobile_acquired: false,
+    options: {
+    }
   },
 
   /**
@@ -14,8 +18,21 @@ Page({
    */
   onLoad(options) {
     let _this = this;
+    console.log('onLoad1', typeof(_this.data), _this.data)
     _this.setData({
-      options
+      options: options,
+      isLogin: App.checkIsLogin(),
+      mobile_acquired: App.checkMobileAcquired(),
+    });
+    console.log('onLoad2', typeof(_this.data), _this.data)
+  },
+
+  getPhoneNumber(e) {
+    let _this = this;
+    //同意授权
+    App.getPhoneNumber(e, () => {
+      // 跳转回原页面
+      _this.onNavigateBack(1);
     });
   },
 
@@ -23,6 +40,10 @@ Page({
    * 授权登录
    */
   getUserInfo(e) {
+    if (!App.checkMobileAcquired()) {
+      App.showError('请先授权微信绑定的手机号');
+      return;
+    }
     let _this = this;
     App.getUserInfo(e, () => {
       // 跳转回原页面
@@ -36,16 +57,27 @@ Page({
   onNotLogin() {
     let _this = this;
     // 跳转回原页面
-    _this.onNavigateBack(_this.data.options.delta);
+    wx.navigateBack({
+      delta: Number(_this.data.options.delta || 1)
+    });
   },
 
   /**
    * 授权成功 跳转回原页面
    */
   onNavigateBack(delta) {
-    wx.navigateBack({
-      delta: Number(delta || 1)
+    let _this = this;
+    _this.setData({
+      options: _this.data.options,
+      isLogin: App.checkIsLogin(),
+      mobile_acquired: App.checkMobileAcquired(),
     });
+    console.log('this.data', this.data)
+    if (App.checkIsLogin() && App.checkMobileAcquired()) {
+      wx.navigateBack({
+        delta: Number(delta || 1)
+      });
+    }
   },
 
 })

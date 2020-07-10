@@ -22,6 +22,10 @@ App({
    */
   globalData: {
     user_id: null,
+    code: '',
+    openid: '',
+    session_key: '',
+    mobile_acquired: false,
   },
 
   // api地址
@@ -36,6 +40,49 @@ App({
     _this.updateManager();
     // 小程序启动场景
     _this.onStartupScene(e.query);
+
+    wx.login({
+      success: resp0 => {
+        _this._wxLoginSuccess(resp0)
+      }
+    });
+  },
+
+  _wxLoginSuccess(resp0) {
+    let _this = this;
+    // 微信
+    if (resp0.code) {
+      //发起网络请求
+      // 发送 resp0.code 到后台换取 openId, sessionKey, unionId
+      this.globalData.code = resp0.code
+      //登陆成功并成功返回code便发起网络请求获得OPENID
+      wx.request({
+        url: _this.api_root + 'wxapp.Openid/get',
+        data: {
+          code: resp0.code
+        },
+        success: function(resp1){
+          var res = resp1.data
+          // 后台PHP 的 code = 1 表示成功
+          if (res && res.code == 1) {
+            _this.globalData.openid = res.data.openid
+            _this.globalData.session_key = res.data.session_key
+            _this.globalData.mobile_acquired = res.data.mobile_acquired
+            _this.checkMobileAcquired()
+            if (res.data.token) {
+              // 记录token user_id
+              wx.setStorageSync('token', res.data.token);
+            }
+            if (res.data.user_id) {
+              // 记录token user_id
+              wx.setStorageSync('user_id', res.data.user_id);
+            }
+          } else {}
+        }
+      })
+    } else {
+      console.log('获取openid失败' + res.errMsg)
+    }
   },
 
   /**
@@ -122,6 +169,19 @@ App({
     });
   },
 
+  doLogout(goto) {
+    if (!goto) {
+      goto = '/pages/index/index'
+    }
+    this.globalData.code = ''
+    this.globalData.session_key = ''
+    wx.setStorageSync('token', '');
+    wx.setStorageSync('user_id', '');
+    wx.switchTab({
+      url: goto
+    });
+  },
+
   /**
    * 当前用户id
    */
@@ -174,7 +234,7 @@ App({
     data.wxapp_id = _this.getWxappId();
 
     // if (typeof check_login === 'undefined')
-    //   check_login = true;
+    //   check_login = _this.checkIsLogin();
 
     // 构造get请求
     let request = () => {
@@ -216,7 +276,7 @@ App({
       });
     };
     // 判断是否需要验证登录
-    check_login ? _this.doLogin(request) : request();
+    check_login ? _this.doLogin() : request();
   },
 
   /**
@@ -227,12 +287,13 @@ App({
 
     isShowNavBarLoading || true;
     data.wxapp_id = _this.getWxappId();
-    data.token = wx.getStorageSync('token');
 
     // 在当前页面显示导航条加载动画
     if (isShowNavBarLoading == true) {
       wx.showNavigationBarLoading();
     }
+
+    data.token = wx.getStorageSync('token');
     wx.request({
       url: _this.api_root + url,
       header: {
@@ -406,6 +467,48 @@ App({
   },
 
   /**
+   * 解密手机号码
+   */
+  getPhoneNumber(e, callback) {
+    let App = this;
+
+    if (e.detail.errMsg !== "getPhoneNumber:ok") {
+      return;
+    }
+    if (App.checkMobileAcquired() == 1) {
+      // 执行回调函数
+      callback && callback();
+      return true;
+    }
+    if (!App.globalData.session_key) {
+      wx.login({
+        success: resp0 => {
+          App._wxLoginSuccess(resp0)
+        }
+      });
+    }
+    wx.request({
+      url: App.api_root + 'wxapp.Openid/save',
+      data: {
+        ciphertext: e.detail.encryptedData,
+        iv: e.detail.iv,
+        skey: App.globalData.session_key,
+        openid: App.globalData.openid,
+        referee_id: App.getRefereeid(),
+      },
+      method: "post",
+      success: function(resp){
+        var res = resp.data
+        // 后台PHP 的 code = 1 表示成功
+        if (res && res.code == 1) {
+          App.globalData.mobile_acquired = true
+          // 执行回调函数
+          callback && callback();
+        } else {}
+      }
+    });
+  },
+  /**
    * 授权登录
    */
   getUserInfo(e, callback) {
@@ -427,7 +530,7 @@ App({
           encrypted_data: e.detail.encryptedData,
           iv: e.detail.iv,
           signature: e.detail.signature,
-          referee_id: wx.getStorageSync('referee_id')
+          referee_id: App.getRefereeid(),
         }, result => {
           // 记录token user_id
           wx.setStorageSync('token', result.data.token);
@@ -441,4 +544,16 @@ App({
     });
   },
 
+  /**
+   * 获取推荐人id
+   */
+  getRefereeid() {
+    return wx.getStorageSync('referee_id');
+  },
+
+  // 检查手机号码是否已经获取
+  checkMobileAcquired() {
+    console.log('this.globalData.mobile_acquired ', this.globalData.mobile_acquired)
+    return this.globalData.mobile_acquired;
+  },
 });

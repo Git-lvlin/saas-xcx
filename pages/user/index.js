@@ -118,6 +118,13 @@ Page({
   },
 
   /**
+   * 用户登出
+   */
+  onLogout() {
+    App.doLogout();
+  },
+
+  /**
    * 验证是否已登录
    */
   onCheckLogin() {

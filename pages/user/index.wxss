@@ -201,3 +201,19 @@
 .asset-left_item .item-name text {
   font-size: 25rpx;
 }
+
+.no-login-btn {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+}
+
+.no-login-btn button {
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #dfdfdf;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 999rpx;
+  text-align: center;
+}
