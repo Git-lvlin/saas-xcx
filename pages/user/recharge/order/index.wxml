@@ -1,3 +1,4 @@
+<!--
 <view class="container">
 
   <view class="recharge-order">
@@ -15,7 +16,6 @@
           <text>+{{ item.actual_money }}元</text>
         </view>
       </view>
-      <!-- 没有记录 -->
       <view class="yoshop-notcont" wx:if="{{ !list.data.length && !isLoading }}">
         <text class="iconfont icon-wushuju"></text>
         <text class="cont">亲，暂无充值记录哦</text>
@@ -23,3 +23,4 @@
     </scroll-view>
   </view>
 </view>
+-->
