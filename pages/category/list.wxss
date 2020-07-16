@@ -1,21 +1,21 @@
 .store_nav_cont {
   padding: 20rpx 0;
+  font-size: 25rpx;
 }
 
 .store_nav_cont #list-true {
   color: #ff495e;
-  font-size: 28rpx;
 }
 
 .store_nav_cont #list-0 {
   color: #333;
-  font-size: 28rpx;
 }
 
 .store_nav_cont .price__arrow {
   padding-left: 20rpx;
   font-size: 18rpx;
   color: #777;
+  line-height: 1;
 }
 
 .store_nav_cont #list-true .price__arrow text.active {
