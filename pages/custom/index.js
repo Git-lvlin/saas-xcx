@@ -53,12 +53,22 @@ Page({
   },
 
   /**
+   * 下拉刷新
+   */
+  onPullDownRefresh: function() {
+    // 获取首页数据
+    this.getPageData(function() {
+      wx.stopPullDownRefresh();
+    });
+  },
+
+  /**
    * 分享当前页面
    */
   onShareAppMessage: function() {
-    let _this = this;
+    const _this = this;
     // 构建页面参数
-    let params = App.getShareUrlParams({
+    const params = App.getShareUrlParams({
       'page_id': _this.data.page_id
     });
     return {
@@ -68,13 +78,20 @@ Page({
   },
 
   /**
-   * 下拉刷新
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
    */
-  onPullDownRefresh: function() {
-    // 获取首页数据
-    this.getPageData(function() {
-      wx.stopPullDownRefresh();
+  onShareTimeline: function() {
+    const _this = this;
+    // 构建页面参数
+    const params = App.getShareUrlParams({
+      'page_id': _this.data.page_id
     });
-  }
+    return {
+      title: _this.data.page.params.share_title,
+      path: "/pages/custom/index?" + params
+    };
+  },
 
 });

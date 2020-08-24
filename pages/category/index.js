@@ -78,11 +78,24 @@ Page({
    * 设置分享内容
    */
   onShareAppMessage() {
-    let _this = this;
+    const _this = this;
     return {
       title: _this.data.templet.share_title,
       path: '/pages/category/index?' + App.getShareUrlParams()
     };
-  }
+  },
+
+  /**
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
+   */
+  onShareTimeline() {
+    const _this = this;
+    return {
+      title: _this.data.templet.share_title,
+      path: '/pages/category/index?' + App.getShareUrlParams()
+    };
+  },
 
 });

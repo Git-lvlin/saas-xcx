@@ -13,7 +13,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad(options) {
     // 当前页面参数
     this.setData({
       options
@@ -25,11 +25,11 @@ Page({
   /**
    * 加载页面数据
    */
-  getPageData: function(callback) {
+  getPageData(callback) {
     let _this = this;
     App._get('page/index', {
       page_id: _this.data.options.page_id || 0
-    }, function(result) {
+    }, result => {
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
       _this.setData(result.data);
@@ -41,7 +41,7 @@ Page({
   /**
    * 设置顶部导航栏
    */
-  setPageBar: function(page) {
+  setPageBar(page) {
     // 设置页面标题
     wx.setNavigationBarTitle({
       title: page.params.title
@@ -54,10 +54,20 @@ Page({
   },
 
   /**
+   * 下拉刷新
+   */
+  onPullDownRefresh() {
+    // 获取首页数据
+    this.getPageData(function () {
+      wx.stopPullDownRefresh();
+    });
+  },
+
+  /**
    * 分享当前页面
    */
   onShareAppMessage() {
-    let _this = this;
+    const _this = this;
     return {
       title: _this.data.page.params.share_title,
       path: "/pages/index/index?" + App.getShareUrlParams()
@@ -65,32 +75,16 @@ Page({
   },
 
   /**
-   * 下拉刷新
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
    */
-  onPullDownRefresh: function() {
-    // 获取首页数据
-    this.getPageData(function() {
-      wx.stopPullDownRefresh();
-    });
+  onShareTimeline() {
+    const _this = this;
+    return {
+      title: _this.data.page.params.share_title,
+      path: "/pages/index/index?" + App.getShareUrlParams()
+    };
   }
-
-  // /**
-  //  * 返回顶部
-  //  */
-  // goTop: function(t) {
-  //   this.setData({
-  //     scrollTop: 0
-  //   });
-  // },
-
-  // scroll: function(t) {
-  //   this.setData({
-  //     indexSearch: t.detail.scrollTop
-  //   }), t.detail.scrollTop > 300 ? this.setData({
-  //     floorstatus: !0
-  //   }) : this.setData({
-  //     floorstatus: !1
-  //   });
-  // },
 
 });

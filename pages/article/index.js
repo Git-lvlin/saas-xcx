@@ -97,16 +97,6 @@ Page({
   },
 
   /**
-   * 分享当前页面
-   */
-  onShareAppMessage() {
-    return {
-      title: '文章首页',
-      path: "/pages/article/index?" + App.getShareUrlParams()
-    };
-  },
-
-  /**
    * 下拉到底加载数据
    */
   bindDownLoad() {
@@ -136,4 +126,27 @@ Page({
       scrollHeight
     });
   },
+
+  /**
+   * 分享当前页面
+   */
+  onShareAppMessage() {
+    return {
+      title: '文章首页',
+      path: "/pages/article/index?" + App.getShareUrlParams()
+    };
+  },
+
+  /**
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
+   */
+  onShareTimeline() {
+    return {
+      title: '文章首页',
+      path: "/pages/article/index?" + App.getShareUrlParams()
+    };
+  },
+
 })

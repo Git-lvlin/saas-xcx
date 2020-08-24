@@ -168,12 +168,27 @@ Page({
   },
 
   /**
-   * 用户点击右上角分享
+   * 分享当前页面
    */
   onShareAppMessage() {
-    let _this = this;
+    const _this = this;
     // 构建页面参数
-    let params = App.getShareUrlParams();
+    const params = App.getShareUrlParams();
+    return {
+      title: '整点秒杀',
+      path: `/pages/sharp/index/index?${params}`
+    };
+  },
+
+  /**
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
+   */
+  onShareTimeline() {
+    const _this = this;
+    // 构建页面参数
+    const params = App.getShareUrlParams();
     return {
       title: '整点秒杀',
       path: `/pages/sharp/index/index?${params}`
