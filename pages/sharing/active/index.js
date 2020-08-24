@@ -401,21 +401,6 @@ Page({
   },
 
   /**
-   * 分享当前页面
-   */
-  onShareAppMessage() {
-    let _this = this;
-    // 构建页面参数
-    let params = App.getShareUrlParams({
-      'active_id': _this.data.detail.active_id
-    });
-    return {
-      title: _this.data.goods.goods_name,
-      path: "/pages/sharing/active/index?" + params
-    };
-  },
-
-  /**
    * 确认购买弹窗
    */
   onToggleTrade(e) {
@@ -439,6 +424,38 @@ Page({
     wx.navigateTo({
       url: '../index/index',
     })
+  },
+
+  /**
+   * 分享当前页面
+   */
+  onShareAppMessage() {
+    const _this = this;
+    // 构建页面参数
+    const params = App.getShareUrlParams({
+      'active_id': _this.data.detail.active_id
+    });
+    return {
+      title: _this.data.goods.goods_name,
+      path: "/pages/sharing/active/index?" + params
+    };
+  },
+
+  /**
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
+   */
+  onShareTimeline() {
+    const _this = this;
+    // 构建页面参数
+    const params = App.getShareUrlParams({
+      'active_id': _this.data.detail.active_id
+    });
+    return {
+      title: _this.data.goods.goods_name,
+      path: "/pages/sharing/active/index?" + params
+    };
   },
 
 })

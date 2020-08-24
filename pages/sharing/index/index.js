@@ -22,7 +22,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad(options) {
     let _this = this;
     // Api：获取拼团首页
     _this.setListHeight();
@@ -35,7 +35,7 @@ Page({
   getIndexData() {
     let _this = this;
     // 获取拼团首页
-    App._get('sharing.index/index', {}, function(result) {
+    App._get('sharing.index/index', {}, result => {
       _this.setData({
         categoryList: result.data.categoryList
       });
@@ -47,7 +47,7 @@ Page({
   /**
    * Api：切换导航栏
    */
-  onSwitchTab: function(e) {
+  onSwitchTab(e) {
     let _this = this;
     // 第一步：切换当前的分类id
     _this.setData({
@@ -69,8 +69,7 @@ Page({
     App._get('sharing.goods/lists', {
       page: page || 1,
       category_id: _this.data.category_id
-    }, function(result) {
-      console.log(result)
+    }, result => {
       let resList = result.data.list,
         dataList = _this.data.goodsList;
       if (isPage == true) {
@@ -97,19 +96,9 @@ Page({
   },
 
   /**
-   * 分享当前页面
-   */
-  onShareAppMessage: function() {
-    return {
-      title: '拼团首页',
-      path: "/pages/sharing/index/index?" + App.getShareUrlParams()
-    };
-  },
-
-  /**
    * 下拉到底加载数据
    */
-  bindDownLoad: function() {
+  bindDownLoad() {
     // 已经是最后一页
     if (this.data.page >= this.data.goodsList.last_page) {
       this.setData({
@@ -124,7 +113,7 @@ Page({
   /**
    * 设置商品列表高度
    */
-  setListHeight: function() {
+  setListHeight() {
     let systemInfo = wx.getSystemInfoSync(),
       rpx = systemInfo.windowWidth / 750, // 计算rpx
       tapHeight = Math.floor(rpx * 98), // tap高度
@@ -136,4 +125,27 @@ Page({
       scrollHeight
     });
   },
+
+  /**
+   * 分享当前页面
+   */
+  onShareAppMessage() {
+    return {
+      title: '拼团首页',
+      path: "/pages/sharing/index/index?" + App.getShareUrlParams()
+    };
+  },
+
+  /**
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
+   */
+  onShareTimeline() {
+    return {
+      title: '拼团首页',
+      path: "/pages/sharing/index/index?" + App.getShareUrlParams()
+    };
+  },
+
 })

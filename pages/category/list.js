@@ -138,17 +138,6 @@ Page({
   },
 
   /**
-   * 设置分享内容
-   */
-  onShareAppMessage() {
-    // 构建分享参数
-    return {
-      title: "全部分类",
-      path: "/pages/category/index?" + App.getShareUrlParams()
-    };
-  },
-
-  /**
    * 商品搜索
    */
   triggerSearch() {
@@ -163,6 +152,30 @@ Page({
     wx.navigateTo({
       url: '../search/index',
     })
+  },
+
+  /**
+   * 设置分享内容
+   */
+  onShareAppMessage() {
+    // 构建分享参数
+    return {
+      title: "全部分类",
+      path: "/pages/category/index?" + App.getShareUrlParams()
+    };
+  },
+
+  /**
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
+   */
+  onShareTimeline() {
+    // 构建分享参数
+    return {
+      title: "全部分类",
+      path: "/pages/category/index?" + App.getShareUrlParams()
+    };
   },
 
 });

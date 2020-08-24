@@ -35,21 +35,6 @@ Page({
   },
 
   /**
-   * 分享当前页面
-   */
-  onShareAppMessage() {
-    let _this = this;
-    // 构建页面参数
-    let params = App.getShareUrlParams({
-      'shop_id': _this.data.detail.shop_id
-    });
-    return {
-      title: _this.data.detail.article_title,
-      path: "/pages/shop/detail/index?" + params
-    };
-  },
-
-  /**
    * 拨打电话
    */
   onMakePhoneCall() {
@@ -72,6 +57,38 @@ Page({
       latitude: Number(detail.latitude),
       scale: 15
     });
+  },
+
+  /**
+   * 分享当前页面
+   */
+  onShareAppMessage() {
+    const _this = this;
+    // 构建页面参数
+    const params = App.getShareUrlParams({
+      'shop_id': _this.data.detail.shop_id
+    });
+    return {
+      title: _this.data.detail.article_title,
+      path: "/pages/shop/detail/index?" + params
+    };
+  },
+
+  /**
+   * 分享到朋友圈
+   * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
+   * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
+   */
+  onShareTimeline() {
+    const _this = this;
+    // 构建页面参数
+    const params = App.getShareUrlParams({
+      'shop_id': _this.data.detail.shop_id
+    });
+    return {
+      title: _this.data.detail.article_title,
+      path: "/pages/shop/detail/index?" + params
+    };
   },
 
 })
