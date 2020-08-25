@@ -22,12 +22,12 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.3",
-	"appid": "wxce2e6da3a9bd6de6",
+	"appid": "wx8197742d81aea698",
 	"projectname": "%E6%8A%96%E5%95%86%E5%B8%A6%E8%B4%A7",
 	"debugOptions": {
 		"hidedInDevtools": []
