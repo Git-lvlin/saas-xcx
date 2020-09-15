@@ -174,7 +174,7 @@ App({
       goto = '/pages/index/index'
     }
     this.globalData.code = ''
-    this.globalData.session_key = ''
+    // this.globalData.session_key = ''
     wx.setStorageSync('token', '');
     wx.setStorageSync('user_id', '');
     wx.switchTab({
@@ -475,17 +475,16 @@ App({
     if (e.detail.errMsg !== "getPhoneNumber:ok") {
       return;
     }
-    if (App.checkMobileAcquired() == 1) {
-      // 执行回调函数
-      callback && callback();
-      return true;
-    }
     if (!App.globalData.session_key) {
       wx.login({
         success: resp0 => {
           App._wxLoginSuccess(resp0)
         }
       });
+    }
+    if (!App.globalData.session_key || App.globalData.session_key == '') {
+      console.log('App.globalData.session_key empty')
+      return;
     }
     wx.request({
       url: App.api_root + 'wxapp.Openid/save',
@@ -498,10 +497,13 @@ App({
       },
       method: "post",
       success: function(resp){
-        var res = resp.data
+        var result = resp.data
         // 后台PHP 的 code = 1 表示成功
-        if (res && res.code == 1) {
+        if (result && result.code == 1) {
           App.globalData.mobile_acquired = true
+          // 记录token user_id
+          wx.setStorageSync('token', result.data.token);
+          wx.setStorageSync('user_id', result.data.user_id);
           // 执行回调函数
           callback && callback();
         } else {}
@@ -517,7 +519,7 @@ App({
       return false;
     }
     wx.showLoading({
-      title: "正在登录",
+      title: "加载中...",
       mask: true
     });
     // 执行微信登录

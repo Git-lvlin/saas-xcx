@@ -4,13 +4,17 @@
     <view class="user-header" style="background-image: url('/images/user-bg.png');">
       <!-- 已登录 -->
       <view wx:if="{{ isLogin }}" class="user-header-cont">
-        <view class="user-header-avatar">
-          <!-- 微信头像 -->
-          <open-data class="" lang="zh_CN" type="userAvatarUrl"></open-data>
-        </view>
+        <button class="btn-normal" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+          <view class="user-header-avatar">
+            <!-- 微信头像 -->
+            <open-data class="" lang="zh_CN" type="userAvatarUrl"></open-data>
+          </view>
+        </button>
         <view class="user-header-right">
-          <!-- 微信昵称 -->
-          <open-data class="user-header-cont-name" lang="zh_CN" type="userNickName"></open-data>
+          <button class="btn-normal" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+            <!-- 微信昵称 -->
+            <open-data class="user-header-cont-name" lang="zh_CN" type="userNickName"></open-data>
+          </button>
           <!-- 会员等级 -->
           <view wx:if="{{ userInfo.grade_id > 0 }}" class="user-header-grade dis-flex flex-y-center">
             <view class="user-grade_icon">

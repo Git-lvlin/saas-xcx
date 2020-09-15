@@ -136,4 +136,13 @@ Page({
     return true;
   },
 
+  /**
+   * 授权登录
+   */
+  getUserInfo(e) {
+    let _this = this;
+    App.getUserInfo(e, () => {
+      // App.showError('更新成功');
+    });
+  },
 })
