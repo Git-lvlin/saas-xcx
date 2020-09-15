@@ -46,6 +46,9 @@ Page({
     wx.setNavigationBarTitle({
       title: page.params.title
     });
+
+    wx.setStorageSync('titleTextColor', page.style.titleTextColor === 'white' ? '#ffffff' : '#000000');
+    wx.setStorageSync('titleBackgroundColor', page.style.titleBackgroundColor);
     // 设置navbar标题、颜色
     wx.setNavigationBarColor({
       frontColor: page.style.titleTextColor === 'white' ? '#ffffff' : '#000000',

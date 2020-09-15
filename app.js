@@ -173,8 +173,6 @@ App({
     if (!goto) {
       goto = '/pages/index/index'
     }
-    this.globalData.code = ''
-    // this.globalData.session_key = ''
     wx.setStorageSync('token', '');
     wx.setStorageSync('user_id', '');
     wx.switchTab({

@@ -25,6 +25,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    var titleTextColor = wx.getStorageSync('titleTextColor')
+    var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
+    if (titleTextColor && titleBackgroundColor) {
+      // 设置navbar标题、颜色
+      wx.setNavigationBarColor({
+        frontColor: titleTextColor,
+        backgroundColor: titleBackgroundColor
+      })
+    }
     let _this = this;
     // 设置分类列表高度
     _this.setListHeight();

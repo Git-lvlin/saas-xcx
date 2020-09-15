@@ -9,13 +9,25 @@ Page({
     isLogin: false,
     userInfo: {}, // 用户信息
     orderCount: {}, // 订单数量
+    userHeaderBGC: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var titleTextColor = wx.getStorageSync('titleTextColor')
+    var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
+    if (titleTextColor && titleBackgroundColor) {
+      // 设置navbar标题、颜色
+      wx.setNavigationBarColor({
+        frontColor: titleTextColor,
+        backgroundColor: titleBackgroundColor
+      })
+    }
+    this.setData({
+      userHeaderBGC: titleBackgroundColor
+    })
   },
 
   /**

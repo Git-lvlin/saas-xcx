@@ -1,7 +1,7 @@
 <view class="container">
   <!-- 用户信息 -->
   <view class="user">
-    <view class="user-header" style="background-image: url('/images/user-bg.png');">
+    <view class="user-header" style="background-image: url('/images/user-bg.png'); background-color:{{userHeaderBGC}}">
       <!-- 已登录 -->
       <view wx:if="{{ isLogin }}" class="user-header-cont">
         <button class="btn-normal" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
