@@ -35,7 +35,13 @@ page {
   margin-bottom: 88rpx;
   font-size: 28rpx;
 }
-
+.getUserInfoPop{
+  background-color: #fff;
+  padding: 23rpx;
+  border-radius: 10rpx;
+  width: 401rpx;
+  
+}
 .login-btn {
   padding: 0 20rpx;
 }

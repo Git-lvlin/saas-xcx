@@ -68,12 +68,13 @@ App({
             _this.globalData.openid = res.data.openid
             _this.globalData.session_key = res.data.session_key
             _this.globalData.mobile_acquired = res.data.mobile_acquired
+            _this.globalData.userinfo_acquired = res.data.userinfo_acquired
             _this.checkMobileAcquired()
-            if (res.data.token) {
+            if (_this.checkMobileAcquired() && _this.checkUserinfoAcquired() && res.data.token) {
               // 记录token user_id
               wx.setStorageSync('token', res.data.token);
             }
-            if (res.data.user_id) {
+            if (_this.checkMobileAcquired() && _this.checkUserinfoAcquired() && res.data.user_id) {
               // 记录token user_id
               wx.setStorageSync('user_id', res.data.user_id);
             }
@@ -480,7 +481,7 @@ App({
         }
       });
     }
-    if (!App.globalData.session_key || App.globalData.session_key == '') {
+    if (!App.globalData.session_key) {
       console.log('App.globalData.session_key empty')
       return;
     }
@@ -500,10 +501,12 @@ App({
         if (result && result.code == 1) {
           App.globalData.mobile_acquired = true
           // 记录token user_id
-          wx.setStorageSync('token', result.data.token);
-          wx.setStorageSync('user_id', result.data.user_id);
+          if (result.data.userinfo_acquired) {
+            wx.setStorageSync('token', result.data.token);
+            wx.setStorageSync('user_id', result.data.user_id);
+          }
           // 执行回调函数
-          callback && callback();
+          callback && callback(result);
         } else {}
       }
     });
@@ -555,5 +558,11 @@ App({
   checkMobileAcquired() {
     console.log('this.globalData.mobile_acquired ', this.globalData.mobile_acquired)
     return this.globalData.mobile_acquired;
+  },
+
+  // 检查手机号码是否已经获取
+  checkUserinfoAcquired() {
+    console.log('this.globalData.userinfo_acquired ', this.globalData.userinfo_acquired)
+    return this.globalData.userinfo_acquired;
   },
 });

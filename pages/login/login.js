@@ -1,16 +1,16 @@
 const App = getApp();
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
     isLogin: false,
     mobile_acquired: false,
+    userinfo_acquired: false,
     options: {
-    }
+    },
+    show:false
   },
 
   /**
@@ -23,6 +23,7 @@ Page({
       options: options,
       isLogin: App.checkIsLogin(),
       mobile_acquired: App.checkMobileAcquired(),
+      userinfo_acquired: App.checkUserinfoAcquired(),
     });
     console.log('onLoad2', typeof(_this.data), _this.data)
   },
@@ -30,9 +31,15 @@ Page({
   getPhoneNumber(e) {
     let _this = this;
     //同意授权
-    App.getPhoneNumber(e, () => {
-      // 跳转回原页面
-      _this.onNavigateBack(1);
+    App.getPhoneNumber(e, (res) => {
+      if(res.data.userinfo_acquired){
+        // 跳转回原页面
+        _this.onNavigateBack(1);
+      }else{
+        this.setData({
+          show: true
+        });
+      }
     });
   },
 

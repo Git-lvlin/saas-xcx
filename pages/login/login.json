@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "授权登录"
+    "navigationBarTitleText": "授权登录",
+    "usingComponents": {
+        "pop-manager": "/components/pop-manager/index"
+      }
 }
