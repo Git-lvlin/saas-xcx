@@ -171,9 +171,9 @@
       </view>
     </view>
     <!-- 积分优惠信息 -->
-    <view class="goods-discounts" wx:if="{{detail.is_shopping_discount == 1}}">
+    <view class="goods-discounts" wx:if="{{discounts_tips != ''}}">
       <view class="goods-discounts-title">优惠</view>
-      <view class="goods-discounts-trip">满{{detail.full_order_price}}元可用积分抵扣{{detail.max_money_ratio}}元</view>
+      <view class="goods-discounts-trip">{{discounts_tips}}</view>
     </view>
     <!-- 商品描述 -->
     <view class="p-bottom">

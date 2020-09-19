@@ -35,6 +35,8 @@ Page({
     cart_total_num: 0, // 购物车商品总数量
     goodsMultiSpec: {}, // 多规格信息
 
+    discounts_tips: '', // 优惠提示
+
     // 分享按钮组件
     share: {
       show: false,
