@@ -54,6 +54,7 @@ Page({
     }
     let _this = this;
     App.getUserInfo(e, () => {
+      wx.removeStorageSync('referee_id_Login')
       wx.switchTab({
         url: '/pages/index/index'
       })

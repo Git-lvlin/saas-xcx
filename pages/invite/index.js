@@ -54,8 +54,8 @@ Page({
     let _this = this;
     //同意授权
     App.getPhoneNumber(e, (res) => {
-        // 跳转回原页面
-        wx.navigateTo({
+        wx.setStorageSync('referee_id_Login', 2)
+        wx.reLaunch({
           url:'/pages/inviteAffirm/index'
         })
     });

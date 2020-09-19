@@ -14,7 +14,7 @@
   width: 320rpx;
 }
 .info-btn{
-  margin:600rpx auto 0;
+  margin:400rpx auto 0;
   height: 100rpx;
   width: 80%;
 }

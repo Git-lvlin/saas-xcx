@@ -79,8 +79,15 @@ App({
               wx.setStorageSync('user_id', res.data.user_id);
             }
             if(!_this.checkIsLogin()&&wx.getStorageSync('referee_id')){
+              wx.setStorageSync('referee_id_Login', 1)
               wx.reLaunch({
                 url: '/pages/invite/index',
+              })
+            }
+            if(_this.globalData.mobile_acquired&&!_this.globalData.userinfo_acquired&&wx.getStorageSync('referee_id')){
+              wx.setStorageSync('referee_id_Login',2)
+              wx.reLaunch({
+                url: '/pages/inviteAffirm/index',
               })
             }
           } else {}
@@ -512,7 +519,13 @@ App({
           }
           // 执行回调函数
           callback && callback(result);
-        } else {}
+        } else {
+          wx.showToast({
+            title: result.msg,
+            icon: 'none',
+            duration: 1500
+          })
+        }
       }
     });
   },

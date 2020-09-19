@@ -14,6 +14,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    if(wx.getStorageSync('referee_id_Login')==1){
+      wx.reLaunch({
+        url: '/pages/invite/index',
+      })
+    }else if(wx.getStorageSync('referee_id_Login')==2){
+      wx.reLaunch({
+        url: '/pages/inviteAffirm/index',
+      })
+    }
     // 当前页面参数
     this.setData({
       options
