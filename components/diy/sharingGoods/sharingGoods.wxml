@@ -5,7 +5,7 @@
       <button formType="submit" class="btn-normal dis-flex" data-id="{{ dataItem.goods_id }}">
         <!-- 商品图片 -->
         <view class="goods-item_left">
-          <image class="image" mode="aspectFill" src="{{ dataItem.image }}"></image>
+          <image class="image" mode="aspectFill" src="{{ dataItem.image }}" data-width="{{e}}"></image>
         </view>
         <view class="goods-item_right">
           <!-- 商品名称 -->

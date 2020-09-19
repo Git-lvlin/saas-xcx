@@ -78,6 +78,11 @@ App({
               // 记录token user_id
               wx.setStorageSync('user_id', res.data.user_id);
             }
+            if(!_this.checkIsLogin()&&wx.getStorageSync('referee_id')){
+              wx.reLaunch({
+                url: '/pages/invite/index',
+              })
+            }
           } else {}
         }
       })

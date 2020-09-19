@@ -57,7 +57,9 @@
     "pages/points/log/index",
     "pages/sharp/index/index",
     "pages/sharp/goods/index",
-    "pages/live/index"
+    "pages/live/index",
+    "pages/invite/index",
+    "pages/inviteAffirm/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
