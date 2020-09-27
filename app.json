@@ -59,7 +59,8 @@
     "pages/sharp/goods/index",
     "pages/live/index",
     "pages/invite/index",
-    "pages/inviteAffirm/index"
+    "pages/inviteAffirm/index",
+    "pages/troupe/index/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

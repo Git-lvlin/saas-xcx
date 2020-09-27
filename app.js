@@ -59,7 +59,9 @@ App({
       wx.request({
         url: _this.api_root + 'wxapp.Openid/get',
         data: {
-          code: resp0.code
+          code: resp0.code,
+          referee_id: App.getRefereeid(),
+          invite_code:wx.getStorageSync('invite_code_others')
         },
         success: function(resp1){
           var res = resp1.data
@@ -69,7 +71,8 @@ App({
             _this.globalData.session_key = res.data.session_key
             _this.globalData.mobile_acquired = res.data.mobile_acquired
             _this.globalData.userinfo_acquired = res.data.userinfo_acquired
-            _this.checkMobileAcquired()
+            _this.checkMobileAcquired();
+            wx.setStorageSync('invite_code', res.data.invite_code);
             if (_this.checkMobileAcquired() && _this.checkUserinfoAcquired() && res.data.token) {
               // 记录token user_id
               wx.setStorageSync('token', res.data.token);
@@ -107,6 +110,8 @@ App({
     // 记录推荐人id
     let refereeId = query.referee_id ? query.referee_id : scene.uid;
     refereeId > 0 && (this.saveRefereeId(refereeId));
+    let invite_code_others=query.invite_code?query.invite_code:scene.invite_code
+    wx.setStorageSync('invite_code_others', invite_code_others)
   },
 
   /**
@@ -438,7 +443,8 @@ App({
   getShareUrlParams(params) {
     let _this = this;
     return util.urlEncode(Object.assign({
-      referee_id: _this.getUserId()
+      referee_id: _this.getUserId(),
+      invite_code:wx.getStorageSync('invite_code')
     }, params));
   },
 
@@ -505,6 +511,7 @@ App({
         skey: App.globalData.session_key,
         openid: App.globalData.openid,
         referee_id: App.getRefereeid(),
+        invite_code:wx.getStorageSync('invite_code_others')
       },
       method: "post",
       success: function(resp){

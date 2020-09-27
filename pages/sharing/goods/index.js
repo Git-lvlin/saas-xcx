@@ -39,7 +39,7 @@ Page({
 
     countDownList: [], // 时间记录
     actEndTimeList: [],
-
+    is_leader:0,//是否是团长
     // 分享按钮组件
     share: {
       show: false,
@@ -106,12 +106,14 @@ Page({
    */
   _initGoodsDetailData(data) {
     let _this = this;
+    
     // 商品详情
     let goodsDetail = data.detail;
     // 富文本转码
     if (goodsDetail.content.length > 0) {
       wxParse.wxParse('content', 'html', goodsDetail.content, _this, 0);
     }
+    data.is_leader=data.is_leader;
     // 商品价格/划线价/库存
     data.goods_sku_id = goodsDetail.goods_sku.spec_sku_id;
     data.goods_price = goodsDetail.goods_sku.goods_price;

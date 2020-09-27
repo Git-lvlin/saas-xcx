@@ -135,7 +135,11 @@
         </view>
       </view>
     </zan-popup>
-
+    <!-- 积分优惠信息 -->
+    <view class="goods-discounts" wx:if="{{detail.is_shopping_discount == 1}}">
+      <view class="goods-discounts-title">优惠</view>
+      <view class="goods-discounts-trip">满{{detail.full_order_price}}元可用积分抵扣{{detail.max_money_ratio}}元</view>
+    </view>
     <!-- 商品评价 -->
     <view class="goods-comment" wx:if="{{ detail.comment_data.length }}">
       <view class="cont-box b-f goods-property-box m-top20">
@@ -169,11 +173,6 @@
           <view class="f-22 col-9 m-top10">{{ item.create_time }}</view>
         </view>
       </view>
-    </view>
-    <!-- 积分优惠信息 -->
-    <view class="goods-discounts" wx:if="{{detail.is_shopping_discount == 1}}">
-      <view class="goods-discounts-title">优惠</view>
-      <view class="goods-discounts-trip">满{{detail.full_order_price}}元可用积分抵扣{{detail.max_money_ratio}}元</view>
     </view>
     <!-- 商品描述 -->
     <view class="p-bottom">

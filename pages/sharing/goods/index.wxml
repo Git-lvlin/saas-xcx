@@ -233,7 +233,10 @@
           <form bindsubmit="onTriggerOrder" report-submit="true" data-type="20">
             <button formType="submit" class="btn-normal col-f">
               <view class="f-26">￥{{ sharing_price }}</view>
-              <view>发起拼单</view>
+              <view>
+              {{setting.basic.is_dealer==1?'(团长)':''}}
+                发起拼单
+              </view>
             </button>
           </form>
         </view>
