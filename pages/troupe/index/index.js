@@ -10,7 +10,6 @@ Page({
     words: {},
     user: {},
     dealer: {},
-    inviteCode:wx.getStorageSync('invite_code'),
     leader:{},
     show:false,
     setInviteCode:''

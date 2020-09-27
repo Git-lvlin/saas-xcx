@@ -70,8 +70,8 @@
       "list": [
         {
           "id": 0,
-          "name": "pages/inviteCode/index",
-          "pathName": "pages/inviteCode/index",
+          "name": "pages/troupe/index",
+          "pathName": "pages/troupe/index/index",
           "query": "",
           "scene": null
         }

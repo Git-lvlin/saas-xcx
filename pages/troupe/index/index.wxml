@@ -16,8 +16,8 @@
       </view>
       <view class="user-nickName f-32">{{ user.nickName }}</view>
       <view class="user-referee f-24 col-9">{{ words.index.words.referee.value }}：{{ dealer.referee ? dealer.referee.nickName : '平台' }}</view>
-      <view class="my_inviteCode">
-        我的邀请码:{{inviteCode}}
+      <view class="my_inviteCode f-24">
+        我的邀请码:{{invite_code}}
         
         <text class="order-navbar__icon iconfont icon-form copyInviteCode" catchtap="copyInviteCode"></text>
         <!-- <image class="copyInviteCode"  catchtap="copyInviteCode"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABmSURBVChTY+Sffl2B6R/zfEZGRgEGLOAv459ARqEpNxMYmBgF3mWpTYCKw4Hg1JsNTAz/LzBB+XgBnRUxCk+9EfCPgSmfgZHxAVQMDhgZGAz+/mUoBNIMDKBgYPjLhDUIPuaoXwAATTAZN8VF+TEAAAAASUVORK5CYII="></image> -->
@@ -83,8 +83,8 @@
   </view>
   <!-- 我的团长 -->
   <view class="myLeader">
-    <view class="myLeader_title">我的团长</view>
-    <view wx:if="{{leader}}" class="myLeader_info">
+    <view class="myLeader_title f-28">我的团长</view>
+    <view wx:if="{{leader}}" class="myLeader_info f-28">
       <image src="{{leader.avatarUrl}}"></image>
       <view>
         {{leader.nickName}}
