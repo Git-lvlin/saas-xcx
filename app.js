@@ -60,7 +60,7 @@ App({
         url: _this.api_root + 'wxapp.Openid/get',
         data: {
           code: resp0.code,
-          referee_id: App.getRefereeid(),
+          referee_id: _this.getRefereeid(),
           invite_code:wx.getStorageSync('invite_code_others')
         },
         success: function(resp1){
