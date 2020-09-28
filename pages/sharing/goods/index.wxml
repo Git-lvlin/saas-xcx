@@ -292,6 +292,16 @@
           </view>
         </scroll-view>
       </view>
+      <view class="shareTeaxt" wx:if="{{setting.basic.is_dealer>0}}">
+        <view> {{setting.basic.share_text}}</view>
+       <view class="shareTeaxt-botton">
+         <form bindsubmit="shareTeaxtClickShare" report-submit="true">
+            <button formType="submit" class="btn-normal dis-flex flex-dir-column">
+              <text class="share__icon iconfont icon-fenxiang"></text>
+            </button>
+          </form>
+        </view>
+      </view>
       <!-- 购买数量 -->
       <view class="buy_number">
         <view class="buyNumber f-26">

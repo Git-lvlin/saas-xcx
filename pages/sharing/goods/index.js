@@ -374,7 +374,15 @@ Page({
       'share.show': true
     });
   },
-
+  shareTeaxtClickShare(e){
+    let _this = this;
+    // 记录formId
+    App.saveFormId(e.detail.formId);
+    _this.setData({
+      'share.show': true,
+      showBottomPopup: !_this.data.showBottomPopup
+    });
+  },
   /**
    * 关闭分享选项
    */
