@@ -13,7 +13,7 @@
           <view class="item__left">{{ words.withdraw_apply.words.capital.value }}：</view>
           <view class="item__right c-violet">
             <text class="f-24">￥</text>
-            <text class="f-34">{{ dealer.money }}</text>
+            <text class="f-34">{{ user.money }}</text>
           </view>
         </view>
         <view class="capital__item dis-flex flex-y-center">

@@ -13,20 +13,17 @@
       <view class="widget__detail dis-flex flex-x-between" wx:for="{{ list.data }}" wx:key="this">
         <view class="detail__left dis-flex flex-y-center">
           <view class="user-avatar">
-            <image src="{{ item.user.avatarUrl }}"></image>
+            <image src="{{ item.avatarUrl }}"></image>
           </view>
           <view class="user-info dis-flex flex-dir-column flex-x-center">
-            <view class="user-nickName f-28">{{ item.user.nickName }}</view>
+            <view class="user-nickName f-28">{{ item.nickName }}</view>
             <view class="user-time col-9 f-24">{{ item.create_time }}</view>
           </view>
         </view>
         <view class="detail__right dis-flex flex-dir-column flex-x-center flex-y-center">
-          <view class="detail__money">
+          <view class="detail__money" title="实际消费的金额(不含退款)">
             <text class="f-24">￥</text>
-            <text class="f-34">{{ item.user.expend_money }}</text>
-          </view>
-          <view class="detail__member f-22" wx:if="{{ item.dealer }}">
-            {{ item.dealer.first_num + item.dealer.second_num + item.dealer.third_num }}个成员
+            <text class="f-34">{{ item.expend_money }}</text>
           </view>
         </view>
       </view>

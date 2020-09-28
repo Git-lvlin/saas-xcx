@@ -49,7 +49,7 @@ Page({
    */
   getDealerWithdraw() {
     let _this = this;
-    App._get('user.dealer/withdraw', {}, (result) => {
+    App._get('user.troupe/withdraw', {}, (result) => {
       let data = result.data;
       data.isData = true;
       // 设置当前页面标题
@@ -63,7 +63,7 @@ Page({
   },
 
   /**
-   * 提交申请 
+   * 提交申请
    */
   onFormSubmit(e) {
     let _this = this,
@@ -71,7 +71,7 @@ Page({
       words = _this.data.words.withdraw_apply.words;
 
     // 验证可提现佣金
-    if (_this.data.dealer.money <= 0) {
+    if (_this.data.user.money <= 0) {
       App.showError('当前没有' + words.capital.value);
       return false;
     }
@@ -89,7 +89,7 @@ Page({
 
     // 数据提交
     const onCallback = () => {
-      App._post_form('user.dealer.withdraw/submit', {
+      App._post_form('user.troupe.withdraw/submit', {
         data: JSON.stringify(values)
       }, (result) => {
         // 提交成功
@@ -130,9 +130,9 @@ Page({
   _onRequestSubscribeMessage(callback) {
     let _this = this,
       tmplIds = [],
-      dealerSubmsg = _this.data.submsgSetting.dealer;
-    dealerSubmsg.withdraw_01.template_id != '' && tmplIds.push(dealerSubmsg.withdraw_01.template_id);
-    dealerSubmsg.withdraw_02.template_id != '' && tmplIds.push(dealerSubmsg.withdraw_02.template_id);
+      troupeSubmsg = _this.data.submsgSetting.troupe;
+    troupeSubmsg.withdraw_01.template_id != '' && tmplIds.push(troupeSubmsg.withdraw_01.template_id);
+    troupeSubmsg.withdraw_02.template_id != '' && tmplIds.push(troupeSubmsg.withdraw_02.template_id);
 
     if (tmplIds.length == 0) {
       callback && callback();

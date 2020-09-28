@@ -32,7 +32,7 @@ Page({
    */
   getTeamList: function(isNextPage, page) {
     let _this = this;
-    App._get('user.dealer.team/lists', {
+    App._get('user.troupe.team/lists', {
       level: _this.data.dataType,
       page: page || 1,
     }, function(result) {
@@ -49,36 +49,21 @@ Page({
     // 列表数据
     let dataList = this.data.list;
     if (isNextPage == true && (typeof dataList !== 'undefined')) {
-      data.list.data = dataList.data.concat(data.list.data)
+      data.list = dataList.data.concat(data.list)
     }
     // 设置当前页面标题
     wx.setNavigationBarTitle({
       title: data.words.team.title.value
     });
     // 团队总人数
-    data['team_total'] = data.dealer.first_num;
+    data['team_total'] = data.list.total;
     // 导航栏数据
     data['tabList'] = [{
       value: 1,
       text: data.words.team.words.first.value,
-      total: data.dealer.first_num
+      total: data.list.total
     }];
-    if (data.setting.level >= 2) {
-      data['tabList'].push({
-        value: 2,
-        text: data.words.team.words.second.value,
-        total: data.dealer.second_num
-      });
-      data['team_total'] += data.dealer.second_num;
-    }
-    if (data.setting.level == 3) {
-      data['tabList'].push({
-        value: 3,
-        text: data.words.team.words.third.value,
-        total: data.dealer.third_num
-      });
-      data['team_total'] += data.dealer.third_num;
-    }
+
     // 设置swiper的高度
     this.setSwiperHeight(data.setting.level > 1);
     return data;
@@ -114,8 +99,8 @@ Page({
     });
   },
 
-  /** 
-   * 点击tab切换 
+  /**
+   * 点击tab切换
    */
   swichNav: function(e) {
     let _this = this;

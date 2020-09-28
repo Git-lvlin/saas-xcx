@@ -10,7 +10,7 @@ Page({
     words: {},
     user: {},
     dealer: {},
-    leader:{},
+    inviter:{},
     show:false,
     setInviteCode:''
   },

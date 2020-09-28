@@ -15,10 +15,9 @@
         <image src="{{ user.avatarUrl }}"></image>
       </view>
       <view class="user-nickName f-32">{{ user.nickName }}</view>
-      <view class="user-referee f-24 col-9">{{ words.index.words.referee.value }}：{{ dealer.referee ? dealer.referee.nickName : '平台' }}</view>
       <view class="my_inviteCode f-24">
         我的邀请码:{{invite_code}}
-        
+
         <text class="order-navbar__icon iconfont icon-form copyInviteCode" catchtap="copyInviteCode"></text>
         <!-- <image class="copyInviteCode"  catchtap="copyInviteCode"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABmSURBVChTY+Sffl2B6R/zfEZGRgEGLOAv459ARqEpNxMYmBgF3mWpTYCKw4Hg1JsNTAz/LzBB+XgBnRUxCk+9EfCPgSmfgZHxAVQMDhgZGAz+/mUoBNIMDKBgYPjLhDUIPuaoXwAATTAZN8VF+TEAAAAASUVORK5CYII="></image> -->
       </view>
@@ -28,10 +27,10 @@
       <view class="capital-card dis-flex">
         <view class="card-left flex-box dis-flex flex-dir-column flex-x-around">
           <view class="f-28 col-f">
-            <text space="ensp">{{ words.index.words.money.value }} {{ dealer.money }} 元</text>
+            <text space="ensp">{{ words.index.words.money.value }} {{ user.money }} 元</text>
           </view>
           <view class="f-28 col-f">
-            <text space="ensp">{{ words.index.words.freeze_money.value }} {{ dealer.freeze_money }} 元</text>
+            <text space="ensp">{{ words.index.words.freeze_money.value }} {{ user.freeze_money }} 元</text>
           </view>
         </view>
         <view class="card-right flex-box dis-flex flex-x-end flex-y-center">
@@ -41,7 +40,7 @@
       <!-- 已提现金额 -->
       <view class="capital-already clear">
         <view class="already-left f-28 fl">{{ words.index.words.total_money.value }}</view>
-        <view class="already-right f-28 fr">{{ dealer.total_money }}元</view>
+        <view class="already-right f-28 fr">{{ user.total_money }}元</view>
       </view>
     </view>
   </view>
@@ -83,14 +82,14 @@
   </view>
   <!-- 我的团长 -->
   <view class="myLeader">
-    <view class="myLeader_title f-28">我的团长</view>
-    <view wx:if="{{leader}}" class="myLeader_info f-28">
-      <image src="{{leader.avatarUrl}}"></image>
+    <view class="myLeader_title f-28">我的推荐人</view>
+    <view wx:if="{{inviter}}" class="myLeader_info f-28">
+      <image src="{{inviter.avatarUrl}}"></image>
       <view>
-        {{leader.nickName}}
+        {{inviter.nickName}}
       </view>
     </view>
-    <view wx:if="{{!leader}}" class="noLeader" catchtap="setInvite">
+    <view wx:if="{{!inviter}}" class="noLeader" catchtap="setInvite">
       补填邀请码
     </view>
   </view>
