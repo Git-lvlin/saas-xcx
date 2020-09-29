@@ -33,7 +33,7 @@ Page({
    */
   getOrderList: function(isNextPage, page) {
     let _this = this;
-    App._get('user.dealer.order/lists', {
+    App._get('user.troupe.order/lists', {
       settled: _this.data.dataType,
       page: page || 1,
     }, function(result) {
@@ -86,8 +86,8 @@ Page({
     });
   },
 
-  /** 
-   * 点击tab切换 
+  /**
+   * 点击tab切换
    */
   swichNav: function(e) {
     let _this = this;

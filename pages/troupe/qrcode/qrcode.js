@@ -32,7 +32,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    App._get('user.dealer.qrcode/poster', {}, function(result) {
+    App._get('user.troupe.qrcode/poster', {}, function(result) {
       // 设置当前页面标题
       wx.setNavigationBarTitle({
         title: result.data.words.qrcode.title.value
