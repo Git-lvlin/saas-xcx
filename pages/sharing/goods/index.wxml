@@ -293,7 +293,7 @@
         </scroll-view>
       </view>
       <view class="shareTeaxt" wx:if="{{setting.basic.is_dealer>0}}">
-        <view> {{setting.basic.share_text}}</view>
+        <view class="shareTeaxt_content"> {{detail.selling_point}}</view>
        <view class="shareTeaxt-botton">
          <form bindsubmit="shareTeaxtClickShare" report-submit="true">
             <button formType="submit" class="btn-normal dis-flex flex-dir-column">

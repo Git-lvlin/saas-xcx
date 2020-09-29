@@ -10,13 +10,17 @@
   /* border-bottom: 1rpx solid #e4e4e4; */
 }
 .shareTeaxt{
-  display: flex;
   color: red;
-  align-items: center;
-  font-size: 28rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+}
+.shareTeaxt_content{
+  word-wrap:break-word;
+  float: left;
 }
 .shareTeaxt-botton{
-  margin-left: 15rpx;
+  margin:5rpx 0 0 15rpx;
+  float: left;
 }
 .user-orderJtou {
   color: #999;
