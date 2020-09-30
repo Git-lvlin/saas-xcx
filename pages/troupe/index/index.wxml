@@ -96,7 +96,7 @@
 </view>
 </view>
 
-<pop-manager show="{{ show }}" type="center">
+<pop-manager show="{{ show }}" wx:if="{{show}}" type="center">
     <view class="setInviteCode">
       <view class="setInviteCode_title">补填邀请码</view>
       <view class="setInviteCode_input">邀请码

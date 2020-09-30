@@ -88,7 +88,7 @@ App({
               })
             }
             if(_this.globalData.mobile_acquired&&!_this.globalData.userinfo_acquired&&wx.getStorageSync('referee_id')){
-              wx.setStorageSync('referee_id_Login',2)
+              wx.setStorageSync('referee_id_Login',2) 
               wx.reLaunch({
                 url: '/pages/inviteAffirm/index',
               })

@@ -167,10 +167,10 @@ page {
   font-size: 28rpx;
 }
 .setInviteCode{
-  background-color: #fff;
   box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.11);
   border-radius: 12rpx;
   width: 600rpx;
+  background-color: #fff;
 }
 .setInviteCode_title{
   text-align: center;
