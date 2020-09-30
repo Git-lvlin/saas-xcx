@@ -21,6 +21,8 @@
 .shareTeaxt-botton{
   margin:5rpx 0 0 15rpx;
   float: left;
+  color: red;
+  font-size: 24rpx;
 }
 .user-orderJtou {
   color: #999;
@@ -373,6 +375,7 @@
 .popup__trade .trade-main .buy_number {
   margin: 20rpx 0;
   justify-content: space-between;
+  display: flex;
 }
 
 .popup__trade .trade-main .buy_number .buyNumber {

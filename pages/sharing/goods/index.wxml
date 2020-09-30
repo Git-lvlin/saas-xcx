@@ -234,7 +234,7 @@
             <button formType="submit" class="btn-normal col-f">
               <view class="f-26">￥{{ sharing_price }}</view>
               <view>
-              {{setting.basic.is_dealer==1?'(团长)':''}}
+              {{setting.basic.is_dealer==2?'(团长)':''}}
                 发起拼单
               </view>
             </button>
@@ -294,38 +294,49 @@
       </view>
       <view class="shareTeaxt" wx:if="{{setting.basic.is_dealer>0}}">
         <view class="shareTeaxt_content"> {{detail.selling_point}}</view>
-       <view class="shareTeaxt-botton">
-         <form bindsubmit="shareTeaxtClickShare" report-submit="true">
-            <button formType="submit" class="btn-normal dis-flex flex-dir-column">
-              <text class="share__icon iconfont icon-fenxiang"></text>
-            </button>
-          </form>
-        </view>
+        
       </view>
       <!-- 购买数量 -->
       <view class="buy_number">
-        <view class="buyNumber f-26">
-          <text>购买数量</text>
+        <view>
+          <view class="buyNumber f-26">
+            <text>购买数量</text>
+          </view>
+          <view class="select-number">
+            <form bindsubmit="onDecGoodsNumber" report-submit="true">
+              <button formType="submit" class="default {{ goods_num > 1 ? '' : 'disabled' }}" type="default">-</button>
+            </form>
+            <input bindinput="onInputGoodsNum" type="number" value="{{ goods_num }}"></input>
+            <form bindsubmit="onIncGoodsNumber" report-submit="true">
+              <button formType="submit" class="default" type="default">+</button>
+            </form>
+          </view>
+          
         </view>
-        <view class="select-number">
-          <form bindsubmit="onDecGoodsNumber" report-submit="true">
-            <button formType="submit" class="default {{ goods_num > 1 ? '' : 'disabled' }}" type="default">-</button>
-          </form>
-          <input bindinput="onInputGoodsNum" type="number" value="{{ goods_num }}"></input>
-          <form bindsubmit="onIncGoodsNumber" report-submit="true">
-            <button formType="submit" class="default" type="default">+</button>
+
+        <view class="shareTeaxt-botton">
+         <form bindsubmit="shareTeaxtClickShare" report-submit="true">
+            <button formType="submit" class="btn-normal dis-flex flex-dir-column">
+              <text class="share__icon iconfont icon-fenxiang">   立即分享</text>
+            </button>
           </form>
         </view>
+        
       </view>
     </view>
     <!-- 底部操作栏 -->
     <view class="footer-fixed f-30">
-      <block wx:if="{{stock_num > 0}}">
+      <block wx:if="{{stock_num > 0&&sharing_tips&&order_type==20}}">
+        <view class="default-btn dis-flex flex-x-center flex-y-center">
+          {{sharing_tips}}
+        </view>
+      </block>
+      <block wx:if="{{stock_num > 0&&(!sharing_tips||order_type==10)}}">
         <view class="order-bt dis-flex flex-x-center flex-y-center" catchtap="onCheckout">
           <text>确定</text>
         </view>
       </block>
-      <view class="default-btn" wx:else>暂无现货</view>
+      <view class="default-btn" wx:if="{{stock_num < 1}}">暂无现货</view>
     </view>
   </view>
 </zan-popup>
