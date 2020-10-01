@@ -161,13 +161,16 @@
 }
 
 .my-asset .asset-right {
-  width: 210rpx;
+  width: auto;
   border-left: 1rpx solid #eee;
+  padding: 0 20rpx;
 }
 
 .asset-right_item {
   text-align: center;
   color: #666;
+  float: left;
+  padding: 0 20rpx;
 }
 
 .asset-right_item .item-icon text {
@@ -185,7 +188,7 @@
 .asset-left_item {
   text-align: center;
   color: #666;
-  padding: 0 60rpx;
+  padding: 0 20rpx;
 }
 
 .asset-left_item .item-value text {

@@ -120,6 +120,58 @@ Page({
   },
 
   /**
+   * 跳转分销页
+   */
+  onTargetTroupe(e) {
+    let _this = this;
+    if (!_this.onCheckLogin()) {
+      return false;
+    }
+    // 记录formId
+    App.saveFormId(e.detail.formId);
+    wx.navigateTo({
+      url: '../troupe/index/index'
+    });
+  },
+  onTargetDealer(e) {
+    let _this = this;
+    if (!_this.onCheckLogin()) {
+      return false;
+    }
+    // 记录formId
+    App.saveFormId(e.detail.formId);
+    wx.navigateTo({
+      url: '../dealer/index/index'
+    });
+  },
+
+  // 跳转到我的优惠券
+  onTargetMyCoupon(e) {
+    let _this = this;
+    if (!_this.onCheckLogin()) {
+      return false;
+    }
+    // 记录formId
+    App.saveFormId(e.detail.formId);
+    wx.navigateTo({
+      url: './coupon/coupon'
+    });
+  },
+
+  // 跳转到拼团订单
+  onTargetMyPintuan(e) {
+    let _this = this;
+    if (!_this.onCheckLogin()) {
+      return false;
+    }
+    // 记录formId
+    App.saveFormId(e.detail.formId);
+    wx.navigateTo({
+      url: '../sharing/order/index'
+    });
+  },
+
+  /**
    * 跳转到登录页
    */
   onLogin() {

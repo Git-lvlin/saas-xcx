@@ -115,14 +115,38 @@
       </view>
     </view>
     <view class="asset-right">
-      <view class="asset-right_item">
-        <form bindsubmit="onTargetWallet" report-submit="true">
+      <view wx:if="{{ setting.dealer_is_open }}" class="asset-right_item">
+        <form bindsubmit="onTargetDealer" report-submit="true">
           <button formType="submit" class="btn-normal">
             <view class="item-icon dis-flex flex-x-center">
-              <text class="iconfont icon-qianbao"></text>
+              <text class="iconfont icon-fenxiaozhongxin"></text>
             </view>
             <view class="item-name dis-flex flex-x-center">
-              <text>我的钱包</text>
+              <text>{{ setting.dealer_name }}</text>
+            </view>
+          </button>
+        </form>
+      </view>
+      <view wx:if="{{ setting.troupe_is_open }}" class="asset-right_item">
+        <form bindsubmit="onTargetTroupe" report-submit="true">
+          <button formType="submit" class="btn-normal">
+            <view class="item-icon dis-flex flex-x-center">
+              <text class="iconfont icon-fenxiaozhongxin"></text>
+            </view>
+            <view class="item-name dis-flex flex-x-center">
+              <text>{{ setting.troupe_name }}</text>
+            </view>
+          </button>
+        </form>
+      </view>
+      <view class="asset-right_item">
+        <form bindsubmit="onTargetMyPintuan" report-submit="true">
+          <button formType="submit" class="btn-normal">
+            <view class="item-icon dis-flex flex-x-center">
+              <text class="iconfont icon-pintuan"></text>
+            </view>
+            <view class="item-name dis-flex flex-x-center">
+              <text>拼团订单</text>
             </view>
           </button>
         </form>
