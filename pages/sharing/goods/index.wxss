@@ -613,3 +613,17 @@
   content: none;
   border: none;
 }
+
+.goods-discounts{
+  background-color: #fff;
+  display: flex;
+  margin: 20rpx 0 0;
+  padding: 10rpx 20rpx;
+}
+.goods-discounts-title{
+  margin-right: 10rpx;
+}
+.goods-discounts-trip{
+  color: red;
+}
+

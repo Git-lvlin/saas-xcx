@@ -75,6 +75,12 @@
       </button>
     </form>
 
+    <!-- 积分优惠信息 -->
+    <view class="goods-discounts" wx:if="{{discounts_tips != ''}}">
+      <view class="goods-discounts-title">优惠</view>
+      <view class="goods-discounts-trip">{{discounts_tips}}</view>
+    </view>
+
     <!-- 商品评价 -->
     <view class="goods-comment" wx:if="{{ detail.comment_data.length }}">
       <view class="cont-box b-f goods-property-box m-top20">
@@ -181,7 +187,6 @@
         </button>
       </form>
     </view>
-
     <!-- 商品描述 -->
     <view class="p-bottom">
       <view class="top-nav m-top20 b-f b-b">
@@ -294,7 +299,7 @@
       </view>
       <view class="shareTeaxt" wx:if="{{setting.basic.is_dealer>0}}">
         <view class="shareTeaxt_content"> {{detail.selling_point}}</view>
-        
+
       </view>
       <!-- 购买数量 -->
       <view class="buy_number">
@@ -311,7 +316,7 @@
               <button formType="submit" class="default" type="default">+</button>
             </form>
           </view>
-          
+
         </view>
 
         <view class="shareTeaxt-botton">
@@ -321,7 +326,7 @@
             </button>
           </form>
         </view>
-        
+
       </view>
     </view>
     <!-- 底部操作栏 -->

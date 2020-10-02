@@ -40,6 +40,9 @@ Page({
     countDownList: [], // 时间记录
     actEndTimeList: [],
     is_leader:0,//是否是团长
+
+    discounts_tips: '', // 优惠提示
+
     // 分享按钮组件
     share: {
       show: false,

@@ -71,7 +71,7 @@
         <view class="item__text f-28">{{ words.team.title.value }}</view>
       </navigator>
     </view>
-    <view wx:if="{{ basic.is_open_qrcode }}" class="operat__item">
+    <view wx:if="{{ basic.is_open_qrcode == 1 }}" class="operat__item">
       <navigator hover-class="none" url="../qrcode/qrcode">
         <view class="item__icon">
           <text class="iconfont icon-erweima" style="color:#5fa5ff;"></text>
