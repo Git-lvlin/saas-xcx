@@ -276,7 +276,7 @@ Page({
     // 订单创建成功后回调--微信支付
     if (result.code === -10) {
       App.showError(result.msg, () => {
-        _this.redirectToOrderIndex();
+        _this.redirectToOrderIndex(0);
       });
       return false;
     }
@@ -285,11 +285,11 @@ Page({
       App.wxPayment({
         payment: result.data.payment,
         success: res => {
-          _this.redirectToOrderIndex();
+          _this.redirectToOrderIndex(result.data.active_id);
         },
         fail: res => {
           App.showError(result.msg.error, () => {
-            _this.redirectToOrderIndex();
+            _this.redirectToOrderIndex(result.data.active_id);
           });
         },
       });
@@ -297,7 +297,7 @@ Page({
     // 余额支付
     if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
       App.showSuccess(result.msg.success, () => {
-        _this.redirectToOrderIndex();
+        _this.redirectToOrderIndex(result.data.active_id);
       });
     }
   },
@@ -404,10 +404,17 @@ Page({
   /**
    * 跳转到未付款订单
    */
-  redirectToOrderIndex() {
-    wx.redirectTo({
-      url: '../order/index',
-    });
+  redirectToOrderIndex(active_id) {
+    if (active_id && active_id > 0) {
+      wx.redirectTo({
+        // url: '../order/index',
+        url: '../active/index?active_id=' + active_id
+      });
+    } else {
+      wx.redirectTo({
+        url: '../order/index',
+      });
+    }
   },
 
   /**

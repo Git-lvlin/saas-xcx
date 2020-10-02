@@ -61,7 +61,7 @@ App({
         data: {
           code: resp0.code,
           referee_id: _this.getRefereeid(),
-          invite_code:wx.getStorageSync('invite_code_others')
+          invite_code: _this.getOtherInviteCode()
         },
         success: function(resp1){
           var res = resp1.data
@@ -72,7 +72,6 @@ App({
             _this.globalData.mobile_acquired = res.data.mobile_acquired
             _this.globalData.userinfo_acquired = res.data.userinfo_acquired
             _this.checkMobileAcquired();
-            wx.setStorageSync('invite_code', res.data.invite_code);
             if (_this.checkMobileAcquired() && _this.checkUserinfoAcquired() && res.data.token) {
               // 记录token user_id
               wx.setStorageSync('token', res.data.token);
@@ -80,6 +79,7 @@ App({
             if (_this.checkMobileAcquired() && _this.checkUserinfoAcquired() && res.data.user_id) {
               // 记录token user_id
               wx.setStorageSync('user_id', res.data.user_id);
+              _this.saveMyInviteCode(res.data.invite_code)
             }
             if(!_this.checkIsLogin()&&wx.getStorageSync('referee_id')){
               wx.setStorageSync('referee_id_Login', 1)
@@ -87,8 +87,9 @@ App({
                 url: '/pages/invite/index',
               })
             }
-            if(_this.globalData.mobile_acquired&&!_this.globalData.userinfo_acquired&&wx.getStorageSync('referee_id')){
-              wx.setStorageSync('referee_id_Login',2) 
+            let newUser = _this.getRefereeid() || _this.getMyInviteCode() ? true : false;
+            if(_this.globalData.mobile_acquired && !_this.globalData.userinfo_acquired && newUser){
+              wx.setStorageSync('referee_id_Login',2)
               wx.reLaunch({
                 url: '/pages/inviteAffirm/index',
               })
@@ -111,7 +112,7 @@ App({
     let refereeId = query.referee_id ? query.referee_id : scene.uid;
     refereeId > 0 && (this.saveRefereeId(refereeId));
     let invite_code_others=query.invite_code?query.invite_code:scene.invite_code
-    wx.setStorageSync('invite_code_others', invite_code_others)
+    this.saveOtherInviteCode(invite_code_others)
   },
 
   /**
@@ -125,9 +126,9 @@ App({
    * 记录推荐人id
    */
   saveRefereeId(refereeId) {
-    let App = this;
+    let _this = this;
     refereeId = parseInt(refereeId);
-    if (refereeId <= 0 || refereeId == App.getUserId()) {
+    if (refereeId <= 0 || refereeId == _this.getUserId()) {
       return false;
     }
     if (wx.getStorageSync('referee_id')) {
@@ -135,6 +136,22 @@ App({
     }
     wx.setStorageSync('referee_id', refereeId);
     return true;
+  },
+
+  saveMyInviteCode(invite_code) {
+    wx.setStorageSync('invite_code', invite_code)
+    return true;
+  },
+  getMyInviteCode() {
+    return wx.getStorageSync('invite_code')
+  },
+
+  saveOtherInviteCode(invite_code) {
+    wx.setStorageSync('invite_code_others', invite_code)
+    return true;
+  },
+  getOtherInviteCode() {
+    return wx.getStorageSync('invite_code_others')
   },
 
   /**
@@ -148,7 +165,7 @@ App({
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
   onShow(options) {
-    let App = this;
+    let _this = this;
     try {
       const livePlayer = requirePlugin('live-player-plugin');
       if (options.scene == 1007 || options.scene == 1008 || options.scene == 1044) {
@@ -159,7 +176,10 @@ App({
             console.log('get custom params', customParams);
             // 记录推荐人ID
             if (customParams.hasOwnProperty('referee_id')) {
-              App.saveRefereeId(customParams['referee_id']);
+              _this.saveRefereeId(customParams['referee_id']);
+            }
+            if (customParams.hasOwnProperty('invite_code')) {
+              _this.saveOtherInviteCode(customParams['invite_code'])
             }
           }).catch(err => {
             console.log('get share params', err)
@@ -444,7 +464,7 @@ App({
     let _this = this;
     return util.urlEncode(Object.assign({
       referee_id: _this.getUserId(),
-      invite_code:wx.getStorageSync('invite_code')
+      invite_code: _this.getMyInviteCode()
     }, params));
   },
 
@@ -487,42 +507,43 @@ App({
    * 解密手机号码
    */
   getPhoneNumber(e, callback) {
-    let App = this;
+    let _this = this;
 
     if (e.detail.errMsg !== "getPhoneNumber:ok") {
       return;
     }
-    if (!App.globalData.session_key) {
+    if (!_this.globalData.session_key) {
       wx.login({
         success: resp0 => {
-          App._wxLoginSuccess(resp0)
+          _this._wxLoginSuccess(resp0)
         }
       });
     }
-    if (!App.globalData.session_key) {
-      console.log('App.globalData.session_key empty')
+    if (!_this.globalData.session_key) {
+      console.log('_this.globalData.session_key empty')
       return;
     }
     wx.request({
-      url: App.api_root + 'wxapp.Openid/save',
+      url: _this.api_root + 'wxapp.Openid/save',
       data: {
         ciphertext: e.detail.encryptedData,
         iv: e.detail.iv,
-        skey: App.globalData.session_key,
-        openid: App.globalData.openid,
-        referee_id: App.getRefereeid(),
-        invite_code:wx.getStorageSync('invite_code_others')
+        skey: _this.globalData.session_key,
+        openid: _this.globalData.openid,
+        referee_id: _this.getRefereeid(),
+        invite_code: _this.getOtherInviteCode()
       },
       method: "post",
       success: function(resp){
         var result = resp.data
         // 后台PHP 的 code = 1 表示成功
         if (result && result.code == 1) {
-          App.globalData.mobile_acquired = true
+          _this.globalData.mobile_acquired = true
           // 记录token user_id
           if (result.data.userinfo_acquired) {
             wx.setStorageSync('token', result.data.token);
             wx.setStorageSync('user_id', result.data.user_id);
+            wx.setStorageSync('invite_code', result.data.invite_code);
           }
           // 执行回调函数
           callback && callback(result);
@@ -540,7 +561,7 @@ App({
    * 授权登录
    */
   getUserInfo(e, callback) {
-    let App = this;
+    let _this = this;
     if (e.detail.errMsg !== 'getUserInfo:ok') {
       return false;
     }
@@ -552,17 +573,18 @@ App({
     wx.login({
       success(res) {
         // 发送用户信息
-        App._post_form('user/login', {
+        _this._post_form('user/login', {
           code: res.code,
           user_info: e.detail.rawData,
           encrypted_data: e.detail.encryptedData,
           iv: e.detail.iv,
           signature: e.detail.signature,
-          referee_id: App.getRefereeid(),
+          referee_id: _this.getRefereeid(),
         }, result => {
           // 记录token user_id
           wx.setStorageSync('token', result.data.token);
           wx.setStorageSync('user_id', result.data.user_id);
+          wx.setStorageSync('invite_code', res.data.invite_code);
           // 执行回调函数
           callback && callback();
         }, false, () => {
@@ -581,13 +603,13 @@ App({
 
   // 检查手机号码是否已经获取
   checkMobileAcquired() {
-    console.log('this.globalData.mobile_acquired ', this.globalData.mobile_acquired)
+    // console.log('this.globalData.mobile_acquired ', this.globalData.mobile_acquired)
     return this.globalData.mobile_acquired;
   },
 
   // 检查手机号码是否已经获取
   checkUserinfoAcquired() {
-    console.log('this.globalData.userinfo_acquired ', this.globalData.userinfo_acquired)
+    // console.log('this.globalData.userinfo_acquired ', this.globalData.userinfo_acquired)
     return this.globalData.userinfo_acquired;
   },
 });

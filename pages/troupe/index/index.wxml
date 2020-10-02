@@ -71,13 +71,19 @@
         <view class="item__text f-28">{{ words.team.title.value }}</view>
       </navigator>
     </view>
-    <view class="operat__item">
+    <view wx:if="{{ basic.is_open_qrcode }}" class="operat__item">
       <navigator hover-class="none" url="../qrcode/qrcode">
         <view class="item__icon">
           <text class="iconfont icon-erweima" style="color:#5fa5ff;"></text>
         </view>
         <view class="item__text f-28">{{ words.qrcode.title.value }}</view>
       </navigator>
+    </view>
+    <view class="operat__item" catchtap="showRuleDetailClick">
+        <view class="item__icon">
+          <text class="iconfont icon-fenxiang" style="color:#59C78E;"></text>
+        </view>
+        <view class="item__text f-28">立即推广</view>
     </view>
   </view>
   <!-- 我的团长 -->
@@ -97,15 +103,25 @@
 </view>
 
 <pop-manager show="{{ show }}" wx:if="{{show}}" type="center">
-    <view class="setInviteCode">
-      <view class="setInviteCode_title">补填邀请码</view>
-      <view class="setInviteCode_input">邀请码
-        <input class="weui-input" auto-focus placeholder="请输入邀请码" type='text' bindinput="inputChange" value="{{setInviteCode}}"/>
-      </view>
-      <view class="setInviteCode-btn" style="margin-top:0.7em;">
-        <button catchtap="setInviteFalse">取消</button>
-        <button catchtap="setInviteTrue">确认</button>
-      </view>
+  <view class="setInviteCode">
+    <view class="setInviteCode_title">补填邀请码</view>
+    <view class="setInviteCode_input">邀请码
+      <input class="weui-input" auto-focus placeholder="请输入邀请码" type='text' bindinput="inputChange" value="{{setInviteCode}}"/>
     </view>
+    <view class="setInviteCode-btn" style="margin-top:0.7em;">
+      <button catchtap="setInviteFalse">取消</button>
+      <button catchtap="setInviteTrue">确认</button>
+    </view>
+  </view>
+</pop-manager>
 
-  </pop-manager>
+<pop-manager show="{{ showRuleDetail }}" wx:if="{{showRuleDetail}}" actions="{{ share.actions }}" type="center">
+  <view class="setInviteCode f-28">
+    <view class="setInviteCode_title">{{ basic.rule_title }}</view>
+    <view class="setInviteCode_input" style="white-space:pre-wrap">{{ basic.rule_detail }}</view>
+    <view class="setInviteCode-btn" style="margin-top:0.7em;">
+      <button catchtap="showRuleDetailCancel">取消</button>
+      <button open-type="share">分享给好友</button>
+    </view>
+  </view>
+</pop-manager>

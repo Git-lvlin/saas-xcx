@@ -11,7 +11,23 @@ Page({
     user: {},
     dealer: {},
     inviter:{},
-    show:false,
+    show: false,
+    showRuleDetail: false,
+      // 分享按钮组件
+    share: {
+      show: false,
+      cancelWithMask: true,
+      cancelText: '关闭',
+      actions: [{
+        name: '生成商品海报',
+        className: 'action-class',
+        loading: false
+      }, {
+        name: '发送给朋友',
+        openType: 'share'
+      }],
+    },
+
     setInviteCode:''
   },
 
@@ -88,6 +104,32 @@ Page({
 
     });
   },
+
+  showRuleDetailClick() {
+    this.setData({
+      showRuleDetail: true
+    })
+  },
+  showRuleDetailCancel() {
+    this.setData({
+      showRuleDetail: false
+    })
+  },
+
+  /**
+   * 分享当前页面
+   */
+  onShareAppMessage() {
+    const _this = this;
+    // 构建页面参数
+    const params = App.getShareUrlParams();
+    console.log('onShareAppMessage params ', params)
+    return {
+      title: _this.data.basic.rule_title,
+      path: "pages/troupe/index/index?" + params
+    };
+  },
+
   inputChange(e){
     this.setData({
       setInviteCode:e.detail.value
