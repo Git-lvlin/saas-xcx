@@ -38,6 +38,7 @@
     "pages/sharing/goods/index",
     "pages/sharing/goods/comment/comment",
     "pages/sharing/active/index",
+    "pages/sharing/active/myactive",
     "pages/sharing/checkout/index",
     "pages/sharing/order/index",
     "pages/sharing/order/detail/detail",

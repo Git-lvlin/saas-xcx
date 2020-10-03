@@ -294,19 +294,31 @@ Page({
     if (!_this._onVerify()) {
       return false;
     }
-    // 立即购买
-    wx.navigateTo({
-      url: '../checkout/index?' + util.urlEncode({
-        order_type: _this.data.order_type,
+    console.log('this.data.setting', _this.data.setting.basic.leader_buy == "0")
+    if (_this.data.setting.basic.leader_buy == "0") {
+      App._post_form('sharing.active/create', {
         goods_id: _this.data.goods_id,
-        goods_num: _this.data.goods_num,
-        goods_sku_id: _this.data.goods_sku_id,
-      }),
-      success() {
-        // 关闭弹窗
-        _this.onToggleTrade();
-      }
-    });
+      }, result => {
+        // console.log('sharing.active/create result ', result)
+        wx.navigateTo({
+          url: '../active/index?active_id=' + result.data.active_id,
+        })
+      });
+    } else {
+      // 立即购买
+      wx.navigateTo({
+        url: '../checkout/index?' + util.urlEncode({
+          order_type: _this.data.order_type,
+          goods_id: _this.data.goods_id,
+          goods_num: _this.data.goods_num,
+          goods_sku_id: _this.data.goods_sku_id,
+        }),
+        success() {
+          // 关闭弹窗
+          _this.onToggleTrade();
+        }
+      });
+    }
   },
 
   /**
