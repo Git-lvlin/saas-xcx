@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userHeaderBGC:'',
+    userHeaderBGC:'#ff6150',
     info:{}
   },
 
@@ -23,10 +23,10 @@ Page({
         frontColor: titleTextColor,
         backgroundColor: titleBackgroundColor
       })
+      this.setData({
+        userHeaderBGC: titleBackgroundColor
+      })
     }
-    this.setData({
-      userHeaderBGC: titleBackgroundColor
-    })
   },
 
   /**
