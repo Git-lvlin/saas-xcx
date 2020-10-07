@@ -294,12 +294,10 @@ Page({
     if (!_this._onVerify()) {
       return false;
     }
-    console.log('this.data.setting', _this.data.setting.basic.leader_buy == "0")
-    if (_this.data.setting.basic.leader_buy == "0") {
+    if (_this.data.order_type == "20" && _this.data.setting.basic.leader_buy == "0") {
       App._post_form('sharing.active/create', {
         goods_id: _this.data.goods_id,
       }, result => {
-        // console.log('sharing.active/create result ', result)
         wx.navigateTo({
           url: '../active/index?active_id=' + result.data.active_id,
         })

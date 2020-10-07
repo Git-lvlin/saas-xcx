@@ -584,7 +584,7 @@ App({
           // 记录token user_id
           wx.setStorageSync('token', result.data.token);
           wx.setStorageSync('user_id', result.data.user_id);
-          wx.setStorageSync('invite_code', res.data.invite_code);
+          wx.setStorageSync('invite_code', result.data.invite_code);
           // 执行回调函数
           callback && callback();
         }, false, () => {
