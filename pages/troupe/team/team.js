@@ -7,6 +7,7 @@ Page({
    */
   data: {
     isLoading: true,
+    data: {},
     dataType: 1,
     page: 1,
     no_more: false,
@@ -33,7 +34,6 @@ Page({
   getTeamList: function(isNextPage, page) {
     let _this = this;
     App._get('user.troupe.team/lists', {
-      level: _this.data.dataType,
       page: page || 1,
     }, function(result) {
       // 创建页面数据
@@ -47,25 +47,19 @@ Page({
   createData: function(data, isNextPage) {
     data['isLoading'] = false;
     // 列表数据
-    let dataList = this.data.list;
+    let dataList = data.list;
     if (isNextPage == true && (typeof dataList !== 'undefined')) {
-      data.list = dataList.data.concat(data.list)
+      data.list.data = this.data.list.data.concat(dataList.data)
     }
     // 设置当前页面标题
     wx.setNavigationBarTitle({
-      title: data.words.team.title.value
+      title: data.team_title
     });
     // 团队总人数
     data['team_total'] = data.list.total;
-    // 导航栏数据
-    data['tabList'] = [{
-      value: 1,
-      text: data.words.team.words.first.value,
-      total: data.list.total
-    }];
 
     // 设置swiper的高度
-    this.setSwiperHeight(data.setting.level > 1);
+    this.setSwiperHeight();
     return data;
   },
 
@@ -75,6 +69,7 @@ Page({
   triggerDownLoad: function() {
     // console.log(this.data.list);
     // 已经是最后一页
+    // console.log('team triggerDownLoad/ ', this.data.page, this.data.list.last_page, this.data.page >= this.data.list.last_page)
     if (this.data.page >= this.data.list.last_page) {
       this.setData({
         no_more: true
@@ -96,23 +91,6 @@ Page({
       swiperHeight = systemInfo.windowHeight - tapHeight - peopleHeight; // swiper高度
     this.setData({
       swiperHeight
-    });
-  },
-
-  /**
-   * 点击tab切换
-   */
-  swichNav: function(e) {
-    let _this = this;
-    _this.setData({
-      dataType: e.target.dataset.current,
-      list: {},
-      page: 1,
-      no_more: false,
-      isLoading: true,
-    }, function() {
-      // 获取我的团队列表
-      _this.getTeamList();
     });
   },
 

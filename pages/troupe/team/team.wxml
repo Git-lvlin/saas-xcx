@@ -6,7 +6,7 @@
     </block>
   </view>
   <!-- 团队总人数 -->
-  <view class="widget-people f-28 col-9">{{ words.team.words.total_team.value }}：{{ team_total }}人</view>
+  <view class="widget-people f-28 col-9">{{ total_team }}：{{ team_total }}人</view>
   <!-- 我的团队列表 -->
   <scroll-view scroll-y="{{ true }}" bindscrolltolower="triggerDownLoad" style="height: {{swiperHeight}}px;">
     <view class="widget-list b-f" wx:if="{{ list.data.length }}">
