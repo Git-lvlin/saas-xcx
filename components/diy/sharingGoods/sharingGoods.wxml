@@ -34,4 +34,14 @@
       </button>
     </form>
   </view>
+  <view class="sharp-top--right">
+      <form bindsubmit="_onTargetSharpIndex" report-submit="true">
+        <button formType="submit" class="btn-normal dis-flex">
+          <view class="sharp-more dis-flex flex-y-center">
+            <text class="sharp-more-text">更多</text>
+            <text class="sharp-more-arrow iconfont icon-xiangyoujiantou"></text>
+          </view>
+        </button>
+      </form>
+    </view>
 </view>

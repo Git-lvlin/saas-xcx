@@ -108,3 +108,10 @@
   text-align: center;
   color: #fff;
 }
+.sharp-top--right{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 32rpx;
+  color: #a1a1a1;
+  align-items: center;
+}

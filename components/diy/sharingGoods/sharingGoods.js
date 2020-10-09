@@ -33,6 +33,14 @@ Component({
         url: '/pages/sharing/goods/index?goods_id=' + e.detail.target.dataset.id,
       });
     },
+    _onTargetSharpIndex(e) {
+      // 记录formid
+      App.saveFormId(e.detail.formId);
+      // 跳转到秒杀会场首页
+      wx.navigateTo({
+        url: `/pages/sharing/index/index`,
+      });
+    },
   }
 
 })
