@@ -27,7 +27,7 @@
 
 /* 设置scroll-view容器高度 */
 
-.comment-list, .yoshop-notcont {
+.comment-list, .jz-notcont {
   height: 100.1%;
 }
 

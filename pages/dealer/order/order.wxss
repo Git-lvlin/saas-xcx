@@ -39,7 +39,7 @@ page {
 
 /* 设置scroll-view容器高度 */
 
-.widget-list, .yoshop-notcont {
+.widget-list, .jz-notcont {
   height: 100.1%;
 }
 

@@ -71,7 +71,7 @@
   </view>
 
   <!-- 无数据 -->
-  <view wx:if="{{ !isLoading && !list.data.length }}" class="yoshop-notcont" style="margin-top:130px;">
+  <view wx:if="{{ !isLoading && !list.data.length }}" class="jz-notcont" style="margin-top:130px;">
     <view class="img">
       <image mode="aspectFit" src="../../images/no_content.png"></image>
     </view>

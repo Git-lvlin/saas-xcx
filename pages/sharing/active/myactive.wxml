@@ -61,7 +61,7 @@
       </view>
       <view wx:if="{{ no_more }}" class="no-more f-30">亲, 没有更多了</view>
       <view wx:if="{{ !isLoading && !list.data.length }}">
-        <view class="yoshop-notcont">
+        <view class="jz-notcont">
           <text class="iconfont icon-wushuju"></text>
           <text class="cont">亲，您还没有订单信息哦！</text>
           <navigator url="../../sharing/index/index">去开团</navigator>

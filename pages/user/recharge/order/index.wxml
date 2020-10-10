@@ -16,7 +16,7 @@
           <text>+{{ item.actual_money }}元</text>
         </view>
       </view>
-      <view class="yoshop-notcont" wx:if="{{ !list.data.length && !isLoading }}">
+      <view class="jz-notcont" wx:if="{{ !list.data.length && !isLoading }}">
         <text class="iconfont icon-wushuju"></text>
         <text class="cont">亲，暂无充值记录哦</text>
       </view>

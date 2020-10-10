@@ -58,7 +58,7 @@
         </view>
         <!-- 无数据提供的页面 -->
         <view wx:if="{{ !isLoading && !activeList.data.length }}">
-          <view class="yoshop-notcont">
+          <view class="jz-notcont">
             <text class="iconfont icon-wushuju"></text>
             <text class="cont">亲，暂无砍价活动哦</text>
           </view>
@@ -143,7 +143,7 @@
         <view wx:if="{{ noMore }}" class="no-more f-28">亲, 没有更多了</view>
         <!-- 无数据提供的页面 -->
         <view wx:if="{{ !isLoading && !myList.data.length }}">
-          <view class="yoshop-notcont">
+          <view class="jz-notcont">
             <text class="iconfont icon-wushuju"></text>
             <text class="cont">亲，暂未参与砍价活动哦</text>
           </view>

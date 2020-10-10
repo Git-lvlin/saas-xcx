@@ -34,7 +34,7 @@
         </view>
       </view>
     </view>
-    <view class="yoshop-notcont" wx:elif="{{ notcont }}">
+    <view class="jz-notcont" wx:elif="{{ notcont }}">
       <text class="iconfont icon-wushuju"></text>
       <text class="cont">亲，暂无优惠券哦</text>
     </view>

@@ -26,7 +26,7 @@
   </view>
   <!-- 无数据提供的页面 -->
   <view wx:if="{{ !isLoading && !shopList.length }}">
-    <view class="yoshop-notcont">
+    <view class="jz-notcont">
       <text class="iconfont icon-wushuju"></text>
       <text class="cont">亲，暂无自提门店哦</text>
     </view>

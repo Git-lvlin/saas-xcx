@@ -123,7 +123,7 @@
         </view>
       </block>
       <block wx:else>
-        <view class="yoshop-notcont">
+        <view class="jz-notcont">
           <text class="iconfont icon-wushuju"></text>
           <text class="cont">亲，暂无商品描述</text>
         </view>

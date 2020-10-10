@@ -29,7 +29,7 @@
 
 /* 设置scroll-view容器高度 */
 
-.coupon-list, .yoshop-notcont {
+.coupon-list, .jz-notcont {
   height: 100.1%;
 }
 

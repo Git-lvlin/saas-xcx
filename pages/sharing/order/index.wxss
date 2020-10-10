@@ -156,7 +156,7 @@
   color: #333;
 }
 
-.yoshop-notcont navigator {
+.jz-notcont navigator {
   background: #fd4a5f;
   height: 30px;
   line-height: 30px;

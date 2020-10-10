@@ -49,7 +49,7 @@
       <view wx:if="{{ list.data.length && !isLoading && isLastPage }}" class="no-more f-30">亲, 没有更多了</view>
     </view>
     <!-- 没有记录 -->
-    <view class="yoshop-notcont" wx:if="{{ !list.data.length && !isLoading }}">
+    <view class="jz-notcont" wx:if="{{ !list.data.length && !isLoading }}">
       <text class="iconfont icon-wushuju"></text>
       <text class="cont">亲，暂无退款/售后单哦</text>
     </view>

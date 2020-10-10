@@ -102,7 +102,7 @@
     <view wx:if="{{ noMore }}" class="no-more f-28">亲, 没有更多了</view>
     <!-- 无数据提供的页面 -->
     <view wx:if="{{ !isLoading && !goodsList.data.length }}">
-      <view class="yoshop-notcont">
+      <view class="jz-notcont">
         <text class="iconfont icon-wushuju"></text>
         <text class="cont">亲，暂无秒杀商品哦</text>
       </view>

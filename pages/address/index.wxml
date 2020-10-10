@@ -36,7 +36,7 @@
     </custom-li>
   </custom-ul>
   <view wx:else>
-    <view class="yoshop-notcont">
+    <view class="jz-notcont">
       <text class="iconfont icon-wushuju"></text>
       <text class="cont">亲，您还没有收货列表</text>
     </view>
