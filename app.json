@@ -88,6 +88,12 @@
         "selectedIconPath": "images/cate-active.png"
       },
       {
+        "pagePath": "pages/sharing/index/index",
+        "text": "拼团",
+        "iconPath": "images/pintuan.png",
+        "selectedIconPath": "images/pintuan-active.png"
+      },
+      {
         "pagePath": "pages/flow/index",
         "text": "购物车",
         "iconPath": "images/flow.png",
