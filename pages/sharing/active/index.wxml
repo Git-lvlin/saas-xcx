@@ -37,6 +37,12 @@
 
     <!-- 参团用户 -->
     <view class="main_user">
+      <view wx:if="{{ detail.creator }}" class="user-item">
+        <image src="{{ detail.creator.avatarUrl }}"></image>
+        <view class="user-role">
+          <text>团长</text>
+        </view>
+      </view>
       <view wx:for="{{ detail.users }}" wx:key="this" class="user-item">
         <image src="{{ item.user.avatarUrl }}"></image>
         <view wx:if="{{ item.is_creator == 1 }}" class="user-role">
