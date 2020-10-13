@@ -115,7 +115,7 @@ view {
 .main .main_user .user-item {
   width: 100rpx;
   height: 100rpx;
-  margin: 0 25rpx 25rpx 0;
+  margin: 0 25rpx 70rpx 0;
   position: relative;
   box-sizing: border-box;
 }
@@ -139,7 +139,10 @@ view {
   left: 0;
   bottom: -1rpx;
 }
-
+.main .main_user .user-item .user-name{
+  color:#fa1e8c;
+  text-align: center;
+}
 .main .main_user .user-item .user-role text {
   background: #fa1e8c;
   border-radius: 15rpx;
