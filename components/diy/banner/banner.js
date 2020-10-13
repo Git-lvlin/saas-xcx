@@ -69,6 +69,9 @@ Component({
      * 跳转到指定页面
      */
     navigationTo: function(e) {
+      wx.switchTab({
+        url: 'url',
+      })
       App.navigationTo(e.currentTarget.dataset.url);
     },
 

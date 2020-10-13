@@ -27,7 +27,7 @@ Component({
      * 跳转到指定页面
      */
     navigationTo: function(e) {
-      App.navigationTo(e.currentTarget.dataset.url);
+        App.navigationTo(e.currentTarget.dataset.url);
     },
 
   }

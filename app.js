@@ -6,7 +6,8 @@ const tabBarLinks = [
   'pages/index/index',
   'pages/category/index',
   'pages/flow/index',
-  'pages/user/index'
+  'pages/user/index',
+  'pages/sharing/index/index'
 ];
 
 // 站点配置文件
@@ -427,6 +428,7 @@ App({
     if (!url || url.length == 0) {
       return false;
     }
+    console.log(url)
     let tabBarLinks = this.getTabBarLinks();
     // tabBar页面
     if (tabBarLinks.indexOf(url) > -1) {

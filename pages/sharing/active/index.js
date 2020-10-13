@@ -425,9 +425,7 @@ Page({
    * 跳转到拼团首页
    */
   onTargetIndex(e) {
-    wx.navigateTo({
-      url: '../index/index',
-    })
+    App.navigationTo('pages/sharing/index/index')
   },
 
   /**
