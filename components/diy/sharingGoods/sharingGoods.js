@@ -37,7 +37,7 @@ Component({
       // 记录formid
       App.saveFormId(e.detail.formId);
       // 跳转到秒杀会场首页
-      wx.navigateTo({
+      wx.switchTab({
         url: `/pages/sharing/index/index`,
       });
     },
