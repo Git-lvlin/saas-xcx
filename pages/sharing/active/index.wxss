@@ -146,6 +146,7 @@ view {
   white-space: nowrap;
   text-overflow:ellipsis ;
   width: 200rpx;
+  margin-left: -50rpx;
 }
 .main .main_user .user-item .user-role text {
   background: #fa1e8c;
