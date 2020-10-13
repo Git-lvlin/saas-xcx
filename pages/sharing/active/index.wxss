@@ -142,6 +142,10 @@ view {
 .main .main_user .user-item .user-name{
   color:#fa1e8c;
   text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis ;
+  width: 200rpx;
 }
 .main .main_user .user-item .user-role text {
   background: #fa1e8c;

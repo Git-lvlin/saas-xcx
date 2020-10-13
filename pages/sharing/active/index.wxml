@@ -51,7 +51,7 @@
         </view>
       </view>
       <!-- 虚位以待 -->
-      <view wx:for="{{ 10}}" wx:key="this" class="user-item user-item__wait dis-flex flex-x-center flex-y-center">
+      <view wx:for="{{ detail.surplus_people}}" wx:key="this" class="user-item user-item__wait dis-flex flex-x-center flex-y-center">
         <text class="iconfont icon-wenhao"></text>
       </view>
     </view>
