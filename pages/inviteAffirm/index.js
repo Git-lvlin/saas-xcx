@@ -22,9 +22,9 @@ Page({
         backgroundColor: titleBackgroundColor
       })
     }
-    this.setData({
-      userHeaderBGC: titleBackgroundColor
-    })
+    // this.setData({
+    //   userHeaderBGC: titleBackgroundColor
+    // })
   },
 
   /**
