@@ -23,9 +23,11 @@ Page({
         frontColor: titleTextColor,
         backgroundColor: titleBackgroundColor
       })
-      // this.setData({
-      //   userHeaderBGC: titleBackgroundColor
-      // })
+      if(titleBackgroundColor!='#ffffff'){
+        this.setData({
+          userHeaderBGC: titleBackgroundColor
+        })
+      }
     }
   },
 
