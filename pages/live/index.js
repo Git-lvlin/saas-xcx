@@ -116,7 +116,7 @@ Page({
           room_id: item['room_id']
         })
         .then(res => {
-          // 101: 直播中, 102: 未开始, 103: 已结束, 104: 禁播, 105: 暂停中, 106: 异常，107：已过期 
+          // 101: 直播中, 102: 未开始, 103: 已结束, 104: 禁播, 105: 暂停中, 106: 异常，107：已过期
           let liveStatus = res.liveStatus,
             liveStatusText1 = LiveStatus[liveStatus]['name'],
             liveStatusText2 = liveStatusText1;
@@ -198,7 +198,8 @@ Page({
     let roomId = e.currentTarget.dataset.id;
     let customParams = {
       path: 'pages/index/index',
-      referee_id: App.getUserId(), // 分销推荐人
+      referee_id: App.getUserId(), // 分销商推荐人
+      invite_code: App.getMyInviteCode(), // 团长分销推荐人
     };
     wx.navigateTo({
       url: `plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id=${roomId}&custom_params=${encodeURIComponent(JSON.stringify(customParams))}`

@@ -21,14 +21,7 @@ Page({
         frontColor: titleTextColor,
         backgroundColor: titleBackgroundColor
       })
-      if(titleBackgroundColor!='#ffffff'){
-        this.setData({
-          userHeaderBGC: titleBackgroundColor
-        })
-      }
     }
-    
-    
   },
 
   /**

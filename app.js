@@ -148,6 +148,9 @@ App({
   },
 
   saveOtherInviteCode(invite_code) {
+    if (wx.getStorageSync('invite_code_others')) {
+      return false;
+    }
     wx.setStorageSync('invite_code_others', invite_code)
     return true;
   },
