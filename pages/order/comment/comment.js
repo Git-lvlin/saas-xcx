@@ -151,7 +151,7 @@ Page({
             App.showSuccess(result.msg, function() {
               wx.navigateBack();
             });
-          } else {
+          } else if(result.code&&result.code >2){
             App.showError(result.msg);
           }
         },

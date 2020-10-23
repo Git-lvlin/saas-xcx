@@ -141,7 +141,7 @@ Page({
                 url: "../index"
               });
             });
-          } else {
+          } else  if(result.code&&result.code >2){
             App.showError(result.msg);
           }
         },
