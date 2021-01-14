@@ -21,24 +21,28 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": true,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "bundle": true,
+    "enableEngineNative": false,
+    "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
-    "packNpmRelationList": []
+    "packNpmRelationList": [],
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.2",
-  "appid": "wx89c74021440b8ba4",
-  "projectname": "%E6%8A%96%E5%95%86%E5%B8%A6%E8%B4%A7",
+  "appid": "wxce2e6da3a9bd6de6",
+  "projectname": "桔子云店",
   "debugOptions": {
     "hidedInDevtools": []
   },
