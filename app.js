@@ -61,6 +61,7 @@ App({
         url: _this.api_root + 'wxapp.Openid/get',
         data: {
           code: resp0.code,
+          wxapp_id: _this.getWxappId(),
           referee_id: _this.getRefereeid(),
           invite_code: _this.getOtherInviteCode()
         },
@@ -531,6 +532,7 @@ App({
     wx.request({
       url: _this.api_root + 'wxapp.Openid/save',
       data: {
+        wxapp_id: _this.getWxappId(),
         ciphertext: e.detail.encryptedData,
         iv: e.detail.iv,
         skey: _this.globalData.session_key,
