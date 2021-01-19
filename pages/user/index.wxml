@@ -139,18 +139,6 @@
           </button>
         </form>
       </view>
-      <view class="asset-right_item">
-        <form bindsubmit="onTargetMyPintuan" report-submit="true">
-          <button formType="submit" class="btn-normal">
-            <view class="item-icon dis-flex flex-x-center">
-              <text class="iconfont icon-pintuan"></text>
-            </view>
-            <view class="item-name dis-flex flex-x-center">
-              <text>拼团订单</text>
-            </view>
-          </button>
-        </form>
-      </view>
     </view>
   </view>
   <!-- 菜单列表 -->
