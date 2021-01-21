@@ -96,7 +96,7 @@ Page({
     // 当前用户是否为创建者
     data['is_creator'] = !!(data.detail.creator_id == App.getUserId())
     // console.log('_this.data.setting.basic.leader_buy ', _this.data.setting.basic.leader_buy)
-    if (data['is_creator'] && _this.data.setting.basic.leader_buy == "0") {
+    if (data['is_creator'] && _this.data.setting.basic.hasOwnProperty("leader_buy") && _this.data.setting.basic.leader_buy == "0") {
       data['is_join'] = true;
     }
     // 拼团结束时间
