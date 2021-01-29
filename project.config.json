@@ -23,7 +23,7 @@
     "compileHotReLoad": true,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": true,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -41,8 +41,8 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.2",
-  "appid": "wxce2e6da3a9bd6de6",
-  "projectname": "桔子云店",
+  "appid": "wx8197742d81aea698",
+  "projectname": "抖商带货",
   "debugOptions": {
     "hidedInDevtools": []
   },
