@@ -33,6 +33,14 @@ Page({
   },
 
   /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    // 更新购物车角标
+    App.setCartTabBadge()
+  },
+
+  /**
    * 设置分类列表高度
    */
   setListHeight() {

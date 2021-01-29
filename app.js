@@ -441,4 +441,24 @@ App({
     });
   },
 
+  /**
+   * 记录购物车商品总数量
+   * @param {*} value 
+   */
+  setCartTotalNum(value) {
+    wx.setStorageSync('cartTotalNum', Number(value))
+  },
+
+  /**
+   * 设置购物车tabbar的角标
+   */
+  setCartTabBadge() {
+    const number = wx.getStorageSync('cartTotalNum')
+    if (number <= 0) return
+    wx.setTabBarBadge({
+      index: 2,
+      text: `${number}`
+    })
+  }
+
 });

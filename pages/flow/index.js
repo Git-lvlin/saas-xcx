@@ -55,7 +55,12 @@ Page({
   getCartList() {
     let _this = this;
     App._get('cart/lists', {}, result => {
-      _this._initGoodsChecked(result.data);
+      const data = result.data
+      // 更新购物车数量及角标
+      App.setCartTotalNum(data.order_total_num)
+      App.setCartTabBadge()
+      // 初始化商品选中状态
+      _this._initGoodsChecked(data)
     });
   },
 

@@ -167,6 +167,15 @@
   background: linear-gradient(-141deg, #f7d059, #fdb054);
 }
 
+
+.popup__coupon .coupon-list .coupon-item .item-wrapper.color__gray {
+  background: linear-gradient(-113deg, #bdbdbd, #a2a1a2);
+}
+
+.popup__coupon .coupon-list .coupon-item .item-wrapper.color__gray .coupon-type {
+  background: #9e9e9e;
+}
+
 .popup__coupon .coupon-list .coupon-item .item-wrapper .tip {
   position: relative;
   flex: 0 0 32%;

@@ -2,7 +2,9 @@
 
   <!-- 顶部选项卡 -->
   <view wx:if="{{ isShowTab }}" class="swiper-tab dis-flex flex-y-center flex-x-around">
-    <view wx:for="{{ DeliveryTypeEnum }}" wx:key="this" class="swiper-tab-item {{ curDelivery == item.value ? 'on' : '' }}" data-current="{{ item.value }}" catchtap="onSwichDelivery">
+    <view wx:for="{{ DeliveryTypeEnum }}" wx:key="this"
+      class="swiper-tab-item {{ curDelivery == item.value ? 'on' : '' }}" data-current="{{ item.value }}"
+      catchtap="onSwichDelivery">
       {{ item.name }}
     </view>
   </view>
@@ -20,7 +22,8 @@
             <text class="detail-content__title-phone f-28">{{ address.phone }}</text>
           </view>
           <view class="detail-content__describe">
-            <text class="col-7">{{address.region.province}} {{address.region.city}} {{address.region.region}} {{address.detail}}</text>
+            <text class="col-7">{{address.region.province}} {{address.region.city}} {{address.region.region}}
+              {{address.detail}}</text>
           </view>
         </block>
         <block wx:else>
@@ -48,7 +51,8 @@
               <text class="f-30">{{ extract_shop.shop_name }}</text>
             </view>
             <view class="detail-content__describe">
-              <text class="col-7">{{extract_shop.region.province}} {{extract_shop.region.city}} {{extract_shop.region.region}} {{extract_shop.address}}</text>
+              <text class="col-7">{{extract_shop.region.province}} {{extract_shop.region.city}}
+                {{extract_shop.region.region}} {{extract_shop.address}}</text>
             </view>
           </block>
           <block wx:else>
@@ -135,7 +139,7 @@
         <view catchtap="onTogglePopupCoupon">
           <block wx:if="{{ coupon_list.length > 0 }}">
             <text class="col-m" wx:if="{{ coupon_id > 0 }}">-￥{{ coupon_money }}</text>
-            <text class="col-m" wx:else>有{{ coupon_list.length }}张优惠券可用</text>
+            <text class="col-m" wx:else>有{{ coupon_list.length }}张优惠券</text>
             <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
           </block>
           <text wx:else class="">无优惠券可用</text>
@@ -241,7 +245,8 @@
       <view class="coupon-list">
         <scroll-view scroll-y="{{ true }}" style="height: 565rpx;">
           <view class="coupon-item" wx:for="{{ coupon_list }}" wx:key="this">
-            <view class="item-wrapper color__{{ item.color.text }}" catchtap="onSelectCoupon" data-index="{{ index }}" data-id="{{ item.user_coupon_id }}">
+            <view class="item-wrapper color__{{  item.is_apply ? item.color.text : 'gray' }}" catchtap="onSelectCoupon"
+              data-index="{{ index }}" data-id="{{ item.user_coupon_id }}">
               <view class="coupon-type">{{ item.coupon_type.text }}</view>
               <view class="tip dis-flex flex-dir-column flex-x-center">
                 <view wx:if="{{ item.coupon_type.value == 10 }}">
@@ -283,6 +288,8 @@
   <!-- 积分说明弹框 -->
   <zan-dialog id="zan-base-dialog"></zan-dialog>
 
+  <!-- Toast组件 -->
+  <zan-toast id="zan-toast"></zan-toast>
 
 </view>
 

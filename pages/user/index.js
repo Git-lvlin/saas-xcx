@@ -28,6 +28,8 @@ Page({
     });
     // 获取当前用户信息
     _this.getUserDetail();
+    // 更新购物车角标
+    App.setCartTabBadge()
   },
 
   /**
@@ -35,7 +37,7 @@ Page({
    */
   getUserDetail() {
     let _this = this;
-    App._get('user.index/detail', {}, function(result) {
+    App._get('user.index/detail', {}, function (result) {
       _this.setData(result.data);
     });
   },

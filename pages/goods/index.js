@@ -285,6 +285,8 @@ Page({
       }, (result) => {
         App.showSuccess(result.msg);
         _this.setData(result.data);
+        // 记录购物车商品数量
+        App.setCartTotalNum(result.data.cart_total_num)
       });
     }
   },
