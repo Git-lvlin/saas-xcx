@@ -26,7 +26,10 @@ Page({
     StateEnum, // 枚举类：秒杀会场活动状态
 
     // 倒计时
-    countDownList: [],
+    countDownObj: {
+      date: '',
+      dynamic: {}
+    },
 
     // 秒杀活动场次
     tabbar: [],
@@ -40,46 +43,78 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const _this = this;
+    _this.onRefreshPage()
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    let _this = this;
-    if (_this.data.curTabIndex == 0) {
-      // 获取列表数据
-      _this.getApiData();
-    }
+    // const _this = this;
+    // if (_this.data.curTabIndex == 0) {
+    //   // 刷新页面
+    //   _this.onRefreshPage()
+    // }
   },
 
   /**
-   * 获取列表数据
+   * 刷新页面数据
+   */
+  onRefreshPage() {
+    const _this = this
+    return new Promise((resolve, reject) => {
+      // 获取列表数据
+      _this.getApiData().then(() => {
+        resolve()
+      })
+    })
+  },
+
+  /**
+   * 下拉刷新
+   */
+  onPullDownRefresh() {
+    // 获取首页数据
+    this.onRefreshPage().then(() => {
+      wx.stopPullDownRefresh()
+    })
+  },
+
+  /**
+   * 获取页面数据
    */
   getApiData() {
-    let _this = this;
-    App._get('sharp.index/index', {}, (result) => {
-      _this.setData(result.data);
-      // 初始化倒计时组件
-      _this._initCountDownData();
-    });
+    const app = this;
+    return new Promise((resolve, reject) => {
+      App._get('sharp.index/index', {}, (result) => {
+        const data = result.data
+        app.setData(data);
+        // 初始化倒计时组件
+        app._initCountDownData();
+        resolve(data)
+      });
+    })
   },
 
   /**
    * 初始化倒计时组件
+   * mix: 怎么才能每次执行这里的时候不重复触发定时器
    */
-  _initCountDownData(data) {
-    let _this = this,
-      curTabbar = _this.data.tabbar[_this.data.curTabIndex];
+  _initCountDownData(countId = 0) {
+    const app = this,
+      curTabbar = app.data.tabbar[app.data.curTabIndex];
     // 记录倒计时的时间
-    _this.setData({
-      [`countDownList[0]`]: {
-        date: curTabbar.count_down_time,
-      }
-    });
+    app.setData({
+      'countDownObj.date': curTabbar.count_down_time
+    })
     // 执行倒计时
-    CountDown.onSetTimeList(_this, 'countDownList');
+    CountDown.start(countId, app, 'countDownObj', () => {
+      // 倒计时结束刷新页面
+      setTimeout(() => {
+        app.onRefreshPage()
+      }, 800)
+    })
   },
 
   /**
@@ -87,11 +122,10 @@ Page({
    */
   onToggleTab(e) {
     let _this = this;
-    // 保存formid
-    App.saveFormId(e.detail.formId);
     // 设置当前tabbar索引，并重置数据
+    const curTabIndex = e.currentTarget.dataset.index
     _this.setData({
-      curTabIndex: e.detail.target.dataset.index,
+      curTabIndex,
       goodsList: [],
       page: 1,
       isLoading: true,
@@ -100,17 +134,15 @@ Page({
     // 获取列表数据
     _this.getGoodsList();
     // 初始化倒计时组件
-    _this._initCountDownData();
+    _this._initCountDownData(curTabIndex);
   },
 
   /**
-   * 跳转到砍价商品详情
+   * 跳转到秒杀商品详情
    */
   onTargetActive(e) {
     let _this = this,
       curTabbar = _this.data.tabbar[_this.data.curTabIndex];
-    // 保存formid
-    App.saveFormId(e.detail.formId);
     let query = util.urlEncode({
       active_time_id: curTabbar.active_time_id,
       sharp_goods_id: e.detail.target.dataset.id,
@@ -146,7 +178,7 @@ Page({
    */
   getGoodsList(isNextPage) {
     let _this = this,
-      curTabbar = _this.data.tabbar[_this.data.curTabIndex];;
+      curTabbar = _this.data.tabbar[_this.data.curTabIndex];
     App._get('sharp.goods/lists', {
       page: _this.data.page || 1,
       active_time_id: curTabbar.active_time_id

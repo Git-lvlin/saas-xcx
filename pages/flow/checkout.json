@@ -3,6 +3,7 @@
   "usingComponents": {
     "zan-popup": "/components/popup/index",
     "zan-dialog": "/components/dialog/index",
+    "zan-toast": "/components/toast/index",
     "van-switch": "/components/switch/index",
     "shortcut": "/components/shortcut/shortcut"
   }

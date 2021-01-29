@@ -113,7 +113,8 @@ App({
     // 记录推荐人id
     let refereeId = query.referee_id ? query.referee_id : scene.uid;
     refereeId > 0 && (this.saveRefereeId(refereeId));
-    let invite_code_others=query.invite_code?query.invite_code:scene.invite_code
+
+    let invite_code_others = query.invite_code ? query.invite_code:scene.invite_code
     this.saveOtherInviteCode(invite_code_others)
   },
 
@@ -128,9 +129,9 @@ App({
    * 记录推荐人id
    */
   saveRefereeId(refereeId) {
-    let _this = this;
+    let App = this;
     refereeId = parseInt(refereeId);
-    if (refereeId <= 0 || refereeId == _this.getUserId()) {
+    if (refereeId <= 0 || refereeId == App.getUserId()) {
       return false;
     }
     if (wx.getStorageSync('referee_id')) {
@@ -170,7 +171,7 @@ App({
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
   onShow(options) {
-    let _this = this;
+    let App = this;
     try {
       const livePlayer = requirePlugin('live-player-plugin');
       if (options.scene == 1007 || options.scene == 1008 || options.scene == 1044) {
@@ -181,10 +182,10 @@ App({
             console.log('get custom params', customParams);
             // 记录推荐人ID
             if (customParams.hasOwnProperty('referee_id')) {
-              _this.saveRefereeId(customParams['referee_id']);
+              App.saveRefereeId(customParams['referee_id']);
             }
             if (customParams.hasOwnProperty('invite_code')) {
-              _this.saveOtherInviteCode(customParams['invite_code'])
+              App.saveOtherInviteCode(customParams['invite_code'])
             }
           }).catch(err => {
             console.log('get share params', err)
@@ -275,7 +276,7 @@ App({
     data.wxapp_id = _this.getWxappId();
 
     // if (typeof check_login === 'undefined')
-    //   check_login = _this.checkIsLogin();
+    //   check_login = true;
 
     // 构造get请求
     let request = () => {
@@ -317,7 +318,7 @@ App({
       });
     };
     // 判断是否需要验证登录
-    check_login ? _this.doLogin() : request();
+    check_login ? _this.doLogin(request) : request();
   },
 
   /**
@@ -328,13 +329,12 @@ App({
 
     isShowNavBarLoading || true;
     data.wxapp_id = _this.getWxappId();
+    data.token = wx.getStorageSync('token');
 
     // 在当前页面显示导航条加载动画
     if (isShowNavBarLoading == true) {
       wx.showNavigationBarLoading();
     }
-
-    data.token = wx.getStorageSync('token');
     wx.request({
       url: _this.api_root + url,
       header: {
@@ -432,7 +432,6 @@ App({
     if (!url || url.length == 0) {
       return false;
     }
-    console.log(url)
     let tabBarLinks = this.getTabBarLinks();
     // tabBar页面
     if (tabBarLinks.indexOf(url) > -1) {
@@ -564,11 +563,12 @@ App({
       }
     });
   },
+
   /**
    * 授权登录
    */
   getUserInfo(e, callback) {
-    let _this = this;
+    let App = this;
     if (e.detail.errMsg !== 'getUserInfo:ok') {
       return false;
     }
@@ -580,13 +580,13 @@ App({
     wx.login({
       success(res) {
         // 发送用户信息
-        _this._post_form('user/login', {
+        App._post_form('user/login', {
           code: res.code,
           user_info: e.detail.rawData,
           encrypted_data: e.detail.encryptedData,
           iv: e.detail.iv,
           signature: e.detail.signature,
-          referee_id: _this.getRefereeid(),
+          referee_id: App.getRefereeid()
         }, result => {
           // 记录token user_id
           wx.setStorageSync('token', result.data.token);
@@ -619,4 +619,25 @@ App({
     // console.log('this.globalData.userinfo_acquired ', this.globalData.userinfo_acquired)
     return this.globalData.userinfo_acquired;
   },
+
+  /**
+   * 记录购物车商品总数量
+   * @param {*} value
+   */
+  setCartTotalNum(value) {
+    wx.setStorageSync('cartTotalNum', Number(value))
+  },
+
+  /**
+   * 设置购物车tabbar的角标
+   */
+  setCartTabBadge() {
+    const number = wx.getStorageSync('cartTotalNum')
+    if (number <= 0) return
+    wx.setTabBarBadge({
+      index: 2,
+      text: `${number}`
+    })
+  }
+
 });

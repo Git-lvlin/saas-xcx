@@ -62,7 +62,10 @@ Page({
     showTopWidget: false,
 
     // 倒计时
-    actEndTimeList: [],
+    countDownObj: {
+      date: '',
+      dynamic: {}
+    },
 
     active: {}, // 秒杀活动详情
     goods: {}, // 商品详情
@@ -73,7 +76,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let _this = this,
+    const _this = this,
       scene = App.getSceneData(options);
     // 秒杀商品id
     _this.setData({
@@ -81,14 +84,16 @@ Page({
       sharp_goods_id: options.sharp_goods_id ? options.sharp_goods_id : scene.gid,
     });
     // 获取秒杀商品信息
-    _this.getActiveDetail();
+    _this.onRefreshPage();
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 刷新页面数据
    */
-  onShow(options) {
-
+  onRefreshPage() {
+    // 获取秒杀商品信息
+    const _this = this
+    _this.getActiveDetail()
   },
 
   /**
@@ -100,12 +105,12 @@ Page({
       active_time_id: _this.data.active_time_id,
       sharp_goods_id: _this.data.sharp_goods_id,
     }, (result) => {
+      const data = result.data
       // 初始化详情数据
-      let data = _this._initData(result.data);
-      _this.setData(data);
-      // 执行倒计时
-      CountDown.onSetTimeList(_this, 'actEndTimeList');
-    });
+      _this._initData(data);
+      // 初始化倒计时组件
+      _this._initCountDownData(data);
+    })
   },
 
   /**
@@ -134,12 +139,27 @@ Page({
     if (goodsDetail.spec_type == 20) {
       data.goodsMultiSpec = _this._initManySpecData(goodsDetail.goods_multi_spec);
     }
-    // 记录活动到期时间
-    data.actEndTimeList = [{
-      date: data.active.active_status == ActiveStatusEnum.STATE_SOON.value ?
-        data.active.start_time : data.active.end_time
-    }];
-    return data;
+    _this.setData(data)
+  },
+
+  /**
+   * 初始化倒计时组件
+   */
+  _initCountDownData(data) {
+    const app = this
+    // 记录倒计时的时间
+    const countDownTime = data.active.active_status == ActiveStatusEnum.STATE_SOON.value ?
+      data.active.start_time : data.active.end_time
+    app.setData({
+      'countDownObj.date': countDownTime
+    })
+    // 执行倒计时
+    CountDown.start(0, app, 'countDownObj', () => {
+      // 倒计时结束刷新页面
+      setTimeout(() => {
+        app.onRefreshPage()
+      }, 800)
+    })
   },
 
   /**

@@ -1,20 +1,11 @@
-const App = getApp();
-
-// 工具类
 import Util from '../../utils/util.js';
-
-// 验证类
 import Verify from '../../utils/verify.js';
-
-// 枚举类：发货方式
 import DeliveryTypeEnum from '../../utils/enum/DeliveryType.js';
-
-// 枚举类：支付方式
 import PayTypeEnum from '../../utils/enum/order/PayType';
-
-// 对话框插件
 import Dialog from '../../components/dialog/dialog';
+import Toast from '../../components/toast/toast';
 
+const App = getApp()
 Page({
 
   /**
@@ -447,15 +438,27 @@ Page({
    * 选择优惠券
    */
   onSelectCoupon(e) {
-    let _this = this;
+    const app = this;
+    // 当前选择的优惠券
+    const index = e.currentTarget.dataset.index
+    const couponItem = app.data.coupon_list[index]
+    // 判断是否在适用范围
+    if (!couponItem['is_apply']) {
+      Toast({
+        selector: '#zan-toast',
+        message: couponItem.not_apply_info,
+        timeout: 1800
+      });
+      return
+    }
     // 记录选中的优惠券id
-    _this.setData({
-      selectCouponId: e.currentTarget.dataset.id
+    app.setData({
+      selectCouponId: couponItem.user_coupon_id
     });
     // 重新获取订单信息
-    _this.getOrderData();
+    app.getOrderData();
     // 隐藏优惠券弹层
-    _this.onTogglePopupCoupon();
+    app.onTogglePopupCoupon();
   },
 
   /**

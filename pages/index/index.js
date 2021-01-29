@@ -32,6 +32,14 @@ Page({
   },
 
   /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    // 更新购物车角标
+    App.setCartTabBadge()
+  },
+
+  /**
    * 加载页面数据
    */
   getPageData(callback) {
