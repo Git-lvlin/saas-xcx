@@ -147,7 +147,6 @@ page {
   font-size: 26rpx;
   padding-bottom: 14rpx;
   color: #444;
-  padding: 0 15rpx 30rpx 15rpx;
 }
 
 .cate-two-box {
