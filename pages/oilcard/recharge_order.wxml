@@ -10,9 +10,6 @@
     <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">
       <text>待发货<block wx:if="{{list.total > 0 && dataType==='delivery'}}"> ({{list.total}})</block></text>
     </view>
-    <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
-      <text>待收货<block wx:if="{{list.total > 0 && dataType==='received'}}"> ({{list.total}})</block></text>
-    </view>
     <view bindtap="bindHeaderTap" class="{{dataType==='completed'?'active':''}}" data-type="completed">
       <text>已完成<block wx:if="{{list.total > 0 && dataType==='completed'}}"> ({{list.total}})</block></text>
     </view>

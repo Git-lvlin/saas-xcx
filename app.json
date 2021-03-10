@@ -86,12 +86,6 @@
         "selectedIconPath": "images/home-active.png"
       },
       {
-        "pagePath": "pages/category/index",
-        "text": "分类",
-        "iconPath": "images/cate.png",
-        "selectedIconPath": "images/cate-active.png"
-      },
-      {
         "pagePath": "pages/oilcard/index",
         "text": "油卡",
         "iconPath": "images/oilcard_recharge.png",

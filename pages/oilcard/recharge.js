@@ -93,11 +93,17 @@ Page({
 
   changeMoney: function(e) {
     let _this = this
-
-    console.log('radio发生change事件，携带value值为：', e.detail.value, ' e.detail ', e.detail, ' | e', e, ' this ', this)
-    _this.setData({
-      money: e.detail.value
-    });
+    let recharge_amount = e.currentTarget.dataset.recharge_amount;
+    if (recharge_amount) {
+      _this.setData({
+        money: recharge_amount
+      });
+    } else {
+      _this.setData({
+        money: ''
+      });
+      
+    }
   },
 
   inputMoney: function(e) {

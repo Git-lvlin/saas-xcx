@@ -24,10 +24,10 @@
         <view class="item__left f-32">充值金额</view>
       </view>
       <view class="capital__item flex-y-center">
-        <view class="money" wx:for="{{recharge_items}}" wx:for-item="money" bindtap="changeMoney">
-          {{money}} 元
+        <view class="money" wx:for="{{recharge_items}}" wx:for-item="recharge_amount" bindtap="changeMoney" data-recharge_amount="{{recharge_amount}}">
+          {{recharge_amount}} 元
         </view>
-        <view class="money">其他金额</view>
+        <view class="money" bindtap="changeMoney">其他金额</view>
       </view>
       <view class="capital__item dis-flex flex-y-center">
         <view class="item__left f-32">其他金额：</view>
