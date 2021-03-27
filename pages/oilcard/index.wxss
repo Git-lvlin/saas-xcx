@@ -42,14 +42,13 @@ page {
 }
 
 .btn-recharge {
-  /* float: left; */
   width: 180rpx; height: auto;
   line-height: 20px;
   text-align: center;
   box-sizing: border-box;
   border-radius: 12rpx;
-  margin-top: -70rpx;
-  margin-left: 400rpx;
+  margin-top: -100rpx;
+  margin-left: 370rpx;
   padding:10rpx;
   background: #1aad19;
   color: white;

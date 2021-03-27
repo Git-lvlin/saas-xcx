@@ -104,8 +104,8 @@
       <view wx:if="{{ !isLoading && !list.data.length }}">
         <view class="jz-notcont">
           <text class="iconfont icon-wushuju"></text>
-          <text class="cont">亲，您还没有订单信息哦！</text>
-          <navigator open-type="switchTab" url="../oilcard/index" class="btn-default btn-recharge">去充值</navigator>
+          <text class="cont">亲，您还没有订单信息哦！    </text>
+          <navigator url="../oilcard/index" class="btn-default btn-recharge">去充值</navigator>
         </view>
       </view>
     </scroll-view>

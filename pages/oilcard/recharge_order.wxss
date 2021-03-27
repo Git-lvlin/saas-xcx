@@ -212,4 +212,5 @@
 
 .btn-recharge {
   margin-top: -46rpx;
+  margin-left: 20rpx;
 }
