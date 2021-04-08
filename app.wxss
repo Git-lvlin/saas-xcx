@@ -1,5 +1,6 @@
 /* common.wxss */
 @import "/utils/common.wxss";
+@import './style/iconfont/iconfont.wxss';
 
 page {
   background: #f7f7f7;

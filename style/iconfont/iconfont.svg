@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="daohang" unicode="&#59107;" d="M512 404.48l286.72 286.72-522.24-174.08L512 404.48zM137.216 558.0799999999999L866.304 799.744c16.384 6.144 34.816-4.096 40.96-20.48 2.048-6.144 2.048-14.336 0-20.48L665.6 29.696000000000026c-6.144-16.384-24.576-26.624-40.96-20.48-8.192 2.048-14.336 8.192-18.432 16.384L450.56 343.03999999999996 133.12 496.64c-16.384 8.192-22.528 26.624-14.336 43.008 2.048 8.192 10.24 14.336 18.432 18.432z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

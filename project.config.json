@@ -40,9 +40,9 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.12.2",
-  "appid": "wx8197742d81aea698",
-  "projectname": "抖商带货",
+  "libVersion": "2.16.0",
+  "appid": "wx216126b8e918af11",
+  "projectname": "%E6%8A%96%E5%95%86%E5%B8%A6%E8%B4%A7",
   "debugOptions": {
     "hidedInDevtools": []
   },
