@@ -10,7 +10,7 @@ Page({
     userinfo_acquired: false,
     options: {
     },
-    show:false
+    show:true
   },
 
   /**
