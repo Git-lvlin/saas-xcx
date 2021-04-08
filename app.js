@@ -4,7 +4,7 @@
  */
 const tabBarLinks = [
   'pages/index/index',
-  'pages/category/index',
+  //'pages/category/index',
   'pages/flow/index',
   'pages/user/index',
   'pages/sharing/index/index'
@@ -512,6 +512,7 @@ App({
    * 解密手机号码
    */
   getPhoneNumber(e, callback) {
+   console.log(e.detail)
     let _this = this;
 
     if (e.detail.errMsg !== "getPhoneNumber:ok") {

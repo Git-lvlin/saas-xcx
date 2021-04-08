@@ -50,6 +50,7 @@ Page({
   getUserDetail() {
     let _this = this;
     App._get('user.index/detail', {}, function (result) {
+      console.log(result)
       _this.setData(result.data);
     });
   },
@@ -135,6 +136,7 @@ Page({
       url: '../troupe/index/index'
     });
   },
+  
   onTargetDealer(e) {
     let _this = this;
     if (!_this.onCheckLogin()) {

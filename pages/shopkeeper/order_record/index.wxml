@@ -1,0 +1,62 @@
+<!--pages/shopkeeper/order_record/order_record.wxml-->
+<view class="orderrecord__page">
+<view class="page__bd" style="height: 100%;">
+		<view class="weui-tab">
+			<view class="weui-navbar">
+				<view class="weui-navbar__item weui-bar__item_on">
+					未配送
+				</view>
+				<view class="weui-navbar__item">
+					已配送
+				</view>
+			</view>
+			<view class="weui-tab__panel">
+			</view>
+		</view>
+	</view>
+<view class="weui-form-preview">
+			<view class="weui-form-preview__hd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">订单金额</label>
+					<em class="weui-form-preview__value">¥20.00</em>
+				</view>
+			</view>
+			<view class="weui-form-preview__bd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">日期</label>
+					<text class="weui-form-preview__value">2021-04-09 14:23:50</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">品名</label>
+					<text class="weui-form-preview__value">蔚芝蓝饮用纯净水</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">数量</label>
+					<text class="weui-form-preview__value">2桶</text>
+				</view>
+
+					<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">称呼</label>
+					<text class="weui-form-preview__value">李生</text>
+				</view>
+
+					<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">电话</label>
+					<text class="weui-form-preview__value">13000003333</text>
+					</view>
+
+					<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">地址</label>
+					<text class="weui-form-preview__value">东莞市万江区一条大街上</text>
+				</view>
+
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">状态</label>
+					<text class="weui-form-preview__value">未配送</text>
+				</view>
+			</view>
+			<view class="weui-form-preview__ft">
+				<a class="weui-form-preview__btn weui-form-preview__btn_primary">配送完成</a>
+			</view>
+		</view>
+</view>

@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/index2/index",
-
+    "pages/index/index",
+    "pages/storehouse/index",
+    "pages/shopkeeper/sale_record/index",
+    "pages/shopkeeper/order_record/index",
+    "pages/nail_picture/nail_picture",
     "pages/custom/index",
     "pages/category/index",
     "pages/category/list",
@@ -48,8 +51,6 @@
     "pages/sharing/order/refund/index",
     "pages/sharing/order/refund/apply/apply",
     "pages/sharing/order/refund/detail/detail",
-    "pages/article/index",
-    "pages/article/detail/index",
     "pages/_select/extract_point/index",
     "pages/shop/detail/index",
     "pages/store/check/order",
@@ -59,11 +60,8 @@
     "pages/points/log/index",
     "pages/sharp/index/index",
     "pages/sharp/goods/index",
-    "pages/live/index",
-    "pages/invite/index",
     "pages/inviteAffirm/index",
     "pages/troupe/index/index"
-    
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -78,7 +76,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/index2/index",
+        "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home-active.png"

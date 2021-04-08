@@ -8,5 +8,40 @@
     <text class="f-24 col-9 cont">我是有底线的</text>
     <view class="hr"></view>
   </view> -->
+    <view class="store__list">
 
+      <view class="weui-flex" wx:for="{{storeList}}">
+        <view>
+          <view class="placeholder thumb">
+            <image src="https://via.placeholder.com/80x80/2233ff"></image>
+          </view>
+        </view>
+        <view class="weui-flex__item store__info">
+          <view class="placeholder store__name">
+            {{item.shop_name}}
+          </view>
+
+          <view class="placeholder">
+            评分： 5分
+          </view>
+
+          <view class="placeholder">
+            电话：{{item.phone}}
+          </view>
+
+          <view class="placeholder">
+            距离：{{item.distance}}
+          </view>
+        </view>
+
+        <view class="navigator" bindtap="readyNavigator">
+          <view class="placeholder">
+            <text class="iconfont icon-daohang"></text>
+          </view>
+          <view class="placeholder">
+            一键导航
+          </view>
+        </view>
+      </view>
+    </view>
 </view>

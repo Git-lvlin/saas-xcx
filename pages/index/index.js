@@ -8,17 +8,18 @@ Page({
     // 页面元素
     items: {},
     scrollTop: 0,
+    storeList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if(wx.getStorageSync('referee_id_Login')==1){
+    if (wx.getStorageSync('referee_id_Login') == 1) {
       wx.reLaunch({
         url: '/pages/invite/index',
       })
-    }else if(wx.getStorageSync('referee_id_Login')==2){
+    } else if (wx.getStorageSync('referee_id_Login') == 2) {
       wx.reLaunch({
         url: '/pages/inviteAffirm/index',
       })
@@ -29,6 +30,9 @@ Page({
     });
     // 加载页面数据
     this.getPageData();
+
+    //请求店铺信息
+    this.getStoreList()
   },
 
   /**
@@ -53,6 +57,17 @@ Page({
       // 回调函数
       typeof callback === 'function' && callback();
     });
+  },
+
+  /*
+  请求店铺数据*/
+  getStoreList(){
+    let _this = this;
+    App._get('shop/lists', {longitude: 23.45645645, latitude: 113.5641231}, reponse => {
+      console.log(reponse)
+     // _this.data.storeList = reponse.data.list
+    _this.setData({storeList: reponse.data.list})
+    })
   },
 
   /**
@@ -105,6 +120,21 @@ Page({
       title: _this.data.page.params.share_title,
       path: "/pages/index/index?" + App.getShareUrlParams()
     };
-  }
+  },
 
+  readyNavigator() {
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success(res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        wx.openLocation({
+          name: '',
+          latitude,
+          longitude,
+          scale: 18
+        })
+      }
+    })
+  },
 });

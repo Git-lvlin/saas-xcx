@@ -4,3 +4,66 @@
 page {
   background: #fff !important;
 }
+
+.placeholder {
+  width: 100%;
+  font-size: 14px;
+  color: #999;
+}
+
+.weui-flex {
+  margin-bottom: 20rpx;
+  background-color: white;
+}
+
+
+.placeholder image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+}
+
+.store__info {
+  padding-left: 5px;
+}
+
+.store__info .placeholder {
+  height: 20px;
+  font-size: 14px;
+}
+
+.store__info .store__name {
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 44rpx;
+  color: #333;
+}
+
+.store__list {
+  padding-top: 20rpx;
+}
+
+.navigator {
+  height: 80px;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.navigator .icon-daohang {
+  font-size: 60rpx;
+  line-height: 50px;
+  color: lightblue;
+}
+
+.navigator .placeholder {
+  font-size: 24rpx;
+  color: lightblue;
+}
+
+.icon-daohang {
+  font-size: 44rpx;
+}
+
+.weui-flex {
+  padding: 0 10px;
+}
