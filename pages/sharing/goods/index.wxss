@@ -62,13 +62,13 @@
   height: 100%;
 }
 
-.footer-fixed  .fixed-buttons .order-bt {
+.footer-fixed .fixed-buttons .order-bt {
   width: auto;
   line-height: unset;
   height: 100%;
 }
 
-.footer-fixed  .fixed-buttons .order-number {
+.footer-fixed .fixed-buttons .order-number {
   height: 100%;
 }
 
@@ -578,9 +578,15 @@
 }
 
 .corwd_time_number {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 15rpx;
-  font-size: 23rpx;
+  font-size: 22rpx;
+}
+
+.corwd_time_number .prefix {
+  margin-right: 6rpx;
 }
 
 .corwd_time button {

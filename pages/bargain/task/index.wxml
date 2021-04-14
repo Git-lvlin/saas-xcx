@@ -135,8 +135,10 @@
       </view>
       <!-- 到期时间 -->
       <view class="bargain-p" wx:if="{{ task.status }}">
-        <view class="bargain-people" wx:for="{{ taskEndTime }}" wx:key="this">
-          <text>活动还剩 {{ item.dynamic.hou }} : {{ item.dynamic.min }} : {{ item.dynamic.sec }} 结束，快来砍价吧~</text>
+        <view class="bargain-people dis-flex flex-x-center flex-y-center">
+          <text>活动还剩</text>
+          <countdown wx:if="{{ countDownTime }}" date="{{ countDownTime }}" />
+          <text>结束，快来砍价吧~</text>
         </view>
       </view>
     </view>

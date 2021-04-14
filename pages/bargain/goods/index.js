@@ -1,19 +1,8 @@
-const App = getApp();
-
-// 富文本插件
 import wxParse from '../../../wxParse/wxParse.js';
-
-// 工具类
-import util from '../../../utils/util.js';
-
-// 倒计时插件
-import CountDown from '../../../utils/countdown.js';
-
-// 对话框插件
 import Dialog from '../../../components/dialog/dialog';
 
-// 记录规格的数组
-let goodsSpecArr = [];
+const App = getApp()
+let goodsSpecArr = []
 
 Page({
 
@@ -60,9 +49,7 @@ Page({
     // 返回顶部
     showTopWidget: false,
 
-    // 倒计时
-    actEndTimeList: [],
-
+    countDownTime: false, // 倒计时日期
 
     active: {}, // 砍价活动详情
     goods: {}, // 商品详情
@@ -102,13 +89,10 @@ Page({
       active_id: _this.data.active_id
     }, (result) => {
       // 初始化详情数据
-      let data = _this._initData(result.data);
-      _this.setData(data);
-
-      // 执行倒计时
-      if (!data.active.is_end) {
-        CountDown.onSetTimeList(_this, 'actEndTimeList');
-      }
+      const data = result.data
+      _this._initData(data)
+      // 初始化倒计时组件
+      _this._initCountDownData(data)
     });
   },
 
@@ -139,10 +123,20 @@ Page({
       data.goodsMultiSpec = _this._initManySpecData(goodsDetail.goods_multi_spec);
     }
     // 记录活动到期时间
-    data.actEndTimeList = [{
+    data.countDownObj = [{
       date: data.active.end_time
     }];
+    _this.setData(data)
+    data.countDownObj.date = data.active.end_time
     return data;
+  },
+
+  // 初始化倒计时组件
+  _initCountDownData(data) {
+    const app = this
+    app.setData({
+      countDownTime: data.active.end_time
+    })
   },
 
   /**
@@ -169,8 +163,6 @@ Page({
       attrIdx = e.currentTarget.dataset.attrIdx,
       itemIdx = e.currentTarget.dataset.itemIdx,
       goodsMultiSpec = _this.data.goodsMultiSpec;
-    // 记录formid
-    App.saveFormId(e.detail.formId);
     for (let i in goodsMultiSpec.spec_attr) {
       for (let j in goodsMultiSpec.spec_attr[i].spec_items) {
         if (attrIdx == i) {
@@ -285,8 +277,6 @@ Page({
    */
   onClickShare(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     _this.setData({
       'share.show': true
     });
@@ -348,8 +338,6 @@ Page({
    */
   onSavePoster(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.showLoading({
       title: '加载中',
     });
@@ -395,12 +383,8 @@ Page({
   /**
    * 确认购买弹窗
    */
-  onToggleTrade(e) {
+  onToggleTrade() {
     let _this = this;
-    if (typeof e === 'object') {
-      // 记录formId
-      e.detail.hasOwnProperty('formId') && App.saveFormId(e.detail.formId);
-    }
     _this.setData({
       showBottomPopup: !_this.data.showBottomPopup
     });
@@ -410,8 +394,6 @@ Page({
    * 显示砍价规则
    */
   onToggleRules(e) {
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 显示砍价规则
     let _this = this;
     Dialog({
@@ -432,8 +414,6 @@ Page({
    */
   onSubmit(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 判断是否已参与当前的砍价活动，如果已参与的话跳转到砍价任务
     if (_this.data.is_partake) {
       wx.navigateTo({
@@ -455,8 +435,6 @@ Page({
    */
   onSubmit2(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 关闭选择器
     _this.onToggleTrade();
     // 确认发起砍价
@@ -502,8 +480,6 @@ Page({
    * 跳转到首页
    */
   onTargetHome(e) {
-    // 记录formid
-    App.saveFormId(e.detail.formId);
     wx.switchTab({
       url: '../../index/index',
     })

@@ -73,8 +73,6 @@ Page({
   onSubmit(e) {
     let _this = this;
 
-    // 记录formid
-    App.saveFormId(e.detail.formId);
 
     // 按钮禁用
     _this.setData({

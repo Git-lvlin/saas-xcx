@@ -1,15 +1,16 @@
 /* iconfont */
 @import "/utils/iconfont.wxss";
 
-.container, input {
+.container,
+input {
   font-family: PingFang-Medium,
-                 PingFangSC-Regular,
-                 Heiti,
-                 Heiti SC,
-                 DroidSans,
-                 DroidSansFallback,
-                 "Microsoft YaHei",
-                 sans-serif;
+    PingFangSC-Regular,
+    Heiti,
+    Heiti SC,
+    DroidSans,
+    DroidSansFallback,
+    "Microsoft YaHei",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -277,6 +278,10 @@
 
 .m-l-20 {
   margin-left: 20rpx;
+}
+
+.m-r-10 {
+  margin-right: 10rpx;
 }
 
 .p-bottom {

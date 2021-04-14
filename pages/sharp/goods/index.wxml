@@ -62,10 +62,11 @@
       </view>
       <!-- 活动倒计时 -->
       <view wx:if="{{ active.active_status != ActiveStatusEnum.STATE_END.value }}"
-        class="info-item info-item_status info-item_countdown">
+        class="info-item info-item_status info-item_countdown dis-flex flex-y-center">
         <text class="countdown-icon iconfont icon-naozhong"></text>
         <text>距离秒杀{{ active.active_status == ActiveStatusEnum.STATE_SOON.value ? '开始' : '结束' }}</text>
-        <text>还剩{{ countDownObj.dynamic.hou }}时{{ countDownObj.dynamic.min }}分{{ countDownObj.dynamic.sec }}秒</text>
+        <text class="m-r-10">还剩</text>
+        <countdown wx:if="{{ countDownTime }}" date="{{ countDownTime }}" bind:finish="onCountDownEnd" />
       </view>
       <!-- 活动已结束 -->
       <view wx:else class="info-item info-item_status info-item_end">

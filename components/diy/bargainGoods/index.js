@@ -27,8 +27,6 @@ Component({
      * 跳转商品详情页
      */
     _onTargetGoods(e) {
-      // 记录formid
-      App.saveFormId(e.detail.formId);
       wx.navigateTo({
         url: `/pages/bargain/goods/index?active_id=${e.detail.target.dataset.id}`,
       });

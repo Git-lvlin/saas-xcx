@@ -20,7 +20,7 @@ Page({
   },
 
   /**
-   * 授权登录
+   * 授权登录（旧版弃用）
    */
   getUserInfo(e) {
     let _this = this;
@@ -28,6 +28,31 @@ Page({
       // 跳转回原页面
       _this.onNavigateBack(1);
     });
+  },
+
+  /**
+   * 授权登录（新版）
+   */
+  getUserProfile() {
+    console.log('getUserProfile')
+    const app = this
+    wx.canIUse('getUserProfile') && wx.getUserProfile({
+      lang: 'zh_CN',
+      desc: '获取用户相关信息',
+      success({
+        userInfo
+      }) {
+        console.log('用户同意了授权')
+        console.log('userInfo：', userInfo)
+        App.getUserInfo(userInfo, () => {
+          // 跳转回原页面
+          app.onNavigateBack(1)
+        });
+      },
+      fail() {
+        console.log('用户拒绝了授权')
+      }
+    })
   },
 
   /**

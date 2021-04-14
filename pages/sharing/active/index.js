@@ -1,9 +1,8 @@
-const App = getApp();
 const Sharing = require('../../../utils/extend/sharing.js');
 const Dialog = require('../../../components/dialog/dialog');
-
-// 工具类
 const util = require('../../../utils/util.js');
+
+const App = getApp()
 
 // 记录规格的数组
 let goodsSpecArr = [];
@@ -24,8 +23,6 @@ Page({
     goods_sku_id: 0, // 规格id
     goodsMultiSpec: {}, // 多规格信息
 
-    countDownList: [],
-    actEndTimeList: []
   },
 
   /**
@@ -95,8 +92,6 @@ Page({
     console.log(data['is_join']);
     // 当前用户是否为创建者
     data['is_creator'] = !!(data.detail.creator_id == App.getUserId())
-    // 拼团结束时间
-    data['actEndTimeList'] = [data.detail.end_time.text];
 
     // 商品价格/划线价/库存
     data.goods_sku_id = goodsDetail.goods_sku.spec_sku_id;
@@ -116,8 +111,6 @@ Page({
     }
     // 赋值页面数据
     _this.setData(data);
-    // 执行倒计时函数
-    _this.onCountDown();
   },
 
   /**
@@ -145,8 +138,6 @@ Page({
       itemIdx = e.currentTarget.dataset.itemIdx,
       goodsMultiSpec = _this.data.goodsMultiSpec;
 
-    // 记录formid
-    App.saveFormId(e.detail.formId);
 
     for (let i in goodsMultiSpec.spec_attr) {
       for (let j in goodsMultiSpec.spec_attr[i].spec_items) {
@@ -226,51 +217,6 @@ Page({
   },
 
   /**
-   * 倒计时函数
-   */
-  onCountDown() {
-    // 获取当前时间，同时得到活动结束时间数组
-    let newTime = new Date().getTime();
-    let endTimeList = this.data.actEndTimeList;
-    let countDownArr = [];
-
-    // 对结束时间进行处理渲染到页面
-    endTimeList.forEach(o => {
-      let endTime = new Date(util.format_date(o)).getTime();
-      let obj = null;
-
-      // 如果活动未结束，对时间进行处理
-      if (endTime - newTime > 0) {
-        let time = (endTime - newTime) / 1000;
-        // 获取天、时、分、秒
-        let day = parseInt(time / (60 * 60 * 24));
-        let hou = parseInt(time % (60 * 60 * 24) / 3600);
-        let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
-        let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
-        obj = {
-          day: day,
-          hou: this.timeFormat(hou),
-          min: this.timeFormat(min),
-          sec: this.timeFormat(sec)
-        }
-      } else { //活动已结束，全部设置为'00'
-        obj = {
-          day: '00',
-          hou: '00',
-          min: '00',
-          sec: '00'
-        }
-      }
-      countDownArr.push(obj);
-    })
-    // 渲染，然后每隔一秒执行一次倒计时函数
-    this.setData({
-      countDownList: countDownArr
-    })
-    setTimeout(this.onCountDown, 1000);
-  },
-
-  /**
    * 查看拼团规则
    */
   onTargetRules() {
@@ -311,7 +257,6 @@ Page({
    */
   onIncGoodsNumber(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     _this.setData({
       goods_num: ++_this.data.goods_num
     })
@@ -322,7 +267,6 @@ Page({
    */
   onDecGoodsNumber(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     if (_this.data.goods_num > 1) {
       _this.setData({
         goods_num: --_this.data.goods_num

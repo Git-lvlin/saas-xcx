@@ -1,7 +1,8 @@
 <view class="container">
 
   <!-- 内容区域 -->
-  <scroll-view class="container--scroll-view" bindscrolltolower="onScrollToLower" scroll-y="{{ true }}" bindscroll="onScrollEvent" style="height: {{ scrollHeight }}px;">
+  <scroll-view class="container--scroll-view" bindscrolltolower="onScrollToLower" scroll-y="{{ true }}"
+    bindscroll="onScrollEvent" style="height: {{ scrollHeight }}px;">
 
     <!-- 砍价会场 -->
     <block wx:if="{{ currentTab == 0 }}">
@@ -104,26 +105,8 @@
                   <view class="task-status dis-flex flex-y-center">
                     <!-- 倒计时 -->
                     <view wx:if="{{ item.status }}" class="count-down dis-flex flex-y-center">
-                      <view class="clock-text">
-                        <text>剩余</text>
-                      </view>
-                      <view class="clock dis-flex">
-                        <view class="clock-time">
-                          <text>{{ countDownList[index].dynamic.hou }}</text>
-                        </view>
-                        <view class="clock-symbol">
-                          <text>:</text>
-                        </view>
-                        <view class="clock-time">
-                          <text>{{ countDownList[index].dynamic.min }}</text>
-                        </view>
-                        <view class="clock-symbol">
-                          <text>:</text>
-                        </view>
-                        <view class="clock-time">
-                          <text>{{ countDownList[index].dynamic.sec }}</text>
-                        </view>
-                      </view>
+                      <text class="m-r-10">剩余</text>
+                      <countdown date="{{ item.end_time }}" separator="colon" style="custom" />
                     </view>
                     <view wx:if="{{ !item.status }}" class="task-status__text">
                       <text class="col-m">{{ item.is_buy ? '砍价成功' : '已结束' }}</text>

@@ -11,23 +11,7 @@
       </view>
       <!-- 倒计时 -->
       <view wx:if="{{ data.active.status == ActiveStatusEnum.STATE_BEGIN.value }}" class="active-count-down">
-        <view class="clock dis-flex">
-          <view class="clock-time">
-            <text>{{ countDownList[0].dynamic.hou }}</text>
-          </view>
-          <view class="clock-symbol">
-            <text>:</text>
-          </view>
-          <view class="clock-time">
-            <text>{{ countDownList[0].dynamic.min }}</text>
-          </view>
-          <view class="clock-symbol">
-            <text>:</text>
-          </view>
-          <view class="clock-time">
-            <text>{{ countDownList[0].dynamic.sec }}</text>
-          </view>
-        </view>
+        <countdown wx:if="{{ countDownTime }}" date="{{ countDownTime }}" style="custom" />
       </view>
     </view>
     <view class="sharp-top--right">
@@ -63,8 +47,10 @@
                 </view>
                 <!-- 商品价格 -->
                 <view class="detail-price onelist-hidden">
-                  <text wx:if="{{ itemStyle.show.seckillPrice }}" class="goods-price f-30 col-m">￥{{ dataItem.goods_sku.seckill_price }}</text>
-                  <text wx:if="{{ itemStyle.show.originalPrice && dataItem.goods_sku.original_price > 0 }}" class="line-price col-9 f-24">￥{{ dataItem.goods_sku.original_price }}</text>
+                  <text wx:if="{{ itemStyle.show.seckillPrice }}"
+                    class="goods-price f-30 col-m">￥{{ dataItem.goods_sku.seckill_price }}</text>
+                  <text wx:if="{{ itemStyle.show.originalPrice && dataItem.goods_sku.original_price > 0 }}"
+                    class="line-price col-9 f-24">￥{{ dataItem.goods_sku.original_price }}</text>
                 </view>
               </view>
             </block>

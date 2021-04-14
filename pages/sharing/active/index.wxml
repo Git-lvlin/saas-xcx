@@ -44,22 +44,19 @@
         </view>
       </view>
       <!-- 虚位以待 -->
-      <view wx:for="{{ detail.surplus_people }}" wx:key="this" class="user-item user-item__wait dis-flex flex-x-center flex-y-center">
+      <view wx:for="{{ detail.surplus_people }}" wx:key="this"
+        class="user-item user-item__wait dis-flex flex-x-center flex-y-center">
         <text class="iconfont icon-wenhao"></text>
       </view>
     </view>
 
     <!-- 拼单状态：拼团中 -->
-    <view wx:if="{{ detail.status.value == 10 }}" class="main_status main_tiem">
+    <view wx:if="{{ detail.status.value == 10 }}" class="main_tiem">
       <text>还差 </text>
       <text class="main_timer_color">{{ detail.surplus_people }}</text>
       <text> 个名额，</text>
-      <view class="tui-countdown-content" wx:for="{{countDownList}}" wx:key="countDownList">
-        <!-- <text class="tui-conutdown-box">{{item.day}}</text>: -->
-        <text class="tui-conutdown-box">{{item.hou}}</text> :
-        <text class="tui-conutdown-box">{{item.min}}</text> :
-        <text class="tui-conutdown-box tui-countdown-bg">{{item.sec}}</text>
-      </view>
+      <!-- 倒计时 -->
+      <countdown date="{{ detail.end_time.text }}" separator="colon" style="text" />
       <text> 后结束</text>
     </view>
 
@@ -84,7 +81,8 @@
       <text class="f-30">更多拼团</text>
       <text class="icon-arrow"></text>
     </view>
-    <view wx:for="{{ goodsList.data }}" wx:key="key" class="content_main dis-flex" catchtap="onTargetGoods" data-id="{{ item.goods_id }}">
+    <view wx:for="{{ goodsList.data }}" wx:key="key" class="content_main dis-flex" catchtap="onTargetGoods"
+      data-id="{{ item.goods_id }}">
       <view class="goods-image">
         <image src="{{ item.goods_image }}"></image>
       </view>
@@ -139,18 +137,21 @@
       </view>
       <!-- 规格列表 -->
       <view class="goods-list-box" scroll-y="true">
-        <view class="cf tmall-types" wx:for="{{ goodsMultiSpec.spec_attr }}" wx:for-item="attr" wx:for-index="attr_idx" wx:key="key">
+        <view class="cf tmall-types" wx:for="{{ goodsMultiSpec.spec_attr }}" wx:for-item="attr" wx:for-index="attr_idx"
+          wx:key="key">
           <view class="tipstxt" data-id="{{attr.group_id}}">{{attr.group_name}}</view>
           <view class="cf cartypelist" wx:for="{{attr.spec_items}}" wx:for-index="item_idx" wx:key="ikey">
             <view wx:if="{{item.checked}}">
-              <form bindsubmit="onSwitchSpec" report-submit="true" data-attr-idx="{{attr_idx}}" data-item-idx="{{item_idx}}">
+              <form bindsubmit="onSwitchSpec" report-submit="true" data-attr-idx="{{attr_idx}}"
+                data-item-idx="{{item_idx}}">
                 <button formType="submit" class="btn-normal">
                   <view class="cartypeitem cur">{{item.spec_value}}</view>
                 </button>
               </form>
             </view>
             <view wx:else>
-              <form bindsubmit="onSwitchSpec" report-submit="true" data-attr-idx="{{attr_idx}}" data-item-idx="{{item_idx}}">
+              <form bindsubmit="onSwitchSpec" report-submit="true" data-attr-idx="{{attr_idx}}"
+                data-item-idx="{{item_idx}}">
                 <button formType="submit" class="btn-normal">
                   <view class="cartypeitem">{{item.spec_value}}</view>
                 </button>

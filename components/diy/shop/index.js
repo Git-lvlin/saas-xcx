@@ -26,8 +26,6 @@ Component({
      * 跳转门店详情页
      */
     _onTargetDetail(e) {
-      // 记录formid
-      App.saveFormId(e.detail.formId);
       wx.navigateTo({
         url: '/pages/shop/detail/index?shop_id=' + e.detail.target.dataset.id,
       });

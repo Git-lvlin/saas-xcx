@@ -1,13 +1,7 @@
-const App = getApp();
-
-// 工具类
 import util from '../../../utils/util.js';
-
-// 倒计时插件
-import CountDown from '../../../utils/countdown.js';
-
-// 枚举类：秒杀会场活动状态
 import StateEnum from '../../../utils/enum/sharp/ActiveStatus.js';
+
+const App = getApp()
 
 Page({
 
@@ -25,11 +19,7 @@ Page({
 
     StateEnum, // 枚举类：秒杀会场活动状态
 
-    // 倒计时
-    countDownObj: {
-      date: '',
-      dynamic: {}
-    },
+    countDownTime: false, // 倒计时日期
 
     // 秒杀活动场次
     tabbar: [],
@@ -99,22 +89,23 @@ Page({
 
   /**
    * 初始化倒计时组件
-   * mix: 怎么才能每次执行这里的时候不重复触发定时器
    */
-  _initCountDownData(countId = 0) {
+  _initCountDownData() {
     const app = this,
       curTabbar = app.data.tabbar[app.data.curTabIndex];
     // 记录倒计时的时间
     app.setData({
-      'countDownObj.date': curTabbar.count_down_time
+      countDownTime: curTabbar.count_down_time
     })
-    // 执行倒计时
-    CountDown.start(countId, app, 'countDownObj', () => {
-      // 倒计时结束刷新页面
-      setTimeout(() => {
-        app.onRefreshPage()
-      }, 800)
-    })
+  },
+
+  // 倒计时结束刷新页面
+  onCountDownEnd() {
+    console.log('onCountDownEnd')
+    const app = this
+    setTimeout(() => {
+      app.onRefreshPage()
+    }, 200)
   },
 
   /**
@@ -134,7 +125,7 @@ Page({
     // 获取列表数据
     _this.getGoodsList();
     // 初始化倒计时组件
-    _this._initCountDownData(curTabIndex);
+    _this._initCountDownData();
   },
 
   /**
