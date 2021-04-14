@@ -57,9 +57,10 @@
                   </view>
                 </block>
                 <!-- 商品价格 -->
-                <view class="detail-price onelist-hidden">
+                <view class="detail-price">
                   <text class="goods-price f-30 col-m">￥{{item.goods_sku.goods_price}}</text>
                   <text class="line-price col-9 f-24" wx:if="{{item.goods_sku.line_price>0}}">{{item.goods_sku.line_price}}</text>
+                  <text class="add-card-circular-btn" catchtap="addCard" data-goods_id="{{item.goods_id}}" data-spec_sku_id="{{item.goods_sku.spec_sku_id}}">+</text>
                 </view>
               </view>
             </view>
