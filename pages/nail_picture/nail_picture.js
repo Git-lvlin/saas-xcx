@@ -1,4 +1,5 @@
 // pages/index2/index.js
+const App = getApp();
 Page({
 
   /**
@@ -9,94 +10,7 @@ Page({
       latitude: '23.02801435717549',
       longitude: '113.687109842041',
     },
-    markders: [{
-        id: 1,
-        latitude: '23.02801435717549',
-        longitude: '113.687109842041',
-        height: '30',
-        width: '20',
-        alpha: 0,
-        
-        label: {
-          id: '1212',
-          content: '万江文峰水店1',
-          anchorY: -40,
-          anchorX: -20,
-          bgColor: '#333333',
-          color: '#fff',
-          padding: '5px',
-          borderRadius: 4
-        }
-      },
-      {
-        id: 2,
-        latitude: '23.023590779731304',
-        longitude: '113.55321396801756',
-        height: '30',
-        width: '20',
-        alpha: 0,
-        label: {
-          content: '万江文峰水店',
-          anchorY: -40,
-          anchorX: -20,
-          bgColor: '#333333',
-          color: '#fff',
-          padding: '5px',
-          borderRadius: 4
-        }
-      },
-      {
-        id: 3,
-        latitude: '22.909791855443334',
-        longitude: '113.54222763989256',
-        height: '30',
-        width: '20',
-        alpha: 0,
-        label: {
-          content: '万江文峰水店',
-          anchorY: -40,
-          anchorX: -20,
-          bgColor: '#333333',
-          color: '#fff',
-          padding: '5px',
-          borderRadius: 4
-        }
-      },
-      {
-        id: 4,
-        latitude: '22.866143566573864',
-        longitude: '113.63149155590818',
-        height: '30',
-        width: '20',
-        alpha: 0,
-        label: {
-          content: '万江文峰水店',
-          anchorY: -40,
-          anchorX: -20,
-          bgColor: '#333333',
-          color: '#fff',
-          padding: '5px',
-          borderRadius: 4
-        }
-      },
-      {
-        id: 5,
-        latitude: '22.833872770985394',
-        longitude: '113.65895737622068',
-        height: '30',
-        width: '20',
-        alpha: 0,
-        label: {
-          content: '万江文峰水店',
-          anchorY: -40,
-          anchorX: -20,
-          bgColor: '#333333',
-          color: '#fff',
-          padding: '5px',
-          borderRadius: 4
-        }
-      },
-    ]
+    markders: []
   },
 
   /**
@@ -116,6 +30,30 @@ Page({
         })
       }
     })
+
+    let _temp = App.globalData.storeList;
+    _this.setData({
+      markders: _temp.map((item, i) => {
+        return {
+          id: item.shop_id,
+          latitude: item.latitude,
+          longitude: item.longitude,
+          height: '30',
+          width: '20',
+          alpha: 0,
+          label: {
+            content: item.shop_name,
+            anchorY: -40,
+            anchorX: -20,
+            bgColor: '#333333',
+            color: '#fff',
+            padding: '5px',
+            borderRadius: 4
+          }
+        }
+      })
+    })
+    console.log(_temp)
   },
 
   /**
@@ -167,15 +105,11 @@ Page({
 
   },
 
-  bindlabeltap(e){
-    
-    let result = this.data.markders.find(item => item.id === e.detail.markerId)
-    console.log(result)
-    wx.openLocation({
-      latitude: Number(result.latitude),
-      longitude: Number(result.longitude),
-      name: result.label.content,
-      address: '广东省东莞市万江区'
+  bindlabeltap(e) {
+    App.globalData.storeInfo = App.globalData.storeList.find(item => item.shop_id === e.detail.markerId)
+
+    wx.navigateTo({
+      url: '../index/storeInformation/index',
     })
   }
 })

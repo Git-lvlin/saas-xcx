@@ -45,7 +45,7 @@
       <button class="f-32" catchtap="chooseAddress">一键获取微信地址</button>
     </view>
     <view class="padding-box m-top20 profile-btn">
-      <button formType="submit" disabled="{{disabled}}">保存</button>
+      <button formType="submit"  disabled="{{disabled}}" >保存</button>
     </view>
   </form>
 </view>

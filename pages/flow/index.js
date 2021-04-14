@@ -326,7 +326,7 @@ Page({
    */
   goShopping() {
     wx.switchTab({
-      url: '../index/index',
+      url: '../category/index',
     });
   },
 

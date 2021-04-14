@@ -61,7 +61,8 @@
     "pages/sharp/index/index",
     "pages/sharp/goods/index",
     "pages/inviteAffirm/index",
-    "pages/troupe/index/index"
+    "pages/troupe/index/index",
+    "pages/index/storeInformation/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -86,6 +87,12 @@
         "text": "商城",
         "iconPath": "images/cate.png",
         "selectedIconPath": "images/cate-active.png"
+      },
+      {
+        "pagePath": "pages/flow/index",
+        "text": "购物车",
+        "iconPath": "images/flow.png",
+        "selectedIconPath": "images/flow-active.png"
       },
       {
         "pagePath": "pages/user/index",

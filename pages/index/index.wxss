@@ -40,24 +40,26 @@ page {
 }
 
 .store__list {
-  padding-top: 20rpx;
+  margin-top: 100rpx;
 }
 
 .navigator {
   height: 80px;
   padding: 0 5px;
   text-align: center;
+  border-left: 1px solid #eee;
+  padding-left: 10px;
 }
 
 .navigator .icon-daohang {
   font-size: 60rpx;
   line-height: 50px;
-  color: lightblue;
+  color: rgb(77, 169, 255);
 }
 
 .navigator .placeholder {
   font-size: 24rpx;
-  color: lightblue;
+  color: rgb(77, 169, 255);
 }
 
 .icon-daohang {
@@ -66,4 +68,19 @@ page {
 
 .weui-flex {
   padding: 0 10px;
+}
+
+.index__nail-map {
+  background-color: rgb(80, 140, 252);
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  position: fixed;
+  right: 20rpx;
+  bottom: 20rpx;
+  line-height: 80rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 24rpx;
+  border-radius: 4px;
 }

@@ -4,7 +4,7 @@
  */
 const tabBarLinks = [
   'pages/index/index',
-  //'pages/category/index',
+  'pages/category/index',
   'pages/flow/index',
   'pages/user/index',
   'pages/sharing/index/index'
@@ -27,6 +27,8 @@ App({
     openid: '',
     session_key: '',
     mobile_acquired: false,
+    storeList: [],
+    storeInfo: {}
   },
 
   // api地址

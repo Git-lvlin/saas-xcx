@@ -474,8 +474,8 @@ page {
 }
 
 .profile-btn button {
-  background: linear-gradient(to right, #fa1e8c 0, #fc1e56 100%);
-  color: white;
+  background: white;
+  color: #1aad19;
   margin-bottom: 20rpx;
 }
 

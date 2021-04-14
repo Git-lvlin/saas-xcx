@@ -54,6 +54,7 @@ Page({
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
       _this.setData(result.data);
+      console.log(result.data)
       // 回调函数
       typeof callback === 'function' && callback();
     });
@@ -61,13 +62,32 @@ Page({
 
   /*
   请求店铺数据*/
-  getStoreList(){
+  getStoreList() {
     let _this = this;
-    App._get('shop/lists', {longitude: 23.45645645, latitude: 113.5641231}, reponse => {
-      console.log(reponse)
-     // _this.data.storeList = reponse.data.list
-    _this.setData({storeList: reponse.data.list})
+
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success(res) {
+        App._get('shop/lists', {
+          longitude: res.longitude,
+          latitude: res.latitude
+        }, reponse => {
+          // _this.data.storeList = reponse.data.list
+          console.log(reponse.data.list)
+          reponse.data.list.forEach(item => {
+            item.distance = (item.distance / 1000).toFixed(0) + 'km'
+          })
+          App.globalData.storeList = reponse.data.list;
+          _this.setData({
+            storeList: reponse.data.list
+          })
+        })
+
+
+      }
     })
+
+    
   },
 
   /**
@@ -122,19 +142,35 @@ Page({
     };
   },
 
-  readyNavigator() {
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success(res) {
-        const latitude = res.latitude
-        const longitude = res.longitude
+  readyNavigator(e) {
+    //wx.getLocation({
+      //type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      //success(res) {
+        //const latitude = res.latitude
+       // const longitude = res.longitude
+        let storeInfo = App.globalData.storeList.find(item => item.shop_id === e.currentTarget.id);
+        console.log(e)
         wx.openLocation({
-          name: '',
-          latitude,
-          longitude,
+          name: storeInfo.shop_name,
+          latitude: storeInfo.latitude,
+          longitude: storeInfo.longitude,
           scale: 18
         })
-      }
+   //   }
+    //})
+  },
+
+  navigateToNailMapPage() {
+    wx.navigateTo({
+      url: '../nail_picture/nail_picture',
     })
   },
+
+  checkoutStoreInformation(e) {
+    let id  = e.currentTarget.dataset.id;
+    App.globalData.storeInfo = this.data.storeList.find(item => item.shop_id === id)
+    wx.navigateTo({
+      url: './storeInformation/index',
+    })
+  }
 });
