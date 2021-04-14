@@ -1,7 +1,7 @@
 <!--pages/index/storeInformation/index.wxml-->
 <view class="store-information">
   <view class="store-information__banner" >
-    <image src="https://via.placeholder.com/750x363/2266ff/ffffff?text=banner" mode="widthFix"></image>
+    <image src="{{information.logo_url}}" mode="widthFix"></image>
   </view>
 
   <view class="weui-cells__title">{{information.shop_name}}</view>

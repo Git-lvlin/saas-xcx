@@ -148,12 +148,12 @@ Page({
       //success(res) {
         //const latitude = res.latitude
        // const longitude = res.longitude
-        let storeInfo = App.globalData.storeList.find(item => item.shop_id === e.currentTarget.id);
+        let storeInfo = App.globalData.storeList.find(item => item.shop_id === e.currentTarget.dataset.id);
         console.log(e)
         wx.openLocation({
           name: storeInfo.shop_name,
-          latitude: storeInfo.latitude,
-          longitude: storeInfo.longitude,
+          latitude: Number(storeInfo.latitude),
+          longitude: Number(storeInfo.longitude),
           scale: 18
         })
    //   }

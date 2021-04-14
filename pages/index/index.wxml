@@ -12,7 +12,7 @@
     <view class="weui-flex" wx:for="{{storeList}}" wx:key="shop_id" catchtap="checkoutStoreInformation" data-id="{{item.shop_id}}">
       <view>
         <view class="placeholder thumb">
-          <image src="https://via.placeholder.com/80x80/2233ff"></image>
+          <image src="{{item.logo_url}}"></image>
         </view>
       </view>
       <view class="weui-flex__item store__info">
@@ -33,7 +33,7 @@
         </view>
       </view>
 
-      <view class="navigator" catchtap="readyNavigator" data-id="{{itme.shop_id}}">
+      <view class="navigator" catchtap="readyNavigator" data-id="{{item.shop_id}}">
         <view class="placeholder">
           <text class="iconfont icon-daohang"></text>
         </view>

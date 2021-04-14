@@ -20,6 +20,10 @@
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
+    "compileHotReLoad": true,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -28,10 +32,6 @@
     "bundle": false,
     "useCompilerModule": false,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "compileHotReLoad": true,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": false,
     "enableEngineNative": false,
     "useIsolateContext": true,
     "userConfirmedBundleSwitch": false,
@@ -42,7 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.12.2",
   "appid": "wx97f75401b664ce99",
-  "projectname": "%E6%B3%89%E5%A4%A9%E4%B8%8B",
+  "projectname": "泉天下",
   "debugOptions": {
     "hidedInDevtools": []
   },
