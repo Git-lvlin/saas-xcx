@@ -48,8 +48,6 @@ Page({
    * 切换标签
    */
   onSwitchService: function(e) {
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     this.setData({
       serviceType: e.detail.target.dataset.type
     });
@@ -59,8 +57,6 @@ Page({
    * 跳转商品详情
    */
   onGoodsDetail: function(e) {
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: '../../../goods/index?goods_id=' + e.detail.target.dataset.id
     });
@@ -73,8 +69,6 @@ Page({
     let _this = this,
       index = e.currentTarget.dataset.index,
       imageList = _this.data.imageList;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 选择图片
     wx.chooseImage({
       count: 6 - imageList.length,
@@ -141,7 +135,7 @@ Page({
                 url: "../index"
               });
             });
-          } else  if(result.code&&result.code >2){
+          } else {
             App.showError(result.msg);
           }
         },

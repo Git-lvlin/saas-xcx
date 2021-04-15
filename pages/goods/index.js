@@ -212,7 +212,6 @@ Page({
    */
   onIncGoodsNumber(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     _this.setData({
       goods_num: ++_this.data.goods_num
     })
@@ -223,7 +222,6 @@ Page({
    */
   onDecGoodsNumber(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     if (_this.data.goods_num > 1) {
       _this.setData({
         goods_num: --_this.data.goods_num
@@ -355,8 +353,6 @@ Page({
    */
   onClickShare(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     _this.setData({
       'share.show': true
     });
@@ -418,8 +414,6 @@ Page({
    */
   onSavePoster(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.showLoading({
       title: '加载中',
     });
@@ -465,12 +459,8 @@ Page({
   /**
    * 确认购买弹窗
    */
-  onToggleTrade(e) {
+  onToggleTrade() {
     let _this = this;
-    if (typeof e === 'object') {
-      // 记录formId
-      e.detail.hasOwnProperty('formId') && App.saveFormId(e.detail.formId);
-    }
     _this.setData({
       showBottomPopup: !_this.data.showBottomPopup
     });

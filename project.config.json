@@ -40,7 +40,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.12.2",
+  "libVersion": "2.16.0",
   "appid": "wx97f75401b664ce99",
   "projectname": "泉天下",
   "debugOptions": {

@@ -276,7 +276,7 @@ Page({
     // 订单创建成功后回调--微信支付
     if (result.code === -10) {
       App.showError(result.msg, () => {
-        _this.redirectToOrderIndex(0);
+        _this.redirectToOrderIndex();
       });
       return false;
     }
@@ -285,11 +285,11 @@ Page({
       App.wxPayment({
         payment: result.data.payment,
         success: res => {
-          _this.redirectToOrderIndex(result.data.active_id);
+          _this.redirectToOrderIndex();
         },
         fail: res => {
           App.showError(result.msg.error, () => {
-            _this.redirectToOrderIndex(result.data.active_id);
+            _this.redirectToOrderIndex();
           });
         },
       });
@@ -297,7 +297,7 @@ Page({
     // 余额支付
     if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
       App.showSuccess(result.msg.success, () => {
-        _this.redirectToOrderIndex(result.data.active_id);
+        _this.redirectToOrderIndex();
       });
     }
   },
@@ -393,8 +393,6 @@ Page({
    */
   onSelectPayType(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 设置当前支付方式
     _this.setData({
       curPayType: e.currentTarget.dataset.value
@@ -404,17 +402,10 @@ Page({
   /**
    * 跳转到未付款订单
    */
-  redirectToOrderIndex(active_id) {
-    if (active_id && active_id > 0) {
-      wx.redirectTo({
-        // url: '../order/index',
-        url: '../active/index?active_id=' + active_id
-      });
-    } else {
-      wx.redirectTo({
-        url: '../order/index',
-      });
-    }
+  redirectToOrderIndex() {
+    wx.redirectTo({
+      url: '../order/index',
+    });
   },
 
   /**
@@ -456,8 +447,6 @@ Page({
    */
   onShowPoints(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 显示dialog
     let setting = _this.data.setting;
     Dialog({

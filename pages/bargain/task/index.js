@@ -1,13 +1,7 @@
-const App = getApp();
-
-// 工具类
 import util from '../../../utils/util.js';
-
-// 倒计时插件
-import CountDown from '../../../utils/countdown.js';
-
-// 对话框插件
 import Dialog from '../../../components/dialog/dialog';
+
+const App = getApp()
 
 Page({
 
@@ -15,8 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 砍价任务倒计时
-    taskEndTime: [],
+    countDownTime: false, // 倒计时日期
 
     task: {}, // 砍价任务详情
     active: {}, // 活动详情
@@ -71,18 +64,15 @@ Page({
    * 初始化页面数据
    */
   _initData(data) {
-    let _this = this;
+    const app = this;
     // 初始化：显示操作按钮
-    _this._initShowBtn(data);
+    app._initShowBtn(data)
+    // 记录页面数据
+    app.setData(data)
     // 记录活动到期时间
-    data.taskEndTime = [{
-      date: data.task.end_time
-    }];
-    _this.setData(data);
-    // 执行倒计时
-    if (!data.task.is_end) {
-      CountDown.onSetTimeList(_this, 'taskEndTime');
-    }
+    app.setData({
+      countDownTime: data.active.end_time
+    })
   },
 
   /**
@@ -110,8 +100,6 @@ Page({
    * 跳转到首页
    */
   onTargetHome(e) {
-    // 记录formid
-    App.saveFormId(e.detail.formId);
     wx.switchTab({
       url: '../../index/index',
     })
@@ -121,8 +109,6 @@ Page({
    * 显示砍价规则
    */
   onToggleRules(e) {
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 显示砍价规则
     let _this = this;
     Dialog({
@@ -143,8 +129,6 @@ Page({
    */
   onTargetGoods(e) {
     let _this = this;
-    // 记录formid
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: `../goods/index?active_id=${_this.data.task.active_id}`,
     })
@@ -154,8 +138,6 @@ Page({
    * 跳转到砍价首页
    */
   onTargetBargain(e) {
-    // 记录formid
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: '../index/index',
     })
@@ -166,8 +148,6 @@ Page({
    */
   onHelpCut(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 按钮禁用时不允许操作(防重复提交)
     if (_this.data.disabled == true) {
       return false;
@@ -180,7 +160,7 @@ Page({
     App._post_form('bargain.task/help_cut', {
       task_id: _this.data.task_id
     }, result => {
-      App.showSuccess(result.msg, function() {
+      App.showSuccess(result.msg, function () {
         wx.navigateBack();
       });
       // 获取砍价任务详情
@@ -200,8 +180,6 @@ Page({
 
     let _this = this;
 
-    // 记录formId
-    App.saveFormId(e.detail.formId);
 
     // 跳转到结算台
     let option = util.urlEncode({

@@ -1,8 +1,10 @@
 <import src="../../../wxParse/wxParse.wxml"></import>
-<scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
+<scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true"
+  style="position:absolute; top:0; left:0; right:0; bottom:0;">
   <view class="container" wx:if="{{detail.goods_id}}">
     <view class="swiper">
-      <swiper autoplay="{{autoplay}}" bindchange="setCurrent" class="banner-box  swiper-box" duration="{{duration}}" indicator-dots="{{indicatorDots}}" interval="{{interval}}" circular="{{true}}">
+      <swiper autoplay="{{autoplay}}" bindchange="setCurrent" class="banner-box  swiper-box" duration="{{duration}}"
+        indicator-dots="{{indicatorDots}}" interval="{{interval}}" circular="{{true}}">
         <swiper-item wx:for="{{detail.image}}" wx:key="this" catchtap="onPreviewImages" data-index="{{ index }}">
           <image class="slide-image" mode="aspectFill" src="{{item.file_path}}"></image>
         </swiper-item>
@@ -127,21 +129,31 @@
         <!-- <text class="col-9">更多团购 <text class="iconfont icon-xiangyoujiantou"></text> </text> -->
       </view>
       <!-- 进行中的团购-内容部分 -->
-      <view class="corwd" wx:for="{{ activeList }}" wx:key="this" catchtap="onTargetActive" data-id="{{ item.active_id }}">
+      <view class="corwd" wx:for="{{ activeList }}" wx:key="this" catchtap="onTargetActive"
+        data-id="{{ item.active_id }}">
         <view class="corwd_people">
           <!-- 进行中的团购-头像 -->
           <view class="">
             <image src="{{ item.user.avatarUrl }}" class="corwd_people_images"></image>
           </view>
           <!-- 进行中的团购-名称 -->
-          <text class="onelist-hidden">{{ item.user.nickName }}的团</text>
+          <text class="onelist-hidden">{{ item.user.nickName }}</text>
         </view>
         <view class="corwd_time">
           <view class="corwd_time_text">
             <!-- 进行中的团购-开团人数 -->
-            <text class="corwd_time_title onelist-hidden">还差<text>{{ item.people - item.actual_people }}</text>人成团</text>
+            <view class="corwd_time_title onelist-hidden">
+              <text>还差</text>
+              <text>{{ item.people - item.actual_people }}</text>
+              <text>人成团</text>
+            </view>
             <!-- 进行中的团购-倒计时 -->
-            <text class="corwd_time_number col-9 onelist-hidden">剩余{{ countDownList[index].day }}天{{ countDownList[index].hou }}:{{ countDownList[index].min }}:{{ countDownList[index].sec }}</text>
+            <view class="corwd_time_number col-9 onelist-hidden">
+              <text class="prefix">剩余</text>
+              <countdown date="{{ item.end_time.text }}" separator="colon" style="text" />
+            </view>
+            <!-- <text
+              class="corwd_time_number col-9 onelist-hidden">剩余{{ countDownList[index].day }}天{{ countDownList[index].hou }}:{{ countDownList[index].min }}:{{ countDownList[index].sec }}</text> -->
           </view>
           <!-- 进行中的团购-按钮 -->
           <button>去参团</button>
@@ -187,6 +199,7 @@
         </button>
       </form>
     </view>
+
     <!-- 商品描述 -->
     <view class="p-bottom">
       <view class="top-nav m-top20 b-f b-b">
@@ -221,7 +234,9 @@
       </form>
       <!-- 在线客服 -->
       <view class="goods-fixed-icon dis-flex flex-x-center flex-y-center">
-        <button open-type="contact" sessionFrom="weapp" size="27" style="opacity: 0;position:absolute;top:0px;left:0px;display:block;width:100%;height:100%;" type="default-light"></button>
+        <button open-type="contact" sessionFrom="weapp" size="27"
+          style="opacity: 0;position:absolute;top:0px;left:0px;display:block;width:100%;height:100%;"
+          type="default-light"></button>
         <text class="iconfont icon-kefu"></text>
       </view>
       <!-- 购买按钮 -->
@@ -238,10 +253,7 @@
           <form bindsubmit="onTriggerOrder" report-submit="true" data-type="20">
             <button formType="submit" class="btn-normal col-f">
               <view class="f-26">￥{{ sharing_price }}</view>
-              <view>
-              {{setting.basic.is_dealer==2?'(团长)':''}}
-                发起拼单
-              </view>
+              <view>发起拼单</view>
             </button>
           </form>
         </view>
@@ -289,59 +301,41 @@
       <view class="goods-attr">
         <!-- 滚动容器 -->
         <scroll-view class="goods-attr--scroll" scroll-y="{{ true }}">
-          <view class="group-item" wx:for="{{ goodsMultiSpec.spec_attr }}" wx:for-item="attr" wx:for-index="attr_idx" wx:key="this">
+          <view class="group-item" wx:for="{{ goodsMultiSpec.spec_attr }}" wx:for-item="attr" wx:for-index="attr_idx"
+            wx:key="this">
             <view class="tips-text" data-id="{{ attr.group_id }}">{{ attr.group_name }}</view>
-            <view class="spec-item {{ item.checked ? 'cur' : '' }}" wx:for="{{ attr.spec_items }}" wx:for-index="item_idx" wx:key="this" data-attr-idx="{{ attr_idx }}" data-item-idx="{{ item_idx }}" catchtap="onSwitchSpec">
+            <view class="spec-item {{ item.checked ? 'cur' : '' }}" wx:for="{{ attr.spec_items }}"
+              wx:for-index="item_idx" wx:key="this" data-attr-idx="{{ attr_idx }}" data-item-idx="{{ item_idx }}"
+              catchtap="onSwitchSpec">
               {{ item.spec_value }}
             </view>
           </view>
         </scroll-view>
       </view>
-      <view class="shareTeaxt" wx:if="{{setting.basic.is_dealer>0}}">
-        <view class="shareTeaxt_content"> {{detail.selling_point}}</view>
-
-      </view>
       <!-- 购买数量 -->
       <view class="buy_number">
-        <view>
-          <view class="buyNumber f-26">
-            <text>购买数量</text>
-          </view>
-          <view class="select-number">
-            <form bindsubmit="onDecGoodsNumber" report-submit="true">
-              <button formType="submit" class="default {{ goods_num > 1 ? '' : 'disabled' }}" type="default">-</button>
-            </form>
-            <input bindinput="onInputGoodsNum" type="number" value="{{ goods_num }}"></input>
-            <form bindsubmit="onIncGoodsNumber" report-submit="true">
-              <button formType="submit" class="default" type="default">+</button>
-            </form>
-          </view>
-
+        <view class="buyNumber f-26">
+          <text>购买数量</text>
         </view>
-
-        <view class="shareTeaxt-botton">
-         <form bindsubmit="shareTeaxtClickShare" report-submit="true">
-            <button formType="submit" class="btn-normal dis-flex flex-dir-column">
-              <text class="share__icon iconfont icon-fenxiang">   立即分享</text>
-            </button>
+        <view class="select-number">
+          <form bindsubmit="onDecGoodsNumber" report-submit="true">
+            <button formType="submit" class="default {{ goods_num > 1 ? '' : 'disabled' }}" type="default">-</button>
+          </form>
+          <input bindinput="onInputGoodsNum" type="number" value="{{ goods_num }}"></input>
+          <form bindsubmit="onIncGoodsNumber" report-submit="true">
+            <button formType="submit" class="default" type="default">+</button>
           </form>
         </view>
-
       </view>
     </view>
     <!-- 底部操作栏 -->
     <view class="footer-fixed f-30">
-      <block wx:if="{{stock_num > 0&&sharing_tips&&order_type==20}}">
-        <view class="default-btn dis-flex flex-x-center flex-y-center">
-          {{sharing_tips}}
-        </view>
-      </block>
-      <block wx:if="{{stock_num > 0&&(!sharing_tips||order_type==10)}}">
+      <block wx:if="{{stock_num > 0}}">
         <view class="order-bt dis-flex flex-x-center flex-y-center" catchtap="onCheckout">
           <text>确定</text>
         </view>
       </block>
-      <view class="default-btn" wx:if="{{stock_num < 1}}">暂无现货</view>
+      <view class="default-btn" wx:else>暂无现货</view>
     </view>
   </view>
 </zan-popup>
@@ -356,7 +350,9 @@
 </view>
 
 <!-- 分享按钮 -->
-<zan-actionsheet show="{{ share.show }}" actions="{{ share.actions }}" cancel-text="{{ share.cancelText }}" cancel-with-mask="{{ share.cancelWithMask }}" bind:cancel="onCloseShare" bind:actionclick="onClickShareItem" mask-class="tiny" />
+<zan-actionsheet show="{{ share.show }}" actions="{{ share.actions }}" cancel-text="{{ share.cancelText }}"
+  cancel-with-mask="{{ share.cancelWithMask }}" bind:cancel="onCloseShare" bind:actionclick="onClickShareItem"
+  mask-class="tiny" />
 
 <!-- 商品海报 弹出层 -->
 <zan-popup show="{{ share.showPopup }}" bindclose="onTogglePopup">

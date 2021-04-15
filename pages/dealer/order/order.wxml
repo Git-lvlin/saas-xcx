@@ -10,7 +10,7 @@
     <view class="widget-list b-f" wx:if="{{ list.data.length }}">
       <view class="widget__detail" wx:for="{{ list.data }}" wx:key="this">
         <view class="detail__row dis-flex flex-x-between">
-          <view class="detail__left f-24">订单号：{{ item.order_master.order_no }}</view>
+          <view class="detail__left f-24">订单号：{{ item.order_master.order_no }} ({{item.order_type.text}})</view>
           <view class="detail__right f-24 c-violet">
             {{ item.order_master.state_text }}
           </view>

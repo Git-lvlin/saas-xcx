@@ -77,7 +77,7 @@ page, .container {
 .sharp-active .active-status {
   font-size: 32rpx;
   color: #fd4a5f;
-  margin-bottom: 15rpx;
+  margin-bottom: 20rpx;
 }
 
 .sharp-active .active-status .active-status--icon {
@@ -93,22 +93,6 @@ page, .container {
 .active--count-down {
   font-size: 26rpx;
   height: 40rpx;
-}
-
-.active--count-down .clock-text {
-  margin-right: 10rpx;
-}
-
-.active--count-down .clock-time {
-  background: #252525;
-  color: #fff;
-  padding: 0 8rpx;
-  line-height: 40rpx;
-  border-radius: 8rpx;
-}
-
-.active--count-down .clock-symbol {
-  padding: 0 8rpx;
 }
 
 /* 商品列表 */

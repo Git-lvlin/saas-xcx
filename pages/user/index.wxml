@@ -90,7 +90,7 @@
   <view class="my-asset dis-flex">
     <view class="asset-left flex-box dis-flex flex-x-center">
       <view class="asset-left_item">
-        <form bindsubmit="onTargetWallet" report-submit="true">
+        <form bindsubmit="onTargetWallet" report-submit="true" wx:if="{{ setting.open_recharge }}">
           <button formType="submit" class="btn-normal">
             <view class="item-value dis-flex flex-x-center">
               <text>{{ isLogin ? userInfo.balance : '0.00' }}</text>
@@ -100,6 +100,17 @@
             </view>
           </button>
         </form>
+
+        <view wx:if="{{ !setting.open_recharge }}">
+          <button formType="submit" class="btn-normal">
+            <view class="item-value dis-flex flex-x-center">
+              <text>{{ isLogin ? userInfo.balance : '0.00' }}</text>
+            </view>
+            <view class="item-name dis-flex flex-x-center">
+              <text>账户余额</text>
+            </view>
+          </button>
+        </view>
       </view>
       <view class="asset-left_item">
         <form bindsubmit="onTargetPoints" report-submit="true">

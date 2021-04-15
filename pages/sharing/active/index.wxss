@@ -115,7 +115,7 @@ view {
 .main .main_user .user-item {
   width: 100rpx;
   height: 100rpx;
-  margin: 0 25rpx 70rpx 0;
+  margin: 0 25rpx 25rpx 0;
   position: relative;
   box-sizing: border-box;
 }
@@ -139,15 +139,7 @@ view {
   left: 0;
   bottom: -1rpx;
 }
-.main .main_user .user-item .user-name{
-  color:#fa1e8c;
-  text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow:ellipsis ;
-  width: 200rpx;
-  margin-left: -50rpx;
-}
+
 .main .main_user .user-item .user-role text {
   background: #fa1e8c;
   border-radius: 15rpx;
@@ -191,18 +183,16 @@ view {
 
 /* 倒计时 */
 
+.main_tiem {
+  margin-bottom: 40rpx;
+  font-size: 32rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
 .main_tiem .main_timer_color {
   color: #fc8434;
-}
-
-.main_tiem view {
-  display: inline-block;
-}
-
-.main_tiem view text {
-  display: inline-block;
-  padding: 10rpx 5rpx;
-  background: #e5e5e5;
 }
 
 .main button {

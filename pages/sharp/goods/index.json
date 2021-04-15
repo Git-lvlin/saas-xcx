@@ -3,6 +3,7 @@
   "usingComponents": {
     "zan-actionsheet": "/components/actionsheet/index",
     "zan-popup": "/components/popup/index",
-    "shortcut": "/components/shortcut/shortcut"
+    "shortcut": "/components/shortcut/shortcut",
+    "countdown": "/components/countdown/index"
   }
 }

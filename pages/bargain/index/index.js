@@ -1,10 +1,6 @@
-const App = getApp();
+import util from '../../../utils/util.js'
 
-// 工具类
-import util from '../../../utils/util.js';
-
-// 倒计时插件
-import CountDown from '../../../utils/countdown.js';
+const App = getApp()
 
 Page({
 
@@ -137,21 +133,14 @@ Page({
    * 初始化倒计时组件
    */
   _initCountDownData(data) {
-    let _this = this;
-    // 记录活动到期时间
-    let countDownList = _this.data.countDownList;
-    data.myList.data.forEach((item) => {
-      countDownList.push({
-        date: item.end_time,
-      });
-    });
-    _this.setData({
-      countDownList,
-    });
-    // 执行倒计时
-    if (countDownList.length > 0) {
-      CountDown.onSetTimeList(_this, 'countDownList');
-    }
+    // let _this = this;
+    // // 记录活动到期时间
+    // let countDownList = _this.data.countDownList;
+    // data.myList.data.forEach((item) => {
+    //   countDownList.push({
+    //     date: item.end_time
+    //   })
+    // })
   },
 
   /**
@@ -169,8 +158,6 @@ Page({
    */
   onToggleTab(e) {
     let _this = this;
-    // 保存formid
-    App.saveFormId(e.detail.formId);
     // 设置当前tabbar索引，并重置数据
     _this.setData({
       currentTab: e.currentTarget.dataset.index,
@@ -188,8 +175,6 @@ Page({
    * 跳转到砍价商品详情
    */
   onTargetActive(e) {
-    // 保存formid
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: `../goods/index?active_id=${e.detail.target.dataset.id}`,
     })
@@ -199,8 +184,6 @@ Page({
    * 跳转到砍价任务详情
    */
   onTargetTask(e) {
-    // 保存formid
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: `../task/index?task_id=${e.detail.target.dataset.id}`,
     })

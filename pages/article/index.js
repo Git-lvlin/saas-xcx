@@ -22,8 +22,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let _this = this;
+    // 设置默认的分类
+    if (options.category_id) {
+      _this.setData({
+        category_id: options.category_id
+      })
+    }
     // 设置文章列表高度
     _this.setListHeight();
     // Api：获取文章首页
@@ -36,7 +42,7 @@ Page({
   getIndexData() {
     let _this = this;
     // 获取文章首页
-    App._get('article/index', {}, function(result) {
+    App._get('article/index', {}, function (result) {
       _this.setData({
         categoryList: result.data.categoryList
       });
@@ -48,7 +54,7 @@ Page({
   /**
    * Api：切换导航栏
    */
-  onSwitchTab: function(e) {
+  onSwitchTab: function (e) {
     let _this = this;
     // 第一步：切换当前的分类id
     _this.setData({
@@ -70,7 +76,7 @@ Page({
     App._get('article/lists', {
       page: page || 1,
       category_id: _this.data.category_id
-    }, function(result) {
+    }, function (result) {
       let resList = result.data.list,
         dataList = _this.data.articleList;
       if (isPage == true) {
@@ -119,9 +125,6 @@ Page({
       rpx = systemInfo.windowWidth / 750, // 计算rpx
       tapHeight = Math.floor(rpx * 98), // tap高度
       scrollHeight = systemInfo.windowHeight - tapHeight; // swiper高度
-    console.log(
-      systemInfo.windowHeight
-    );
     this.setData({
       scrollHeight
     });

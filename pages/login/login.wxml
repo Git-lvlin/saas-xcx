@@ -17,8 +17,12 @@
     <view class="getUserInfoPop">
       <view style="text-align:center;white-space:pre-wrap">获得你的公开信息\n（昵称、头像等）</view>
       <view class="login-btn" style="margin-top:0.7em;">
-        <button class="btn-normal" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">微信授权</button>
+        <!-- 旧版微信登录（弃用） -->
+        <!-- <button class="btn-normal" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">授权登录</button> -->
+        <!-- 新版微信登录 -->
+        <button class="btn-normal" catchtap="getUserProfile">授权登录</button>
       </view>
+
     </view>
 
   </pop-manager>

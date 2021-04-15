@@ -118,18 +118,6 @@
     </scroll-view>
   </view>
 
-  <!-- 核销码弹出层 -->
-  <zan-popup show="{{ showQRCodePopup }}" bindclose="onToggleQRCodePopup">
-    <view class="pop-qrcode pop-example__container">
-      <view class="pop-title">
-        <text class="f-30">核销二维码</text>
-      </view>
-      <view class="pop-content">
-        <image src="{{ QRCodeImage }}"></image>
-      </view>
-    </view>
-  </zan-popup>
-
   <!-- 支付方式弹窗 -->
   <zan-popup show="{{ showPayPopup }}" bindclose="onTogglePayPopup">
     <view class="pop-orderPay pop-example__container">

@@ -32,8 +32,6 @@ Page({
       values = e.detail.value
     values.region = this.data.region;
 
-    // 记录formId
-    App.saveFormId(e.detail.formId);
 
     // 表单验证
     if (!_this.validation(values)) {
