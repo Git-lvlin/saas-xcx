@@ -10,7 +10,7 @@ Page({
     userinfo_acquired: false,
     options: {
     },
-    show:false
+    show: false
   },
 
   /**
@@ -44,7 +44,7 @@ Page({
   },
 
   /**
-   * 授权登录
+   * 授权登录（旧版弃用）
    */
   getUserInfo(e) {
     if (!App.checkMobileAcquired()) {
@@ -59,14 +59,44 @@ Page({
   },
 
   /**
+   * 授权登录（新版）
+   */
+  getUserProfile() {
+    console.log('getUserProfile ', App.checkMobileAcquired(), wx.canIUse('getUserProfile'))
+
+    if (!App.checkMobileAcquired()) {
+      App.showError('请先授权微信绑定的手机号');
+      return;
+    }
+
+    const app = this
+    // wx.canIUse('getUserProfile') && wx.getUserProfile({
+    wx.getUserProfile({
+      lang: 'zh_CN',
+      desc: '获取用户相关信息',
+      success({
+        userInfo
+      }) {
+        console.log('用户同意了授权')
+        console.log('userInfo：', userInfo)
+        App.getUserInfo(userInfo, () => {
+          // 跳转回原页面
+          app.onNavigateBack(1)
+        });
+      },
+      fail() {
+        console.log('用户拒绝了授权')
+      }
+    })
+  },
+
+  /**
    * 暂不登录
    */
   onNotLogin() {
     let _this = this;
     // 跳转回原页面
-    wx.navigateBack({
-      delta: Number(_this.data.options.delta || 1)
-    });
+    _this.onNavigateBack(_this.data.options.delta);
   },
 
   /**
@@ -79,12 +109,12 @@ Page({
       isLogin: App.checkIsLogin(),
       mobile_acquired: App.checkMobileAcquired(),
     });
-    console.log('this.data', this.data)
-    if (App.checkIsLogin() && App.checkMobileAcquired()) {
-      wx.navigateBack({
-        delta: Number(delta || 1)
-      });
-    }
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
+    // wx.navigateBack({
+    //   delta: Number(delta || 1)
+    // });
   },
 
 })

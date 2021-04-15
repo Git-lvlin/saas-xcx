@@ -27,12 +27,11 @@ Component({
      * 跳转商品详情页
      */
     _onTargetGoods(e) {
-      // 记录formid
-      App.saveFormId(e.detail.formId);
       wx.navigateTo({
         url: '/pages/goods/index?goods_id=' + e.detail.target.dataset.id,
       });
     },
+
     addCard(e) {
       let _this = this
       var goods_id = e.currentTarget.dataset.goods_id
@@ -45,12 +44,13 @@ Component({
         goods_num: goods_num,
         goods_sku_id: spec_sku_id,
       }, (result) => {
+        // console.log('result ', result)
         App.showSuccess(result.msg);
         // _this.setData(result.data);
         // 记录购物车商品数量
         App.setCartTotalNum(result.data.cart_total_num)
+        App.setCartTabBadge()
       });
     },
-  }
-
+  },
 })

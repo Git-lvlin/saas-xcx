@@ -1,10 +1,9 @@
-const App = getApp();
 const Sharing = require('../../../utils/extend/sharing.js');
 const wxParse = require("../../../wxParse/wxParse.js");
 const Dialog = require('../../../components/dialog/dialog');
-
-// 工具类
 const util = require('../../../utils/util.js');
+
+const App = getApp()
 
 // 记录规格的数组
 let goodsSpecArr = [];
@@ -37,10 +36,7 @@ Page({
     cart_total_num: 0, // 购物车商品总数量
     goodsMultiSpec: {}, // 多规格信息
 
-    countDownList: [], // 时间记录
-    actEndTimeList: [],
-    is_leader:0,//是否是团长
-
+    is_leader: 0,//是否是团长
     discounts_tips: '', // 优惠提示
 
     // 分享按钮组件
@@ -99,8 +95,6 @@ Page({
       // 初始化商品详情数据
       let data = _this._initGoodsDetailData(result.data);
       _this.setData(data);
-      // 执行倒计时函数
-      _this.countDown();
     });
   },
 
@@ -109,14 +103,12 @@ Page({
    */
   _initGoodsDetailData(data) {
     let _this = this;
-
     // 商品详情
     let goodsDetail = data.detail;
     // 富文本转码
     if (goodsDetail.content.length > 0) {
       wxParse.wxParse('content', 'html', goodsDetail.content, _this, 0);
     }
-    // console.log('data.is_leader', data.is_leader);
     // 商品价格/划线价/库存
     data.goods_sku_id = goodsDetail.goods_sku.spec_sku_id;
     data.goods_price = goodsDetail.goods_sku.goods_price;
@@ -132,13 +124,6 @@ Page({
     // 初始化商品多规格
     if (goodsDetail.spec_type == 20) {
       data.goodsMultiSpec = _this.initManySpecData(goodsDetail.goods_multi_spec);
-    }
-    // 记录倒计时时间
-    data['actEndTimeList'] = [];
-    if (data.activeList.length > 0) {
-      data.activeList.forEach(item => {
-        data['actEndTimeList'].push(item.end_time.text);
-      });
     }
     return data;
   },
@@ -168,8 +153,6 @@ Page({
       itemIdx = e.currentTarget.dataset.itemIdx,
       goodsMultiSpec = _this.data.goodsMultiSpec;
 
-    // 记录formid
-    App.saveFormId(e.detail.formId);
 
     for (let i in goodsMultiSpec.spec_attr) {
       for (let j in goodsMultiSpec.spec_attr[i].spec_items) {
@@ -231,7 +214,6 @@ Page({
    */
   onScrollTop(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     _this.setData({
       scrollTop: 0
     });
@@ -252,7 +234,6 @@ Page({
    */
   onIncGoodsNumber(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     _this.setData({
       goods_num: ++_this.data.goods_num
     })
@@ -263,7 +244,6 @@ Page({
    */
   onDecGoodsNumber(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     if (_this.data.goods_num > 1) {
       _this.setData({
         goods_num: --_this.data.goods_num
@@ -370,7 +350,6 @@ Page({
    */
   onTargetToComment(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: './comment/comment?goods_id=' + _this.data.goods_id
     })
@@ -381,21 +360,11 @@ Page({
    */
   onClickShare(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     _this.setData({
       'share.show': true
     });
   },
-  shareTeaxtClickShare(e){
-    let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
-    _this.setData({
-      'share.show': true,
-      showBottomPopup: !_this.data.showBottomPopup
-    });
-  },
+
   /**
    * 关闭分享选项
    */
@@ -452,8 +421,6 @@ Page({
    */
   onSavePoster(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.showLoading({
       title: '加载中',
     });
@@ -499,12 +466,8 @@ Page({
   /**
    * 确认购买弹窗
    */
-  onToggleTrade(e) {
+  onToggleTrade() {
     let _this = this;
-    if (typeof e === 'object') {
-      // 记录formId
-      e.detail.hasOwnProperty('formId') && App.saveFormId(e.detail.formId);
-    }
     _this.setData({
       showBottomPopup: !_this.data.showBottomPopup
     });
@@ -514,8 +477,6 @@ Page({
    * 显示拼团规则
    */
   onToggleRules(e) {
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 显示拼团规则
     let _this = this;
     Dialog({
@@ -534,7 +495,6 @@ Page({
    * 返回主页
    */
   onNavigationHome(e) {
-    App.saveFormId(e.detail.formId);
     wx.switchTab({
       url: '../../index/index',
     })
@@ -544,7 +504,6 @@ Page({
    * 立即下单
    */
   onTriggerOrder(e) {
-    console.log(App.saveFormId(e.detail.formId))
     let _this = this;
     // 设置当前购买类型
     _this.setData({
@@ -552,57 +511,6 @@ Page({
     }, () => {
       _this.onToggleTrade();
     });
-  },
-  /**
-   * 小于10的格式化函数
-   */
-  timeFormat(param) {
-    return param < 10 ? '0' + param : param;
-  },
-
-  /**
-   * 倒计时函数
-   */
-  countDown() {
-    // 获取当前时间，同时得到活动结束时间数组
-    let newTime = new Date().getTime();
-    let endTimeList = this.data.actEndTimeList;
-    let countDownArr = [];
-
-    // 对结束时间进行处理渲染到页面
-    endTimeList.forEach(o => {
-      let endTime = new Date(util.format_date(o)).getTime();
-      let obj = null;
-      // 如果活动未结束，对时间进行处理
-      if (endTime - newTime > 0) {
-        let time = (endTime - newTime) / 1000;
-        // 获取天、时、分、秒
-        let day = parseInt(time / (60 * 60 * 24));
-        let hou = parseInt(time % (60 * 60 * 24) / 3600);
-        let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
-        let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
-        obj = {
-          day: day,
-          hou: this.timeFormat(hou),
-          min: this.timeFormat(min),
-          sec: this.timeFormat(sec)
-        }
-      } else {
-        //活动已结束，全部设置为'00'
-        obj = {
-          day: '00',
-          hou: '00',
-          min: '00',
-          sec: '00'
-        }
-      }
-      countDownArr.push(obj);
-    })
-    // 渲染，然后每隔一秒执行一次倒计时函数
-    this.setData({
-      countDownList: countDownArr
-    });
-    setTimeout(this.countDown, 1000);
   },
 
   /**

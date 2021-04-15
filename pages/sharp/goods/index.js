@@ -1,16 +1,8 @@
-const App = getApp();
-
-// 富文本插件
 import wxParse from '../../../wxParse/wxParse.js';
-
-// 工具类
 import util from '../../../utils/util.js';
-
-// 倒计时插件
-import CountDown from '../../../utils/countdown.js';
-
-// 枚举类：秒杀活动商品状态
 import ActiveStatusEnum from '../../../utils/enum/sharp/GoodsStatus.js';
+
+const App = getApp();
 
 // 记录规格的数组
 let goodsSpecArr = [];
@@ -61,14 +53,10 @@ Page({
     // 返回顶部
     showTopWidget: false,
 
-    // 倒计时
-    countDownObj: {
-      date: '',
-      dynamic: {}
-    },
-
     active: {}, // 秒杀活动详情
     goods: {}, // 商品详情
+
+    countDownTime: false // 倒计时
 
   },
 
@@ -151,14 +139,7 @@ Page({
     const countDownTime = data.active.active_status == ActiveStatusEnum.STATE_SOON.value ?
       data.active.start_time : data.active.end_time
     app.setData({
-      'countDownObj.date': countDownTime
-    })
-    // 执行倒计时
-    CountDown.start(0, app, 'countDownObj', () => {
-      // 倒计时结束刷新页面
-      setTimeout(() => {
-        app.onRefreshPage()
-      }, 800)
+      countDownTime
     })
   },
 
@@ -178,6 +159,15 @@ Page({
     return data;
   },
 
+  // 倒计时结束刷新页面
+  onCountDownEnd() {
+    const app = this
+    console.log('onCountDownEnd')
+    setTimeout(() => {
+      app.onRefreshPage()
+    }, 200)
+  },
+
   /**
    * 点击切换不同规格
    */
@@ -186,8 +176,6 @@ Page({
       attrIdx = e.currentTarget.dataset.attrIdx,
       itemIdx = e.currentTarget.dataset.itemIdx,
       goodsMultiSpec = _this.data.goodsMultiSpec;
-    // 记录formid
-    App.saveFormId(e.detail.formId);
     for (let i in goodsMultiSpec.spec_attr) {
       for (let j in goodsMultiSpec.spec_attr[i].spec_items) {
         if (attrIdx == i) {
@@ -302,8 +290,6 @@ Page({
    */
   onClickShare(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     _this.setData({
       'share.show': true
     });
@@ -366,8 +352,6 @@ Page({
    */
   onSavePoster(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.showLoading({
       title: '加载中',
     });
@@ -415,7 +399,6 @@ Page({
    */
   onIncGoodsNumber(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     _this.setData({
       goods_num: ++_this.data.goods_num
     })
@@ -426,7 +409,6 @@ Page({
    */
   onDecGoodsNumber(e) {
     let _this = this;
-    App.saveFormId(e.detail.formId);
     if (_this.data.goods_num > 1) {
       _this.setData({
         goods_num: --_this.data.goods_num
@@ -451,12 +433,8 @@ Page({
   /**
    * 确认购买弹窗
    */
-  onToggleTrade(e) {
+  onToggleTrade() {
     let _this = this;
-    if (typeof e === 'object') {
-      // 记录formId
-      e.detail.hasOwnProperty('formId') && App.saveFormId(e.detail.formId);
-    }
     _this.setData({
       showBottomPopup: !_this.data.showBottomPopup
     });
@@ -467,8 +445,6 @@ Page({
    */
   onCheckout(e) {
     let _this = this;
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     // 表单验证
     if (!_this._onVerify()) {
       return false;
@@ -514,8 +490,6 @@ Page({
    * 跳转到首页
    */
   onTargetHome(e) {
-    // 记录formid
-    App.saveFormId(e.detail.formId);
     wx.switchTab({
       url: '../../index/index',
     })

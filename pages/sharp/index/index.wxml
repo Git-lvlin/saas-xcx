@@ -29,26 +29,8 @@
     </view>
     <!-- 倒计时 -->
     <view class="active--count-down dis-flex flex-y-center">
-      <view class="clock-text">
-        <text>{{ tabbar[curTabIndex].status == StateEnum.ACTIVE_STATE_BEGIN.value ? '距结束' : '距开始' }}</text>
-      </view>
-      <view class="clock dis-flex">
-        <view class="clock-time">
-          <text>{{ countDownObj.dynamic.hou }}</text>
-        </view>
-        <view class="clock-symbol">
-          <text>:</text>
-        </view>
-        <view class="clock-time">
-          <text>{{ countDownObj.dynamic.min }}</text>
-        </view>
-        <view class="clock-symbol">
-          <text>:</text>
-        </view>
-        <view class="clock-time">
-          <text>{{ countDownObj.dynamic.sec }}</text>
-        </view>
-      </view>
+      <text class="m-r-10">{{ tabbar[curTabIndex].status == StateEnum.ACTIVE_STATE_BEGIN.value ? '距结束' : '距开始' }}</text>
+      <countdown wx:if="{{ countDownTime }}" date="{{ countDownTime }}" style="custom" bind:finish="onCountDownEnd" />
     </view>
   </view>
   <!-- 内容区域 -->

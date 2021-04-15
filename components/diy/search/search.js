@@ -24,8 +24,6 @@ Component({
      * 跳转到搜索页面
      */
     onTargetSearch(e) {
-      // 记录formid
-      App.saveFormId(e.detail.formId);
       App.navigationTo('pages/search/index');
     },
   }

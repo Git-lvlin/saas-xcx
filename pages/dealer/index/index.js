@@ -57,8 +57,6 @@ Page({
    * 立即加入分销商
    */
   triggerApply(e) {
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: '../apply/apply',
     })

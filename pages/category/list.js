@@ -177,6 +177,7 @@ Page({
       path: "/pages/category/index?" + App.getShareUrlParams()
     };
   },
+
   addCard(e) {
     let _this = this
     var goods_id = e.currentTarget.dataset.goods_id
@@ -193,6 +194,7 @@ Page({
       // _this.setData(result.data);
       // 记录购物车商品数量
       App.setCartTotalNum(result.data.cart_total_num)
+      App.setCartTabBadge()
     });
   },
 });

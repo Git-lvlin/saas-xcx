@@ -2,7 +2,6 @@
 <view class="inviteAffirm">
   <view class="logo">
       <!-- <image src="https://shop01-ningboyanxuan.oss-cn-shenzhen.aliyuncs.com/wechat/jzshop_logo.png"></image> -->
-      <image src='https://shop01-ningboyanxuan.oss-cn-shenzhen.aliyuncs.com/wechat/ningbo_logo.png'></image>
   </view>
   <view class="info-btn">
     <button class="btn-normal" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">微信一键登录</button>

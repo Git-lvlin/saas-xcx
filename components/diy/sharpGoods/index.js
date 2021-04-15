@@ -1,13 +1,7 @@
-const App = getApp();
-
-// 工具类
 import util from '../../../utils/util.js';
-
-// 倒计时插件
-import CountDown from '../../../utils/countdown.js';
-
-// 枚举类：秒杀活动商品状态
 import ActiveStatusEnum from '../../../utils/enum/sharp/GoodsStatus.js';
+
+const App = getApp()
 
 Component({
 
@@ -31,7 +25,7 @@ Component({
    */
   data: {
     ActiveStatusEnum, // 秒杀活动商品状态
-    countDownList: [], // 倒计时
+    countDownTime: false, // 倒计时日期
   },
 
   /**
@@ -45,7 +39,7 @@ Component({
     attached() {
       let _this = this;
       _this._initCountDownData();
-    },
+    }
 
   },
 
@@ -57,13 +51,10 @@ Component({
    */
   methods: {
 
-
     /**
      * 跳转商品详情页
      */
     _onTargetGoods(e) {
-      // 记录formid
-      App.saveFormId(e.detail.formId);
       // 生成query参数
       let _this = this,
         query = util.urlEncode({
@@ -80,8 +71,6 @@ Component({
      * 更多秒杀
      */
     _onTargetSharpIndex(e) {
-      // 记录formid
-      App.saveFormId(e.detail.formId);
       // 跳转到秒杀会场首页
       wx.navigateTo({
         url: `/pages/sharp/index/index`,
@@ -91,19 +80,15 @@ Component({
     /**
      * 初始化倒计时组件
      */
-    _initCountDownData(data) {
-      let _this = this,
-        active = _this.data.data.active;
+    _initCountDownData() {
+      const app = this
+      const active = app.data.data.active
       if (!active) return false;
       // 记录倒计时的时间
-      _this.setData({
-        [`countDownList[0]`]: {
-          date: active.count_down_time,
-        }
-      });
-      // 执行倒计时
-      CountDown.onSetTimeList(_this, 'countDownList');
-    },
+      app.setData({
+        countDownTime: active.count_down_time
+      })
+    }
   }
 
 })

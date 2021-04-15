@@ -567,13 +567,10 @@ App({
   /**
    * 授权登录
    */
-  getUserInfo(e, callback) {
+  getUserInfo(userInfo, callback) {
     let App = this;
-    if (e.detail.errMsg !== 'getUserInfo:ok') {
-      return false;
-    }
     wx.showLoading({
-      title: "加载中...",
+      title: "正在登录",
       mask: true
     });
     // 执行微信登录
@@ -582,10 +579,7 @@ App({
         // 发送用户信息
         App._post_form('user/login', {
           code: res.code,
-          user_info: e.detail.rawData,
-          encrypted_data: e.detail.encryptedData,
-          iv: e.detail.iv,
-          signature: e.detail.signature,
+          user_info: JSON.stringify(userInfo),
           referee_id: App.getRefereeid()
         }, result => {
           // 记录token user_id
@@ -633,11 +627,18 @@ App({
    */
   setCartTabBadge() {
     const number = wx.getStorageSync('cartTotalNum')
-    if (number <= 0) return
-    wx.setTabBarBadge({
-      index: 2,
-      text: `${number}`
-    })
-  }
+    console.log('setCartTabBadge ', number)
+    if (number > 0) {
+      wx.setTabBarBadge({
+        index: 2,
+        text: `${number}`
+      })
+    } else {
+      wx.removeTabBarBadge({
+        index: 2
+      })
+    }
+    return
+  },
 
 });

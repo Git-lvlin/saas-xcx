@@ -118,9 +118,6 @@ Page({
       rpx = systemInfo.windowWidth / 750, // 计算rpx
       tapHeight = Math.floor(rpx * 98), // tap高度
       scrollHeight = systemInfo.windowHeight - tapHeight; // swiper高度
-    console.log(
-      systemInfo.windowHeight
-    );
     this.setData({
       scrollHeight
     });

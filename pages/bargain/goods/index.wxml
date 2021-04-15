@@ -8,7 +8,8 @@
 
     <!-- 商品图片 -->
     <view class="goods-swiper">
-      <swiper autoplay="{{ autoplay }}" bindchange="setCurrent" class="banner-box  swiper-box" duration="{{duration}}" indicator-dots="{{indicatorDots}}" interval="{{interval}}" circular="{{true}}">
+      <swiper autoplay="{{ autoplay }}" bindchange="setCurrent" class="banner-box  swiper-box" duration="{{duration}}"
+        indicator-dots="{{indicatorDots}}" interval="{{interval}}" circular="{{true}}">
         <swiper-item wx:for="{{ goods.image }}" wx:key="this" catchtap="onPreviewImages" data-index="{{ index }}">
           <image class="slide-image" mode="aspectFill" src="{{ item.file_path }}"></image>
         </swiper-item>
@@ -47,7 +48,7 @@
         </view>
         <view class="goods-share__line"></view>
         <view class="goods-share">
-          <form bindsubmit="onClickShare" report-submit="true">
+          <form bindsubmit="onClickShare">
             <button formType="submit" class="share-btn dis-flex flex-dir-column">
               <text class="share__icon iconfont icon-fenxiang"></text>
               <text class="f-24">分享</text>
@@ -60,11 +61,11 @@
         <text>{{ goods.selling_point }}</text>
       </view>
       <!-- 活动倒计时 -->
-      <view wx:if="{{ !active.is_end }}" class="info-item info-item_status info-item_countdown">
+      <view wx:if="{{ !active.is_end }}" class="info-item info-item_status info-item_countdown dis-flex flex-y-center">
         <text class="countdown-icon iconfont icon-naozhong"></text>
-        <block wx:for="{{ actEndTimeList }}" wx:key="this">
-          <text>距离活动结束 还剩{{ item.dynamic.hou }}时{{ item.dynamic.min }}分{{ item.dynamic.sec }}秒</text>
-        </block>
+        <text>距离活动结束</text>
+        <text class="m-r-10">还剩</text>
+        <countdown wx:if="{{ countDownTime }}" date="{{ countDownTime }}" />
       </view>
       <!-- 活动已结束 -->
       <view wx:if="{{ active.is_end }}" class="info-item info-item_status info-item_end">
@@ -75,7 +76,7 @@
 
     <!-- 选择商品规格 -->
     <!-- <view class="goods-choice m-top20 b-f">
-      <form wx:if="{{ goods.spec_type == 20 }}" bindsubmit="onToggleTrade" report-submit>
+      <form wx:if="{{ goods.spec_type == 20 }}" bindsubmit="onToggleTrade">
         <button class="btn-normal" formType="submit">
           <view class="sku-selector dis-flex flex-y-center">
             <view class="flex-box f-28">
@@ -92,7 +93,7 @@
 
     <!-- 砍价玩法 -->
     <view class="bargain-rules top-nav-bar m-top20 b-f">
-      <form bindsubmit="onToggleRules" report-submit="true">
+      <form bindsubmit="onToggleRules">
         <button formType="submit" class="btn-normal">
 
           <view class="item-title dis-flex">
@@ -198,7 +199,7 @@
     <view class="footer-container dis-flex">
       <!-- 导航图标 -->
       <view class="foo-item-fast dis-flex flex-x-center flex-y-center">
-        <form bindsubmit="onTargetHome" report-submit>
+        <form bindsubmit="onTargetHome">
           <button class="btn-normal" formType="submit">
             <view class="fast-item fast-item_home">
               <view class="fast-icon">
@@ -223,7 +224,7 @@
       </view>
       <!-- 操作按钮 -->
       <view class="foo-item-trigger flex-box">
-        <form bindsubmit="onSubmit" report-submit>
+        <form bindsubmit="onSubmit">
           <button wx:if="{{ active.is_start && !active.is_end }}" class="opt-btn btn-main btn-normal" formType="submit">
             <text>{{ is_partake ? '继续砍价' : '立即砍价' }}</text>
           </button>
@@ -236,7 +237,9 @@
   </view>
 
   <!-- 分享按钮 -->
-  <zan-actionsheet show="{{ share.show }}" actions="{{ share.actions }}" cancel-text="{{ share.cancelText }}" cancel-with-mask="{{ share.cancelWithMask }}" bind:cancel="onCloseShare" bind:actionclick="onClickShareItem" mask-class="tiny" />
+  <zan-actionsheet show="{{ share.show }}" actions="{{ share.actions }}" cancel-text="{{ share.cancelText }}"
+    cancel-with-mask="{{ share.cancelWithMask }}" bind:cancel="onCloseShare" bind:actionclick="onClickShareItem"
+    mask-class="tiny" />
 
   <!-- 商品海报 弹出层 -->
   <zan-popup show="{{ share.showPopup }}" bindclose="onTogglePopup">
@@ -245,7 +248,7 @@
       <view class="pop-close dis-flex flex-x-center flex-y-center" catchtap="onTogglePopup">
         <text class="iconfont icon-shanchu f-30 col-9"></text>
       </view>
-      <form bindsubmit="onSavePoster" report-submit="true">
+      <form bindsubmit="onSavePoster">
         <view class="poster__image">
           <image mode="widthFix" src="{{ qrcode }}"></image>
         </view>
@@ -293,9 +296,12 @@
         <view class="goods-attr">
           <!-- 滚动容器 -->
           <scroll-view class="goods-attr--scroll" scroll-y="{{ true }}">
-            <view class="group-item" wx:for="{{ goodsMultiSpec.spec_attr }}" wx:for-item="attr" wx:for-index="attr_idx" wx:key="this">
+            <view class="group-item" wx:for="{{ goodsMultiSpec.spec_attr }}" wx:for-item="attr" wx:for-index="attr_idx"
+              wx:key="this">
               <view class="tips-text" data-id="{{ attr.group_id }}">{{ attr.group_name }}</view>
-              <view class="spec-item {{ item.checked ? 'cur' : '' }}" wx:for="{{ attr.spec_items }}" wx:for-index="item_idx" wx:key="this" data-attr-idx="{{ attr_idx }}" data-item-idx="{{ item_idx }}" catchtap="onSwitchSpec">
+              <view class="spec-item {{ item.checked ? 'cur' : '' }}" wx:for="{{ attr.spec_items }}"
+                wx:for-index="item_idx" wx:key="this" data-attr-idx="{{ attr_idx }}" data-item-idx="{{ item_idx }}"
+                catchtap="onSwitchSpec">
                 {{ item.spec_value }}
               </view>
             </view>
@@ -308,11 +314,11 @@
           <text>购买数量</text>
         </view>
         <view class="select-number">
-          <form bindsubmit="onDecGoodsNumber" report-submit="true">
+          <form bindsubmit="onDecGoodsNumber">
             <button formType="submit" class="default {{ goods_num > 1 ? '' : 'disabled' }}" type="default">-</button>
           </form>
           <input bindinput="onInputGoodsNum" type="number" value="{{ goods_num }}"></input>
-          <form bindsubmit="onIncGoodsNumber" report-submit="true">
+          <form bindsubmit="onIncGoodsNumber">
             <button formType="submit" class="default" type="default">+</button>
           </form>
         </view>
@@ -322,7 +328,7 @@
       <!-- 底部操作栏 -->
       <view class="footer-fixed f-30">
         <view wx:if="{{ stock_num > 0 }}" class="flex-box">
-          <form bindsubmit="onSubmit2" report-submit>
+          <form bindsubmit="onSubmit2">
             <button class="opt-btn btn-main btn-normal" formType="submit">
               <text>确定</text>
             </button>

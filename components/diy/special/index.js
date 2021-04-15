@@ -27,8 +27,6 @@ Component({
      * 跳转文章首页
      */
     _onTargetIndex(e) {
-      // 记录formid
-      App.saveFormId(e.detail.formId);
       wx.navigateTo({
         url: '/pages/article/index'
       });
@@ -38,8 +36,6 @@ Component({
      * 跳转文章详情页
      */
     _onTargetDetail(e) {
-      // 记录formid
-      App.saveFormId(e.detail.formId);
       wx.navigateTo({
         url: '/pages/article/detail/index?article_id=' + e.detail.target.dataset.id
       });

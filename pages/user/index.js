@@ -62,8 +62,6 @@ Page({
     if (!_this.onCheckLogin()) {
       return false;
     }
-    // 记录formid
-    App.saveFormId(e.detail.formId);
     let urls = {
       all: '/pages/order/index?type=all',
       payment: '/pages/order/index?type=payment',
@@ -84,8 +82,6 @@ Page({
     if (!_this.onCheckLogin()) {
       return false;
     }
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: '/' + e.currentTarget.dataset.url
     })
@@ -99,8 +95,6 @@ Page({
     if (!_this.onCheckLogin()) {
       return false;
     }
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: './wallet/index'
     })
@@ -114,8 +108,6 @@ Page({
     if (!_this.onCheckLogin()) {
       return false;
     }
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: '../points/log/index'
     });
@@ -129,8 +121,6 @@ Page({
     if (!_this.onCheckLogin()) {
       return false;
     }
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: '../troupe/index/index'
     });
@@ -140,8 +130,6 @@ Page({
     if (!_this.onCheckLogin()) {
       return false;
     }
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: '../dealer/index/index'
     });
@@ -153,8 +141,6 @@ Page({
     if (!_this.onCheckLogin()) {
       return false;
     }
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: './coupon/coupon'
     });
@@ -166,8 +152,6 @@ Page({
     if (!_this.onCheckLogin()) {
       return false;
     }
-    // 记录formId
-    App.saveFormId(e.detail.formId);
     wx.navigateTo({
       url: '../sharing/order/index'
     });
