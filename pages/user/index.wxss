@@ -57,9 +57,6 @@
   padding: 0 14rpx;
 }
 
-/* .user-header-grade .user-grade_icon {
-  margin-top: -5rpx;
-} */
 
 .user-header-grade .user-grade_icon image {
   display: block;
@@ -205,17 +202,16 @@
 }
 
 .no-login-btn {
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
-  padding: 0 20rpx;
+  padding: 40rpx 20rpx;
 }
 
 .no-login-btn button {
   height: 88rpx;
   line-height: 88rpx;
   background: #dfdfdf;
-  color: #444;
+  color: #999;
   font-size: 30rpx;
-  /*border-radius: 999rpx;*/
+  border-radius: 4px;
+  border: 1px solid #ddd;
   text-align: center;
 }

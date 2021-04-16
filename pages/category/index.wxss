@@ -59,6 +59,10 @@ page {
   box-sizing: border-box;
 }
 
+.cate_style__11 .cate-item navigator {
+  height: 153px;
+}
+
 .cate_style__11 .cate-item image {
   /* height: 208.656rpx; */
   width: 100%;
