@@ -570,7 +570,7 @@ App({
   /**
    * 授权登录
    */
-  getUserInfo(userInfo, callback) {
+  getUserInfo(info, callback) {
     let App = this;
     wx.showLoading({
       title: "正在登录",
@@ -582,7 +582,10 @@ App({
         // 发送用户信息
         App._post_form('user/login', {
           code: res.code,
-          user_info: JSON.stringify(userInfo),
+          encrypted_data: info.encryptedData,
+          iv: info.iv,
+          signature: info.signature,
+          user_info: JSON.stringify(info.userInfo),
           referee_id: App.getRefereeid()
         }, result => {
           // 记录token user_id
