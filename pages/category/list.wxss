@@ -157,6 +157,7 @@
 
 .detail-price {
   font-size: 24rpx;
+
 }
 
 .detail-price .goods-price {
@@ -165,4 +166,8 @@
 
 .detail-price .line-price {
   text-decoration: line-through;
+}
+
+.weui-navbar__title {
+  font-size: 24rpx;
 }

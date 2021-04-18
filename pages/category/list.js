@@ -1,5 +1,6 @@
 const App = getApp();
 const pageIndex = 'category/list::';
+var sliderWidth = 96;
 
 Page({
   data: {
@@ -17,6 +18,12 @@ Page({
     isLoading: true, // 是否正在加载中
 
     page: 1, // 当前页码
+
+
+    tabs: ['桶装水专区', "周边产品", "积分专区"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0
   },
 
   /**
@@ -34,6 +41,24 @@ Page({
     _this.setShowView();
     // 获取商品列表
     _this.getGoodsList();
+
+
+
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.setData({
+          sliderLeft: (res.windowWidth / _this.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / _this.data.tabs.length * _this.data.activeIndex
+        });
+      }
+    });
+  },
+
+  abClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
   },
 
   /**
@@ -52,12 +77,13 @@ Page({
    * @param {number} page 指定的页码
    */
   getGoodsList(isPage, page) {
+    console.log()
     let _this = this;
     App._get('goods/lists', {
       page: page || 1,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,
-      category_id: this.data.option.category_id || 0,
+      category_id: Number(_this.data.activeIndex) + 2,
       search: this.data.option.search || '',
     }, result => {
       let resList = result.data.list,
@@ -176,6 +202,42 @@ Page({
       title: "全部分类",
       path: "/pages/category/index?" + App.getShareUrlParams()
     };
+  },
+
+  /**
+   * 获取分类列表
+   */
+  // getCategoryList() {
+  //   let _this = this;
+  //   App._get('category/index', {}, result => {
+  //     let data = result.data;
+  //     _this.setData({
+  //       list: data.list,
+  //       templet: data.templet,
+  //       curNav: data.list.length > 0 ? data.list[0].category_id : true,
+  //       notcont: !data.list.length,
+  //       tabs: data.list.map(item => item.name)
+  //     });
+  //   });
+  // },
+
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+
+    switch (Number(this.data.activeIndex)) {
+      case 0:
+        this.getGoodsList();
+        break;
+      case 1:
+        this.getGoodsList();
+        break;
+      case 2:
+        this.getGoodsList();
+        break;
+    }
   },
 
   addCard(e) {

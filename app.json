@@ -83,7 +83,7 @@
         "selectedIconPath": "images/home-active.png"
       },
       {
-        "pagePath": "pages/category/index",
+        "pagePath": "pages/category/list",
         "text": "商城",
         "iconPath": "images/cate.png",
         "selectedIconPath": "images/cate-active.png"

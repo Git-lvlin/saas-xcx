@@ -15,6 +15,16 @@
       </view>
     </view>
 
+    <!--  切换条 -->
+    <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+            </view>
+        </view>
     <!-- 筛选标签 -->
     <view class="store_nav_cont dis-flex b-f b-b">
       <view bindtap="switchSortType" data-type="all" class="flex-box t-c p-r" data-index="0 " id="list-{{sortType==='all'?true:0}}">
@@ -60,7 +70,7 @@
                 <view class="detail-price">
                   <text class="goods-price f-30 col-m">￥{{item.goods_sku.goods_price}}</text>
                   <text class="line-price col-9 f-24" wx:if="{{item.goods_sku.line_price>0}}">{{item.goods_sku.line_price}}</text>
-                  <text class="add-card-circular-btn" catchtap="addCard" data-goods_id="{{item.goods_id}}" data-spec_sku_id="{{item.goods_sku.spec_sku_id}}">+</text>
+                  <text class="iconfont icon-jiahao-" catchtap="addCard" data-goods_id="{{item.goods_id}}" data-spec_sku_id="{{item.goods_sku.spec_sku_id}}"></text>
                 </view>
               </view>
             </view>
