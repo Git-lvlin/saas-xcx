@@ -50,7 +50,6 @@ Page({
   getUserDetail() {
     let _this = this;
     App._get('user.index/detail', {}, function (result) {
-      console.log(result)
       _this.setData(result.data);
     });
   },
@@ -126,7 +125,7 @@ Page({
       url: '../troupe/index/index'
     });
   },
-  
+
   onTargetDealer(e) {
     let _this = this;
     if (!_this.onCheckLogin()) {
@@ -192,9 +191,19 @@ Page({
    * 授权登录
    */
   getUserInfo(e) {
-    let _this = this;
-    App.getUserInfo(e, () => {
-      // App.showError('更新成功');
-    });
+    wx.getUserProfile({
+      lang: 'zh_CN',
+      desc: '获取用户相关信息',
+      success(result) {
+        console.log('用户同意了授权')
+        // console.log('result: ', result)
+        App.getUserInfo(result, () => {
+          // App.showError('更新成功');
+        });
+      },
+      fail(e) {
+        console.log('用户拒绝了授权 ', e)
+      }
+    })
   },
 })
