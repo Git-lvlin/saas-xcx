@@ -61,7 +61,6 @@ Page({
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
       _this.setData(result.data);
-      console.log(result.data)
       // 回调函数
       typeof callback === 'function' && callback();
     });
@@ -80,7 +79,6 @@ Page({
           latitude: res.latitude
         }, reponse => {
           // _this.data.storeList = reponse.data.list
-          console.log(reponse.data.list)
           reponse.data.list.forEach(item => {
             item.distance = (item.distance / 1000).toFixed(0) + 'km'
           })
@@ -89,12 +87,8 @@ Page({
             storeList: reponse.data.list
           })
         })
-
-
       }
-    })
-
-    
+    }) 
   },
 
   /**
@@ -150,13 +144,13 @@ Page({
   },
 
   readyNavigator(e) {
+    console.log(123123)
     //wx.getLocation({
       //type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       //success(res) {
         //const latitude = res.latitude
        // const longitude = res.longitude
         let storeInfo = App.globalData.storeList.find(item => item.shop_id === e.currentTarget.dataset.id);
-        console.log(e)
         wx.openLocation({
           name: storeInfo.shop_name,
           latitude: Number(storeInfo.latitude),
@@ -168,6 +162,7 @@ Page({
   },
 
   navigateToNailMapPage() {
+    console.log(1231654654)
     wx.navigateTo({
       url: '../nail_picture/nail_picture',
     })

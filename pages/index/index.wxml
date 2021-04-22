@@ -45,7 +45,7 @@
 
   </view>
 
-  <view class="index__nail-map" catchtap="navigateToNailMapPage">
+  <view class="index__nail-map" bindtap="navigateToNailMapPage">
     <text class="iconfont icon-daohang"></text> 
   </view>
 

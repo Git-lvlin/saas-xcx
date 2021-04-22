@@ -29,7 +29,6 @@ App({
     mobile_acquired: false,
     storeList: [],
     storeInfo: {},
-    role: 0 //用户角色 0：用户；1店主；2：店员； 3：仓管
   },
 
   // api地址
@@ -50,6 +49,8 @@ App({
         _this._wxLoginSuccess(resp0)
       }
     });
+
+    wx.setStorageSync({role: 0})
   },
 
   _wxLoginSuccess(resp0) {
@@ -174,8 +175,8 @@ App({
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
   onShow(options) {
-    let App = this;
-    App.globalData.role = Number(wx.getStorageSync('role') || 0)
+    //let App = this;
+    //App.globalData.role = Number(wx.getStorageSync('role') || 0)
     /*try {
       const livePlayer = requirePlugin('live-player-plugin');
       if (options.scene == 1007 || options.scene == 1008 || options.scene == 1044) {
@@ -224,7 +225,6 @@ App({
     wx.setStorageSync('token', '');
     wx.setStorageSync('user_id', '');
     wx.removeStorageSync('invite_code');
-    wx.removeStorageSync('shop_list');
     wx.setStorageSync('role', 0);
 
     wx.switchTab({
@@ -297,7 +297,6 @@ App({
         data: data,
         success(res) {
           if (res.statusCode !== 200 || typeof res.data !== 'object') {
-            console.log(res);
             _this.showError('网络请求出错');
             return false;
           }
@@ -520,7 +519,6 @@ App({
    * 解密手机号码
    */
   getPhoneNumber(e, callback) {
-    console.log(e.detail)
     let _this = this;
 
     if (e.detail.errMsg !== "getPhoneNumber:ok") {
@@ -642,7 +640,6 @@ App({
    */
   setCartTabBadge() {
     const number = wx.getStorageSync('cartTotalNum')
-    console.log('setCartTabBadge ', number)
     if (number > 0) {
       wx.setTabBarBadge({
         index: 2,
@@ -655,5 +652,16 @@ App({
     }
     return
   },
+
+  /*
+  动态url 根据用户身份选择不同的url
+  @arguments {String} url_1 商家
+  @arguments {String} url_2 消费者
+  */
+
+  getUrl(url_1, url_2){
+    let role = wx.getStorageSync('role')
+    return role > 0 ? url_1 : url_2
+  }
 
 });

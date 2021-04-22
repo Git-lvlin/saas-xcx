@@ -62,16 +62,17 @@
     "pages/sharp/goods/index",
     "pages/inviteAffirm/index",
     "pages/troupe/index/index",
+    "pages/wzl_market/index",
     "pages/index/storeInformation/index"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#0ca64f",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
-    "custom": true,
+    "custom": false,
     "color": "#6e6d6b",
     "selectedColor": "#fd4a5f",
     "borderStyle": "black",
@@ -91,8 +92,6 @@
         "selectedIconPath": "images/cate-active.png"
       },
 
-      
-
       {
         "pagePath": "pages/flow/index",
         "text": "购物车",
@@ -105,8 +104,6 @@
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user-active.png"
       }
-
-      
     ]
     
   },

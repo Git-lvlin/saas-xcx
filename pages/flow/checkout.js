@@ -132,7 +132,8 @@ Page({
 
     // 立即购买
     if (options.order_type === 'buyNow') {
-      App._get('order/buyNow', Object.assign({}, params, {
+      let url = App.getUrl('warehouse.order/checkout', 'order/buyNow')
+      App._get(url, Object.assign({}, params, {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,

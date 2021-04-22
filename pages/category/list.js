@@ -30,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(option) {
+
     let _this = this;
     // 设置商品列表高度
     _this.setListHeight();
@@ -39,10 +40,9 @@ Page({
     });
     // 设置列表显示方式
     _this.setShowView();
-    // 获取商品列表
-    _this.getGoodsList();
-
-
+    
+    // 获取分类列表
+    _this.getCategoryList();
 
     wx.getSystemInfo({
       success: function (res) {
@@ -64,12 +64,6 @@ Page({
       
   },
 
-  abClick: function (e) {
-    this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
-    });
-  },
 
   /**
    * 设置默认列表显示方式
@@ -86,18 +80,19 @@ Page({
    * @param {bool} isPage 是否分页
    * @param {number} page 指定的页码
    */
-  getGoodsList(isPage, page) {
-    console.log()
+  getGoodsList(isPage, page, category_id) {
+    let url = App.getUrl('warehouse.goods/lists', 'goods/lists');
+    console.log(App.getUrl)
     let _this = this;
-    App._get('goods/lists', {
+    App._get(url, {
       page: page || 1,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,
-      category_id: Number(_this.data.activeIndex) + 2,
+      category_id: category_id || _this.data.tabs[0].category_id,
       search: this.data.option.search || '',
     }, result => {
       let resList = result.data.list,
-        dataList = _this.data.list;
+          dataList = _this.data.list;
       if (isPage == true) {
         _this.setData({
           'list.data': dataList.data.concat(resList.data),
@@ -217,19 +212,23 @@ Page({
   /**
    * 获取分类列表
    */
-  // getCategoryList() {
-  //   let _this = this;
-  //   App._get('category/index', {}, result => {
-  //     let data = result.data;
-  //     _this.setData({
-  //       list: data.list,
-  //       templet: data.templet,
-  //       curNav: data.list.length > 0 ? data.list[0].category_id : true,
-  //       notcont: !data.list.length,
-  //       tabs: data.list.map(item => item.name)
-  //     });
-  //   });
-  // },
+  getCategoryList() {
+    let _this = this;
+    let url = App.getUrl('warehouse.category/index', 'category/index')
+    App._get(url, {}, result => {
+      let data = result.data;
+      _this.setData({
+        list: data.list,
+        templet: data.templet,
+        curNav: data.list.length > 0 ? data.list[0].category_id : true,
+        notcont: !data.list.length,
+        tabs: data.list.map(item => {return {category_name: item.name, category_id: item.category_id}})
+      });
+
+      // 获取商品列表
+      _this.getGoodsList();
+    });
+  },
 
   tabClick: function (e) {
     this.setData({
@@ -237,36 +236,26 @@ Page({
       activeIndex: e.currentTarget.id
     });
 
-    switch (Number(this.data.activeIndex)) {
-      case 0:
-        this.getGoodsList();
-        break;
-      case 1:
-        this.getGoodsList();
-        break;
-      case 2:
-        this.getGoodsList();
-        break;
-    }
+    this.getGoodsList(false, false, e.currentTarget.dataset.category);
   },
 
-  addCard(e) {
-    let _this = this
-    var goods_id = e.currentTarget.dataset.goods_id
-    var goods_num = 1
-    var spec_sku_id = e.currentTarget.dataset.spec_sku_id
-    console.log('addCard', goods_id, spec_sku_id)
-    // return
-    App._post_form('cart/add', {
-      goods_id: goods_id,
-      goods_num: goods_num,
-      goods_sku_id: spec_sku_id,
-    }, (result) => {
-      App.showSuccess(result.msg);
-      // _this.setData(result.data);
-      // 记录购物车商品数量
-      App.setCartTotalNum(result.data.cart_total_num)
-      App.setCartTabBadge()
-    });
-  },
+  // addCard(e) {
+  //   let _this = this
+  //   var goods_id = e.currentTarget.dataset.goods_id
+  //   var goods_num = 1
+  //   var spec_sku_id = e.currentTarget.dataset.spec_sku_id
+  //   let url = App.getUrl('warehouse.cart/add', 'cart/add')
+  //   // return
+  //   App._post_form(url, {
+  //     goods_id: goods_id,
+  //     goods_num: goods_num,
+  //     goods_sku_id: spec_sku_id,
+  //   }, (result) => {
+  //     App.showSuccess(result.msg);
+  //     // _this.setData(result.data);
+  //     // 记录购物车商品数量
+  //     App.setCartTotalNum(result.data.cart_total_num)
+  //     App.setCartTabBadge()
+  //   });
+  // },
 });

@@ -12,7 +12,7 @@ Page({
     userHeaderBGC: '',
     shop_list: [], // 大于0时是店主
     currentShop: '',
-    role: '0'
+    role: 0 //0用户 1店主 2店员 3仓库
   },
 
   /**
@@ -33,7 +33,7 @@ Page({
 
     let _this = this;
     _this.setData({
-      isLogin: App.checkIsLogin(),
+      
       userHeaderBGC: titleBackgroundColor
     });
   },
@@ -43,12 +43,13 @@ Page({
    */
   onShow() {
 
-
     // 获取当前用户信息
     this.getUserDetail();
 
     // 更新购物车角标
     App.setCartTabBadge()
+
+    this.setData({isLogin: App.checkIsLogin()})
 
     if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
@@ -77,14 +78,14 @@ Page({
       }
       */
 
-
-
-      _this.setData({
-        role: (result.data.shop_list.length && result.data.shop_list[0].clerk_role.value) || 0
-      });
-
-
-      switch (String(_this.data.role)) {
+      let role = 0;
+      if(result.data.shop_list.length){
+        role = result.data.shop_list[0].clerk_role.value;
+      } else if (result.data.warehouse_list.length) {
+        role = 3;
+      }
+     
+      switch (String(role)) {
         case '0':
           delete result.data.menus.shopkeeper_order
           delete result.data.menus.storehouse_order
@@ -114,15 +115,7 @@ Page({
       }
 
       _this.setData(result.data);
-
-      // if (_this.data.role > 0) {
-      //   wx.setTabBarItem({
-      //     index: 1,
-      //     text: '水厂',
-      //     iconPath: '/images/pintuan.png',
-      //     selectedIconPath: '/images/pintuan-active.png'
-      //   })
-      // }
+      _this.setData({role});
 
       _this.saveUserRole();
     });
@@ -234,7 +227,16 @@ Page({
 
   // 保存用户角色
   saveUserRole() {
+    let _this = this;
     wx.setStorageSync('role', this.data.role)
+    if (_this.data.role > 0) {
+        wx.setTabBarItem({
+          index: 1,
+          text: '水厂',
+          iconPath: '/images/cate.png',
+          selectedIconPath: '/images/cate-active.png'
+        })
+      }
   },
 
   /**

@@ -43,6 +43,9 @@ Page({
     // 获取商品列表
     _this.getGoodsList();
 
+    //获取分类列表
+   //_this.getCateoryList();
+
 
 
     wx.getSystemInfo({
@@ -87,7 +90,6 @@ Page({
    * @param {number} page 指定的页码
    */
   getGoodsList(isPage, page) {
-    console.log()
     let _this = this;
     App._get('warehouse.goods/lists', {
       status: 10,
@@ -95,9 +97,10 @@ Page({
       page: page || 1,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,
-      category_id: Number(_this.data.activeIndex) + 2,
+      category_id: Number(_this.data.activeIndex) + 1,
       search: this.data.option.search || '',
     }, result => {
+      console.log(result)
       let resList = result.data.list,
         dataList = _this.data.list;
       if (isPage == true) {
@@ -112,6 +115,17 @@ Page({
         });
       }
     });
+  },
+
+  //获取分类列表
+  getCateoryList(){
+    App._get({
+      url: 'warehouse.category/index',
+      wxapp_id: App.getWxappId(),
+      success(res) {
+        console.log(res)
+      },
+    })
   },
 
   /**
@@ -252,23 +266,23 @@ Page({
     }
   },
 
-  addCard(e) {
-    let _this = this
-    var goods_id = e.currentTarget.dataset.goods_id
-    var goods_num = 1
-    var spec_sku_id = e.currentTarget.dataset.spec_sku_id
-    console.log('addCard', goods_id, spec_sku_id)
-    // return
-    App._post_form('cart/add', {
-      goods_id: goods_id,
-      goods_num: goods_num,
-      goods_sku_id: spec_sku_id,
-    }, (result) => {
-      App.showSuccess(result.msg);
-      // _this.setData(result.data);
-      // 记录购物车商品数量
-      App.setCartTotalNum(result.data.cart_total_num)
-      App.setCartTabBadge()
-    });
-  },
+  // addCard(e) {
+  //   let _this = this
+  //   var goods_id = e.currentTarget.dataset.goods_id
+  //   var goods_num = 1
+  //   var spec_sku_id = e.currentTarget.dataset.spec_sku_id
+  //   console.log('addCard', goods_id, spec_sku_id)
+  //   // return
+  //   App._post_form('cart/add', {
+  //     goods_id: goods_id,
+  //     goods_num: goods_num,
+  //     goods_sku_id: spec_sku_id,
+  //   }, (result) => {
+  //     App.showSuccess(result.msg);
+  //     // _this.setData(result.data);
+  //     // 记录购物车商品数量
+  //     App.setCartTotalNum(result.data.cart_total_num)
+  //     App.setCartTabBadge()
+  //   });
+  // },
 });

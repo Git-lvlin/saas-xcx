@@ -60,8 +60,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(e) {
-    let _this = this,
-      scene = App.getSceneData(e);
+    let _this = this;
+    let scene = App.getSceneData(e);
     // 商品id
     _this.data.goods_id = e.goods_id ? e.goods_id : scene.gid;
     // 获取商品信息
@@ -73,7 +73,10 @@ Page({
    */
   getGoodsDetail() {
     let _this = this;
-    App._get('goods/detail', {
+    let role = wx.getStorageSync('role')
+        ,url = App.getUrl('warehouse.goods/detail','goods/detail');
+
+    App._get(url, {
       goods_id: _this.data.goods_id
     }, (result) => {
       // 初始化商品详情数据
@@ -278,7 +281,8 @@ Page({
       });
     } else if (submitType === 'addCart') {
       // 加入购物车
-      App._post_form('cart/add', {
+      let url = App.getUrl('warehouse.cart/add','cart/add' )
+      App._post_form(url, {
         goods_id: _this.data.goods_id,
         goods_num: _this.data.goods_num,
         goods_sku_id: _this.data.goods_sku_id,
@@ -398,7 +402,8 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    App._get('goods/poster', {
+    let url = App.getUrl('warehouse.goods/poster', 'goods/poster');
+    App._get(url, {
       goods_id: _this.data.goods_id
     }, (result) => {
       _this.setData(result.data, () => {
