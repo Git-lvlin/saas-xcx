@@ -3,14 +3,14 @@
 .user {
   position: relative;
   background: #fff;
-  margin-bottom: 145rpx;
+  margin-bottom: 20rpx;
 }
 
 .user-header {
   display: flex;
   padding-top: 1px;
   width: 100%;
-  height: 310rpx;
+  height: 200rpx;
   align-content: center;
   background-repeat: no-repeat;
   background-position: center right;
@@ -20,7 +20,7 @@
 .user-header .user-header-cont {
   display: flex;
   margin: auto;
-  margin-bottom: 135rpx;
+  /* margin-bottom: 135rpx; */
   width: 79%;
   align-items: center;
 }
@@ -72,9 +72,9 @@
 /* 订单导航栏 */
 
 .order-navbar {
-  position: absolute;
-  left: 19rpx;
-  bottom: -125rpx;
+  /* position: absolute; */
+  /* left: 19rpx; */
+  /* bottom: -125rpx; */
   margin: auto;
   padding: 15rpx 0;
   width: 95%;
@@ -214,4 +214,23 @@
   border-radius: 4px;
   border: 1px solid #ddd;
   text-align: center;
+}
+
+.store-selector {
+  width: 100%;
+  padding: 10px 30rpx;
+  box-sizing: border-box;
+
+}
+
+.store-selector .weui-btn {
+  width: 100%;
+  background-color: white; 
+  font-size: 28rpx;
+  font-weight: normal;
+  text-align: left;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+  border-radius: 0;
+
 }

@@ -55,6 +55,13 @@ Page({
       // 获取购物车列表
       _this.getCartList();
     }
+
+    if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 2
+        })
+      }
   },
 
   /**

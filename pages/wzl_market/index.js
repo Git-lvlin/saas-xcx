@@ -23,7 +23,8 @@ Page({
     tabs: ['桶装水专区', "周边产品", "积分专区"],
     activeIndex: 0,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    selected: 1,
   },
 
   /**
@@ -61,7 +62,6 @@ Page({
           selected: 1
         })
       }
-      
   },
 
   abClick: function (e) {
@@ -89,7 +89,9 @@ Page({
   getGoodsList(isPage, page) {
     console.log()
     let _this = this;
-    App._get('goods/lists', {
+    App._get('warehouse.goods/lists', {
+      status: 10,
+      wxapp_id: App.getWxappId(),
       page: page || 1,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,

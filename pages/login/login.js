@@ -74,12 +74,10 @@ Page({
     wx.getUserProfile({
       lang: 'zh_CN',
       desc: '获取用户相关信息',
-      success({
-        userInfo
-      }) {
+      success(result) {
         console.log('用户同意了授权')
-        console.log('userInfo：', userInfo)
-        App.getUserInfo(userInfo, () => {
+        console.log('result: ', result)
+        App.getUserInfo(result, () => {
           // 跳转回原页面
           app.onNavigateBack(1)
         });

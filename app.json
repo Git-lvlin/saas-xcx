@@ -71,10 +71,12 @@
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
+    "custom": true,
     "color": "#6e6d6b",
     "selectedColor": "#fd4a5f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
+    "position": "bottom",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -88,6 +90,14 @@
         "iconPath": "images/cate.png",
         "selectedIconPath": "images/cate-active.png"
       },
+
+      {
+        "pagePath": "pages/wzl_market/index",
+        "text": "水厂",
+        "iconPath": "images/cate.png",
+        "selectedIconPath": "images/cate-active.png"
+      },
+
       {
         "pagePath": "pages/flow/index",
         "text": "购物车",
@@ -100,15 +110,20 @@
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user-active.png"
       }
-    ],
-    "position": "bottom"
+
+      
+    ]
+    
   },
   "debug": false,
+
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于为您提供更合适您的服务"
     }
   },
+  "usingComponents": {},
+
   "useExtendedLib": {
     "weui": true
   },

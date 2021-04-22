@@ -40,7 +40,14 @@ Page({
    */
   onShow() {
     // 更新购物车角标
-    App.setCartTabBadge()
+    App.setCartTabBadge();
+
+    if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 0
+        })
+      }
   },
 
   /**

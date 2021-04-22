@@ -1,18 +1,37 @@
 // pages/shopkeeper/sale_record/sale_record.js
+let sliderWidth = 96;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    tabs: ["未配送", "配送中", "已配送"],
+    activeIndex: 1,
+    sliderOffset: 0,
+    sliderLeft: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
+  },
 
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
   },
 
   /**
