@@ -91,12 +91,7 @@
         "selectedIconPath": "images/cate-active.png"
       },
 
-      {
-        "pagePath": "pages/wzl_market/index",
-        "text": "水厂",
-        "iconPath": "images/cate.png",
-        "selectedIconPath": "images/cate-active.png"
-      },
+      
 
       {
         "pagePath": "pages/flow/index",
