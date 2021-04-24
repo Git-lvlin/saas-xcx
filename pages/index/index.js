@@ -143,8 +143,8 @@ Page({
     };
   },
 
+  // 导航去水店
   readyNavigator(e) {
-    console.log(123123)
     //wx.getLocation({
       //type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       //success(res) {
@@ -161,13 +161,14 @@ Page({
     //})
   },
 
+  // 查看钉图
   navigateToNailMapPage() {
-    console.log(1231654654)
     wx.navigateTo({
       url: '../nail_picture/nail_picture',
     })
   },
-
+  
+  // 跳转水店详情页
   checkoutStoreInformation(e) {
     let id  = e.currentTarget.dataset.id;
     App.globalData.storeInfo = this.data.storeList.find(item => item.shop_id === id)

@@ -2,13 +2,13 @@
  * tabBar页面路径列表 (用于链接跳转时判断)
  * tabBarLinks为常量, 无需修改
  */
-const tabBarLinks = [
-  'pages/index/index',
-  'pages/category/index',
-  'pages/flow/index',
-  'pages/user/index',
-  'pages/sharing/index/index'
-];
+ const tabBarLinks = [
+ 'pages/index/index',
+ 'pages/category/index',
+ 'pages/flow/index',
+ 'pages/user/index',
+ 'pages/sharing/index/index'
+ ];
 
 // 站点配置文件
 import siteinfo from './siteinfo.js';
@@ -21,7 +21,7 @@ App({
   /**
    * 全局变量
    */
-  globalData: {
+   globalData: {
     user_id: null,
     code: '',
     openid: '',
@@ -37,7 +37,7 @@ App({
   /**
    * 生命周期函数--监听小程序初始化
    */
-  onLaunch(e) {
+   onLaunch(e) {
     let _this = this;
     // 小程序主动更新
     _this.updateManager();
@@ -50,7 +50,25 @@ App({
       }
     });
 
-    wx.setStorageSync({role: 0})
+    //wx.setStorageSync({role: 0})
+
+    //小程序启动时，检查用户角色
+    wx.getStorage({
+      key: 'role',
+      success(res) {
+        if (res.data > 0) {
+          wx.setTabBarItem({
+            index: 1,
+            text: '水厂',
+            iconPath: '/images/cate.png',
+            selectedIconPath: '/images/cate-active.png'
+          })
+        }
+      },
+      fail() {
+        wx.setStorageSync({role: 0})
+      },
+    })
   },
 
   _wxLoginSuccess(resp0) {
@@ -111,7 +129,7 @@ App({
   /**
    * 小程序启动场景
    */
-  onStartupScene(query) {
+   onStartupScene(query) {
     // 获取场景值
     let scene = this.getSceneData(query);
     // 记录推荐人id
@@ -125,14 +143,14 @@ App({
   /**
    * 获取商城ID
    */
-  getWxappId() {
+   getWxappId() {
     return siteinfo.uniacid || 10001;
   },
 
   /**
    * 记录推荐人id
    */
-  saveRefereeId(refereeId) {
+   saveRefereeId(refereeId) {
     let App = this;
     refereeId = parseInt(refereeId);
     if (refereeId <= 0 || refereeId == App.getUserId()) {
@@ -167,14 +185,14 @@ App({
   /**
    * 获取场景值(scene)
    */
-  getSceneData(query) {
+   getSceneData(query) {
     return query.scene ? util.scene_decode(query.scene) : {};
   },
 
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
-  onShow(options) {
+   onShow(options) {
     //let App = this;
     //App.globalData.role = Number(wx.getStorageSync('role') || 0)
     /*try {
@@ -204,13 +222,13 @@ App({
   /**
    * 执行用户登录
    */
-  doLogin(delta) {
+   doLogin(delta) {
     // 保存当前页面
     let pages = getCurrentPages();
     if (pages.length) {
       let currentPage = pages[pages.length - 1];
       "pages/login/login" != currentPage.route &&
-        wx.setStorageSync("currentPage", currentPage);
+      wx.setStorageSync("currentPage", currentPage);
     }
     // 跳转授权页面
     wx.navigateTo({
@@ -235,14 +253,14 @@ App({
   /**
    * 当前用户id
    */
-  getUserId() {
+   getUserId() {
     return wx.getStorageSync('user_id');
   },
 
   /**
    * 显示成功提示框
    */
-  showSuccess(msg, callback) {
+   showSuccess(msg, callback) {
     wx.showToast({
       title: msg,
       icon: 'success',
@@ -259,7 +277,7 @@ App({
   /**
    * 显示失败提示框
    */
-  showError(msg, callback) {
+   showError(msg, callback) {
     wx.showModal({
       title: '友情提示',
       content: msg,
@@ -276,7 +294,7 @@ App({
   /**
    * get请求
    */
-  _get(url, data, success, fail, complete, check_login) {
+   _get(url, data, success, fail, complete, check_login) {
     wx.showNavigationBarLoading();
     let _this = this;
     // 构造请求参数
@@ -331,7 +349,7 @@ App({
   /**
    * post提交
    */
-  _post_form(url, data, success, fail, complete, isShowNavBarLoading) {
+   _post_form(url, data, success, fail, complete, isShowNavBarLoading) {
     let _this = this;
 
     isShowNavBarLoading || true;
@@ -384,7 +402,7 @@ App({
   /**
    * 验证是否存在user_info
    */
-  validateUserInfo() {
+   validateUserInfo() {
     let user_info = wx.getStorageSync('user_info');
     return !!wx.getStorageSync('user_info');
   },
@@ -392,7 +410,7 @@ App({
   /**
    * 小程序主动更新
    */
-  updateManager() {
+   updateManager() {
     if (!wx.canIUse('getUpdateManager')) {
       return false;
     }
@@ -427,7 +445,7 @@ App({
   /**
    * 获取tabBar页面路径列表
    */
-  getTabBarLinks() {
+   getTabBarLinks() {
     return tabBarLinks;
   },
 
@@ -457,7 +475,7 @@ App({
    * 记录formId
    * (因微信模板消息已下线，所以formId取消不再收集)
    */
-  saveFormId(formId) {
+   saveFormId(formId) {
     return true;
     // let _this = this;
     // console.log('saveFormId');
@@ -472,7 +490,7 @@ App({
   /**
    * 生成转发的url参数
    */
-  getShareUrlParams(params) {
+   getShareUrlParams(params) {
     let _this = this;
     return util.urlEncode(Object.assign({
       referee_id: _this.getUserId(),
@@ -483,7 +501,7 @@ App({
   /**
    * 发起微信支付
    */
-  wxPayment(option) {
+   wxPayment(option) {
     let options = Object.assign({
       payment: {},
       success: () => {},
@@ -511,14 +529,14 @@ App({
   /**
    * 验证登录
    */
-  checkIsLogin() {
+   checkIsLogin() {
     return wx.getStorageSync('token') != '' && wx.getStorageSync('user_id') != '';
   },
 
   /**
    * 解密手机号码
    */
-  getPhoneNumber(e, callback) {
+   getPhoneNumber(e, callback) {
     let _this = this;
 
     if (e.detail.errMsg !== "getPhoneNumber:ok") {
@@ -574,7 +592,7 @@ App({
   /**
    * 授权登录
    */
-  getUserInfo(info, callback) {
+   getUserInfo(info, callback) {
     let App = this;
     wx.showLoading({
       title: "正在登录",
@@ -611,7 +629,7 @@ App({
   /**
    * 获取推荐人id
    */
-  getRefereeid() {
+   getRefereeid() {
     return wx.getStorageSync('referee_id');
   },
 
@@ -631,14 +649,14 @@ App({
    * 记录购物车商品总数量
    * @param {*} value
    */
-  setCartTotalNum(value) {
+   setCartTotalNum(value) {
     wx.setStorageSync('cartTotalNum', Number(value))
   },
 
   /**
    * 设置购物车tabbar的角标
    */
-  setCartTabBadge() {
+   setCartTabBadge() {
     const number = wx.getStorageSync('cartTotalNum')
     if (number > 0) {
       wx.setTabBarBadge({

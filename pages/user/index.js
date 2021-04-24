@@ -79,7 +79,7 @@ Page({
       */
 
       let role = 0;
-      if(result.data.shop_list.length){
+      if(result.data.shop_list.length) {
         role = result.data.shop_list[0].clerk_role.value;
       } else if (result.data.warehouse_list.length) {
         role = 3;
@@ -273,7 +273,6 @@ Page({
   /**
    * 授权登录
    */
-
   getUserInfo(e) {
     wx.getUserProfile({
       lang: 'zh_CN',

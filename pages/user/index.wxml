@@ -50,9 +50,12 @@
       </form>
 
       <block>
-
-        <picker wx:if="{{currentShop}}" class="store-selector" bindchange="bindPickerChange" value="{{index}}" value="0"
-          range="{{shop_list}}" range-key="shop_name">
+        <picker wx:if="{{currentShop}}" 
+          class="store-selector" 
+          bindchange="bindPickerChange" 
+          value="{{index}}" value="0"
+          range="{{shop_list}}" 
+          range-key="shop_name">
           <button class="weui-btn" type="default">{{currentShop}}</button>
         </picker>
       </block>
