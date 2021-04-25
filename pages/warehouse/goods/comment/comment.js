@@ -68,7 +68,7 @@ Page({
     let _this = this;
     let params = _this.data.options;
     params.page = page || 1;
-    App._get('sharing.comment/lists', params, function(result) {
+    App._get('warehouse.comment/lists', params, function(result) {
       let resultList = result.data.list,
         dataList = _this.data.list;
       if (isNextPage !== true || typeof dataList.data === 'undefined') {
@@ -86,8 +86,8 @@ Page({
     });
   },
 
-  /** 
-   * 点击tab切换 
+  /**
+   * 点击tab切换
    */
   swichNav: function(e) {
     let _this = this;

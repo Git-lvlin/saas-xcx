@@ -20,7 +20,7 @@
       <!-- 商品价格 -->
       <view class="goods-price">
         <text class="price-currency f-26">￥</text>
-        <text class="price-text">{{ sharing_price }}</text>
+        <text class="price-text">{{ warehouse_price }}</text>
       </view>
       <view class="goods-message">
         <view class="line-price" wx:if="{{line_price > 0}}">
@@ -252,7 +252,7 @@
         <view class="order-bt flex-box dis-flex flex-dir-column flex-x-center">
           <form bindsubmit="onTriggerOrder" report-submit="true" data-type="20">
             <button formType="submit" class="btn-normal col-f">
-              <view class="f-26">￥{{ sharing_price }}</view>
+              <view class="f-26">￥{{ warehouse_price }}</view>
               <view>发起拼单</view>
             </button>
           </form>
@@ -285,7 +285,7 @@
             <!-- 商品价 -->
             <view class="goods-price">
               <text class="col-m f-26">￥</text>
-              <text class="goods-price_num col-m f-40">{{ order_type == 10 ? goods_price : sharing_price }}</text>
+              <text class="goods-price_num col-m f-40">{{ order_type == 10 ? goods_price : warehouse_price }}</text>
             </view>
             <!-- 划线价 -->
             <view class="line-price" wx:if="{{line_price > 0}}">

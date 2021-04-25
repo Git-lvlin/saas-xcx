@@ -35,7 +35,7 @@
             <text class="cl-9">已有{{ item.goods_sales }}人进行拼团</text>
             </text>
             <text class="desc_footer">
-            <text class="price_x">¥{{ item.goods_sku.sharing_price }}</text>
+            <text class="price_x">¥{{ item.goods_sku.warehouse_price }}</text>
             <text class="price_y cl-9">¥{{ item.goods_sku.line_price }}</text>
             </text>
           </view>

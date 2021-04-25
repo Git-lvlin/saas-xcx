@@ -7,7 +7,7 @@
     <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">
       <text>待付款</text>
     </view>
-    <view bindtap="bindHeaderTap" class="{{dataType==='sharing'?'active':''}}" data-type="sharing">
+    <view bindtap="bindHeaderTap" class="{{dataType==='warehouse'?'active':''}}" data-type="warehouse">
       <text>拼团中</text>
     </view>
     <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">
@@ -110,7 +110,7 @@
         <view class="jz-notcont">
           <text class="iconfont icon-wushuju"></text>
           <text class="cont">亲，您还没有订单信息哦！</text>
-          <navigator url="../../sharing/index/index">去开团</navigator>
+          <navigator url="../../warehouse/index/index">去下单</navigator>
         </view>
       </view>
     </scroll-view>

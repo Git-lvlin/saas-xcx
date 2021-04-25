@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "拼团订单",
+  "navigationBarTitleText": "仓库订单",
   "usingComponents": {
     "zan-popup": "/components/popup/index"
   }

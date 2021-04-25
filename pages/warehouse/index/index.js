@@ -24,7 +24,7 @@ Page({
    */
   onLoad(options) {
     let _this = this;
-    // Api：获取拼团首页
+    // Api：获取仓库首页
     _this.setListHeight();
     this.getIndexData();
   },
@@ -34,8 +34,8 @@ Page({
    */
   getIndexData() {
     let _this = this;
-    // 获取拼团首页
-    App._get('sharing.index/index', {}, result => {
+    // 获取仓库首页
+    App._get('warehouse.index/index', {}, result => {
       _this.setData({
         categoryList: result.data.categoryList
       });
@@ -66,7 +66,7 @@ Page({
    */
   getGoodsList(isPage, page) {
     let _this = this;
-    App._get('sharing.goods/lists', {
+    App._get('warehouse.goods/lists', {
       page: page || 1,
       category_id: _this.data.category_id
     }, result => {
@@ -128,8 +128,8 @@ Page({
    */
   onShareAppMessage() {
     return {
-      title: '拼团首页',
-      path: "/pages/sharing/index/index?" + App.getShareUrlParams()
+      title: '仓库首页',
+      path: "/pages/warehouse/index/index?" + App.getShareUrlParams()
     };
   },
 
@@ -140,8 +140,8 @@ Page({
    */
   onShareTimeline() {
     return {
-      title: '拼团首页',
-      path: "/pages/sharing/index/index?" + App.getShareUrlParams()
+      title: '仓库首页',
+      path: "/pages/warehouse/index/index?" + App.getShareUrlParams()
     };
   },
 

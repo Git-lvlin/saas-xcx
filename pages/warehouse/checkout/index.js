@@ -125,7 +125,7 @@ Page({
       title: '加载中...',
     });
 
-    App._get('sharing.order/checkout', {
+    App._get('warehouse.order/checkout', {
       order_type: options.order_type,
       goods_id: options.goods_id,
       goods_num: options.goods_num,
@@ -218,7 +218,7 @@ Page({
         title: '正在处理...'
       });
       // 创建订单-立即购买
-      App._post_form('sharing.order/checkout', {
+      App._post_form('warehouse.order/checkout', {
         order_type: options.order_type || 10,
         goods_id: options.goods_id,
         goods_num: options.goods_num,

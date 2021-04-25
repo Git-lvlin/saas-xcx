@@ -42,7 +42,7 @@ Page({
    */
   getRefundList(isNextPage, page) {
     let _this = this;
-    App._get('sharing.refund/lists', {
+    App._get('warehouse.refund/lists', {
       state: _this.data.dataType,
       page: page || 1,
     }, (result) => {
@@ -98,8 +98,8 @@ Page({
     });
   },
 
-  /** 
-   * 点击tab切换 
+  /**
+   * 点击tab切换
    */
   swichNav(e) {
     let _this = this,

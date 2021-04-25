@@ -56,7 +56,7 @@ Page({
    */
   getOrderList(isPage, page) {
     let _this = this;
-    App._get('sharing.order/lists', {
+    App._get('warehouse.order/lists', {
       page: page || 1,
       dataType: _this.data.dataType
     }, result => {
@@ -102,7 +102,7 @@ Page({
       content: "确认要取消该订单吗？",
       success(o) {
         if (o.confirm) {
-          App._post_form('sharing.order/cancel', {
+          App._post_form('warehouse.order/cancel', {
             order_id
           }, result => {
             _this.getOrderList(_this.data.dataType);
@@ -123,7 +123,7 @@ Page({
       content: "确认收到商品？",
       success(o) {
         if (o.confirm) {
-          App._post_form('sharing.order/receipt', {
+          App._post_form('warehouse.order/receipt', {
             order_id
           }, result => {
             _this.getOrderList(_this.data.dataType);
@@ -176,7 +176,7 @@ Page({
     wx.showLoading({
       title: '正在处理...',
     });
-    App._post_form('sharing.order/pay', {
+    App._post_form('warehouse.order/pay', {
       order_id: orderId,
       payType: payType
     }, result => {
@@ -298,7 +298,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    App._get('sharing.order/extractQrcode', {
+    App._get('warehouse.order/extractQrcode', {
       order_id
     }, (result) => {
       // 设置二维码图片路径

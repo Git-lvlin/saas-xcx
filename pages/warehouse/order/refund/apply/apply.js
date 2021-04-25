@@ -37,7 +37,7 @@ Page({
    */
   getGoodsDetail: function() {
     let _this = this;
-    App._get('sharing.refund/apply', {
+    App._get('warehouse.refund/apply', {
       order_goods_id: this.data.order_goods_id
     }, function(result) {
       _this.setData(result.data);
@@ -127,7 +127,7 @@ Page({
     // form提交执行函数
     let fromPostCall = function(params) {
       console.log('fromPostCall');
-      App._post_form('sharing.refund/apply', params, function(result) {
+      App._post_form('warehouse.refund/apply', params, function(result) {
           if (result.code === 1) {
             App.showSuccess(result.msg, function() {
               // 跳转售后管理页面

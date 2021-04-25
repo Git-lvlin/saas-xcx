@@ -1,4 +1,4 @@
-const Sharing = require('../../../utils/extend/sharing.js');
+const Sharing = require('../../../utils/extend/warehouse.js');
 const wxParse = require("../../../wxParse/wxParse.js");
 const Dialog = require('../../../components/dialog/dialog');
 const util = require('../../../utils/util.js');
@@ -25,7 +25,7 @@ Page({
     showView: true, // 显示商品规格
 
     detail: {}, // 商品详情信息
-    sharing_price: 0, // 拼团价格
+    warehouse_price: 0, // 拼团价格
     goods_price: 0, // 单买价
     line_price: 0, // 划线价格
     stock_num: 0, // 库存数量
@@ -89,7 +89,7 @@ Page({
    */
   getGoodsDetail() {
     let _this = this;
-    App._get('sharing.goods/detail', {
+    App._get('warehouse.goods/detail', {
       goods_id: _this.data.goods_id
     }, result => {
       // 初始化商品详情数据
@@ -112,7 +112,7 @@ Page({
     // 商品价格/划线价/库存
     data.goods_sku_id = goodsDetail.goods_sku.spec_sku_id;
     data.goods_price = goodsDetail.goods_sku.goods_price;
-    data.sharing_price = goodsDetail.goods_sku.sharing_price;
+    data.warehouse_price = goodsDetail.goods_sku.warehouse_price;
     data.line_price = goodsDetail.goods_sku.line_price;
     data.stock_num = goodsDetail.goods_sku.stock_num;
     // 商品封面图(确认弹窗)
@@ -191,7 +191,7 @@ Page({
       _this.setData({
         goods_sku_id: skuItem.spec_sku_id,
         goods_price: skuItem.form.goods_price,
-        sharing_price: skuItem.form.sharing_price,
+        warehouse_price: skuItem.form.warehouse_price,
         line_price: skuItem.form.line_price,
         stock_num: skuItem.form.stock_num,
         skuCoverImage: skuItem.form.image_id > 0 ? skuItem.form.image_path : _this.data.detail.goods_image
@@ -275,7 +275,7 @@ Page({
       return false;
     }
     if (_this.data.order_type == "20" && _this.data.setting.basic.leader_buy == "0") {
-      App._post_form('sharing.active/create', {
+      App._post_form('warehouse.active/create', {
         goods_id: _this.data.goods_id,
       }, result => {
         wx.navigateTo({
@@ -405,7 +405,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    App._get('sharing.goods/poster', {
+    App._get('warehouse.goods/poster', {
       goods_id: _this.data.goods_id
     }, result => {
       _this.setData(result.data, () => {
@@ -533,7 +533,7 @@ Page({
     });
     return {
       title: _this.data.detail.goods_name,
-      path: "/pages/sharing/goods/index?" + params
+      path: "/pages/warehouse/goods/index?" + params
     };
   },
 
@@ -550,7 +550,7 @@ Page({
     });
     return {
       title: _this.data.detail.goods_name,
-      path: "/pages/sharing/goods/index?" + params
+      path: "/pages/warehouse/goods/index?" + params
     };
   },
 

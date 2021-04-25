@@ -34,7 +34,7 @@ Page({
    */
   getGoodsList: function() {
     let _this = this;
-    App._get('sharing.comment/order', {
+    App._get('warehouse.comment/order', {
       order_id: this.data.options.order_id
     }, function(result) {
       let goodsList = result.data.goodsList;
@@ -139,7 +139,7 @@ Page({
       console.log('fromPostCall');
       console.log(formData);
 
-      App._post_form('sharing.comment/order', {
+      App._post_form('warehouse.comment/order', {
           order_id: _this.data.options.order_id,
           formData: JSON.stringify(formData)
         }, function(result) {

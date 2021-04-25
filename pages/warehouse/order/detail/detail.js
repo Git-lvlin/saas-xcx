@@ -38,7 +38,7 @@ Page({
    */
   getOrderDetail(order_id) {
     let _this = this;
-    App._get('sharing.order/detail', {
+    App._get('warehouse.order/detail', {
       order_id
     }, result => {
       _this.setData(result.data);
@@ -66,7 +66,7 @@ Page({
       content: "确认取消订单？",
       success(o) {
         if (o.confirm) {
-          App._post_form('sharing.order/cancel', {
+          App._post_form('warehouse.order/cancel', {
             order_id
           }, result => {
             wx.navigateBack();
@@ -87,7 +87,7 @@ Page({
       content: "确认收到商品？",
       success(o) {
         if (o.confirm) {
-          App._post_form('sharing.order/receipt', {
+          App._post_form('warehouse.order/receipt', {
             order_id
           }, result => {
             _this.getOrderDetail(order_id);
@@ -156,7 +156,7 @@ Page({
     wx.showLoading({
       title: '正在处理...',
     });
-    App._post_form('sharing.order/pay', {
+    App._post_form('warehouse.order/pay', {
       order_id: orderId,
       payType
     }, result => {
