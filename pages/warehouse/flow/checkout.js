@@ -1,20 +1,11 @@
-const App = getApp();
-
-// 工具类
 import Util from '../../../utils/util.js';
-
-// 验证类
 import Verify from '../../../utils/verify.js';
-
-// 枚举类：发货方式
 import DeliveryTypeEnum from '../../../utils/enum/DeliveryType.js';
-
-// 枚举类：支付方式
 import PayTypeEnum from '../../../utils/enum/order/PayType';
-
-// 对话框插件
 import Dialog from '../../../components/dialog/dialog';
+import Toast from '../../../components/toast/toast';
 
+const App = getApp()
 Page({
 
   /**
@@ -24,6 +15,9 @@ Page({
 
     // 当前页面参数
     options: {},
+
+    // // 系统设置：配送方式
+    // deliverySetting: [],
 
     // 系统设置
     setting: {
@@ -73,7 +67,10 @@ Page({
   onLoad(options) {
     let _this = this;
     // 当前页面参数
-    _this.data.options = options;
+    _this.setData({
+      options
+    });
+    console.log(options);
   },
 
   /**
@@ -91,10 +88,10 @@ Page({
   getOrderData() {
     let _this = this,
       options = _this.data.options;
-
     // 获取订单信息回调方法
     let callback = result => {
       let resData = result.data;
+      // 请求错误
       if (result.code !== 1) {
         App.showError(result.msg);
         return false;
@@ -125,18 +122,56 @@ Page({
       title: '加载中...',
     });
 
-    App._get('warehouse.order/checkout', {
-      order_type: options.order_type,
-      goods_id: options.goods_id,
-      goods_num: options.goods_num,
-      goods_sku_id: options.goods_sku_id,
+    // 请求的参数
+    let params = {
       delivery: _this.data.curDelivery || 0,
       shop_id: _this.data.selectedShopId || 0,
       coupon_id: _this.data.selectCouponId || 0,
       is_use_points: _this.data.isUsePoints ? 1 : 0,
-    }, result => {
-      callback(result);
-    });
+    };
+
+    // 立即购买
+    if (options.order_type === 'buyNow') {
+      let url = App.getUrl('warehouse.order/checkout', 'warehouse.order/buyNow')
+      App._get(url, Object.assign({}, params, {
+        goods_id: options.goods_id,
+        goods_num: options.goods_num,
+        goods_sku_id: options.goods_sku_id,
+      }), result => {
+        callback(result);
+      });
+    }
+
+    // 砍价活动结算
+    else if (options.order_type === 'bargain') {
+      App._get('bargain.order/checkout', Object.assign({}, params, {
+        task_id: options.task_id,
+        goods_sku_id: options.goods_sku_id,
+      }), result => {
+        callback(result);
+      });
+    }
+
+    // 秒杀活动结算
+    else if (options.order_type === 'sharp') {
+      App._get('sharp.order/checkout', Object.assign({}, params, {
+        active_time_id: options.active_time_id,
+        sharp_goods_id: options.sharp_goods_id,
+        goods_sku_id: options.goods_sku_id,
+        goods_num: options.goods_num,
+      }), result => {
+        callback(result);
+      });
+    }
+
+    // 购物车结算
+    else if (options.order_type === 'cart') {
+      App._get('warehouse.order/cart', Object.assign({}, params, {
+        cart_ids: options.cart_ids || 0,
+      }), result => {
+        callback(result);
+      });
+    }
   },
 
   /**
@@ -163,7 +198,7 @@ Page({
     });
     // 跳转到选择自提点
     wx.navigateTo({
-      url: '../../address/' + (_this.data.exist_address ? 'index?from=flow' : 'create')
+      url: '../address/' + (_this.data.exist_address ? 'index?from=flow' : 'create')
     });
   },
 
@@ -179,7 +214,7 @@ Page({
     });
     // 跳转到选择自提点
     wx.navigateTo({
-      url: '../../_select/extract_point/index?selected_id=' + selectedId
+      url: '../_select/extract_point/index?selected_id=' + selectedId
     });
   },
 
@@ -211,39 +246,79 @@ Page({
     // 按钮禁用, 防止二次提交
     _this.data.disabled = true;
 
+
+    let url = '';
+
+    // 表单提交的数据
+    let postData = {
+      delivery: _this.data.curDelivery,
+      pay_type: _this.data.curPayType,
+      shop_id: _this.data.selectedShopId || 0,
+      linkman: _this.data.linkman,
+      phone: _this.data.phone,
+      coupon_id: _this.data.selectCouponId || 0,
+      is_use_points: _this.data.isUsePoints ? 1 : 0,
+      remark: _this.data.remark || '',
+    };
+
+    // 创建订单-立即购买
+    if (options.order_type === 'buyNow') {
+      url = 'warehouse.order/buyNow';
+      postData = Object.assign(postData, {
+        goods_id: options.goods_id,
+        goods_num: options.goods_num,
+        goods_sku_id: options.goods_sku_id,
+      });
+    }
+
+    // 创建订单-购物车结算
+    if (options.order_type === 'cart') {
+      url = 'warehouse.order/cart';
+      postData = Object.assign(postData, {
+        cart_ids: options.cart_ids || 0,
+      });
+    }
+
+    // 创建订单-砍价活动
+    if (options.order_type === 'bargain') {
+      url = 'bargain.order/checkout';
+      postData = Object.assign(postData, {
+        task_id: options.task_id,
+        goods_sku_id: options.goods_sku_id,
+      });
+    }
+
+    // 创建订单-秒杀商品
+    if (options.order_type === 'sharp') {
+      url = 'sharp.order/checkout';
+      postData = Object.assign(postData, {
+        active_time_id: options.active_time_id,
+        sharp_goods_id: options.sharp_goods_id,
+        goods_sku_id: options.goods_sku_id,
+        goods_num: options.goods_num,
+      });
+    }
+
     // 提交到后端
     const onCommitCallback = () => {
       // 显示loading
       wx.showLoading({
         title: '正在处理...'
       });
-      // 创建订单-立即购买
-      App._post_form('warehouse.order/checkout', {
-        order_type: options.order_type || 10,
-        goods_id: options.goods_id,
-        goods_num: options.goods_num,
-        goods_sku_id: options.goods_sku_id,
-        delivery: _this.data.curDelivery || 0,
-        pay_type: _this.data.curPayType,
-        shop_id: _this.data.selectedShopId || 0,
-        linkman: _this.data.linkman,
-        phone: _this.data.phone,
-        active_id: options.active_id || 0,
-        coupon_id: _this.data.selectCouponId || 0,
-        is_use_points: _this.data.isUsePoints ? 1 : 0,
-        remark: _this.data.remark || '',
-      }, result => {
+      // 订单提交
+      App._post_form(url, postData, result => {
         _this._onSubmitCallback(result);
       }, result => {}, () => {
         wx.hideLoading();
         // 解除按钮禁用
         _this.data.disabled = false;
-        // 不允许刷新
-        _this.setData({
-          notRefresh: true
-        });
+      });
+      // 不允许刷新
+      _this.setData({
+        notRefresh: true
       });
     };
+
     // 请求用户订阅消息
     _this._onRequestSubscribeMessage(onCommitCallback);
   },
@@ -301,6 +376,7 @@ Page({
       });
     }
   },
+
 
   /**
    * 表单验证
@@ -363,15 +439,27 @@ Page({
    * 选择优惠券
    */
   onSelectCoupon(e) {
-    let _this = this;
+    const app = this;
+    // 当前选择的优惠券
+    const index = e.currentTarget.dataset.index
+    const couponItem = app.data.coupon_list[index]
+    // 判断是否在适用范围
+    if (!couponItem['is_apply']) {
+      Toast({
+        selector: '#zan-toast',
+        message: couponItem.not_apply_info,
+        timeout: 1800
+      });
+      return
+    }
     // 记录选中的优惠券id
-    _this.setData({
-      selectCouponId: e.currentTarget.dataset.id
+    app.setData({
+      selectCouponId: couponItem.user_coupon_id
     });
     // 重新获取订单信息
-    _this.getOrderData();
+    app.getOrderData();
     // 隐藏优惠券弹层
-    _this.onTogglePopupCoupon();
+    app.onTogglePopupCoupon();
   },
 
   /**

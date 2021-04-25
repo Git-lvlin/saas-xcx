@@ -30,10 +30,16 @@
     </button>
   </form>
 
-  <!-- 付款金额 -->
-  <view class="detail-order b-f row-block dis-flex flex-x-end flex-y-center">
-    <text class="">付款金额：</text>
-    <text class="col-m">￥{{ detail.order_goods.total_pay_price }}</text>
+  <!-- 商品金额 -->
+  <view class="detail-order b-f row-block">
+    <view class="item dis-flex flex-x-end flex-y-center">
+      <text class="">商品金额：</text>
+      <text class="col-m">￥{{ detail.order_goods.total_pay_price }}</text>
+    </view>
+    <view class="item dis-flex flex-x-end flex-y-center">
+      <text class="">订单实付金额：</text>
+      <text class="col-m">￥{{ detail.order_master.pay_price }}</text>
+    </view>
   </view>
 
   <!-- 已退款金额 -->

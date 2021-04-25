@@ -1,10 +1,11 @@
 const App = getApp();
 
 // 枚举类：发货方式
-import DeliveryTypeEnum from '../../../../utils/enum/DeliveryType.js';
+import DeliveryTypeEnum from '../../../utils/enum/DeliveryType.js';
 
 // 枚举类：支付方式
-import PayTypeEnum from '../../../../utils/enum/order/PayType'
+import PayTypeEnum from '../../../utils/enum/order/PayType'
+
 
 Page({
 
@@ -51,7 +52,7 @@ Page({
   onTargetGoods(e) {
     let goods_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../../goods/index?goods_id=' + goods_id
+      url: '../goods/index?goods_id=' + goods_id
     });
   },
 
@@ -102,7 +103,7 @@ Page({
    */
   onApplyRefund(e) {
     wx.navigateTo({
-      url: '../refund/apply/apply?order_goods_id=' + e.currentTarget.dataset.id,
+      url: './refund/apply/apply?order_goods_id=' + e.currentTarget.dataset.id,
     })
   },
 
@@ -111,7 +112,7 @@ Page({
    */
   onTargetShop(e) {
     wx.navigateTo({
-      url: '../../../shop/detail/index?shop_id=' + e.currentTarget.dataset.id,
+      url: '../shop/detail/index?shop_id=' + e.currentTarget.dataset.id,
     })
   },
 

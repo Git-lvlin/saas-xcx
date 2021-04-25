@@ -24,7 +24,7 @@ Page({
    */
   getExpressDynamic: function(order_id) {
     let _this = this;
-    App._get('warehouse.order/express', {
+    App._get('user.order/express', {
         order_id
       }, function(result) {
         _this.setData(result.data);

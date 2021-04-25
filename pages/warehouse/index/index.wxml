@@ -29,17 +29,14 @@
             <view class="">
               <text class="desc_introduction onelist-hidden">{{ item.selling_point }}</text>
             </view>
-            <text class="desc_situation">
-            <text class="iconfont icon-pintuan_huaban"></text>
-            <text class="people">{{ item.people }}人团</text>
-            <text class="cl-9">已有{{ item.goods_sales }}人进行拼团</text>
-            </text>
+            <text class="people">库存 {{ item.goods_sku.stock_num }}</text>
+            <text class="cl-9">已有{{ item.goods_sales }}人下单</text>
             <text class="desc_footer">
             <text class="price_x">¥{{ item.goods_sku.warehouse_price }}</text>
             <text class="price_y cl-9">¥{{ item.goods_sku.line_price }}</text>
             </text>
           </view>
-          <button class="settlement">去拼团</button>
+          <button class="settlement">去下单</button>
         </view>
       </view>
       <view wx:if="{{ no_more }}" class="no-more f-30">亲, 没有更多了</view>

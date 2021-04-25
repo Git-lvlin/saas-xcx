@@ -34,7 +34,7 @@ Page({
    */
   getGoodsList: function() {
     let _this = this;
-    App._get('warehouse.comment/order', {
+    App._get('user.comment/order', {
       order_id: this.data.options.order_id
     }, function(result) {
       let goodsList = result.data.goodsList;
@@ -56,7 +56,11 @@ Page({
         order_goods_id: item.order_goods_id,
         score: 10,
         content: '',
-        image_list: [],
+        image_list: [
+          // 'http://tmp/wxe1997e687ecca54e.o6zAJs38WC0RISx_rydS4v4D778c.VzVJOgmUHlH3fd47776794bd803898289bebee12d94c.jpg',
+          // 'http://tmp/wxe1997e687ecca54e.o6zAJs38WC0RISx_rydS4v4D778c.u8PUZLBNG2ELa7692fe0b9dfebf762cf0cb3677a42d7.jpg',
+          // 'http://tmp/wxe1997e687ecca54e.o6zAJs38WC0RISx_rydS4v4D778c.8PjhMmysqokY55a19834d4135fbf72d4e653010d375e.jpg'
+        ],
         uploaded: []
       });
     });
@@ -139,7 +143,7 @@ Page({
       console.log('fromPostCall');
       console.log(formData);
 
-      App._post_form('warehouse.comment/order', {
+      App._post_form('user.comment/order', {
           order_id: _this.data.options.order_id,
           formData: JSON.stringify(formData)
         }, function(result) {
@@ -147,7 +151,7 @@ Page({
             App.showSuccess(result.msg, function() {
               wx.navigateBack();
             });
-          } else if(result.code&&result.code >2) {
+          } else if(result.code&&result.code >2){
             App.showError(result.msg);
           }
         },

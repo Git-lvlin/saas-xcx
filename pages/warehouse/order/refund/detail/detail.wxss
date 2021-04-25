@@ -49,6 +49,14 @@
   font-size: 26rpx;
 }
 
+.detail-order .item {
+  margin-bottom: 10rpx;
+}
+
+.detail-order .item:last-child {
+  margin-bottom: 0;
+}
+
 /* 售后详情 */
 
 .detail-refund {

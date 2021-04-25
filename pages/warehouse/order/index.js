@@ -48,7 +48,7 @@ Page({
    */
   onShow() {
     // 获取订单列表
-    this.getOrderList(this.data.dataType);
+    this.getOrderList();
   },
 
   /**
@@ -56,7 +56,7 @@ Page({
    */
   getOrderList(isPage, page) {
     let _this = this;
-    App._get('warehouse.order/lists', {
+    App._get('warehouse.user.order/lists', {
       page: page || 1,
       dataType: _this.data.dataType
     }, result => {
@@ -75,7 +75,6 @@ Page({
       }
     });
   },
-
   /**
    * 切换标签
    */
@@ -102,7 +101,7 @@ Page({
       content: "确认要取消该订单吗？",
       success(o) {
         if (o.confirm) {
-          App._post_form('warehouse.order/cancel', {
+          App._post_form('warehouse.user.order/cancel', {
             order_id
           }, result => {
             _this.getOrderList(_this.data.dataType);
@@ -123,7 +122,7 @@ Page({
       content: "确认收到商品？",
       success(o) {
         if (o.confirm) {
-          App._post_form('warehouse.order/receipt', {
+          App._post_form('warehouse.user.order/receipt', {
             order_id
           }, result => {
             _this.getOrderList(_this.data.dataType);
@@ -176,7 +175,7 @@ Page({
     wx.showLoading({
       title: '正在处理...',
     });
-    App._post_form('warehouse.order/pay', {
+    App._post_form('warehouse.user.order/pay', {
       order_id: orderId,
       payType: payType
     }, result => {
@@ -184,7 +183,6 @@ Page({
         App.showError(result.msg);
         return false;
       }
-
       // 发起微信支付
       if (result.data.pay_type == PayTypeEnum.WECHAT.value) {
         App.wxPayment({
@@ -192,7 +190,7 @@ Page({
           success() {
             // 跳转到已付款订单
             wx.navigateTo({
-              url: '../order/detail/detail?order_id=' + orderId
+              url: '../order/detail?order_id=' + orderId
             });
           },
           fail() {
@@ -200,17 +198,15 @@ Page({
           },
         });
       }
-
       // 余额支付
       if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
         App.showSuccess(result.msg.success, () => {
           // 跳转到已付款订单
           wx.navigateTo({
-            url: '../order/detail/detail?order_id=' + orderId
+            url: '../order/detail?order_id=' + orderId
           });
         });
       }
-
     }, null, () => {
       wx.hideLoading();
     });
@@ -231,28 +227,9 @@ Page({
    * 跳转订单详情页
    */
   navigateToDetail(e) {
-    let order_id = e.detail.target.dataset.id;
+    let order_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: './detail/detail?order_id=' + order_id
-    });
-  },
-
-  /**
-   * 跳转到拼团详情
-   */
-  navigateToSharingActive(e) {
-    let active_id = e.detail.target.dataset.id;
-    wx.navigateTo({
-      url: '../active/index?active_id=' + active_id
-    });
-  },
-
-  /**
-   * 跳转到售后列表
-   */
-  onTargetRefund() {
-    wx.navigateTo({
-      url: './refund/index'
+      url: '../order/detail?order_id=' + order_id
     });
   },
 
@@ -298,7 +275,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    App._get('warehouse.order/extractQrcode', {
+    App._get('warehouse.user.order/extractQrcode', {
       order_id
     }, (result) => {
       // 设置二维码图片路径

@@ -1,5 +1,19 @@
 {
   "pages": [
+    
+    "pages/warehouse/index/index",
+    "pages/warehouse/order/index",
+    
+    "pages/warehouse/goods/index",
+    "pages/warehouse/goods/comment/comment",
+    "pages/warehouse/order/detail/detail",
+    "pages/warehouse/order/express/express",
+    "pages/warehouse/order/comment/comment",
+    "pages/warehouse/order/refund/apply/apply",
+    "pages/warehouse/order/refund/detail/detail",
+    "pages/warehouse/flow/index",
+    "pages/warehouse/flow/checkout",
+
     "pages/index/index",
     "pages/storehouse/index",
     "pages/shopkeeper/sale_record/index",
@@ -51,19 +65,6 @@
     "pages/sharing/order/refund/index",
     "pages/sharing/order/refund/apply/apply",
     "pages/sharing/order/refund/detail/detail",
-
-    "pages/warehouse/index/index",
-    "pages/warehouse/goods/index",
-    "pages/warehouse/goods/comment/comment",
-
-    "pages/warehouse/checkout/index",
-    "pages/warehouse/order/index",
-    "pages/warehouse/order/detail/detail",
-    "pages/warehouse/order/express/express",
-    "pages/warehouse/order/comment/comment",
-    "pages/warehouse/order/refund/index",
-    "pages/warehouse/order/refund/apply/apply",
-    "pages/warehouse/order/refund/detail/detail",
 
     "pages/_select/extract_point/index",
     "pages/shop/detail/index",

@@ -1,9 +1,10 @@
-const Sharing = require('../../../utils/extend/warehouse.js');
-const wxParse = require("../../../wxParse/wxParse.js");
-const Dialog = require('../../../components/dialog/dialog');
-const util = require('../../../utils/util.js');
+const App = getApp();
 
-const App = getApp()
+// 富文本插件
+const wxParse = require("../../../wxParse/wxParse.js");
+
+// 工具类
+const util = require('../../../utils/util.js');
 
 // 记录规格的数组
 let goodsSpecArr = [];
@@ -25,18 +26,15 @@ Page({
     showView: true, // 显示商品规格
 
     detail: {}, // 商品详情信息
-    warehouse_price: 0, // 拼团价格
-    goods_price: 0, // 单买价
+    goods_price: 0, // 商品价格
     line_price: 0, // 划线价格
     stock_num: 0, // 库存数量
 
-    order_type: 20, // 下单类型 10=>单独购买 20=>拼团
     goods_num: 1, // 商品数量
     goods_sku_id: 0, // 规格id
     cart_total_num: 0, // 购物车商品总数量
     goodsMultiSpec: {}, // 多规格信息
 
-    is_leader: 0,//是否是团长
     discounts_tips: '', // 优惠提示
 
     // 分享按钮组件
@@ -62,26 +60,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(e) {
-    let _this = this,
-      scene = App.getSceneData(e);
+    let _this = this;
+    let scene = App.getSceneData(e);
     // 商品id
     _this.data.goods_id = e.goods_id ? e.goods_id : scene.gid;
     // 获取商品信息
     _this.getGoodsDetail();
-    // 获取拼团设置
-    _this.getSetting();
-  },
-
-  /**
-   * 获取拼团设置
-   */
-  getSetting() {
-    let _this = this;
-    Sharing.getSetting(setting => {
-      _this.setData({
-        setting
-      });
-    });
   },
 
   /**
@@ -89,9 +73,11 @@ Page({
    */
   getGoodsDetail() {
     let _this = this;
-    App._get('warehouse.goods/detail', {
+    let url = 'warehouse.goods/detail'
+
+    App._get(url, {
       goods_id: _this.data.goods_id
-    }, result => {
+    }, (result) => {
       // 初始化商品详情数据
       let data = _this._initGoodsDetailData(result.data);
       _this.setData(data);
@@ -112,7 +98,6 @@ Page({
     // 商品价格/划线价/库存
     data.goods_sku_id = goodsDetail.goods_sku.spec_sku_id;
     data.goods_price = goodsDetail.goods_sku.goods_price;
-    data.warehouse_price = goodsDetail.goods_sku.warehouse_price;
     data.line_price = goodsDetail.goods_sku.line_price;
     data.stock_num = goodsDetail.goods_sku.stock_num;
     // 商品封面图(确认弹窗)
@@ -123,7 +108,7 @@ Page({
     }
     // 初始化商品多规格
     if (goodsDetail.spec_type == 20) {
-      data.goodsMultiSpec = _this.initManySpecData(goodsDetail.goods_multi_spec);
+      data.goodsMultiSpec = _this._initManySpecData(goodsDetail.goods_multi_spec);
     }
     return data;
   },
@@ -131,7 +116,7 @@ Page({
   /**
    * 初始化商品多规格
    */
-  initManySpecData(data) {
+  _initManySpecData(data) {
     goodsSpecArr = [];
     for (let i in data.spec_attr) {
       for (let j in data.spec_attr[i].spec_items) {
@@ -152,8 +137,6 @@ Page({
       attrIdx = e.currentTarget.dataset.attrIdx,
       itemIdx = e.currentTarget.dataset.itemIdx,
       goodsMultiSpec = _this.data.goodsMultiSpec;
-
-
     for (let i in goodsMultiSpec.spec_attr) {
       for (let j in goodsMultiSpec.spec_attr[i].spec_items) {
         if (attrIdx == i) {
@@ -178,20 +161,17 @@ Page({
   _updateSpecGoods() {
     let _this = this,
       specSkuId = goodsSpecArr.join('_');
-
     // 查找skuItem
-    let spec_list = this.data.goodsMultiSpec.spec_list,
+    let spec_list = _this.data.goodsMultiSpec.spec_list,
       skuItem = spec_list.find((val) => {
         return val.spec_sku_id == specSkuId;
       });
-
     // 记录goods_sku_id
     // 更新商品价格、划线价、库存
     if (typeof skuItem === 'object') {
       _this.setData({
         goods_sku_id: skuItem.spec_sku_id,
         goods_price: skuItem.form.goods_price,
-        warehouse_price: skuItem.form.warehouse_price,
         line_price: skuItem.form.line_price,
         stock_num: skuItem.form.stock_num,
         skuCoverImage: skuItem.form.image_id > 0 ? skuItem.form.image_path : _this.data.detail.goods_image
@@ -212,7 +192,7 @@ Page({
   /**
    * 返回顶部
    */
-  onScrollTop(e) {
+  onScrollTop(t) {
     let _this = this;
     _this.setData({
       scrollTop: 0
@@ -266,27 +246,29 @@ Page({
   },
 
   /**
-   * 确认购买
+   * 跳转购物车页面
    */
-  onCheckout() {
-    let _this = this;
+  onTriggerCart() {
+    wx.navigateTo({
+      url: "../flow/index"
+    });
+  },
+
+  /**
+   * 加入购物车and立即购买
+   */
+  onConfirmSubmit(e) {
+    let _this = this,
+      submitType = e.currentTarget.dataset.type;
     // 表单验证
     if (!_this._onVerify()) {
       return false;
     }
-    if (_this.data.order_type == "20" && _this.data.setting.basic.leader_buy == "0") {
-      App._post_form('warehouse.active/create', {
-        goods_id: _this.data.goods_id,
-      }, result => {
-        wx.navigateTo({
-          url: '../active/index?active_id=' + result.data.active_id,
-        })
-      });
-    } else {
+    if (submitType === 'buyNow') {
       // 立即购买
       wx.navigateTo({
-        url: '../checkout/index?' + util.urlEncode({
-          order_type: _this.data.order_type,
+        url: '../flow/checkout?' + util.urlEncode({
+          order_type: 'buyNow',
           goods_id: _this.data.goods_id,
           goods_num: _this.data.goods_num,
           goods_sku_id: _this.data.goods_sku_id,
@@ -295,6 +277,19 @@ Page({
           // 关闭弹窗
           _this.onToggleTrade();
         }
+      });
+    } else if (submitType === 'addCart') {
+      // 加入购物车
+      let url = App.getUrl('warehouse.cart/add','cart/add' )
+      App._post_form(url, {
+        goods_id: _this.data.goods_id,
+        goods_num: _this.data.goods_num,
+        goods_sku_id: _this.data.goods_sku_id,
+      }, (result) => {
+        App.showSuccess(result.msg);
+        _this.setData(result.data);
+        // 记录购物车商品数量
+        App.setCartTotalNum(result.data.cart_total_num)
       });
     }
   },
@@ -323,6 +318,7 @@ Page({
    * 浏览商品图片
    */
   onPreviewImages(e) {
+    let _this = this;
     let index = e.currentTarget.dataset.index,
       imageUrls = [];
     _this.data.detail.image.forEach(item => {
@@ -348,7 +344,7 @@ Page({
   /**
    * 跳转到评论
    */
-  onTargetToComment(e) {
+  onTargetToComment() {
     let _this = this;
     wx.navigateTo({
       url: './comment/comment?goods_id=' + _this.data.goods_id
@@ -405,9 +401,10 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    App._get('warehouse.goods/poster', {
+    let url = App.getUrl('warehouse.goods/poster', 'goods/poster');
+    App._get(url, {
       goods_id: _this.data.goods_id
-    }, result => {
+    }, (result) => {
       _this.setData(result.data, () => {
         _this.onTogglePopup();
       });
@@ -474,55 +471,6 @@ Page({
   },
 
   /**
-   * 显示拼团规则
-   */
-  onToggleRules(e) {
-    // 显示拼团规则
-    let _this = this;
-    Dialog({
-      title: '拼团规则',
-      message: _this.data.setting.basic.rule_detail,
-      selector: '#zan-base-dialog',
-      buttons: [{
-        text: '关闭',
-        color: 'red',
-        type: 'cash'
-      }]
-    });
-  },
-
-  /**
-   * 返回主页
-   */
-  onNavigationHome(e) {
-    wx.switchTab({
-      url: '../../index/index',
-    })
-  },
-
-  /**
-   * 立即下单
-   */
-  onTriggerOrder(e) {
-    let _this = this;
-    // 设置当前购买类型
-    _this.setData({
-      order_type: e.currentTarget.dataset.type
-    }, () => {
-      _this.onToggleTrade();
-    });
-  },
-
-  /**
-   * 跳转到拼单页面
-   */
-  onTargetActive(e) {
-    wx.navigateTo({
-      url: '../active/index?active_id=' + e.currentTarget.dataset.id,
-    })
-  },
-
-  /**
    * 分享当前页面
    */
   onShareAppMessage() {
@@ -533,7 +481,7 @@ Page({
     });
     return {
       title: _this.data.detail.goods_name,
-      path: "/pages/warehouse/goods/index?" + params
+      path: "/pages/goods/index?" + params
     };
   },
 
@@ -550,7 +498,7 @@ Page({
     });
     return {
       title: _this.data.detail.goods_name,
-      path: "/pages/warehouse/goods/index?" + params
+      path: "/pages/goods/index?" + params
     };
   },
 
