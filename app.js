@@ -53,7 +53,7 @@ App({
     //wx.setStorageSync({role: 0})
 
     //小程序启动时，检查用户角色
-    wx.getStorage({
+    /*wx.getStorage({
       key: 'role',
       success(res) {
         if (res.data > 0) {
@@ -68,7 +68,7 @@ App({
       fail() {
         wx.setStorageSync({role: 0})
       },
-    })
+    })*/
   },
 
   _wxLoginSuccess(resp0) {

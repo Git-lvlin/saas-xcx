@@ -1,5 +1,7 @@
 {
   "pages": [
+
+    "pages/index/index",
     
     "pages/warehouse/index/index",
     "pages/warehouse/order/index",
@@ -14,7 +16,7 @@
     "pages/warehouse/flow/index",
     "pages/warehouse/flow/checkout",
 
-    "pages/index/index",
+    
     "pages/storehouse/index",
     "pages/shopkeeper/sale_record/index",
     "pages/shopkeeper/order_record/index",
