@@ -29,6 +29,7 @@ App({
     mobile_acquired: false,
     storeList: [],
     storeInfo: {},
+    shop_id: ''
   },
 
   // api地址
@@ -678,8 +679,9 @@ App({
   */
 
   getUrl(url_1, url_2){
-    let role = wx.getStorageSync('role')
-    return role > 0 ? url_1 : url_2
+    return url_2;
+    // let role = wx.getStorageSync('role')
+    //return role > 0 ? url_1 : url_2
   }
 
 });

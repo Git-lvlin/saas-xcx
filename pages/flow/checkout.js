@@ -70,7 +70,10 @@ Page({
     _this.setData({
       options
     });
-    console.log(options);
+
+    _this.getLocation((res) => {
+      _this.getShopList(res.longitude, res.latitude);
+    });
   },
 
   /**
@@ -79,7 +82,6 @@ Page({
   onShow() {
     let _this = this;
     // 获取当前订单信息
-    !_this.data.notRefresh && _this.getOrderData();
   },
 
   /**
@@ -172,6 +174,47 @@ Page({
         callback(result);
       });
     }
+  },
+  
+  /*获取店铺列表*/
+  getShopList(longitude, latitude) {
+    let _this = this;
+    _this.setData({
+      isLoading: true
+    });
+    App._get('shop/lists', {
+      longitude: longitude || '',
+      latitude: latitude || ''
+    }, (result) => {
+      _this.setData({
+        selectedShopId: result.data.list[0].shop_id,
+      });
+
+      !_this.data.notRefresh && _this.getOrderData();
+    });
+  },
+
+  /**
+   * 获取用户坐标
+   */
+  getLocation(callback) {
+    let _this = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        // console.log(res);
+        callback && callback(res);
+      },
+      fail() {
+        Toptips({
+          duration: 3000,
+          content: '获取定位失败，请点击右下角按钮打开定位权限'
+        });
+        _this.setData({
+          isAuthor: false
+        });
+      },
+    })
   },
 
   /**
@@ -388,7 +431,7 @@ Page({
       return false;
     }
     // 验证自提填写的联系方式
-    if (_this.data.curDelivery == DeliveryTypeEnum.EXTRACT.value) {
+    if (_this.data.curDelivery == DeliveryTypeEnum.EXTRACT.value || _this.data.curDelivery === DeliveryTypeEnum.STOREDELIVERY.value) {
       _this.setData({
         linkman: _this.data.linkman.trim(),
         phone: _this.data.phone.trim(),

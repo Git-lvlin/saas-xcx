@@ -632,3 +632,7 @@ page {
   font-size: 42rpx;
   font-weight: bold;
 }
+
+.weui-navbar__title {
+  font-size: 28rpx;
+}

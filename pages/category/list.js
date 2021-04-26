@@ -82,7 +82,6 @@ Page({
    */
   getGoodsList(isPage, page, category_id) {
     let url = App.getUrl('warehouse.goods/lists', 'goods/lists');
-    console.log(App.getUrl)
     let _this = this;
     App._get(url, {
       page: page || 1,

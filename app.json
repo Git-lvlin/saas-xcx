@@ -18,8 +18,11 @@
 
     
     "pages/storehouse/index",
-    "pages/shopkeeper/sale_record/index",
-    "pages/shopkeeper/order_record/index",
+
+    "pages/shopkeeper/index",
+    "pages/shopkeeper/detail",
+    
+
     "pages/nail_picture/nail_picture",
     "pages/custom/index",
     "pages/category/index",

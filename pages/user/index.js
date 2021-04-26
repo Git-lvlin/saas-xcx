@@ -20,21 +20,20 @@ Page({
    */
   onLoad(options) {
 
-    var titleTextColor = wx.getStorageSync('titleTextColor')
-    var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
+    //var titleTextColor = wx.getStorageSync('titleTextColor')
+    //var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
 
-    if (titleTextColor && titleBackgroundColor) {
-      // 设置navbar标题、颜色
-      wx.setNavigationBarColor({
-        frontColor: titleTextColor,
-        backgroundColor: titleBackgroundColor
-      })
-    }
+    // if (titleTextColor && titleBackgroundColor) {
+    //   // 设置navbar标题、颜色
+    //   wx.setNavigationBarColor({
+    //     frontColor: titleTextColor,
+    //     backgroundColor: titleBackgroundColor
+    //   })
+    // }
 
     let _this = this;
     _this.setData({
-      
-      userHeaderBGC: titleBackgroundColor
+      userHeaderBGC: '#0ca64f'
     });
   },
 
@@ -49,14 +48,16 @@ Page({
     // 更新购物车角标
     App.setCartTabBadge()
 
-    this.setData({isLogin: App.checkIsLogin()})
+    this.setData({
+      isLogin: App.checkIsLogin()
+    })
 
     if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 3
-        })
-      }
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 3
+      })
+    }
   },
 
   /**
@@ -78,13 +79,15 @@ Page({
       }
       */
 
+     let {shop_list, warehouse_list} = result.data
+
       let role = 0;
-      if(result.data.shop_list.length) {
-        role = result.data.shop_list[0].clerk_role.value;
-      } else if (result.data.warehouse_list.length) {
+      if (shop_list.length) {
+        role = shop_list[0].clerk_role.value;
+      } else if (warehouse_list.length) {
         role = 3;
       }
-     
+
       switch (String(role)) {
         case '0':
           delete result.data.menus.shopkeeper_order
@@ -95,7 +98,12 @@ Page({
           delete result.data.menus.coupon;
           delete result.data.menus.my_coupon;
           delete result.data.menus.sharing_order;
-          delete result.data.menus.storehouse_order
+          delete result.data.menus.storehouse_order;
+          App.globalData.shop_id = shop_list[0].shop_id;
+          _this.setData({
+            currentShop: shop_list[0].shop_name,
+            shop_list
+          })
           break;
 
         case '2':
@@ -111,11 +119,14 @@ Page({
           delete result.data.menus.coupon;
           delete result.data.menus.my_coupon;
           delete result.data.menus.sharing_order;
+          delete result.data.menus.shopkeeper_order;
           break;
       }
 
       _this.setData(result.data);
-      _this.setData({role});
+      _this.setData({
+        role,
+      });
 
       _this.saveUserRole();
     });
@@ -150,7 +161,7 @@ Page({
       return false;
     }
     wx.navigateTo({
-      url: '/' + e.currentTarget.dataset.url
+      url: '/' + e.currentTarget.dataset.url 
     })
   },
 
@@ -229,14 +240,14 @@ Page({
   saveUserRole() {
     let _this = this;
     wx.setStorageSync('role', this.data.role)
-    if (_this.data.role > 0) {
-        wx.setTabBarItem({
-          index: 1,
-          text: '水厂',
-          iconPath: '/images/cate.png',
-          selectedIconPath: '/images/cate-active.png'
-        })
-      }
+    // if (_this.data.role > 0) {
+    //   wx.setTabBarItem({
+    //     index: 1,
+    //     text: '水厂',
+    //     iconPath: '/images/cate.png',
+    //     selectedIconPath: '/images/cate-active.png'
+    //   })
+    // }
   },
 
   /**
