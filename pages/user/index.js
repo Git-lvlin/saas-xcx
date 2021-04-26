@@ -23,18 +23,17 @@ Page({
     var titleTextColor = wx.getStorageSync('titleTextColor')
     var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
 
-    if (titleTextColor && titleBackgroundColor) {
-      // 设置navbar标题、颜色
-      wx.setNavigationBarColor({
-        frontColor: titleTextColor,
-        backgroundColor: titleBackgroundColor
-      })
-    }
+    // if (titleTextColor && titleBackgroundColor) {
+    //   // 设置navbar标题、颜色
+    //   wx.setNavigationBarColor({
+    //     frontColor: titleTextColor,
+    //     backgroundColor: titleBackgroundColor
+    //   })
+    // }
 
     let _this = this;
     _this.setData({
-      
-      userHeaderBGC: titleBackgroundColor
+      userHeaderBGC: '#0ca64f'
     });
   },
 

@@ -10,34 +10,41 @@
 		</block>
 	</view>
 
-	<view class="weui-form-preview">
-		<view class="weui-form-preview__hd">
-			<view class="weui-form-preview__item">
-				<label class="weui-form-preview__label">订单金额</label>
-				<em class="weui-form-preview__value">¥3000.00</em>
-			</view>
-		</view>
-		<view class="weui-form-preview__bd">
-			<view class="weui-form-preview__item">
-				<label class="weui-form-preview__label">日期</label>
-				<text class="weui-form-preview__value">2021-04-09 14:23:50</text>
-			</view>
-			<view class="weui-form-preview__item">
-				<label class="weui-form-preview__label">品名</label>
-				<text class="weui-form-preview__value">蔚芝蓝饮用纯净水</text>
-			</view>
-			<view class="weui-form-preview__item">
-				<label class="weui-form-preview__label">数量</label>
-				<text class="weui-form-preview__value">200桶</text>
-			</view>
+	<block wx:for="{{orderList}}">
 
-			<view class="weui-form-preview__item">
-				<label class="weui-form-preview__label">仓库名</label>
-				<text class="weui-form-preview__value">东莞市泉天下饮用水万江中心仓库</text>
+		<view class="weui-form-preview">
+			<view class="weui-form-preview__hd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">订单金额</label>
+					<em class="weui-form-preview__value">¥{{item.order_price}}</em>
+				</view>
+			</view>
+			<view class="weui-form-preview__bd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">订单号</label>
+					<text class="weui-form-preview__value">{{item.order_no}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">日期</label>
+					<text class="weui-form-preview__value">{{item.create_time}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">品名</label>
+					<text class="weui-form-preview__value">{{item.goods[0].goods_name}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">数量</label>
+					<text class="weui-form-preview__value">{{item.goods[0].total_num}}桶</text>
+				</view>
+
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">配送地址</label>
+					<text class="weui-form-preview__value">自提</text>
+				</view>
+			</view>
+			<view class="weui-form-preview__ft">
+				<a class="weui-form-preview__btn weui-form-preview__btn_primary" wx:if="{{activeIndex == 0}}">发货</a>
 			</view>
 		</view>
-		<view class="weui-form-preview__ft">
-			<a class="weui-form-preview__btn weui-form-preview__btn_primary" wx:if="{{activeIndex == 0}}">发货</a>
-		</view>
-	</view>
+	</block>
 </view>

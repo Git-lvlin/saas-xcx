@@ -44,6 +44,7 @@ Page({
       longitude: longitude || '',
       latitude: latitude || ''
     }, (result) => {
+      console.log(result.data.list)
       _this.setData({
         shopList: result.data.list,
         isLoading: false

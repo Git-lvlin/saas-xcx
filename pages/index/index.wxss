@@ -83,4 +83,5 @@ page {
   text-align: center;
   font-size: 24rpx;
   border-radius: 4px;
+  z-index: 999;
 }
