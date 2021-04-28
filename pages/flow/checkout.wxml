@@ -39,7 +39,7 @@
   </view>
 
   <!-- 上门自提：自提门店 -->
-  <block wx:if="{{ curDelivery == DeliveryTypeEnum.EXTRACT.value || curDelivery == DeliveryTypeEnum.STOREDELIVERY.value }}">
+  <block wx:if="{{ curDelivery == DeliveryTypeEnum.EXTRACT.value }}">
     <view catchtap="onSelectExtractPoint" class="flow-delivery">
       <view class="flow-delivery__detail dis-flex flex-y-center">
         <view class="detail-location dis-flex">
