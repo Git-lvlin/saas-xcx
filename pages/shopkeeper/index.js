@@ -87,15 +87,16 @@ Page({
     this.getOrderList(e.currentTarget.dataset.type);
   },
 
-  
+
   /**
    * 确认发货
    */
   toDelivery(e) {
     let _this = this;
     let order_id = e.currentTarget.dataset.id;
-    App._post_form('user.order/receipt', {
-      order_id
+    App._post_form('shop.order/delivery', {
+      order_id: order_id,
+      shop_id: App.globalData.shop_id,
     }, result => {
       _this.getOrderList(_this.data.dataType);
     });

@@ -4,11 +4,11 @@
     <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">
       <text>全部</text>
     </view>
-   
+
     <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">
       <text>待发货</text>
     </view>
-    
+
     <view bindtap="bindHeaderTap" class="{{dataType==='comment'?'active':''}}" data-type="comment">
       <text>已发货</text>
     </view>
@@ -17,7 +17,7 @@
       <text>已完成</text>
     </view>
   </view>
-  
+
   <!-- 订单列表 -->
   <view class="goods-detail-box">
     <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;margin-top:88rpx;">
@@ -55,7 +55,7 @@
                   </view>
                 </view>
                 <view class="right dis-flex flex-x-center flex-y-center">
-                  <text class="goods-number">共{{item.goods.length}}件</text>
+                  <text class="goods-number">共{{item.total_num}}件</text>
                   <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
                 </view>
               </view>
