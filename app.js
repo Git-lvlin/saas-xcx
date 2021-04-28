@@ -29,7 +29,8 @@ App({
     mobile_acquired: false,
     storeList: [],
     storeInfo: {},
-    shop_id: ''
+    shop_id: '',
+    storeInfo: {}
   },
 
   // api地址

@@ -20,8 +20,13 @@ Page({
    */
   onLoad(options) {
 
+<<<<<<< HEAD
     //var titleTextColor = wx.getStorageSync('titleTextColor')
     //var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
+=======
+    var titleTextColor = wx.getStorageSync('titleTextColor')
+    var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
+>>>>>>> 3b599c85cb2c99ddad759179318975def20d6bbc
 
     // if (titleTextColor && titleBackgroundColor) {
     //   // 设置navbar标题、颜色
