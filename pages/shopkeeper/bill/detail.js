@@ -1,10 +1,10 @@
 const App = getApp();
 
 // 枚举类：发货方式
-import DeliveryTypeEnum from '../../utils/enum/DeliveryType.js';
+import DeliveryTypeEnum from '../../../utils/enum/DeliveryType.js';
 
 // 枚举类：支付方式
-import PayTypeEnum from '../../utils/enum/order/PayType'
+import PayTypeEnum from '../../../utils/enum/order/PayType'
 
 
 Page({

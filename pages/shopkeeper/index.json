@@ -1,6 +1,4 @@
 {
-  "navigationBarTitleText": "我的订单",
-  "usingComponents": {
-    "zan-popup": "/components/popup/index"
-  }
+  "usingComponents": {},
+  "navigationBarTitleText": "店家中心"
 }

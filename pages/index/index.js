@@ -15,6 +15,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    //wx.hideTabBar()
+    
     if (wx.getStorageSync('referee_id_Login') == 1) {
       wx.reLaunch({
         url: '/pages/invite/index',
@@ -42,12 +44,12 @@ Page({
     // 更新购物车角标
     App.setCartTabBadge();
 
-    if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 0
-        })
-      }
+    // if (typeof this.getTabBar === 'function' &&
+    //     this.getTabBar()) {
+    //     this.getTabBar().setData({
+    //       selected: 0
+    //     })
+    //   }
   },
 
   /**

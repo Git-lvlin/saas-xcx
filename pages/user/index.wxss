@@ -232,5 +232,12 @@
   padding: 20rpx 0;
   border-bottom: 1px solid #eee;
   border-radius: 0;
+}
 
+.user__shop-name {
+  width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 24rpx;
 }

@@ -16,6 +16,7 @@
             <!-- 微信昵称 -->
             <open-data class="user-header-cont-name" lang="zh_CN" type="userNickName"></open-data>
           </button>
+
           <!-- 会员等级 -->
           <view wx:if="{{ userInfo.grade_id > 0 }}" class="user-header-grade dis-flex flex-y-center">
             <view class="user-grade_icon">
@@ -25,6 +26,10 @@
               <text>{{ userInfo.grade.name }}</text>
             </view>
           </view>
+          <view v-if="role === 1 || role === 2" class="user__shop-name">
+            {{currentShop}}
+          </view>
+
         </view>
       </view>
       <!-- 未登录 -->
@@ -48,18 +53,7 @@
           </view>
         </button>
       </form>
-
-      <block>
-        <picker wx:if="{{currentShop}}" 
-          class="store-selector" 
-          bindchange="bindPickerChange" 
-          value="{{index}}" value="0"
-          range="{{shop_list}}" 
-          range-key="shop_name">
-          <button class="weui-btn" type="default">{{currentShop}}</button>
-        </picker>
-      </block>
-
+      
       <view class="order-navbar-footer dis-flex m-top10">
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">
@@ -99,8 +93,8 @@
       </view>
     </view>
   </view>
-  <!-- 我的钱包 -->
 
+  <!-- 我的钱包 -->
   <view class="my-asset dis-flex" wx:if="{{role > 2}}">
     <view class="asset-left flex-box dis-flex flex-x-center">
       <view class="asset-left_item">
@@ -166,6 +160,7 @@
       </view>
     </view>
   </view>
+
   <!-- 菜单列表 -->
   <view class="menus-list">
     <form wx:for="{{ menus }}" wx:key="this" bindsubmit="onTargetMenus" data-url="{{item.url}}" report-submit="true">

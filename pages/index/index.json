@@ -2,6 +2,7 @@
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "蔚芝蓝",
   "usingComponents": {
-    "diy-component": "/components/diy/index"
+    "diy-component": "/components/diy/index",
+    "tabbar": "/components/tabbar/tabbar"
   }
 }

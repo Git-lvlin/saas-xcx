@@ -52,6 +52,15 @@ App({
       }
     });
 
+    // wx.switchTab({
+    //   url: "/pages/warehouse/index/index",
+    //   fail(){
+    //     console.log(arguments)
+    //   }
+    // })
+
+   
+
     //wx.setStorageSync({role: 0})
 
     //小程序启动时，检查用户角色

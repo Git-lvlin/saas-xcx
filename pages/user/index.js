@@ -51,12 +51,12 @@ Page({
       isLogin: App.checkIsLogin()
     })
 
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 3
-      })
-    }
+    // if (typeof this.getTabBar === 'function' &&
+    //   this.getTabBar()) {
+    //   this.getTabBar().setData({
+    //     selected: 3
+    //   })
+    // }
   },
 
   /**
@@ -144,6 +144,11 @@ Page({
       payment: '/pages/order/index?type=payment',
       received: '/pages/order/index?type=received',
       refund: '/pages/order/refund/index',
+
+      withDraw: '/pages/shopkeeper/dealer/withdraw/apply/apply',
+      saleOrder: '/pages/shopkeeper/sale-orders/index',
+      purchaseOrder: '/pages/shopkeeper/purchaseOrder/index',
+      bill: '/pages/shopkeeper/bill/index',
     };
     // 转跳指定的页面
     wx.navigateTo({

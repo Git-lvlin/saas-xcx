@@ -143,6 +143,10 @@ input {
   align-items: center;
 }
 
+.f-80 {
+  font-size: 60rpx;
+}
+
 .f-36 {
   font-size: 36rpx;
 }

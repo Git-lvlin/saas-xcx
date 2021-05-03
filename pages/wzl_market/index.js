@@ -19,7 +19,7 @@ Page({
 
     page: 1, // 当前页码
 
-
+    
     tabs: ['桶装水专区', "周边产品", "积分专区"],
     activeIndex: 0,
     sliderOffset: 0,
@@ -62,7 +62,7 @@ Page({
     if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
-          selected: 1
+          selected: 0
         })
       }
   },
