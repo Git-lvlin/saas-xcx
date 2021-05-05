@@ -47,10 +47,11 @@ Page({
 
   getOrderList(isPage, page) {
     let _this = this;
-    App._get('shop.BalanceLog/lists', {
+    App._get('shop.withdraw/lists', {
       wxapp_id: App.getWxappId(),
       token: wx.getStorageSync('token'),
       data_type: _this.data.dataType,
+      shop_id: App.globalData.shop_id,
       listRows: 10,
       page: page || 1,
       dataType: _this.data.dataType
@@ -84,7 +85,7 @@ Page({
       no_more: false,
     });
     // 获取订单列表
-    this.getOrderList(e.currentTarget.dataset.type);
+    this.getOrderList();
   },
 
 
@@ -146,7 +147,5 @@ Page({
       scrollHeight
     });
   },
-
-
 
 });

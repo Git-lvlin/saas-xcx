@@ -85,7 +85,7 @@ Page({
       no_more: false,
     });
     // 获取订单列表
-    this.getOrderList(e.currentTarget.dataset.type);
+    this.getOrderList();
   },
 
 

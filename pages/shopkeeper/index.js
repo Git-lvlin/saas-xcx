@@ -10,7 +10,7 @@ Page({
 
   readyToWithdraw(){
     wx.navigateTo({
-      url: '/pages/shopkeeper/dealer/apply/apply',
+      url: '/pages/shopkeeper/dealer/withdraw/apply/apply',
     })
   },
 

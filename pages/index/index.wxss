@@ -40,7 +40,7 @@ page {
 }
 
 .store__list {
-  margin-top: 100rpx;
+  margin-top: 20rpx;
 }
 
 .navigator {

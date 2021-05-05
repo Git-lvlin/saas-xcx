@@ -1,21 +1,26 @@
 <view class="container">
   <!-- tab栏 -->
   <view class="header f-28 col-3">
-    <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">
+    <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="0">
       <text>全部</text>
     </view>
 
-    <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">
-      <text>待发货</text>
+    <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="10">
+      <text>待审核</text>
     </view>
 
-    <view bindtap="bindHeaderTap" class="{{dataType==='complete'?'active':''}}" data-type="complete">
-      <text>已完成</text>
+    <view bindtap="bindHeaderTap" class="{{dataType==='cancel'?'active':''}}" data-type="20">
+      <text>审核通过</text>
     </view>
-<!-- 
-    <view bindtap="bindHeaderTap" class="{{dataType==='cancel'?'active':''}}" data-type="cancel">
-      <text>已取消</text>
-    </view> -->
+
+
+    <view bindtap="bindHeaderTap" class="{{dataType==='cancel'?'active':''}}" data-type="30">
+      <text>驳回</text>
+    </view>
+
+    <view bindtap="bindHeaderTap" class="{{dataType==='complete'?'active':''}}" data-type="40">
+      <text>已打款</text>
+    </view>
   </view>
 
   <!-- 订单列表 -->
