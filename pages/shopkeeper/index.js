@@ -1,11 +1,20 @@
 // pages/shopkeeper/index.js
+const App = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    role: 2
+    role: 2,
+    shop: {
+      extend: {
+        money: "0.00",
+        total_withdraw: "0.00",
+        order_total: 0
+      }
+    }
   },
 
   readyToWithdraw() {
@@ -18,8 +27,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let _this = this;
+    // 获取店铺中心数据
+    _this.getCenter();
+
     this.setData({
       role: wx.getStorageSync('role')
+    });
+  },
+
+  /**
+   * 获取店铺中心数据
+   */
+  getCenter() {
+    let _this = this;
+    App._get('shop/center', {}, function(result) {
+      let data = result.data;
+
+      _this.setData(data);
     });
   },
 

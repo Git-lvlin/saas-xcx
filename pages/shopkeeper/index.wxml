@@ -2,13 +2,17 @@
 <view class="shopkeeper">
 	<view class="shopkeeper__enormous-window dis-flex flex-y-center" wx:if="{{role == 1}}">
 		<view class="shopkeeper__applable flex-box t-c" bindtap="readyToWithdraw">
-			<text class="shopkeeper__profits">可提</text>
-			<view class="shopkeeper__profits-value f-80">0</view>
+			<text class="shopkeeper__profits">可提金额</text>
+			<view class="shopkeeper__profits-value f-80">{{shop.extend.money}}</view>
 		</view>
 
 		<view class="shopkeeper__applied flex-box t-c">
 			<text class="shopkeeper__total">累计已提</text>
-			<view class="shopkeeper__total-profits f-80">0.00</view>
+			<view class="shopkeeper__total-profits f-80">{{shop.extend.total_withdraw}}</view>
+		</view>
+		<view class="shopkeeper__applied flex-box t-c">
+			<text class="shopkeeper__total">累计订单</text>
+			<view class="shopkeeper__total-profits f-80">{{shop.extend.order_total}}</view>
 		</view>
 	</view>
 
