@@ -1,6 +1,6 @@
 <!--pages/shopkeeper/index.wxml-->
 <view class="shopkeeper">
-	<view class="shopkeeper__enormous-window dis-flex flex-y-center">
+	<view class="shopkeeper__enormous-window dis-flex flex-y-center" wx:if="{{role == 1}}">
 		<view class="shopkeeper__applable flex-box t-c" bindtap="readyToWithdraw">
 			<text class="shopkeeper__profits">可提</text>
 			<view class="shopkeeper__profits-value f-80">0</view>
@@ -17,15 +17,15 @@
 			<view class="weui-cell__bd">销售订单</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>
-		<navigator url="/pages/shopkeeper/purchaseOrder/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<!-- <navigator url="/pages/shopkeeper/purchaseOrder/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 			<view class="weui-cell__bd">进货订单</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
-		</navigator>
-		<navigator url="/pages/shopkeeper/dealer/withdraw/list/list" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		</navigator> -->
+		<navigator url="/pages/shopkeeper/dealer/withdraw/list/list" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{role == 1}}">
 			<view class="weui-cell__bd">提现记录</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>
-		<navigator url="/pages/shopkeeper/bill/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<navigator url="/pages/shopkeeper/bill/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{role == 1}}">
 			<view class="weui-cell__bd">账单</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>

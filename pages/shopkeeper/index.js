@@ -5,10 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    role: 2
   },
 
-  readyToWithdraw(){
+  readyToWithdraw() {
     wx.navigateTo({
       url: '/pages/shopkeeper/dealer/withdraw/apply/apply',
     })
@@ -18,7 +18,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    _this.setData({
+      role: wx.getStorageSync('role')
+    });
   },
 
   /**

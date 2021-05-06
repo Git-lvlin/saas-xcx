@@ -17,15 +17,15 @@ Page({
   onLoad(options) {
     //wx.hideTabBar()
     
-    // if (wx.getStorageSync('referee_id_Login') == 1) {
-    //   wx.reLaunch({
-    //     url: '/pages/invite/index',
-    //   })
-    // } else if (wx.getStorageSync('referee_id_Login') == 2) {
-    //   wx.reLaunch({
-    //     url: '/pages/inviteAffirm/index',
-    //   })
-    // }
+    if (wx.getStorageSync('referee_id_Login') == 1) {
+      wx.reLaunch({
+        url: '/pages/invite/index',
+      })
+    } else if (wx.getStorageSync('referee_id_Login') == 2) {
+      wx.reLaunch({
+        url: '/pages/inviteAffirm/index',
+      })
+    }
     // 当前页面参数
     this.setData({
       options

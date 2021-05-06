@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/shopkeeper/index",
+    
     "pages/warehouse/index/index",
     "pages/warehouse/order/index",
     "pages/warehouse/goods/index",
@@ -13,10 +13,15 @@
     "pages/warehouse/order/refund/detail/detail",
     "pages/warehouse/flow/index",
     "pages/warehouse/flow/checkout",
+
+    "pages/shopkeeper/index",
     "pages/shopkeeper/sale-orders/index",
     "pages/shopkeeper/purchaseOrder/index",
     "pages/shopkeeper/bill/index",
     "pages/shopkeeper/dealer/apply/apply",
+    "pages/shopkeeper/dealer/withdraw/apply/apply",
+    "pages/shopkeeper/dealer/withdraw/list/list",
+
     "pages/nail_picture/nail_picture",
     "pages/custom/index",
     "pages/category/index",
@@ -33,6 +38,7 @@
     "pages/user/recharge/order/index",
     "pages/user/coupon/coupon",
     "pages/user/help/index",
+    
     "pages/order/index",
     "pages/order/detail",
     "pages/order/express/express",
@@ -40,6 +46,7 @@
     "pages/order/refund/index",
     "pages/order/refund/apply/apply",
     "pages/order/refund/detail/detail",
+
     "pages/address/index",
     "pages/address/create",
     "pages/address/detail",
@@ -48,9 +55,8 @@
     "pages/dealer/apply/apply",
     "pages/dealer/order/order",
     "pages/dealer/team/team",
-    "pages/shopkeeper/dealer/withdraw/apply/apply",
-    "pages/shopkeeper/dealer/withdraw/list/list",
     "pages/dealer/qrcode/qrcode",
+
     "pages/sharing/index/index",
     "pages/sharing/goods/index",
     "pages/sharing/goods/comment/comment",
@@ -64,6 +70,7 @@
     "pages/sharing/order/refund/index",
     "pages/sharing/order/refund/apply/apply",
     "pages/sharing/order/refund/detail/detail",
+
     "pages/_select/extract_point/index",
     "pages/shop/detail/index",
     "pages/store/check/order",

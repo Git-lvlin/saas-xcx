@@ -16,17 +16,38 @@
     </view>
 
     <!--  切换条 -->
-    <view class="weui-tab">
-            <view class="weui-navbar">
-                <block wx:for="{{tabs}}" wx:key="*this">
-                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" data-category="{{item.category_id}}" bindtap="tabClick">
-                        <view class="weui-navbar__title">{{item.category_name}}</view>
-                    </view>
-                </block>
-            </view>
+    <!-- <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" data-category="{{item.category_id}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item.category_name}}</view>
+          </view>
+        </block>
+      </view>
+    </view> -->
+
+  <mp-tabs 
+    tabs="{{tabs}}" 
+    activeTab="{{activeIndex}}" 
+    swiperClass="weui-tabs-swiper"
+    bindtabclick="tabClick"
+    bindchange="onChange"
+    activeClass="tab-bar-title__selected" >
+    <block wx:for="{{tabs}}" wx:key="title">
+      <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bind:tap="handleClick" >
+        <!-- <image src="{{item.img}}" mode="widthFix"></image> -->
+        <view class="item-title">
+          {{item.category_name}}
         </view>
+        <!-- <view class="item-desc">
+          {{item.desc}}
+        </view> -->
+      </view>
+    </block>
+  </mp-tabs>
+
     <!-- 筛选标签 -->
-    <view class="store_nav_cont dis-flex b-f b-b">
+   <!--  <view class="store_nav_cont dis-flex b-f b-b">
       <view bindtap="switchSortType" data-type="all" class="flex-box t-c p-r" data-index="0 " id="list-{{sortType==='all'?true:0}}">
         <text>综合</text>
       </view>
@@ -41,7 +62,7 @@
         </view>
       </view>
     </view>
-
+ -->
     <!-- 商品列表 -->
     <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;" wx:if="{{list.data.length > 0}}">
       <view class="new">

@@ -1,4 +1,7 @@
 {
     "navigationBarTitleText": "商品列表",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "mp-tabs": "@miniprogram-component-plus/tabs"
+    }
 }
