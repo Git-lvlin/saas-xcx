@@ -45,12 +45,13 @@ Page({
 
   },
   getUserInfo(e) {
+
     if (!App.checkMobileAcquired()) {
       App.showError('请先授权微信绑定的手机号');
       return;
     }
     let _this = this;
-    App.getUserInfo(e, () => {
+    App.getUserInfo(e.detail, () => {
       wx.removeStorageSync('referee_id_Login')
       wx.switchTab({
         url: '/pages/index/index'

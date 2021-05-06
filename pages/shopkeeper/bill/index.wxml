@@ -1,7 +1,7 @@
 <view class="container">
   <!-- 订单列表 -->
   <view class="page__bd">
-		<view class="weui-form-preview" wx:for="{{list.data}}">
+		<view class="weui-form-preview" wx:for="{{list.data}}" wx:key="{{item.log_id}}">
 			<view class="weui-form-preview__hd">
 				<view class="weui-form-preview__item">
 					<label class="weui-form-preview__label">金额</label>

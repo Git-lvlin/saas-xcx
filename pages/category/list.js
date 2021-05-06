@@ -20,7 +20,7 @@ Page({
     page: 1, // 当前页码
 
 
-    tabs: ['桶装水专区', "周边产品", "积分专区"],
+    tabs: [],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0
@@ -44,24 +44,17 @@ Page({
     // 获取分类列表
     _this.getCategoryList();
 
-    wx.getSystemInfo({
-      success: function (res) {
-        _this.setData({
-          sliderLeft: (res.windowWidth / _this.data.tabs.length - sliderWidth) / 2,
-          sliderOffset: res.windowWidth / _this.data.tabs.length * _this.data.activeIndex
-        });
-      }
-    });
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     _this.setData({
+    //       sliderLeft: (res.windowWidth / _this.data.tabs.length - sliderWidth) / 2,
+    //       sliderOffset: res.windowWidth / _this.data.tabs.length * _this.data.activeIndex
+    //     });
+    //   }
+    // });
   },
 
   onShow() {},
-
-  onChange(e) {
-    const index = e.detail.index
-    this.setData({ 
-      activeIndex: index 
-    })
-  },
 
 
   /**
@@ -220,7 +213,7 @@ Page({
         templet: data.templet,
         curNav: data.list.length > 0 ? data.list[0].category_id : true,
         notcont: !data.list.length,
-        tabs: data.list.map(item => {return {category_name: item.name, category_id: item.category_id}})
+        tabs: data.list.map(item => {return {category_name: item.name, category_id: item.category_id, title: item.name}})
       });
 
       // 获取商品列表
@@ -229,12 +222,13 @@ Page({
   },
 
   tabClick: function (e) {
+    let _this = this;
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
+      activeIndex: e.detail.index
     });
-
-    this.getGoodsList(false, false, e.currentTarget.dataset.category);
+  
+    this.getGoodsList(false, false, _this.data.tabs[_this.data.activeIndex].category_id);
   },
 
   // addCard(e) {

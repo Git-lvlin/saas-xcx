@@ -31,19 +31,7 @@
     activeTab="{{activeIndex}}" 
     swiperClass="weui-tabs-swiper"
     bindtabclick="tabClick"
-    bindchange="onChange"
     activeClass="tab-bar-title__selected" >
-    <block wx:for="{{tabs}}" wx:key="title">
-      <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bind:tap="handleClick" >
-        <!-- <image src="{{item.img}}" mode="widthFix"></image> -->
-        <view class="item-title">
-          {{item.category_name}}
-        </view>
-        <!-- <view class="item-desc">
-          {{item.desc}}
-        </view> -->
-      </view>
-    </block>
   </mp-tabs>
 
     <!-- 筛选标签 -->

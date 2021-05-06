@@ -376,10 +376,16 @@ Page({
       onCommitCallback();
       return;
     }
+
+    console.log(tmplIds)
     wx.requestSubscribeMessage({
-      tmplIds,
-      success(res) {},
-      fail(res) {},
+      tmplIds: ['1KuZXceOKj9kJeAgk2pYMb0HoCBR6KWN2wDe-pb_Zok', 'n4oA_rhO1TkBmPid6G_0fzJ0aTkyeRzzirVOasPsgM4'],
+      success(res) {
+        console.log(res)
+      },
+      fail(err) {
+        console.error(err)
+      },
       complete(res) {
         onCommitCallback();
       },

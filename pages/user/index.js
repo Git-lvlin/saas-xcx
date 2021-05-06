@@ -87,6 +87,10 @@ Page({
         role = 3;
       }
 
+      console.log(role)
+
+    
+
       switch (String(role)) {
         case '0':
           delete result.data.menus.shopkeeper_order
@@ -243,7 +247,7 @@ Page({
   // 保存用户角色
   saveUserRole() {
     let _this = this;
-    wx.setStorageSync('role', this.data.role)
+    wx.setStorageSync('role', _this.data.role)
     // if (_this.data.role > 0) {
     //   wx.setTabBarItem({
     //     index: 1,
