@@ -49,12 +49,16 @@ Page({
    */
   getDealerWithdraw() {
     let _this = this;
-    App._get('user.dealer/withdraw', {}, (result) => {
+    App._get('shop/center', {
+      wxapp_id: App.getWxappId(),
+      token: wx.getStorageSync('token'),
+      shop_id: App.globalData.shop_id
+    }, (result) => {
       let data = result.data;
       data.isData = true;
       // 设置当前页面标题
       wx.setNavigationBarTitle({
-        title: data.words.withdraw_apply.title.value
+        title: '申请提现'
       });
       //  默认提现方式
       data['payment'] = data.settlement.pay_type[0];
@@ -67,17 +71,18 @@ Page({
    */
   onFormSubmit(e) {
     let _this = this,
-      values = e.detail.value,
-      words = _this.data.words.withdraw_apply.words;
+      values = e.detail.value;
+      //words = _this.data.words.withdraw_apply.words;
+      //console.log(values)
 
     // 验证可提现佣金
-    if (_this.data.dealer.money <= 0) {
-      App.showError('当前没有' + words.capital.value);
+    if (_this.data.shop.extend.money <= 0) {
+      App.showError('当前没有可提现额度');
       return false;
     }
     // 验证提现金额
     if (!values.money || values.money.length < 1) {
-      App.showError('请填写' + words.money.value);
+      App.showError('请填写要提现的额度');
       return false;
     }
     // 按钮禁用
@@ -89,7 +94,8 @@ Page({
 
     // 数据提交
     const onCallback = () => {
-      App._post_form('user.dealer.withdraw/submit', {
+      App._post_form('shop.Withdraw/submit&wxapp_id='+App.getWxappId(), {
+        token: wx.getStorageSync('token'),
         data: JSON.stringify(values)
       }, (result) => {
         // 提交成功

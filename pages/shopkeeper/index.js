@@ -43,7 +43,7 @@ Page({
     let _this = this;
     App._get('shop/center', {}, function(result) {
       let data = result.data;
-
+      
       _this.setData(data);
     });
   },

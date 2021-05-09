@@ -9,7 +9,7 @@
       <text>待发货</text>
     </view>
 
-    <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="received">
+    <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
       <text>待收货</text>
     </view>
      

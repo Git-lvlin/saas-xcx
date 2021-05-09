@@ -161,7 +161,7 @@ App({
   /**
    * 记录推荐人id
    */
-   saveRefereeId(refereeId) {
+  saveRefereeId(refereeId) {
     let App = this;
     refereeId = parseInt(refereeId);
     if (refereeId <= 0 || refereeId == App.getUserId()) {
@@ -178,6 +178,7 @@ App({
     wx.setStorageSync('invite_code', invite_code)
     return true;
   },
+  
   getMyInviteCode() {
     return wx.getStorageSync('invite_code')
   },

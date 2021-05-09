@@ -87,10 +87,6 @@ Page({
         role = 3;
       }
 
-      console.log(role)
-
-    
-
       switch (String(role)) {
         case '0':
           delete result.data.menus.shopkeeper_order
@@ -100,7 +96,7 @@ Page({
         case '1':
           delete result.data.menus.coupon;
           delete result.data.menus.my_coupon;
-          delete result.data.menus.sharing_order;
+          //delete result.data.menus.sharing_order;
           delete result.data.menus.storehouse_order;
           App.globalData.shop_id = shop_list[0].shop_id;
           _this.setData({
@@ -113,7 +109,7 @@ Page({
           delete result.data.menus.address;
           delete result.data.menus.coupon;
           delete result.data.menus.my_coupon;
-          delete result.data.menus.sharing_order;
+          //delete result.data.menus.sharing_order;
           delete result.data.menus.storehouse_order
           break;
 
@@ -121,7 +117,7 @@ Page({
           delete result.data.menus.address;
           delete result.data.menus.coupon;
           delete result.data.menus.my_coupon;
-          delete result.data.menus.sharing_order;
+          //delete result.data.menus.sharing_order;
           delete result.data.menus.shopkeeper_order;
           break;
       }

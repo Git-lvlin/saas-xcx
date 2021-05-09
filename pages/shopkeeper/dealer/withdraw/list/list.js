@@ -34,7 +34,7 @@ Page({
    */
   getWithdrawList: function(isNextPage, page) {
     let _this = this;
-    App._get('user.dealer.withdraw/lists', {
+    App._get('shop.withdraw/lists', {
       status: _this.data.dataType,
       page: page || 1,
     }, function(result) {
@@ -55,26 +55,26 @@ Page({
     }
     // 设置当前页面标题
     wx.setNavigationBarTitle({
-      title: data.words.withdraw_list.title.value
+      title: '提现明细'
     })
     // 导航栏数据
     data['tabList'] = [{
         value: -1,
-        text: data.words.withdraw_list.words.all.value,
+        text: '全部',
       }, {
         value: 10,
-        text: data.words.withdraw_list.words.apply_10.value,
+        text: '审核中',
       }, {
         value: 20,
-        text: data.words.withdraw_list.words.apply_20.value,
-      },
-      {
-        value: 40,
-        text: data.words.withdraw_list.words.apply_40.value,
+        text: '审核通过',
       },
       {
         value: 30,
-        text: data.words.withdraw_list.words.apply_30.value,
+        text: '驳回',
+      },
+      {
+        value: 40,
+        text: '已打款',
       }
     ];
     // 审核状态

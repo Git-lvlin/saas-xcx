@@ -381,7 +381,12 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds: ['1KuZXceOKj9kJeAgk2pYMb0HoCBR6KWN2wDe-pb_Zok', 'n4oA_rhO1TkBmPid6G_0fzJ0aTkyeRzzirVOasPsgM4'],
       success(res) {
-        console.log(res)
+        // App._get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET', {
+          
+        // }, function(){
+          
+        // })
+        //console.log(res)
       },
       fail(err) {
         console.error(err)

@@ -74,6 +74,14 @@ Page({
     let _this = this;
     // 当前页面参数
     _this.data.options = options;
+
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        // console.log(res);
+        _this.getShopList(res.longitude, res.latitude);
+      }
+    })
   },
 
   /**
@@ -84,6 +92,26 @@ Page({
     // 获取当前订单信息
     !_this.data.notRefresh && _this.getOrderData();
   },
+
+  /*获取店铺列表*/
+  getShopList(longitude, latitude) {
+    let _this = this;
+    _this.setData({
+      isLoading: true
+    });
+    App._get('shop/lists', {
+      longitude: longitude || '',
+      latitude: latitude || ''
+    }, (result) => {
+      _this.setData({
+        selectedShopId: result.data.list[0].shop_id,
+      });
+
+      !_this.data.notRefresh && _this.getOrderData();
+    });
+  },
+
+  
 
   /**
    * 获取当前订单信息
