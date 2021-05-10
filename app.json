@@ -20,7 +20,10 @@
     "pages/shopkeeper/bill/index",
     "pages/shopkeeper/dealer/apply/apply",
     "pages/shopkeeper/dealer/withdraw/apply/apply",
-    "pages/shopkeeper/dealer/withdraw/list/list",
+    "pages/shopkeeper/sharing/index",
+    "pages/shopkeeper/sharing/detail",
+    "pages/shopkeeper/sharp/index",
+    "pages/shopkeeper/sharp/detail",
 
     "pages/nail_picture/nail_picture",
     "pages/custom/index",
