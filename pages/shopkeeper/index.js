@@ -29,11 +29,9 @@ Page({
   onLoad: function (options) {
     let _this = this;
     // 获取店铺中心数据
-    _this.getCenter();
-
-    this.setData({
-      role: wx.getStorageSync('role')
-    });
+    if(App.globalData.role == 1) {
+      _this.getCenter();
+    }
   },
 
   /**
@@ -43,7 +41,6 @@ Page({
     let _this = this;
     App._get('shop/center', {}, function(result) {
       let data = result.data;
-      
       _this.setData(data);
     });
   },

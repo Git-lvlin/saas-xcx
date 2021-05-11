@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    
+    "pages/index/storeInformation/index",
+    "pages/index/nail_picture/nail_picture",
+
     "pages/warehouse/index/index",
     "pages/warehouse/order/index",
     "pages/warehouse/goods/index",
@@ -22,25 +24,30 @@
     "pages/shopkeeper/dealer/withdraw/apply/apply",
     "pages/shopkeeper/sharing/index",
     "pages/shopkeeper/sharing/detail",
-    "pages/shopkeeper/sharp/index",
-    "pages/shopkeeper/sharp/detail",
-
-    "pages/nail_picture/nail_picture",
+    
+    
     "pages/custom/index",
+
     "pages/category/index",
     "pages/category/list",
+
     "pages/goods/index",
     "pages/goods/comment/comment",
+
     "pages/search/index",
+
     "pages/flow/index",
     "pages/flow/checkout",
-    "pages/coupon/coupon",
+
+
     "pages/user/index",
     "pages/user/wallet/index",
     "pages/user/wallet/balance/log",
+    "pages/user/recharge/index",
     "pages/user/recharge/order/index",
     "pages/user/coupon/coupon",
     "pages/user/help/index",
+    "pages/coupon/coupon",
     
     "pages/order/index",
     "pages/order/detail",
@@ -53,7 +60,8 @@
     "pages/address/index",
     "pages/address/create",
     "pages/address/detail",
-    "pages/login/login",
+
+
     "pages/dealer/index/index",
     "pages/dealer/apply/apply",
     "pages/dealer/order/order",
@@ -77,16 +85,20 @@
     "pages/_select/extract_point/index",
     "pages/shop/detail/index",
     "pages/store/check/order",
+
     "pages/bargain/index/index",
     "pages/bargain/task/index",
     "pages/bargain/goods/index",
+
     "pages/points/log/index",
+    "pages/login/login",
+
     "pages/sharp/index/index",
     "pages/sharp/goods/index",
+
     "pages/inviteAffirm/index",
     "pages/troupe/index/index",
-    "pages/wzl_market/index",
-    "pages/index/storeInformation/index"
+    "pages/wzl_market/index"
     
   ],
   "window": {

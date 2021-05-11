@@ -14,9 +14,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+   onLoad(options) {
     //wx.hideTabBar()
-    
     if (wx.getStorageSync('referee_id_Login') == 1) {
       wx.reLaunch({
         url: '/pages/invite/index',
@@ -26,24 +25,31 @@ Page({
         url: '/pages/inviteAffirm/index',
       })
     }
+
     // 当前页面参数
     this.setData({
       options
     });
+
     // 加载页面数据
     this.getPageData();
 
     //请求店铺信息
     this.getStoreList()
+    wx.login({
+      success (res) {
+        console.log(res.code)
+      }
+    })
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
+   onShow() {
     // 更新购物车角标
     App.setCartTabBadge();
-
     // if (typeof this.getTabBar === 'function' &&
     //     this.getTabBar()) {
     //     this.getTabBar().setData({
@@ -55,7 +61,7 @@ Page({
   /**
    * 加载页面数据
    */
-  getPageData(callback) {
+   getPageData(callback) {
     let _this = this;
     App._get('page/index', {
       page_id: _this.data.options.page_id || 0
@@ -74,8 +80,10 @@ Page({
     let _this = this;
 
     wx.getLocation({
+      isHighAccuracy: true,
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success(res) {
+        App.globalData.coordinate = {longitude: res.longitude, latitude: res.latitude};
         App._get('shop/lists', {
           longitude: res.longitude,
           latitude: res.latitude
@@ -96,7 +104,7 @@ Page({
   /**
    * 设置顶部导航栏
    */
-  setPageBar(page) {
+   setPageBar(page) {
     // 设置页面标题
     wx.setNavigationBarTitle({
       title: page.params.title
@@ -114,7 +122,7 @@ Page({
   /**
    * 下拉刷新
    */
-  onPullDownRefresh() {
+   onPullDownRefresh() {
     // 获取首页数据
     this.getPageData(function () {
       wx.stopPullDownRefresh();
@@ -124,7 +132,7 @@ Page({
   /**
    * 分享当前页面
    */
-  onShareAppMessage() {
+   onShareAppMessage() {
     const _this = this;
     return {
       title: _this.data.page.params.share_title,
@@ -137,7 +145,7 @@ Page({
    * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
    * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
    */
-  onShareTimeline() {
+   onShareTimeline() {
     const _this = this;
     return {
       title: _this.data.page.params.share_title,
@@ -147,26 +155,19 @@ Page({
 
   // 导航去水店
   readyNavigator(e) {
-    //wx.getLocation({
-      //type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      //success(res) {
-        //const latitude = res.latitude
-       // const longitude = res.longitude
-        let storeInfo = App.globalData.storeList.find(item => item.shop_id === e.currentTarget.dataset.id);
-        wx.openLocation({
-          name: storeInfo.shop_name,
-          latitude: Number(storeInfo.latitude),
-          longitude: Number(storeInfo.longitude),
-          scale: 18
-        })
-   //   }
-    //})
+    let storeInfo = App.globalData.storeList.find(item => item.shop_id === e.currentTarget.dataset.id);
+    wx.openLocation({
+      name: storeInfo.shop_name,
+      latitude: Number(storeInfo.latitude),
+      longitude: Number(storeInfo.longitude),
+      scale: 18
+    })
   },
 
   // 查看钉图
   navigateToNailMapPage() {
     wx.navigateTo({
-      url: '../nail_picture/nail_picture',
+      url: './nail_picture/nail_picture',
     })
   },
   

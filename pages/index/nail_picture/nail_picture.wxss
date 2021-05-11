@@ -25,9 +25,6 @@ map {
   height: 80px;
 }
 
-scroll-view {
-  height: 40vh;
-}
 
 .store__info {
   padding-left: 5px;

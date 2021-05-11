@@ -4,7 +4,7 @@
  */
  const tabBarLinks = [
  'pages/index/index',
- 'pages/category/index',
+ 'pages/category/list',
  'pages/flow/index',
  'pages/user/index',
  'pages/sharing/index/index'
@@ -30,7 +30,12 @@ App({
     storeList: [],
     storeInfo: {},
     shop_id: '',
-    storeInfo: {}
+    storeInfo: {},
+    role: 0, // 0 用户 1店主 2 店员 3仓库,
+    coordinate: {
+      longitude: '113.75179',
+      latitude: '23.02067'
+    }
   },
 
   // api地址
@@ -52,34 +57,7 @@ App({
       }
     });
 
-    // wx.switchTab({
-    //   url: "/pages/warehouse/index/index",
-    //   fail(){
-    //     console.log(arguments)
-    //   }
-    // })
-
-   
-
-    //wx.setStorageSync({role: 0})
-
-    //小程序启动时，检查用户角色
-    /*wx.getStorage({
-      key: 'role',
-      success(res) {
-        if (res.data > 0) {
-          wx.setTabBarItem({
-            index: 1,
-            text: '水厂',
-            iconPath: '/images/cate.png',
-            selectedIconPath: '/images/cate-active.png'
-          })
-        }
-      },
-      fail() {
-        wx.setStorageSync({role: 0})
-      },
-    })*/
+    _this.globalData.role = wx.getStorage('role') || 0;
   },
 
   _wxLoginSuccess(resp0) {

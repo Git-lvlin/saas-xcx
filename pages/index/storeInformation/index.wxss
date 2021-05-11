@@ -56,3 +56,7 @@
   font-size: 28rpx;
   
 }
+
+.store-information {
+  padding-bottom: 80rpx;
+}

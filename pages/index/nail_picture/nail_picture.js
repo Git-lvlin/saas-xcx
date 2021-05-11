@@ -7,8 +7,8 @@ Page({
    */
   data: {
     coordinate: {
-      latitude: '23.02801435717549',
-      longitude: '113.687109842041',
+      latitude: '',
+      longitude: '',
     },
     markders: []
   },
@@ -18,19 +18,7 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-    wx.getLocation({
-      isHighAccuracy: true,
-      highAccuracyExpireTime: 4000,
-      success: function (res) {
-        _this.setData({
-          coordinate: {
-            latitude: res.latitude,
-            longitude: res.longitude
-          }
-        })
-      }
-    })
-
+    _this.setData({coordinate: App.globalData.coordinate})
     let _temp = App.globalData.storeList;
     _this.setData({
       markders: _temp.map((item, i) => {
@@ -53,7 +41,17 @@ Page({
         }
       })
     })
-    console.log(_temp)
+  },
+
+
+  /**
+    * 查看店铺
+  */
+  bindlabeltap(e) {
+    App.globalData.storeInfo = App.globalData.storeList.find(item => item.shop_id === e.detail.markerId)
+    wx.navigateTo({
+      url: '../index/storeInformation/index',
+    })
   },
 
   /**
@@ -103,13 +101,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  bindlabeltap(e) {
-    App.globalData.storeInfo = App.globalData.storeList.find(item => item.shop_id === e.detail.markerId)
-
-    wx.navigateTo({
-      url: '../index/storeInformation/index',
-    })
   }
+
 })

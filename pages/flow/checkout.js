@@ -362,6 +362,7 @@ Page({
       });
     };
 
+
     // 请求用户订阅消息
     _this._onRequestSubscribeMessage(onCommitCallback);
   },
@@ -377,16 +378,10 @@ Page({
       return;
     }
 
-    console.log(tmplIds)
     wx.requestSubscribeMessage({
-      tmplIds: ['1KuZXceOKj9kJeAgk2pYMb0HoCBR6KWN2wDe-pb_Zok', 'n4oA_rhO1TkBmPid6G_0fzJ0aTkyeRzzirVOasPsgM4'],
+      tmplIds: ['1KuZXceOKj9kJeAgk2pYMb0HoCBR6KWN2wDe-pb_Zok', '6t1VR9Hxg3gJo2DyQpIpihIqBsgx4l9HdJFcSbtub34'],
       success(res) {
-        // App._get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET', {
-          
-        // }, function(){
-          
-        // })
-        //console.log(res)
+        console.log(res)
       },
       fail(err) {
         console.error(err)

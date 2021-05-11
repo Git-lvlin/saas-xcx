@@ -244,14 +244,6 @@ Page({
   saveUserRole() {
     let _this = this;
     wx.setStorageSync('role', _this.data.role)
-    // if (_this.data.role > 0) {
-    //   wx.setTabBarItem({
-    //     index: 1,
-    //     text: '水厂',
-    //     iconPath: '/images/cate.png',
-    //     selectedIconPath: '/images/cate-active.png'
-    //   })
-    // }
   },
 
   /**

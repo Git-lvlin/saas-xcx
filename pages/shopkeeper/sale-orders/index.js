@@ -52,7 +52,7 @@ Page({
       token: wx.getStorageSync('token'),
       data_type: _this.data.dataType,
       shop_id: App.globalData.shop_id,
-      listRows: 3,
+      listRows: 5,
       page: page || 1,
       dataType: _this.data.dataType
     }, result => {
@@ -110,14 +110,20 @@ Page({
   navigateToDetail(e) {
     let order_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../order/detail?order_id=' + order_id
+      url: './detail?order_id=' + order_id
     });
   },
 
   /*触底加载更多*/
 
   onPullDownRefresh() {
-    wx.stopPullDownRefresh();
+
+   wx.stopPullDownRefresh();
+  },
+
+  /* */
+  bindReachUp(){
+    this.getOrderList(false, 1);
   },
 
   /**

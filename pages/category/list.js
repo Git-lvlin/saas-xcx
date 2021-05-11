@@ -6,7 +6,7 @@ Page({
   data: {
     scrollHeight: null,
 
-    showView: false, // 列表显示方式
+    showView: true, // 列表显示方式
 
     sortType: 'all', // 排序类型
     sortPrice: false, // 价格从低到高
@@ -21,9 +21,9 @@ Page({
 
 
     tabs: [],
-    activeIndex: 0,
-    sliderOffset: 0,
-    sliderLeft: 0
+    activeIndex: -1,
+   //sliderOffset: 0,
+    //sliderLeft: 0
   },
 
   /**
@@ -43,15 +43,6 @@ Page({
     
     // 获取分类列表
     _this.getCategoryList();
-
-    // wx.getSystemInfo({
-    //   success: function (res) {
-    //     _this.setData({
-    //       sliderLeft: (res.windowWidth / _this.data.tabs.length - sliderWidth) / 2,
-    //       sliderOffset: res.windowWidth / _this.data.tabs.length * _this.data.activeIndex
-    //     });
-    //   }
-    // });
   },
 
   onShow() {},
@@ -73,13 +64,12 @@ Page({
    * @param {number} page 指定的页码
    */
   getGoodsList(isPage, page, category_id) {
-    let url = App.getUrl('warehouse.goods/lists', 'goods/lists');
     let _this = this;
-    App._get(url, {
+    App._get("goods/lists", {
       page: page || 1,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,
-      category_id: category_id || _this.data.tabs[0].category_id,
+      category_id: category_id || "",
       search: this.data.option.search || '',
     }, result => {
       let resList = result.data.list,
@@ -205,8 +195,7 @@ Page({
    */
   getCategoryList() {
     let _this = this;
-    let url = App.getUrl('warehouse.category/index', 'category/index')
-    App._get(url, {}, result => {
+    App._get('category/index', {}, result => {
       let data = result.data;
       _this.setData({
         list: data.list,
@@ -224,7 +213,7 @@ Page({
   tabClick: function (e) {
     let _this = this;
     this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
+      //sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.detail.index
     });
   

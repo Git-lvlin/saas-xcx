@@ -1,10 +1,8 @@
 <!--pages/index2/index.wxml-->
 <view>
   <view class="map__wrapper">
-    <map bindlabeltap="bindlabeltap" scale="10" markers="{{markders}}" name="" latitude="{{coordinate.latitude}}"
+    <map bindlabeltap="bindlabeltap" scale="11" markers="{{markders}}" name="" latitude="{{coordinate.latitude}}"
       longitude="{{coordinate.longitude}}">
     </map>
   </view>
-
-
 </view>
