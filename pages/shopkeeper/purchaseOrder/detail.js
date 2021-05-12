@@ -39,7 +39,7 @@ Page({
    */
   getOrderDetail(order_id) {
     let _this = this;
-    App._get('user.order/detail', {
+    App._get('shop.order/detail', {
       order_id
     }, result => {
       _this.setData(result.data);

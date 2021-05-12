@@ -39,7 +39,7 @@ Page({
    */
   getOrderDetail(order_id) {
     let _this = this;
-    App._get('user.order/detail', {
+    App._get('shop.order/detail', {
       order_id
     }, result => {
       _this.setData(result.data);
@@ -67,7 +67,7 @@ Page({
       content: "确认取消订单？",
       success(o) {
         if (o.confirm) {
-          App._post_form('user.order/cancel', {
+          App._post_form('shop.order/cancel', {
             order_id
           }, result => {
             wx.navigateBack();
