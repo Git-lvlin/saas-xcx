@@ -28,6 +28,7 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
+    _this.setData({role: App.globalData.role})
     // 获取店铺中心数据
     if(App.globalData.role == 1) {
       _this.getCenter();
@@ -56,7 +57,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(App.globalData.role)
+    this.setData({role: App.globalData.role})
   },
 
   /**

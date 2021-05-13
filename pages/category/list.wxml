@@ -15,27 +15,12 @@
       </view>
     </view>
 
-    <!--  切换条 -->
-    <!-- <view class="weui-tab">
-      <view class="weui-navbar">
-        <block wx:for="{{tabs}}" wx:key="*this">
-          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" data-category="{{item.category_id}}" bindtap="tabClick">
-            <view class="weui-navbar__title">{{item.category_name}}</view>
-          </view>
-        </block>
-      </view>
-    </view> -->
-
-  <mp-tabs 
-    tabs="{{tabs}}" 
-    activeTab="{{activeIndex}}" 
-    swiperClass="weui-tabs-swiper"
-    bindtabclick="tabClick"
-    activeClass="tab-bar-title__selected" >
-  </mp-tabs>
+    <mp-tabs tabs="{{tabs}}" activeTab="{{activeIndex}}" swiperClass="weui-tabs-swiper" bindtabclick="tabClick"
+      activeClass="tab-bar-title__selected">
+    </mp-tabs>
 
     <!-- 筛选标签 -->
-   <!--  <view class="store_nav_cont dis-flex b-f b-b">
+    <!--  <view class="store_nav_cont dis-flex b-f b-b">
       <view bindtap="switchSortType" data-type="all" class="flex-box t-c p-r" data-index="0 " id="list-{{sortType==='all'?true:0}}">
         <text>综合</text>
       </view>
@@ -52,10 +37,13 @@
     </view>
  -->
     <!-- 商品列表 -->
-    <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;" wx:if="{{list.data.length > 0}}">
+    <scroll-view id="my-scroll-view" bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;"wx:if="{{list.data.length > 0}}" scroll-top="{{scrollTop}}" scroll-with-animation="true">
       <view class="new">
         <view class="category-list {{ showView ? 'arrange' : '' }}">
-          <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="list">
+          <navigator class="list b-f {{'_'+item.category_id}}" 
+          hover-class="none" 
+          url="../goods/index?goods_id={{item.goods_id}}"
+            wx:for="{{list.data}}" wx:key="{{item.goods_id}}">
             <view class="left">
               <view class="img">
                 <image class="goodsImg" mode="scaleToFill" src="{{ item.goods_image }}"></image>
@@ -78,7 +66,8 @@
                 <!-- 商品价格 -->
                 <view class="detail-price">
                   <text class="goods-price f-30 col-m">￥{{item.goods_sku.goods_price}}</text>
-                  <text class="line-price col-9 f-24" wx:if="{{item.goods_sku.line_price>0}}">{{item.goods_sku.line_price}}</text>
+                  <text class="line-price col-9 f-24"
+                    wx:if="{{item.goods_sku.line_price>0}}">{{item.goods_sku.line_price}}</text>
                 </view>
               </view>
             </view>

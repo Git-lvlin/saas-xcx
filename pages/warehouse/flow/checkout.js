@@ -27,7 +27,7 @@ Page({
     // 配送方式
     isShowTab: false,
     DeliveryTypeEnum,
-    curDelivery: null,
+    curDelivery: 10,
 
     // 支付方式
     PayTypeEnum,
@@ -103,7 +103,8 @@ Page({
 
       let data = {};
       // 当前选择的配送方式
-      data.curDelivery = resData.delivery;
+      //data.curDelivery = resData.delivery;
+      data.curDelivery = 10;
       // 如果只有一种配送方式则不显示选项卡
       data.isShowTab = resData.setting.delivery.length > 1;
       // 上门自提联系信息
@@ -198,7 +199,7 @@ Page({
     });
     // 跳转到选择自提点
     wx.navigateTo({
-      url: '../address/' + (_this.data.exist_address ? 'index?from=flow' : 'create')
+      url: '../../address/' + (_this.data.exist_address ? 'index?from=flow' : 'create')
     });
   },
 

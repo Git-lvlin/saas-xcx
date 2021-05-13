@@ -180,6 +180,8 @@
       </button>
     </form>
 
+    <!-- <navigator class="" url="/pages/warehouse/index/index" open-type="navigate">仓库</navigator>> -->
+
 
     <view wx:if="{{isLogin}}" class="no-login-btn">
       <button class="btn-normal" type="danger" lang="zh_CN" catchtap="onLogout">退出</button>

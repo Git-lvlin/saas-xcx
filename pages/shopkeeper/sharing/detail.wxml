@@ -13,7 +13,7 @@
     </view>
 
     <!-- 快递配送：配送地址 -->
-    <view wx:if="{{ order.delivery_type.value == DeliveryTypeEnum.EXPRESS.value }}" class="flow-delivery">
+    <!-- <view wx:if="{{ order.delivery_type.value == DeliveryTypeEnum.EXPRESS.value }}" class="flow-delivery">
       <view class="flow-delivery__detail dis-flex flex-y-center">
         <view class="detail-location dis-flex">
           <text class="iconfont icon-dingwei"></text>
@@ -28,10 +28,10 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
 
     <!-- 上门自提：自提门店 -->
-    <view wx:if="{{ order.delivery_type.value == DeliveryTypeEnum.EXTRACT.value }}" class="m-top20 b-f">
+    <!-- <view wx:if="{{ order.delivery_type.value == DeliveryTypeEnum.EXTRACT.value }}" class="m-top20 b-f">
       <view class="flow-delivery">
         <view class="flow-delivery__title m-top20">
           <text class="flow-delivery__title-text f-30">自提门店</text>
@@ -54,9 +54,25 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
 
-    
+    <!-- 门店配送 -->
+    <view class="flow-delivery">
+      <view class="flow-delivery__detail dis-flex flex-y-center">
+        <view class="detail-location dis-flex">
+          <text class="iconfont icon-dingwei"></text>
+        </view>
+        <view class="detail-content flex-box">
+          <view class="detail-content__title dis-flex">
+            <text class="f-30">{{ order.address.name }}</text>
+            <text class="detail-content__title-phone f-28">{{ order.address.phone }}</text>
+          </view>
+          <view class="detail-content__describe">
+            <text class="col-7">{{order.address.region.province}} {{order.address.region.city}} {{order.address.region.region}} {{order.address.detail}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
 
     <!-- 标题：商品列表 -->
     <view class="flow-all-money b-f padding-box m-top20">

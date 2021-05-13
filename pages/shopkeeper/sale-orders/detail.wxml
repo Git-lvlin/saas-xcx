@@ -13,7 +13,7 @@
     </view>
 
     <!-- 快递配送：配送地址 -->
-    <view wx:if="{{ order.delivery_type.value == DeliveryTypeEnum.EXPRESS.value }}" class="flow-delivery">
+    <!-- <view wx:if="{{ order.delivery_type.value == DeliveryTypeEnum.EXPRESS.value }}" class="flow-delivery">
       <view class="flow-delivery__detail dis-flex flex-y-center">
         <view class="detail-location dis-flex">
           <text class="iconfont icon-dingwei"></text>
@@ -28,10 +28,10 @@
           </view>
         </view>
       </view>
-    </view>
+    </view> -->
 
     <!-- 上门自提：自提门店 -->
-    <view wx:if="{{ order.delivery_type.value == DeliveryTypeEnum.EXTRACT.value }}" class="m-top20 b-f">
+    <!-- <view wx:if="{{ order.delivery_type.value == DeliveryTypeEnum.EXTRACT.value }}" class="m-top20 b-f">
       <view class="flow-delivery">
         <view class="flow-delivery__title m-top20">
           <text class="flow-delivery__title-text f-30">自提门店</text>
@@ -51,6 +51,24 @@
           </view>
           <view class="detail-arrow dis-flex">
             <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+    <!-- 门店配送 -->
+    <view class="flow-delivery">
+      <view class="flow-delivery__detail dis-flex flex-y-center">
+        <view class="detail-location dis-flex">
+          <text class="iconfont icon-dingwei"></text>
+        </view>
+        <view class="detail-content flex-box">
+          <view class="detail-content__title dis-flex">
+            <text class="f-30">{{ order.address.name }}</text>
+            <text class="detail-content__title-phone f-28">{{ order.address.phone }}</text>
+          </view>
+          <view class="detail-content__describe">
+            <text class="col-7">{{order.address.region.province}} {{order.address.region.city}} {{order.address.region.region}} {{order.address.detail}}</text>
           </view>
         </view>
       </view>
@@ -94,10 +112,10 @@
             <text>会员折扣价：￥{{ item.grade_goods_price }}</text>
           </view>
           <!-- 申请售后 -->
-          <view class="m-top20 dis-flex flex-x-end">
+          <!-- <view class="m-top20 dis-flex flex-x-end">
             <text wx:if="{{ item.refund }}" class="f-26 col-7">已申请售后</text>
             <view wx:elif="{{ order.isAllowRefund }}" class="btn-default" catchtap="onApplyRefund" data-id="{{item.order_goods_id}}">申请售后</view>
-          </view>
+          </view> -->
         </view>
       </view>
     </view>
@@ -152,19 +170,9 @@
 
   <!-- 操作栏 -->
   <view wx:if="{{ order.order_status.value != 20 }}" class="flow-fixed-footer b-f">
-    <view class="dis-flex checkout-box" wx:if="{{order.pay_status.value==10}}">
-      <!-- 取消订单 -->
-      <view catchtap="cancelOrder" class="flex-box checkout-left-detail t-c">
-        取消订单
-      </view>
-      <!-- 订单付款 -->
-      <view class="flex-box checkout-right-detail">
-        <text catchtap="onPayOrder" class="flow-btn" wx:if="{{order.pay_status.value==10}}">去付款</text>
-      </view>
-    </view>
     <!-- 确认收货 -->
-    <view class="flow-btn h3" wx:if="{{order.delivery_status.value==20 && order.receipt_status.value==10}}">
-      <view catchtap="receipt">确认收货</view>
+    <view class="flow-btn h3" wx:if="{{order.pay_status.value==20 && order.delivery_status.value==10}}">
+      <view catchtap="toDelivery">确认发货</view>
     </view>
   </view>
 

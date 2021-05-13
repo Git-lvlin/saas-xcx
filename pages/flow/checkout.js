@@ -379,7 +379,7 @@ Page({
     }
 
     wx.requestSubscribeMessage({
-      tmplIds: ['1KuZXceOKj9kJeAgk2pYMb0HoCBR6KWN2wDe-pb_Zok', '6t1VR9Hxg3gJo2DyQpIpihIqBsgx4l9HdJFcSbtub34'],
+      tmplIds: ['1KuZXceOKj9kJeAgk2pYMb0HoCBR6KWN2wDe-pb_Zok', '6t1VR9Hxg3gJo2DyQpIpihIqBsgx4l9HdJFcSbtub34', 'n4oA_rhO1TkBmPid6G_0f6UWwqUcUE-z7PPKUT1XFQQ'],
       success(res) {
         console.log(res)
       },

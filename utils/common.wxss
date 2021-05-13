@@ -292,7 +292,7 @@ input {
   padding-bottom: 112rpx;
 }
 
-.onelist-hidden {
+.onelist-hidden, .ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

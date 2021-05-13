@@ -22,7 +22,10 @@ Page({
 
     tabs: [],
     activeIndex: -1,
-   //sliderOffset: 0,
+    scrollTop: 0,
+    makeAnchorByCategory: []
+
+    //sliderOffset: 0,
     //sliderLeft: 0
   },
 
@@ -40,7 +43,7 @@ Page({
     });
     // 设置列表显示方式
     _this.setShowView();
-    
+
     // 获取分类列表
     _this.getCategoryList();
   },
@@ -73,18 +76,35 @@ Page({
       search: this.data.option.search || '',
     }, result => {
       let resList = result.data.list,
-          dataList = _this.data.list;
+        dataList = _this.data.list;
       if (isPage == true) {
         _this.setData({
           'list.data': dataList.data.concat(resList.data),
           isLoading: false,
         });
+
       } else {
         _this.setData({
           list: resList,
           isLoading: false,
         });
       }
+      wx.nextTick(() => {
+        let temp = [];
+        const query = wx.createSelectorQuery();
+        
+        _this.data.tabs.forEach(item => {
+          query.select('._' + item.category_id).boundingClientRect(function (res) {
+            res = res || {
+              top: 0
+            }
+            !temp.includes(res.top) && temp.push(res.top)
+          }).exec();
+        })
+        _this.setData({
+          makeAnchorByCategory: temp
+        })
+      })
     });
   },
 
@@ -96,7 +116,7 @@ Page({
     wx.getSystemInfo({
       success: res => {
         _this.setData({
-          scrollHeight: res.windowHeight - 90,
+          scrollHeight: res.windowHeight - 109,
         });
       }
     });
@@ -146,7 +166,7 @@ Page({
       return false;
     }
     // 加载下一页列表
-    this.getGoodsList(true, ++this.data.page);
+    //this.getGoodsList(true, ++this.data.page);
   },
 
   /**
@@ -202,7 +222,13 @@ Page({
         templet: data.templet,
         curNav: data.list.length > 0 ? data.list[0].category_id : true,
         notcont: !data.list.length,
-        tabs: data.list.map(item => {return {category_name: item.name, category_id: item.category_id, title: item.name}})
+        tabs: data.list.map(item => {
+          return {
+            category_name: item.name,
+            category_id: item.category_id,
+            title: item.name
+          }
+        })
       });
 
       // 获取商品列表
@@ -213,11 +239,10 @@ Page({
   tabClick: function (e) {
     let _this = this;
     this.setData({
-      //sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.detail.index
+      activeIndex: e.detail.index,
+      scrollTop: _this.data.makeAnchorByCategory[e.detail.index] - 100
     });
-  
-    this.getGoodsList(false, false, _this.data.tabs[_this.data.activeIndex].category_id);
+    //this.getGoodsList(false, false, _this.data.tabs[_this.data.activeIndex].category_id);
   },
 
   // addCard(e) {

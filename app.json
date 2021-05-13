@@ -97,9 +97,7 @@
     "pages/sharp/goods/index",
 
     "pages/inviteAffirm/index",
-    "pages/troupe/index/index",
-    "pages/wzl_market/index"
-    
+    "pages/troupe/index/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#0ca64f",

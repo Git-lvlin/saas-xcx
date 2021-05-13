@@ -78,23 +78,15 @@ Page({
   },
 
   /**
-   * 确认收货
+   * 确认发货
    */
-  receipt(e) {
+  toDelivery(e) {
     let _this = this;
-    let order_id = _this.data.order_id;
-    wx.showModal({
-      title: "提示",
-      content: "确认收到商品？",
-      success(o) {
-        if (o.confirm) {
-          App._post_form('user.order/receipt', {
-            order_id
-          }, result => {
-            _this.getOrderDetail(order_id);
-          });
-        }
-      }
+    App._post_form('shop.order/delivery', {
+      order_id:  _this.data.order_id,
+      shop_id: App.globalData.shop_id,
+    }, result => {
+      _this.getOrderList(_this.data.dataType);
     });
   },
 

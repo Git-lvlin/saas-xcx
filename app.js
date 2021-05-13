@@ -57,7 +57,7 @@ App({
       }
     });
 
-    _this.globalData.role = wx.getStorage('role') || 0;
+    _this.globalData.role = wx.getStorageSync('role') || 0;
   },
 
   _wxLoginSuccess(resp0) {
