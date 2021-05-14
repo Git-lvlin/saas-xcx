@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "销售订单",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
   "usingComponents": {
     "zan-popup": "/components/popup/index"
   }

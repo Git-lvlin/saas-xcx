@@ -86,7 +86,7 @@ Page({
       order_id:  _this.data.order_id,
       shop_id: App.globalData.shop_id,
     }, result => {
-      _this.getOrderList(_this.data.dataType);
+      _this.getOrderDetail(_this.data.order_id);
     });
   },
 

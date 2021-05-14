@@ -52,7 +52,7 @@ Page({
       token: wx.getStorageSync('token'),
       data_type: _this.data.dataType,
       shop_id: App.globalData.shop_id,
-      listRows: 3,
+      listRows: 5,
       page: page || 1,
       dataType: _this.data.dataType
     }, result => {
@@ -112,6 +112,11 @@ Page({
     wx.navigateTo({
       url: './detail?order_id=' + order_id
     });
+  },
+
+  /*触顶加载最新*/
+  bindReachUp() {
+    this.getOrderList(false, 1);
   },
 
   /*触底加载更多*/

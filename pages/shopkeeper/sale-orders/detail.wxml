@@ -176,48 +176,6 @@
     </view>
   </view>
 
-  <!-- 支付方式弹窗 -->
-  <!-- <zan-popup show="{{ showPayPopup }}" bindclose="onTogglePayPopup">
-    <view class="pop-orderPay pop-example__container">
-      <view class="pop-title">
-        <text class="f-30">请选择支付方式</text>
-      </view>
-      <view class="pop-content">
-        <view class="pay-method">
-          <form bindsubmit="onSelectPayType" data-value="{{ PayTypeEnum.WECHAT.value }}" report-submit="true">
-            <button formType="submit" class="btn-normal">
-              <view class="pay-item dis-flex flex-x-between">
-                <view class="item-left dis-flex flex-y-center">
-                  <view class="item-left_icon wechat">
-                    <text class="iconfont icon-weixinzhifu"></text>
-                  </view>
-                  <view class="item-left_text">
-                    <text>{{ PayTypeEnum.WECHAT.name }}</text>
-                  </view>
-                </view>
-              </view>
-            </button>
-          </form>
-          <form bindsubmit="onSelectPayType" data-value="{{ PayTypeEnum.BALANCE.value }}" report-submit="true">
-            <button formType="submit" class="btn-normal">
-              <view class="pay-item dis-flex flex-x-between">
-                <view class="item-left dis-flex flex-y-center">
-                  <view class="item-left_icon balance">
-                    <text class="iconfont icon-qiandai"></text>
-                  </view>
-                  <view class="item-left_text">
-                    <text>{{ PayTypeEnum.BALANCE.name }}</text>
-                  </view>
-                </view>
-              </view>
-            </button>
-          </form>
-        </view>
-      </view>
-    </view>
-  </zan-popup> -->
-
-
   <!-- 快捷导航 -->
   <shortcut bottom="120rpx"></shortcut>
 
