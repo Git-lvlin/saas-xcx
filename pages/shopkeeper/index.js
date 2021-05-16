@@ -18,6 +18,10 @@ Page({
   },
 
   readyToWithdraw() {
+    if(this.data.shop.extend.money < 1) {
+      App.showError('额度太少，至少1元起提');
+      return;
+    }
     wx.navigateTo({
       url: '/pages/shopkeeper/dealer/withdraw/apply/apply',
     })

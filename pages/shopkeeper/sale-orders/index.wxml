@@ -96,7 +96,7 @@
   </view>
 
   <!-- 支付方式弹窗 -->
-  <zan-popup show="{{ showPayPopup }}" bindclose="onTogglePayPopup">
+  <!-- <zan-popup show="{{ showPayPopup }}" bindclose="onTogglePayPopup">
     <view class="pop-orderPay pop-example__container">
       <view class="pop-title">
         <text class="f-30">请选择支付方式</text>
@@ -134,6 +134,6 @@
         </view>
       </view>
     </view>
-  </zan-popup>
+  </zan-popup> -->
 
 </view>

@@ -72,7 +72,7 @@ Page({
       }
     });
   },
-  
+
   /**
    * 切换标签
    */
@@ -114,15 +114,16 @@ Page({
     });
   },
 
-  /*触底加载更多*/
+  
 
+  /*页面下拉事件*/
   onPullDownRefresh() {
-
-   wx.stopPullDownRefresh();
+    wx.stopPullDownRefresh();
   },
 
-  /* */
-  bindReachUp(){
+
+  /*触顶加载最新*/
+  bindReachUp() {
     this.getOrderList(false, 1);
   },
 

@@ -47,31 +47,37 @@ Page({
 
   getOrderList(isPage, page) {
     let _this = this;
-    App._get('shop.BalanceLog/lists', {
-      wxapp_id: App.getWxappId(),
-      token: wx.getStorageSync('token'),
-      data_type: _this.data.dataType,
-      listRows: 10,
-      page: page || 1,
-      dataType: _this.data.dataType
-    }, result => {
-      let resList = result.data.list,
-        dataList = _this.data.list;
+    App._get(
+      'shop.BalanceLog/lists', {
+        wxapp_id: App.getWxappId(),
+        token: wx.getStorageSync('token'),
+        data_type: _this.data.dataType,
+        listRows: 10,
+        page: page || 1,
+        dataType: _this.data.dataType
+      },
+      result => {
+        let resList = result.data.list,
+          dataList = _this.data.list;
 
-      if (isPage == true) {
-        _this.setData({
-          'list.data': dataList.data.concat(resList.data),
-          isLoading: false,
-        });
-      } else {
-        _this.setData({
-          list: resList,
-          isLoading: false,
-        });
-      }
-    });
+        if (isPage == true) {
+          _this.setData({
+            'list.data': dataList.data.concat(resList.data),
+            isLoading: false,
+          });
+        } else {
+          _this.setData({
+            list: resList,
+            isLoading: false,
+          });
+        }
+      },
+      err => {},
+      complete =>{
+        wx.stopPullDownRefresh();
+      })
   },
-  
+
   /**
    * 切换标签
    */
@@ -114,10 +120,22 @@ Page({
   },
 
   /*触底加载更多*/
-
-  onPullDownRefresh() {
-    wx.stopPullDownRefresh();
+  onReachBottom() {
+    let _this = this;
+    _this.bindDownLoad();
   },
+
+  /*页面下拉动作 */
+  onPullDownRefresh() {
+    let _this = this;
+    wx.startPullDownRefresh({
+      success() {
+        _this.getOrderList(false, 1)
+      },
+    })
+  },
+
+  // 
 
   /**
    * 下拉到底加载数据

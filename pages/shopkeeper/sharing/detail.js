@@ -83,14 +83,14 @@ Page({
    */
   toDelivery(e) {
     let _this = this;
-    let order_id = e.currentTarget.dataset.id;
     App._post_form('shop.SharingOrder/delivery', {
-      order_id: order_id,
+      order_id: _this.data.order_id,
       shop_id: App.globalData.shop_id,
     }, result => {
-      _this.getOrderList(_this.data.dataType);
+      _this.getOrderDetail(_this.data.order_id);
     });
   },
+
 
   /**
    * 申请售后
