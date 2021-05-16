@@ -87,44 +87,19 @@ Page({
         role = 3;
       }
 
-      switch (String(role)) {
-        case '0':
-          delete result.data.menus.shopkeeper_order
-          delete result.data.menus.storehouse_order
-          break;
-
-        case '1':
-          delete result.data.menus.coupon;
-          delete result.data.menus.my_coupon;
-          //delete result.data.menus.sharing_order;
-          delete result.data.menus.storehouse_order;
-          App.globalData.shop_id = shop_list[0].shop_id;
-          _this.setData({
-            currentShop: shop_list[0].shop_name,
-            shop_list
-          })
-          break;
-
-        case '2':
-          delete result.data.menus.address;
-          delete result.data.menus.coupon;
-          delete result.data.menus.my_coupon;
-          //delete result.data.menus.sharing_order;
-          delete result.data.menus.storehouse_order
-          break;
-
-        case '3':
-          delete result.data.menus.address;
-          delete result.data.menus.coupon;
-          delete result.data.menus.my_coupon;
-          //delete result.data.menus.sharing_order;
-          delete result.data.menus.shopkeeper_order;
-          break;
+      var currentShop = shop_list[0].shop_name;
+      if(role == 1) {
+        currentShop += " (管理员)"
+        App.globalData.shop_id = shop_list[0].shop_id;
+      } else if (role == 2) {
+        currentShop += " (店员)"
       }
 
       _this.setData(result.data);
       _this.setData({
-        role,
+        role: role,
+        currentShop: currentShop,
+        shop_list: shop_list,
       });
 
       _this.saveUserRole();

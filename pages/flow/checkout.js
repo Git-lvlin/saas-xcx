@@ -175,7 +175,7 @@ Page({
       });
     }
   },
-  
+
   /*获取店铺列表*/
   getShopList(longitude, latitude) {
     let _this = this;
@@ -289,7 +289,6 @@ Page({
     // 按钮禁用, 防止二次提交
     _this.data.disabled = true;
 
-
     let url = '';
 
     // 表单提交的数据
@@ -362,7 +361,6 @@ Page({
       });
     };
 
-
     // 请求用户订阅消息
     _this._onRequestSubscribeMessage(onCommitCallback);
   },
@@ -379,7 +377,7 @@ Page({
     }
 
     wx.requestSubscribeMessage({
-      tmplIds: ['1KuZXceOKj9kJeAgk2pYMb0HoCBR6KWN2wDe-pb_Zok', '6t1VR9Hxg3gJo2DyQpIpihIqBsgx4l9HdJFcSbtub34', 'n4oA_rhO1TkBmPid6G_0f6UWwqUcUE-z7PPKUT1XFQQ'],
+      tmplIds,
       success(res) {
         console.log(res)
       },

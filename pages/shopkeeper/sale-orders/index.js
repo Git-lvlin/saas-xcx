@@ -54,7 +54,6 @@ Page({
       shop_id: App.globalData.shop_id,
       listRows: 5,
       page: page || 1,
-      dataType: _this.data.dataType
     }, result => {
       let resList = result.data.list,
         dataList = _this.data.list;
@@ -114,7 +113,7 @@ Page({
     });
   },
 
-  
+
 
   /*页面下拉事件*/
   onPullDownRefresh() {
