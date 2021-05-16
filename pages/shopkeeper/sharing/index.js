@@ -11,11 +11,47 @@ Page({
     list: [], // 订单列表
     scrollHeight: null, // 列表容器高度
 
-
     no_more: false, // 没有更多数据
     isLoading: true, // 是否正在加载中
 
     page: 1, // 当前页码
+    tabs: [{
+        category_id: 'all',
+        title: '全部'
+      },
+      {
+        category_id: 'pay',
+        title: '待支付'
+      },
+      {
+        category_id: 'sharing',
+        title: '拼团中'
+      },
+      {
+        category_id: 'sharing_succeed',
+        title: '拼团成功'
+      },
+      {
+        category_id: 'sharing_fail',
+        title: '拼团失败'
+      },
+      {
+        category_id: 'delivery',
+        title: '待发货'
+      },
+      {
+        category_id: 'receipt',
+        title: '待收货'
+      },
+      {
+        category_id: 'complete',
+        title: '已完成'
+      },
+      {
+        category_id: 'cancel',
+        title: '已取消'
+      },
+    ]
   },
 
   /**
@@ -72,7 +108,7 @@ Page({
       }
     });
   },
-  
+
   /**
    * 切换标签
    */
@@ -86,6 +122,18 @@ Page({
     });
     // 获取订单列表
     this.getOrderList();
+  },
+
+  tabClick: function (e) {
+    let _this = this;
+    this.setData({
+      activeIndex: e.detail.index,
+      dataType: _this.data.tabs[e.detail.index].category_id,
+      //scrollTop: _this.data.makeAnchorByCategory[e.detail.index] - 100
+    });
+
+
+    this.getOrderList(false, 1);
   },
 
 

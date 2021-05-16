@@ -1,26 +1,12 @@
 <view class="container">
   <!-- tab栏 -->
-  <view class="header f-28 col-3">
-    <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">
-      <text>全部</text>
-    </view>
-
-    <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">
-      <text>待发货</text>
-    </view>
-
-    <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
-      <text>待收货</text>
-    </view>
-     
-    <view bindtap="bindHeaderTap" class="{{dataType==='complete'?'active':''}}" data-type="complete">
-      <text>已完成</text>
-    </view>
-  </view>
+  <mp-tabs tabs="{{tabs}}" activeTab="{{activeIndex}}" swiperClass="weui-tabs-swiper" bindtabclick="tabClick"
+      activeClass="tab-bar-title__selected">
+    </mp-tabs>
 
   <!-- 订单列表 -->
   <view class="goods-detail-box">
-    <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;margin-top:88rpx;">
+    <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;">
       <view class="wrapper" wx:if="{{list.data.length > 0}}">
         <!-- <view wx:if="{{list.length}}"> -->
         <view class="m-top20" wx:for="{{list.data}}" wx:key="this" catchtap="navigateToDetail" data-id="{{item.order_id}}">
@@ -72,7 +58,7 @@
               <view class="order-right">
                 <view class="btn-group dis-flex" wx:if="{{ item.order_status.value != 20 }}">
                   <!-- 确认发货: 在已付款并且未发货状态下显示-->
-                  <view wx:if="{{item.pay_status.value == 20 && item.delivery_status.value == 10}}">
+                  <view wx:if="{{ dataType === 'sharing_succeed' || dataType==='delivery'}}">
                     <view catchtap="toDelivery" class="btn-main" data-id="{{item.order_id}}">确认发货</view>
                   </view>
                 </view>
@@ -90,46 +76,5 @@
       </view>
     </scroll-view>
   </view>
-
-  <!-- 支付方式弹窗 -->
-  <zan-popup show="{{ showPayPopup }}" bindclose="onTogglePayPopup">
-    <view class="pop-orderPay pop-example__container">
-      <view class="pop-title">
-        <text class="f-30">请选择支付方式</text>
-      </view>
-      <view class="pop-content">
-        <view class="pay-method">
-          <form bindsubmit="onSelectPayType" data-value="{{ PayTypeEnum.WECHAT.value }}" report-submit="true">
-            <button formType="submit" class="btn-normal">
-              <view class="pay-item dis-flex flex-x-between">
-                <view class="item-left dis-flex flex-y-center">
-                  <view class="item-left_icon wechat">
-                    <text class="iconfont icon-weixinzhifu"></text>
-                  </view>
-                  <view class="item-left_text">
-                    <text>{{ PayTypeEnum.WECHAT.name }}</text>
-                  </view>
-                </view>
-              </view>
-            </button>
-          </form>
-          <form bindsubmit="onSelectPayType" data-value="{{ PayTypeEnum.BALANCE.value }}" report-submit="true">
-            <button formType="submit" class="btn-normal">
-              <view class="pay-item dis-flex flex-x-between">
-                <view class="item-left dis-flex flex-y-center">
-                  <view class="item-left_icon balance">
-                    <text class="iconfont icon-qiandai"></text>
-                  </view>
-                  <view class="item-left_text">
-                    <text>{{ PayTypeEnum.BALANCE.name }}</text>
-                  </view>
-                </view>
-              </view>
-            </button>
-          </form>
-        </view>
-      </view>
-    </view>
-  </zan-popup>
 
 </view>
