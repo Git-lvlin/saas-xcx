@@ -16,9 +16,9 @@
     <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
       <text>待收货</text>
     </view>
-    <view catchtap="onTargetRefund">
+    <!-- <view catchtap="onTargetRefund">
       <text>售后</text>
-    </view>
+    </view> -->
   </view>
   <!-- 订单列表 -->
   <view class="goods-detail-box">

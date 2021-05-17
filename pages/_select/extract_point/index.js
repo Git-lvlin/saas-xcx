@@ -44,7 +44,6 @@ Page({
       longitude: longitude || '',
       latitude: latitude || ''
     }, (result) => {
-      console.log(result.data.list)
       _this.setData({
         shopList: result.data.list,
         isLoading: false
@@ -118,6 +117,7 @@ Page({
     prevPage.setData({
       selectedShopId: selectedId
     });
+    wx.setStorageSync('favorite_shop', selectedId)
     // 返回上级页面
     wx.navigateBack({
       delta: 1

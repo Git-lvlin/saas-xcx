@@ -81,13 +81,60 @@ Page({
      let {shop_list, warehouse_list} = result.data
 
       let role = 0;
+      var currentShop = "";
       if (shop_list.length) {
         role = shop_list[0].clerk_role.value;
       } else if (warehouse_list.length) {
         role = 3;
       }
 
-      var currentShop = shop_list[0].shop_name;
+      /* role
+      0 用户
+      1 店主
+      2 店员
+      3 仓库*/
+
+      switch (String(role)) {
+        case '0':
+          // 不显示仓库和水店入口
+          delete result.data.menus.shopkeeper_order
+          delete result.data.menus.storehouse_order
+          break;
+
+        case '1':
+           // 不显示优惠券和我的优惠券，仓库入口
+          delete result.data.menus.coupon;
+          delete result.data.menus.my_coupon;
+          delete result.data.menus.water_ticket;
+          //delete result.data.menus.sharing_order;
+          delete result.data.menus.storehouse_order;
+          App.globalData.shop_id = shop_list[0].shop_id;
+          _this.setData({
+            currentShop: shop_list[0].shop_name,
+            shop_list
+          })
+          break;
+
+        case '2':
+          // 不显示收货地址、优惠券、我的优惠券，仓库入口
+          delete result.data.menus.address;
+          delete result.data.menus.coupon;
+          delete result.data.menus.my_coupon;
+           delete result.data.menus.water_ticket;
+          delete result.data.menus.storehouse_order
+          break;
+
+        case '3':
+          // 不显示收货地址、优惠券、我的优惠券，店主入口
+          delete result.data.menus.address;
+          delete result.data.menus.coupon;
+           delete result.data.menus.water_ticket;
+          delete result.data.menus.my_coupon;
+          delete result.data.menus.shopkeeper_order;
+          break;
+        }
+
+      
       if(role == 1) {
         currentShop += " (管理员)"
         App.globalData.shop_id = shop_list[0].shop_id;
@@ -97,11 +144,10 @@ Page({
 
       _this.setData(result.data);
       _this.setData({
-        role: role,
-        currentShop: currentShop,
-        shop_list: shop_list,
+        role,
+        currentShop,
+        shop_list,
       });
-
       _this.saveUserRole();
     });
   },

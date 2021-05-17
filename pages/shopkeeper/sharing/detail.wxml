@@ -167,22 +167,12 @@
   </scroll-view>
 
   <!-- 操作栏 -->
-  <view wx:if="{{ order.order_status.value != 20 }}" class="flow-fixed-footer b-f">
-    <view class="dis-flex checkout-box" wx:if="{{order.pay_status.value==10}}">
-      <!-- 取消订单 -->
-      <!-- <view catchtap="cancelOrder" class="flex-box checkout-left-detail t-c">
-        取消订单
-      </view> -->
-      <!-- 订单付款 -->
-      <!-- <view class="flex-box checkout-right-detail">
-        <text catchtap="onPayOrder" class="flow-btn" wx:if="{{order.pay_status.value==10}}">去付款</text>
-      </view> -->
-    </view>
+  <view class="flow-fixed-footer b-f">
     <!-- 确认收货 -->
     <view class="flow-btn h3" wx:if="{{order.active_status.value == 20 && order.delivery_status.value == 10 && order.pay_status.value == 20}}">
       <view catchtap="toDelivery">确认发货</view>
     </view>
-    <view class="flow-btn h3" wx:if="{{!order.active_status && order.delivery_status.value == 10 && order.pay_status.value == 20}}">
+    <view class="flow-btn h3" wx:elif="{{!order.active_status && order.delivery_status.value == 10 && order.order_status.value === 10 && order.pay_status.value == 20 && order.receipt_status.value == 10}}">
       <view catchtap="toDelivery">确认发货</view>
     </view>
   </view>

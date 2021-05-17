@@ -33,7 +33,7 @@ Page({
             content: item.shop_name,
             anchorY: -40,
             anchorX: -20,
-            bgColor: '#333333',
+            bgColor: '#e43434',
             color: '#fff',
             padding: '5px',
             borderRadius: 4
