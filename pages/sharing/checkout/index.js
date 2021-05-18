@@ -75,13 +75,20 @@ Page({
     // 当前页面参数
     _this.data.options = options;
 
-    wx.getLocation({
-      type: 'wgs84',
-      success(res) {
-        // console.log(res);
-        _this.getShopList(res.longitude, res.latitude);
-      }
-    })
+    
+    let favorite = wx.getStorageSync('favorite_shop'); 
+    // 如果用户上次选择了某家店，每次进来默认都是那家店
+    if(favorite) {
+      _this.setData({selectedShopId: favorite})
+      _this.getOrderData();
+    } else {// 没有选择过，推荐最近的一家
+      wx.getLocation({
+        type: 'wgs84',
+        success(res) {
+          _this.getShopList(res.longitude, res.latitude);
+        }
+      })
+    }
   },
 
   /**

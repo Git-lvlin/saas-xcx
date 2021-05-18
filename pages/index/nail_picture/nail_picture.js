@@ -50,7 +50,7 @@ Page({
   bindlabeltap(e) {
     App.globalData.storeInfo = App.globalData.storeList.find(item => item.shop_id === e.detail.markerId)
     wx.navigateTo({
-      url: '../index/storeInformation/index',
+      url: '../storeInformation/index',
     })
   },
 

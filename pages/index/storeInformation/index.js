@@ -78,8 +78,9 @@ Page({
   },
   // 拨打电话
   callShopkeeper() {
+    let _this = this;
     wx.makePhoneCall({
-      phoneNumber: '0769-22336699' //仅为示例，并非真实的电话号码
+      phoneNumber: _this.data.information.phone //仅为示例，并非真实的电话号码
     })
   }
 })
