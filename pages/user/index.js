@@ -34,15 +34,15 @@ Page({
     _this.setData({
       userHeaderBGC: '#0ca64f'
     });
+
+    // 获取当前用户信息
+    _this.getUserDetail();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
-    // 获取当前用户信息
-    this.getUserDetail();
 
     // 更新购物车角标
     App.setCartTabBadge()
@@ -78,10 +78,9 @@ Page({
       }
       */
 
-     let {shop_list, warehouse_list} = result.data
+      let {shop_list, warehouse_list} = result.data
 
       let role = 0;
-      var currentShop = "";
       if (shop_list.length) {
         role = shop_list[0].clerk_role.value;
       } else if (warehouse_list.length) {
@@ -93,59 +92,43 @@ Page({
       1 店主
       2 店员
       3 仓库*/
+      if (role == 0) { // 不显示仓库和水店入口
+        delete result.data.menus.shopkeeper_order
+        delete result.data.menus.storehouse_order
+      } else if (role == 1) { // 不显示优惠券和我的优惠券，仓库入口
+        delete result.data.menus.coupon;
+        delete result.data.menus.my_coupon;
+        delete result.data.menus.water_ticket;
+        //delete result.data.menus.sharing_order;
+        delete result.data.menus.storehouse_order;
 
-      switch (String(role)) {
-        case '0':
-          // 不显示仓库和水店入口
-          delete result.data.menus.shopkeeper_order
-          delete result.data.menus.storehouse_order
-          break;
-
-        case '1':
-           // 不显示优惠券和我的优惠券，仓库入口
-          delete result.data.menus.coupon;
-          delete result.data.menus.my_coupon;
-          delete result.data.menus.water_ticket;
-          //delete result.data.menus.sharing_order;
-          delete result.data.menus.storehouse_order;
-          App.globalData.shop_id = shop_list[0].shop_id;
-          _this.setData({
-            currentShop: shop_list[0].shop_name,
-            shop_list
-          })
-          break;
-
-        case '2':
-          // 不显示收货地址、优惠券、我的优惠券，仓库入口
-          delete result.data.menus.address;
-          delete result.data.menus.coupon;
-          delete result.data.menus.my_coupon;
-           delete result.data.menus.water_ticket;
-          delete result.data.menus.storehouse_order
-          break;
-
-        case '3':
-          // 不显示收货地址、优惠券、我的优惠券，店主入口
-          delete result.data.menus.address;
-          delete result.data.menus.coupon;
-           delete result.data.menus.water_ticket;
-          delete result.data.menus.my_coupon;
-          delete result.data.menus.shopkeeper_order;
-          break;
-        }
-
-      
-      if(role == 1) {
-        currentShop += " (管理员)"
         App.globalData.shop_id = shop_list[0].shop_id;
-      } else if (role == 2) {
-        currentShop += " (店员)"
+        _this.setData({
+          currentShop: shop_list[0].shop_name + " (管理员)",
+          shop_list
+        })
+      } else if (role == 2) {// 不显示收货地址、优惠券、我的优惠券，仓库入口
+        delete result.data.menus.address;
+        delete result.data.menus.coupon;
+        delete result.data.menus.my_coupon;
+        delete result.data.menus.water_ticket;
+        delete result.data.menus.storehouse_order
+        App.globalData.shop_id = shop_list[0].shop_id;
+        _this.setData({
+          currentShop: shop_list[0].shop_name + " (店员)",
+          shop_list
+        })
+      } else if (role == 3) {// 不显示收货地址、优惠券、我的优惠券，店主入口
+        delete result.data.menus.address;
+        delete result.data.menus.coupon;
+        delete result.data.menus.water_ticket;
+        delete result.data.menus.my_coupon;
+        delete result.data.menus.shopkeeper_order;
       }
 
       _this.setData(result.data);
       _this.setData({
         role,
-        currentShop,
         shop_list,
       });
       _this.saveUserRole();
@@ -186,7 +169,7 @@ Page({
       return false;
     }
     wx.navigateTo({
-      url: '/' + e.currentTarget.dataset.url 
+      url: '/' + e.currentTarget.dataset.url
     })
   },
 
