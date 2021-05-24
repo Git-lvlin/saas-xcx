@@ -131,6 +131,7 @@ Page({
         role,
         shop_list,
       });
+      App.globalData.role = role;
       _this.saveUserRole();
     });
   },
