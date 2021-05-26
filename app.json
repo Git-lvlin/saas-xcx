@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/index/storeInformation/index",
     "pages/index/nail_picture/nail_picture",
-
     "pages/warehouse/index/index",
     "pages/warehouse/order/index",
     "pages/warehouse/goods/index",
@@ -15,31 +14,22 @@
     "pages/warehouse/order/refund/detail/detail",
     "pages/warehouse/flow/index",
     "pages/warehouse/flow/checkout",
-
     "pages/shopkeeper/index",
-    "pages/shopkeeper/sale-orders/index",
-    "pages/shopkeeper/purchaseOrder/index",
+    "pages/shopkeeper/sale-order/index",
+    "pages/shopkeeper/sharing-order/index",
+    "pages/shopkeeper/sharing-order/detail",
+    "pages/shopkeeper/purchase-order/index",
     "pages/shopkeeper/bill/index",
     "pages/shopkeeper/dealer/apply/apply",
     "pages/shopkeeper/dealer/withdraw/apply/apply",
-    "pages/shopkeeper/sharing/index",
-    "pages/shopkeeper/sharing/detail",
-    
-    
     "pages/custom/index",
-
     "pages/category/index",
     "pages/category/list",
-
     "pages/goods/index",
     "pages/goods/comment/comment",
-
     "pages/search/index",
-
     "pages/flow/index",
     "pages/flow/checkout",
-
-
     "pages/user/index",
     "pages/user/wallet/index",
     "pages/user/wallet/balance/log",
@@ -48,7 +38,6 @@
     "pages/user/coupon/coupon",
     "pages/user/help/index",
     "pages/coupon/coupon",
-    
     "pages/order/index",
     "pages/order/detail",
     "pages/order/express/express",
@@ -56,18 +45,14 @@
     "pages/order/refund/index",
     "pages/order/refund/apply/apply",
     "pages/order/refund/detail/detail",
-
     "pages/address/index",
     "pages/address/create",
     "pages/address/detail",
-
-
     "pages/dealer/index/index",
     "pages/dealer/apply/apply",
     "pages/dealer/order/order",
     "pages/dealer/team/team",
     "pages/dealer/qrcode/qrcode",
-
     "pages/sharing/index/index",
     "pages/sharing/goods/index",
     "pages/sharing/goods/comment/comment",
@@ -81,23 +66,20 @@
     "pages/sharing/order/refund/index",
     "pages/sharing/order/refund/apply/apply",
     "pages/sharing/order/refund/detail/detail",
-
     "pages/_select/extract_point/index",
     "pages/shop/detail/index",
     "pages/store/check/order",
-
     "pages/bargain/index/index",
     "pages/bargain/task/index",
     "pages/bargain/goods/index",
-
     "pages/points/log/index",
     "pages/login/login",
-
     "pages/sharp/index/index",
     "pages/sharp/goods/index",
-
     "pages/inviteAffirm/index",
-    "pages/troupe/index/index"
+    "pages/troupe/index/index",
+    "pages/sale-men/index",
+    "pages/sale-men/task-flow"
   ],
   "window": {
     "navigationBarBackgroundColor": "#0ca64f",

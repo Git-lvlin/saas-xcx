@@ -52,9 +52,8 @@ Page({
       token: wx.getStorageSync('token'),
       data_type: _this.data.dataType,
       shop_id: App.globalData.shop_id,
-      listRows: 3,
+      listRows: 5,
       page: page || 1,
-      dataType: _this.data.dataType
     }, result => {
       let resList = result.data.list,
         dataList = _this.data.list;
@@ -72,7 +71,7 @@ Page({
       }
     });
   },
-  
+
   /**
    * 切换标签
    */
@@ -85,7 +84,7 @@ Page({
       no_more: false,
     });
     // 获取订单列表
-    this.getOrderList(e.currentTarget.dataset.type);
+    this.getOrderList();
   },
 
 
@@ -110,14 +109,21 @@ Page({
   navigateToDetail(e) {
     let order_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../order/detail?order_id=' + order_id
+      url: './detail?order_id=' + order_id
     });
   },
 
-  /*触底加载更多*/
 
+
+  /*页面下拉事件*/
   onPullDownRefresh() {
     wx.stopPullDownRefresh();
+  },
+
+
+  /*触顶加载最新*/
+  bindReachUp() {
+    this.getOrderList(false, 1);
   },
 
   /**
@@ -147,7 +153,5 @@ Page({
       scrollHeight
     });
   },
-
-
 
 });

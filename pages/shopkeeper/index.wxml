@@ -17,13 +17,18 @@
 	</view>
 
 	<view class="weui-cells weui-cells_after-title">
-		<navigator url="/pages/shopkeeper/sale-orders/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<navigator url="/pages/shopkeeper/sale-order/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 			<view class="weui-cell__bd">销售订单</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>
 
-		<navigator url="/pages/shopkeeper/sharing/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		<navigator url="/pages/shopkeeper/sharing-order/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 			<view class="weui-cell__bd">拼团订单</view>
+			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+		</navigator>
+
+		<navigator url="/pages/shopkeeper/purchase-order/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+			<view class="weui-cell__bd">进货记录</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>
 

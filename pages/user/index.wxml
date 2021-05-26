@@ -95,7 +95,7 @@
   </view>
 
   <!-- 我的钱包 -->
-  <view class="my-asset dis-flex" wx:if="{{role > 2}}">
+  <view class="my-asset dis-flex" wx:if="{{role <= 1}}">
     <view class="asset-left flex-box dis-flex flex-x-center">
       <view class="asset-left_item">
         <form bindsubmit="onTargetWallet" report-submit="true" wx:if="{{ setting.open_recharge }}">

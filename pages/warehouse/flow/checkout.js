@@ -182,7 +182,7 @@ Page({
     // 设置当前配送方式
     let _this = this;
     _this.setData({
-      curDelivery: e.currentTarget.dataset.current
+     // curDelivery: e.currentTarget.dataset.current
     });
     // 重新获取订单信息
     _this.getOrderData();
@@ -493,7 +493,7 @@ Page({
    */
   redirectToOrderIndex() {
     wx.redirectTo({
-      url: '../order/index',
+      url: '../../shopkeeper/purchase-order/index',
     });
   },
 

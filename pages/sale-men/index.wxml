@@ -1,0 +1,42 @@
+<!--pages/sale-men/index.wxml-->
+<view class="sale-men">
+  <view class="header f-28 col-3">
+    <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">
+      <text>未处理</text>
+    </view>
+    <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">
+      <text>处理中</text>
+    </view>
+    <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">
+      <text>已完成</text>
+    </view>
+   
+  </view>
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+    
+    <view class="weui-media-box weui-media-box_text" bindtap="toHanleTask">
+      <h4 class="weui-media-box__title">水质问题</h4>
+      <view class="weui-media-box__desc">文峰店水质有问题，请速去查明文峰店水质有问题，请速去查明文峰店水质有问题，请速去查明</view>
+      <view class="weui-media-box__info">
+        <!-- <view class="weui-media-box__info__meta">文字来源</view> -->
+        <view class="weui-media-box__info__meta">2021-05-26</view>
+        <!-- <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">其它信息</view> -->
+      </view>
+    </view>
+
+    <view class="weui-media-box weui-media-box_text" bindtap="toHanleTask">
+      <h4 class="weui-media-box__title">水质问题</h4>
+      <view class="weui-media-box__desc">文峰店水质有问题，请速去查明文峰店水质有问题，请速去查明文峰店水质有问题，请速去查明</view>
+      <view class="weui-media-box__info">
+        <!-- <view class="weui-media-box__info__meta">文字来源</view> -->
+        <view class="weui-media-box__info__meta">2021-05-26</view>
+        <!-- <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">其它信息</view> -->
+      </view>
+    </view>
+  
+  
+  </view>
+  </view>
+ 
+</view>
