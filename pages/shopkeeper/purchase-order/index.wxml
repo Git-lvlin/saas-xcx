@@ -4,27 +4,22 @@
     <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">
       <text>全部</text>
     </view>
-
+    <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">
+      <text>待付款</text>
+    </view>
     <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">
       <text>待发货</text>
     </view>
-
     <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
       <text>待收货</text>
     </view>
-     
-    <view bindtap="bindHeaderTap" class="{{dataType==='complete'?'active':''}}" data-type="complete">
-      <text>已完成</text>
+    <view bindtap="bindHeaderTap" class="{{dataType==='comment'?'active':''}}" data-type="comment">
+      <text>待评价</text>
     </view>
-<!-- 
-    <view bindtap="bindHeaderTap" class="{{dataType==='cancel'?'active':''}}" data-type="cancel">
-      <text>已取消</text>
-    </view> -->
   </view>
-
   <!-- 订单列表 -->
   <view class="goods-detail-box">
-    <scroll-view bindscrolltolower="bindDownLoad" bindscrolltoupper="bindReachUp" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;margin-top:88rpx;">
+    <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;margin-top:88rpx;">
       <view class="wrapper" wx:if="{{list.data.length > 0}}">
         <!-- <view wx:if="{{list.length}}"> -->
         <view class="m-top20" wx:for="{{list.data}}" wx:key="this" catchtap="navigateToDetail" data-id="{{item.order_id}}">
@@ -59,7 +54,7 @@
                   </view>
                 </view>
                 <view class="right dis-flex flex-x-center flex-y-center">
-                  <text class="goods-number">共{{item.total_num}}件</text>
+                  <text class="goods-number">共{{item.goods.length}}件</text>
                   <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
                 </view>
               </view>
@@ -75,9 +70,37 @@
               </view>
               <view class="order-right">
                 <view class="btn-group dis-flex" wx:if="{{ item.order_status.value != 20 }}">
-                  <!-- 确认发货: 在已付款并且未发货状态下显示-->
-                  <view wx:if="{{item.pay_status.value == 20 && item.delivery_status.value == 10}}">
-                    <view catchtap="toDelivery" class="btn-main" data-id="{{item.order_id}}">确认发货</view>
+                  <!-- 未支付取消订单 -->
+                  <view wx:if="{{ item.pay_status.value==10 }}">
+                    <view catchtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">取消</view>
+                  </view>
+                  <!-- 已支付取消订单 -->
+                  <block wx:if="{{ item.order_status.value!=21 }}">
+                    <view wx:if="{{ item.pay_status.value==20 && item.delivery_status.value==10 }}">
+                      <view catchtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">申请取消</view>
+                    </view>
+                    <!-- 订单核销码 -->
+                    <view wx:if="{{ item.pay_status.value==20 && item.delivery_type.value == DeliveryTypeEnum.EXTRACT.value && item.delivery_status.value == 10 }}">
+                      <view catchtap="onExtractQRCode" class="btn-main" data-id="{{item.order_id}}">
+                        <text class="iconfont icon-qr-extract"></text>
+                        <text class="m-l-10">核销码</text>
+                      </view>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class="f-28 col-8">取消申请中</view>
+                  </block>
+                  <!-- 订单付款 -->
+                  <view wx:if="{{item.pay_status.value==10}}">
+                    <view catchtap="onPayOrder" class="btn-main" data-id="{{item.order_id}}">付款</view>
+                  </view>
+                  <!-- 确认收货 -->
+                  <view wx:if="{{item.delivery_status.value==20 && item.receipt_status.value == 10}}">
+                    <view catchtap="receipt" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
+                  </view>
+                  <!-- 订单评价 -->
+                  <view wx:if="{{item.order_status.value==30 && item.is_comment==0}}">
+                    <view catchtap="comment" class="btn-default" data-id="{{item.order_id}}">评价</view>
                   </view>
                 </view>
               </view>
@@ -96,7 +119,7 @@
   </view>
 
   <!-- 支付方式弹窗 -->
-  <!-- <zan-popup show="{{ showPayPopup }}" bindclose="onTogglePayPopup">
+  <zan-popup show="{{ showPayPopup }}" bindclose="onTogglePayPopup">
     <view class="pop-orderPay pop-example__container">
       <view class="pop-title">
         <text class="f-30">请选择支付方式</text>
@@ -134,6 +157,6 @@
         </view>
       </view>
     </view>
-  </zan-popup> -->
+  </zan-popup>
 
 </view>

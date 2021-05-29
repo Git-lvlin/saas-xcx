@@ -36,7 +36,7 @@ Page({
     address: null, // 默认收货地址
     exist_address: false, // 是否存在收货地址
 
-    selectedShopId: 0, // 选择的自提门店id
+    selectedWarehouseId: 0, // 选择的仓库ID
     linkman: '', // 自提联系人
     phone: '', // 自提联系电话
 
@@ -126,7 +126,7 @@ Page({
     // 请求的参数
     let params = {
       delivery: _this.data.curDelivery || 0,
-      shop_id: _this.data.selectedShopId || 0,
+      warehouse_id: _this.data.selectedWarehouseId || 1,
       coupon_id: _this.data.selectCouponId || 0,
       is_use_points: _this.data.isUsePoints ? 1 : 0,
     };
@@ -142,29 +142,6 @@ Page({
         callback(result);
       });
     }
-
-    // 砍价活动结算
-    else if (options.order_type === 'bargain') {
-      App._get('bargain.order/checkout', Object.assign({}, params, {
-        task_id: options.task_id,
-        goods_sku_id: options.goods_sku_id,
-      }), result => {
-        callback(result);
-      });
-    }
-
-    // 秒杀活动结算
-    else if (options.order_type === 'sharp') {
-      App._get('sharp.order/checkout', Object.assign({}, params, {
-        active_time_id: options.active_time_id,
-        sharp_goods_id: options.sharp_goods_id,
-        goods_sku_id: options.goods_sku_id,
-        goods_num: options.goods_num,
-      }), result => {
-        callback(result);
-      });
-    }
-
     // 购物车结算
     else if (options.order_type === 'cart') {
       App._get('warehouse.order/cart', Object.assign({}, params, {
@@ -254,7 +231,7 @@ Page({
     let postData = {
       delivery: _this.data.curDelivery,
       pay_type: _this.data.curPayType,
-      shop_id: _this.data.selectedShopId || 0,
+      warehouse_id: _this.data.selectedWarehouseId || 1,
       linkman: _this.data.linkman,
       phone: _this.data.phone,
       coupon_id: _this.data.selectCouponId || 0,
