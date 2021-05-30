@@ -87,6 +87,57 @@
     </view>
   </block>
 
+  <!-- 仓库配送：配送地址 -->
+  <block wx:if="{{ curDelivery == DeliveryTypeEnum.STOREDELIVERY.value }}">
+
+    <view catchtap="onSelectAddress" class="flow-delivery">
+      <view class="flow-delivery__detail dis-flex flex-y-center">
+        <view class="detail-location dis-flex">
+          <text class="iconfont icon-dingwei"></text>
+        </view>
+        <view class="detail-content flex-box">
+          <block wx:if="{{ address.address_id }}">
+            <view class="detail-content__title dis-flex">
+              <text class="f-30">{{ address.name }}</text>
+              <text class="detail-content__title-phone f-28">{{ address.phone }}</text>
+            </view>
+            <view class="detail-content__describe">
+              <text class="col-7">{{address.region.province}} {{address.region.city}} {{address.region.region}}
+                {{address.detail}}</text>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="detail-content__describe dis-flex">
+              <text class="col-6">请选择配送地址</text>
+            </view>
+          </block>
+        </view>
+        <view class="detail-arrow dis-flex">
+          <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+        </view>
+      </view>
+    </view>
+
+    <view class="flow-delivery">
+      <view class="flow-delivery__detail dis-flex flex-y-center">
+        <view class="detail-location dis-flex">
+          <text class="iconfont icon-dingwei"></text>
+        </view>
+        <view class="detail-content flex-box">
+          <block>
+            <picker mode="selector" 
+            range="{{warehouse}}" 
+            range-key="warehouse_name"
+            bindchange="pickerChangeHandle">{{warehouseInfo}}</picker>
+          </block>
+        </view>
+        <view class="detail-arrow dis-flex">
+          <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+        </view>
+      </view>
+    </view>
+  </block>
+
   <!-- 商品列表 -->
   <view class="m-top20">
     <view class="checkout_list" wx:for="{{ goods_list }}" wx:key="this">

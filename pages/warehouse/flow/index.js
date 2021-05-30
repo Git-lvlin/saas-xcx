@@ -263,8 +263,7 @@ Page({
       title: '加载中',
       mask: true
     });
-    let url = App.getUrl('warehouse.cart/sub', 'cart/add')
-    App._post_form(url, {
+    App._post_form('warehouse.cart/add', {
       goods_id: goods.goods_id,
       goods_num: 1,
       goods_sku_id: goodsSkuId
@@ -290,8 +289,7 @@ Page({
         title: '加载中',
         mask: true
       })
-      let url = App.getUrl('warehouse.cart/sub', 'cart/sub')
-      App._post_form(url, {
+      App._post_form('warehouse.cart/sub', {
         goods_id: goods.goods_id,
         goods_sku_id: goodsSkuId
       }, () => {
@@ -335,10 +333,10 @@ Page({
   /**
    * 去购物
    */
-  goShopping() {
-    wx.switchTab({
-      url: '../category/index',
-    });
-  },
+  // goShopping() {
+  //   wx.switchTab({
+  //     url: '../category/index',
+  //   });
+  // },
 
 })

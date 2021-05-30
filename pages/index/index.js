@@ -84,7 +84,7 @@ Page({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success(res) {
         App.globalData.coordinate = {longitude: res.longitude, latitude: res.latitude};
-        App._get('shop/lists', {
+        App._get('shop/nearby', {
           longitude: res.longitude,
           latitude: res.latitude
         }, reponse => {

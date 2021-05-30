@@ -27,16 +27,17 @@ Page({
     // 配送方式
     isShowTab: false,
     DeliveryTypeEnum,
-    curDelivery: 10,
+    curDelivery: 30,
 
     // 支付方式
     PayTypeEnum,
     curPayType: PayTypeEnum.WECHAT.value,
 
-    address: null, // 默认收货地址
+    warehouse: [], // 默认收货地址
     exist_address: false, // 是否存在收货地址
 
     selectedWarehouseId: 0, // 选择的仓库ID
+    warehouseInfo: '', // 仓库信息
     linkman: '', // 自提联系人
     phone: '', // 自提联系电话
 
@@ -80,6 +81,22 @@ Page({
     let _this = this;
     // 获取当前订单信息
     !_this.data.notRefresh && _this.getOrderData();
+
+    App._get("warehouse.index/nearby", {
+      wxapp_id: App.getWxappId(),                   
+      longitude: '113.916697',
+      latitude: '22.922077'
+    }, function(res){
+      res.data.list.forEach(item => {
+        item.fullInfo = item.warehouse_name + ' | ' + item.region.province+item.region.city+item.region.region+item.address
+      })
+      
+      _this.setData({
+        warehouse: res.data.list,
+        selectedWarehouseId:res.data.list[0].warehouse_id,
+        warehouseInfo: res.data.list[0].fullInfo
+      })
+    })
   },
 
   /**
@@ -103,8 +120,7 @@ Page({
 
       let data = {};
       // 当前选择的配送方式
-      //data.curDelivery = resData.delivery;
-      data.curDelivery = 10;
+      data.curDelivery = resData.delivery;
       // 如果只有一种配送方式则不显示选项卡
       data.isShowTab = resData.setting.delivery.length > 1;
       // 上门自提联系信息
@@ -133,13 +149,14 @@ Page({
 
     // 立即购买
     if (options.order_type === 'buyNow') {
-      let url = App.getUrl('warehouse.order/checkout', 'warehouse.order/buyNow')
-      App._get(url, Object.assign({}, params, {
+      App._get('warehouse.order/buyNow', Object.assign({}, params, {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
       }), result => {
         callback(result);
+      }, null, res => {
+        wx.hideLoading();
       });
     }
     // 购物车结算
@@ -148,9 +165,13 @@ Page({
         cart_ids: options.cart_ids || 0,
       }), result => {
         callback(result);
+      }, null, res => {
+        wx.hideLoading();
       });
     }
   },
+
+  
 
   /**
    * 切换配送方式
@@ -298,7 +319,8 @@ Page({
     };
 
     // 请求用户订阅消息
-    _this._onRequestSubscribeMessage(onCommitCallback);
+    //_this._onRequestSubscribeMessage(onCommitCallback);
+    onCommitCallback();
   },
 
   /**
@@ -528,4 +550,11 @@ Page({
     });
   },
 
+  pickerChangeHandle(e) {
+    let _this = this;
+    this.setData({
+      selectedWarehouseId: _this.data.warehouse[Number(e.detail.value)].warehouse_id,
+      warehouseInfo: _this.data.warehouse[Number(e.detail.value)].fullInfo
+    })
+  },
 });

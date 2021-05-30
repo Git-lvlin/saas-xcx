@@ -310,3 +310,7 @@
 .flow-extract-contact .item_ipt .input-placeholder {
   font-size: 28rpx;
 }
+
+picker {
+  font-size: 28rpx;
+}
