@@ -13,9 +13,7 @@
     <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
       <text>待收货</text>
     </view>
-    <view bindtap="bindHeaderTap" class="{{dataType==='comment'?'active':''}}" data-type="comment">
-      <text>待评价</text>
-    </view>
+    
   </view>
   <!-- 订单列表 -->
   <view class="goods-detail-box">
@@ -80,12 +78,12 @@
                       <view catchtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">申请取消</view>
                     </view>
                     <!-- 订单核销码 -->
-                    <view wx:if="{{ item.pay_status.value==20 && item.delivery_type.value == DeliveryTypeEnum.EXTRACT.value && item.delivery_status.value == 10 }}">
+                    <!-- <view wx:if="{{ item.pay_status.value==20 && item.delivery_type.value == DeliveryTypeEnum.EXTRACT.value && item.delivery_status.value == 10 }}">
                       <view catchtap="onExtractQRCode" class="btn-main" data-id="{{item.order_id}}">
                         <text class="iconfont icon-qr-extract"></text>
                         <text class="m-l-10">核销码</text>
                       </view>
-                    </view>
+                    </view> -->
                   </block>
                   <block wx:else>
                     <view class="f-28 col-8">取消申请中</view>

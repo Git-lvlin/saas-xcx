@@ -79,7 +79,8 @@
     "pages/inviteAffirm/index",
     "pages/troupe/index/index",
     "pages/sale-men/index",
-    "pages/sale-men/task-flow"
+    "pages/sale-men/task-flow",
+    "pages/sale-men/write-info"
   ],
   "window": {
     "navigationBarBackgroundColor": "#0ca64f",

@@ -1,11 +1,11 @@
-// pages/sale-men/task-flow.js
+// pages/sale-men/write-info.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    gallery: false,
+
   },
 
   /**
@@ -14,17 +14,6 @@ Page({
   onLoad: function (options) {
 
   },
-
-  close: function() {
-    this.setData({
-        gallery: false,
-    });
-},
-open: function () {
-    this.setData({
-        gallery: true
-    });
-},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -73,12 +62,5 @@ open: function () {
    */
   onShareAppMessage: function () {
 
-  },
-
-  previewImage: function() {
-    wx.previewImage({
-      current: 'https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png',
-      urls: ['https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png']
-    })
-  },
+  }
 })

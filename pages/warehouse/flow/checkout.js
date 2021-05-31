@@ -27,7 +27,7 @@ Page({
     // 配送方式
     isShowTab: false,
     DeliveryTypeEnum,
-    curDelivery: 30,
+    curDelivery: 40,
 
     // 支付方式
     PayTypeEnum,
@@ -80,6 +80,7 @@ Page({
   onShow() {
     let _this = this;
     // 获取当前订单信息
+    console.log(_this.data.notRefresh)
     !_this.data.notRefresh && _this.getOrderData();
 
     App._get("warehouse.index/nearby", {
@@ -120,7 +121,7 @@ Page({
 
       let data = {};
       // 当前选择的配送方式
-      data.curDelivery = resData.delivery;
+      //data.curDelivery = resData.delivery;
       // 如果只有一种配送方式则不显示选项卡
       data.isShowTab = resData.setting.delivery.length > 1;
       // 上门自提联系信息
@@ -161,7 +162,7 @@ Page({
     }
     // 购物车结算
     else if (options.order_type === 'cart') {
-      App._get('warehouse.order/cart', Object.assign({}, params, {
+      App._get('warehouse.order/checkout', Object.assign({}, params, {
         cart_ids: options.cart_ids || 0,
       }), result => {
         callback(result);

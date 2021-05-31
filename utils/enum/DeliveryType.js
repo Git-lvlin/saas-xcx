@@ -14,7 +14,7 @@ module.exports = {
     name: '门店配送',
     value: 30
   },
-  EXTRACT: {
+  WAREHOUSE: {
     name: '仓库配送',
     value: 40
   }

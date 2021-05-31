@@ -88,7 +88,7 @@
   </block>
 
   <!-- 仓库配送：配送地址 -->
-  <block wx:if="{{ curDelivery == DeliveryTypeEnum.STOREDELIVERY.value }}">
+  <block wx:if="{{ curDelivery == DeliveryTypeEnum.WAREHOUSE.value }}">
 
     <view catchtap="onSelectAddress" class="flow-delivery">
       <view class="flow-delivery__detail dis-flex flex-y-center">
