@@ -162,7 +162,7 @@ Page({
     }
     // 购物车结算
     else if (options.order_type === 'cart') {
-      App._get('warehouse.order/checkout', Object.assign({}, params, {
+      App._get('warehouse.order/cart', Object.assign({}, params, {
         cart_ids: options.cart_ids || 0,
       }), result => {
         callback(result);

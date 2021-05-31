@@ -69,7 +69,7 @@ Page({
    */
   getCartList() {
     let _this = this;
-    let url = App.getUrl('warehouse.cart/lists', 'cart/lists');
+    let url = 'warehouse.cart/lists';
     App._get(url, {}, result => {
       const data = result.data
       // 更新购物车数量及角标
@@ -189,8 +189,7 @@ Page({
       title: "提示",
       content: "您确定要移除选择的商品吗?",
       success(e) {
-        url = App.getUrl('warehouse.cart/delete', 'cart/delete')
-        e.confirm && App._post_form(url, {
+        e.confirm && App._post_form('warehouse.cart/delete', {
           goods_sku_id: cartIds
         }, result => {
           // 删除选中的商品
