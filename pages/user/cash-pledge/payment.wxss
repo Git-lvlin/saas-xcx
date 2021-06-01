@@ -1,0 +1,5 @@
+/* pages/user/cash-pledge/payment.wxss */
+.pledge__payment {
+  background-color: white;
+  min-height: 100vh;
+}

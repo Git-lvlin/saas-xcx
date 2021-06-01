@@ -1,5 +1,5 @@
 const App = getApp();
-
+let url;
 // 工具类
 import Util from '../../utils/util.js';
 

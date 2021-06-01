@@ -1,0 +1,15 @@
+/* pages/user/cash-pledge/index.wxss */
+.cash-pledge {
+  padding: 10px;
+}
+
+.cash-pledge .cash-pledge__state {
+  text-align: center;
+  padding: 20px 0;
+  color: #999;
+  font-size: 40rpx;
+}
+
+.cash-pledge__button {
+  padding-bottom: 20px;
+}

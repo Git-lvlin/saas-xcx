@@ -78,15 +78,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    let coordinate = App.global.coordinate;
     let _this = this;
+
     // 获取当前订单信息
     console.log(_this.data.notRefresh)
     !_this.data.notRefresh && _this.getOrderData();
 
     App._get("warehouse.index/nearby", {
       wxapp_id: App.getWxappId(),                   
-      longitude: '113.916697',
-      latitude: '22.922077'
+      longitude: coordinate.longitude,
+      latitude: coordinate.longitude,
+      radius: 1000,
+      unit: 'km'
     }, function(res){
       res.data.list.forEach(item => {
         item.fullInfo = item.warehouse_name + ' | ' + item.region.province+item.region.city+item.region.region+item.address

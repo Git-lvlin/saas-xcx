@@ -1,39 +1,20 @@
-// pages/storehouse/index.js
-let sliderWidth = 96;
+// pages/user/cash-pledge/payment.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabs: ["未发货", "配送中", "已完成"],
-    activeIndex: 1,
-    sliderOffset: 0,
-    sliderLeft: 0
+    showDialog: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-        });
-      }
-    });
+
   },
 
-
-  tabClick: function (e) {
-    this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
-    });
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -81,5 +62,17 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  bindbuttontap({item, index}) {
+    this.setData({
+      showDialog: false
+    })
+  },
+
+  showDialog(){
+    this.setData({
+      showDialog: true
+    })
+  },
 })

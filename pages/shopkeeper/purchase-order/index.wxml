@@ -13,6 +13,12 @@
     <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
       <text>待收货</text>
     </view>
+
+    <view bindtap="bindHeaderTap" class="{{dataType==='comment'?'active':''}}" data-type="comment">
+      <text>已完成</text>
+    </view>
+
+    
     
   </view>
   <!-- 订单列表 -->

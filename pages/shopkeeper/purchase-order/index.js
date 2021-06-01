@@ -173,6 +173,7 @@ Page({
    */
   payment(orderId, payType) {
     // 显示loading
+    let _this = this;
     wx.showLoading({
       title: '正在处理...',
     });
@@ -190,9 +191,10 @@ Page({
           payment: result.data.payment,
           success() {
             // 跳转到已付款订单
-            wx.navigateTo({
-              url: '../order/detail?order_id=' + orderId
-            });
+            // wx.navigateTo({
+            //   url: '../order/detail?order_id=' + orderId
+            // });
+            _this.getOrderList(false, _this.data.page)
           },
           fail() {
             App.showError(result.msg.error);
@@ -202,10 +204,11 @@ Page({
       // 余额支付
       if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
         App.showSuccess(result.msg.success, () => {
+          _this.getOrderList(false, _this.data.page)
           // 跳转到已付款订单
-          wx.navigateTo({
-            url: '../order/detail?order_id=' + orderId
-          });
+          // wx.navigateTo({
+          //   url: '../order/detail?order_id=' + orderId
+          // });
         });
       }
     }, null, () => {

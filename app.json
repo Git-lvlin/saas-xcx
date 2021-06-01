@@ -80,7 +80,11 @@
     "pages/troupe/index/index",
     "pages/sale-men/index",
     "pages/sale-men/task-flow",
-    "pages/sale-men/write-info"
+    "pages/sale-men/write-info",
+    "pages/user/cash-pledge/payment",
+    "pages/user/cash-pledge/reback-pledge",
+    "pages/user/cash-pledge/index"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#0ca64f",

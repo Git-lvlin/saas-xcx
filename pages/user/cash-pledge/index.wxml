@@ -1,0 +1,12 @@
+<!--pages/user/cash-pledge/index.wxml-->
+<view class="cash-pledge">
+  <view class="cash-pledge__state">未交押金</view>
+  <view class="cash-pledge__button">
+    <button type="primary" class="weui-btn_primary" bindtap="rebackPledge">退押金</button>
+  </view>
+
+  <view class="cash-pledge__button">
+  <button type="primary" class="weui-btn_primary" bindtap="topay">交押金</button>
+  </view>
+
+</view>
