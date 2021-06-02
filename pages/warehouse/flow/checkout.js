@@ -78,7 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    let coordinate = App.global.coordinate;
+    let coordinate = App.globalData.coordinate;
     let _this = this;
 
     // 获取当前订单信息
@@ -88,7 +88,7 @@ Page({
     App._get("warehouse.index/nearby", {
       wxapp_id: App.getWxappId(),                   
       longitude: coordinate.longitude,
-      latitude: coordinate.longitude,
+      latitude: coordinate.latitude,
       radius: 1000,
       unit: 'km'
     }, function(res){

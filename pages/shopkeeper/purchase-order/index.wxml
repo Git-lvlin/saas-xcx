@@ -103,9 +103,9 @@
                     <view catchtap="receipt" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
                   </view>
                   <!-- 订单评价 -->
-                  <view wx:if="{{item.order_status.value==30 && item.is_comment==0}}">
+                  <!-- <view wx:if="{{item.order_status.value==30 && item.is_comment==0}}">
                     <view catchtap="comment" class="btn-default" data-id="{{item.order_id}}">评价</view>
-                  </view>
+                  </view> -->
                 </view>
               </view>
             </view>

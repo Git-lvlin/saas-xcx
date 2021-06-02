@@ -1,4 +1,5 @@
 // pages/user/cash-pledge/payment.js
+let App = getApp();
 Page({
 
   /**
@@ -75,4 +76,9 @@ Page({
       showDialog: true
     })
   },
+
+  /* 支付 */
+  readyToPay() {
+    App.wxPayment({})
+  }
 })

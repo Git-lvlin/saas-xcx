@@ -35,7 +35,8 @@ App({
     coordinate: {
       longitude: '113.75179',
       latitude: '23.02067'
-    }
+    },
+    shopInfo: {}, // 某个水店的信息，在退桶时选择完门店并显示门店
   },
 
   // api地址

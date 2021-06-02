@@ -6,8 +6,8 @@
 }
 
 .reback__step-list {
-  padding: 10px;
-  color: #666;
+  padding: 20px 60rpx;
+  color: #999;
   font-size: 28rpx;
 }
 
@@ -16,14 +16,15 @@
   padding: 0;
 }
 
-.weui-form__control-area {
-
+.weui-form__opr-area:last-child {
+  margin: 20rpx;
 }
 
 .weui-form__opr-area {
   margin: 0;
 }
 
-.weui-form__opr-area {
-  margin-bottom: 0;
+.weui-select {
+  line-height: 24px;
+  padding-left: 0;
 }

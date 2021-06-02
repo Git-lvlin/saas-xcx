@@ -171,8 +171,8 @@
   <!-- 操作栏 -->
   <view wx:if="{{ order.order_status.value != 20 }}" class="flow-fixed-footer b-f">
     <!-- 确认收货 -->
-    <view class="flow-btn h3" wx:if="{{order.pay_status.value==20 && order.delivery_status.value==10}}">
-      <view catchtap="toDelivery">确认发货</view>
+    <view class="flow-btn h3" wx:if="{{order.delivery_status.value==20 && order.receipt_status.value === 10}}">
+      <view catchtap="receipt">确认收货</view>
     </view>
   </view>
 

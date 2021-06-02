@@ -7,7 +7,7 @@
 					<view class="weui-cell weui-cell_active">
 						<view class="weui-cell__hd"><label class="weui-label">押金金额</label></view>
 						<view class="weui-cell__bd">
-							<input class="weui-input" placeholder="100" placeholder-class="weui-input__placeholder" />
+							<input class="weui-input" type="number" placeholder="100" placeholder-class="weui-input__placeholder" />
 						</view>
 					</view>
 				</view>
@@ -15,7 +15,7 @@
 		</view>
 		
 		<view class="weui-form__opr-area">
-			<a class="weui-btn weui-btn_primary">支付</a>
+			<a class="weui-btn weui-btn_primary" bindtap="readyToPay">支付</a>
 		</view>
 		
 		<view class="weui-form__extra-area">

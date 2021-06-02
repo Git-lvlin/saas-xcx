@@ -233,7 +233,7 @@ Page({
   navigateToDetail(e) {
     let order_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../order/detail?order_id=' + order_id
+      url: './detail?order_id=' + order_id
     });
   },
 
@@ -266,40 +266,6 @@ Page({
       scrollHeight = systemInfo.windowHeight - tapHeight; // swiper高度
     this.setData({
       scrollHeight
-    });
-  },
-
-  /**
-   * 查看核销二维码
-   */
-  onExtractQRCode(e) {
-    let _this = this,
-      order_id = e.currentTarget.dataset.id;
-    // 调用后台api获取核销二维码
-    wx.showLoading({
-      title: '加载中',
-    });
-    App._get('shop.PurchaseOrder/extractQrcode', {
-      order_id
-    }, (result) => {
-      // 设置二维码图片路径
-      _this.setData({
-        QRCodeImage: result.data.qrcode
-      });
-      // 显示核销二维码
-      _this.onToggleQRCodePopup();
-    }, null, () => {
-      wx.hideLoading();
-    });
-  },
-
-  /**
-   * 核销码弹出层
-   */
-  onToggleQRCodePopup() {
-    let _this = this;
-    _this.setData({
-      showQRCodePopup: !_this.data.showQRCodePopup
     });
   },
 
