@@ -39,7 +39,7 @@
 		</view>
 
 		<view class="weui-form__opr-area">
-			<a class="weui-btn weui-btn_primary">提交</a>
+			<a class="weui-btn weui-btn_primary" bindtap="toApplyReturnCanBucket">提交</a>
 		</view>
 	</view>
 

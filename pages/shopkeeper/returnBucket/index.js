@@ -1,5 +1,4 @@
-// pages/user/cash-pledge/index.js
-const App = getApp();
+// pages/shopkeeper/returnBucket/index.js
 Page({
 
   /**
@@ -13,7 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getPledgeInfo();
+
   },
 
   /**
@@ -65,27 +64,40 @@ Page({
 
   },
 
-
-  topay(){
-    wx.navigateTo({
-      url: './payment',
-    })
-  },
-
-  rebackPledge(){
-    wx.navigateTo({
-      url: './reback-pledge',
-    })
-  },
-
-  getPledgeInfo() {
-    App._get('user.Deposit/detail', {
-      wxapp_id: App.getWxappId,
+  /*退桶事务列表 */
+  returnBucketTask() {
+    App._get('shop.bucket/pageList', {
+      wxapp_id: App.getWxappId(),
       token: wx.getStorageSync('token'),
-      deposit_type: 10
+      status: 3
     },
     function(res) {
       console.log(res)
     })
+  },
+
+  /*用户退还桶确认*/
+  returnBucketConfirm() {
+    App._post_form('user.Deposit/shopReceipt', {
+      deposit_id: ''
+    }, function() {
+      App.showSuccess('退还成功')
+    })
+  },
+  
+
+  /**
+   * 切换标签
+   */
+  bindHeaderTap(e) {
+    this.setData({
+      dataType: e.currentTarget.dataset.type,
+      list: {},
+      isLoading: true,
+      page: 1,
+      no_more: false,
+    });
+    // 获取订单列表
+    this.getOrderList(e.currentTarget.dataset.type);
   },
 })

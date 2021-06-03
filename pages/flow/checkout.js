@@ -263,6 +263,7 @@ Page({
     _this.setData({
       notRefresh: false
     });
+    
     // 跳转到选择自提点
     wx.navigateTo({
       url: '../_select/extract_point/index?selected_id=' + selectedId

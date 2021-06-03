@@ -38,16 +38,17 @@
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>
 
-		<!-- <navigator url="/pages/shopkeeper/purchaseOrder/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-			<view class="weui-cell__bd">进货订单</view>
-			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
-		</navigator> -->
 		<navigator url="/pages/shopkeeper/dealer/withdraw/list/list" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{role == 1}}">
 			<view class="weui-cell__bd">提现记录</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/bill/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{role == 1}}">
 			<view class="weui-cell__bd">账单</view>
+			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+		</navigator>
+
+		<navigator url="/pages/shopkeeper/returnBucket/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{role == 1 || role == 2}}">
+			<view class="weui-cell__bd">退桶确认</view>
 			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 		</navigator>
 	</view>

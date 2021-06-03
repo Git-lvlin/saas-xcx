@@ -1,0 +1,44 @@
+<!--pages/shopkeeper/returnBucket/index.wxml-->
+
+<view class="return-bucket">
+  <view class="header f-28 col-3">
+    <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">
+      <text>未处理</text>
+    </view>
+    <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">
+      <text>已处理</text>
+    </view>
+  </view>
+
+  
+  <view class="weui-form-preview">
+			<view class="weui-form-preview__hd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">押金金额</label>
+					<em class="weui-form-preview__value">¥100.00</em>
+				</view>
+			</view>
+			<view class="weui-form-preview__bd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">用户昵称</label>
+					<text class="weui-form-preview__value"></text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">支付时间</label>
+					<text class="weui-form-preview__value"></text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">支付方式</label>
+					<text class="weui-form-preview__value"></text>
+        </view>
+        
+        <view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">状态</label>
+					<text class="weui-form-preview__value"></text>
+				</view>
+			</view>
+			<view class="weui-form-preview__ft">
+				<a class="weui-form-preview__btn weui-form-preview__btn_primary">确认收桶</a>
+			</view>
+		</view>
+</view>

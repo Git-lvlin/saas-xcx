@@ -83,8 +83,8 @@
     "pages/sale-men/write-info",
     "pages/user/cash-pledge/payment",
     "pages/user/cash-pledge/reback-pledge",
-    "pages/user/cash-pledge/index"
-    
+    "pages/user/cash-pledge/index",
+    "pages/shopkeeper/returnBucket/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#0ca64f",

@@ -50,19 +50,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
 
   /**
    * 用户点击右上角分享
@@ -90,4 +77,22 @@ Page({
       });
     });
   },
+
+  /*
+  * 退桶申请
+  */
+  toApplyReturnCanBucket() {
+    let url = 'user.Deposit/refundApply';
+    url+='?wxapp_id='+App.getWxappId();
+    url+='&token='+wx.getStorageSync('token')
+    App._post_form(
+      url, 
+      {
+        deposit_id: '',
+        shop_id: App.globalData.shopInfo.shop_id},
+        function(res) {
+          App.showSuccess('申请成功')
+        }
+      )
+  }
 })
