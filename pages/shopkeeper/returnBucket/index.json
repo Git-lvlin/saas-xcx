@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "处理退桶申请",
+  "enablePullDownRefresh": true
 }

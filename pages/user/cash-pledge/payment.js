@@ -98,6 +98,12 @@ Page({
       wxapp_id: App.getWxappId()
     },
     function(res) {
+      if(pay_type === 10) {
+        App.showSuccess('支付成功', function(){
+          wx.navigateBack()
+        })
+        return;
+      }
       App.wxPayment(res.payment, function(res) {
         App.showSuccess('支付成功', function(){
           wx.navigateBack()

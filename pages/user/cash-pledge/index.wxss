@@ -6,12 +6,12 @@
 .cash-pledge .cash-pledge__state {
   text-align: center;
   padding: 20px 0;
-  color: #999;
-  font-size: 40rpx;
+  font-size: 50rpx;
   height: 300rpx;
   line-height: 300rpx;
-  background-color: #ddd;
+  background-color: #eee;
   margin-bottom: 80rpx;
+  color: orange;
 }
 
 .cash-pledge__button {

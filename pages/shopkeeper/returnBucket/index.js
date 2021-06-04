@@ -1,11 +1,13 @@
 // pages/shopkeeper/returnBucket/index.js
+const App = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataType: 3,
+    taskList: {data: []}
   },
 
   /**
@@ -26,7 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.returnBucketTask();
   },
 
   /**
@@ -47,41 +49,49 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.returnBucketTask();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.returnBucketTask()
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    
   },
 
   /*退桶事务列表 */
   returnBucketTask() {
+    let _this = that;
     App._get('shop.bucket/pageList', {
       wxapp_id: App.getWxappId(),
       token: wx.getStorageSync('token'),
-      status: 3
+      status: _this.data.dataType
     },
     function(res) {
+      _this.setData({
+        taskList: res.data.list
+      })
       console.log(res)
+    }, null, function(){
+      wx.stopPullDownRefresh()
     })
   },
 
   /*用户退还桶确认*/
   returnBucketConfirm() {
+    let _this = that;
     App._post_form('user.Deposit/shopReceipt', {
       deposit_id: ''
     }, function() {
       App.showSuccess('退还成功')
+      that.returnBucketTask();
     })
   },
   
@@ -98,6 +108,6 @@ Page({
       no_more: false,
     });
     // 获取订单列表
-    this.getOrderList(e.currentTarget.dataset.type);
+    this.returnBucketTask();
   },
 })

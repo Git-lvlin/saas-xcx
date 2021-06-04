@@ -1,5 +1,6 @@
 // pages/user/cash-pledge/reback-pledge.js
 let App = getApp();
+let deposit_id;
 Page({
 
   /**
@@ -16,6 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    deposit_id = options.param;
     this.getShopList();
   },
 
@@ -88,10 +90,15 @@ Page({
     App._post_form(
       url, 
       {
-        deposit_id: '',
+        deposit_id,
         shop_id: App.globalData.shopInfo.shop_id},
         function(res) {
-          App.showSuccess('申请成功')
+          App.showSuccess('申请成功', function(){
+            wx.navigateBack({
+              delta: 1,
+            })
+          })
+         
         }
       )
   }

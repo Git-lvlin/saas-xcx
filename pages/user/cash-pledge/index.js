@@ -6,14 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    deposit_id: '',
+    pay_status: 10,
+    pay_price: '',
+    status: 0, // 3 退款中 4已交押金
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getPledgeInfo();
+  
   },
 
   /**
@@ -27,7 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getPledgeInfo();
   },
 
   /**
@@ -44,19 +47,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
 
   /**
    * 用户点击右上角分享
@@ -66,26 +56,36 @@ Page({
   },
 
 
-  topay(){
+  topay() {
     wx.navigateTo({
       url: './payment',
     })
   },
 
-  rebackPledge(){
+  rebackPledge() {
+    let _this = this;
     wx.navigateTo({
-      url: './reback-pledge',
+      url: './reback-pledge?param='+_this.data.deposit_id,
     })
   },
 
   getPledgeInfo() {
+    let _this = this;
     App._get('user.Deposit/detail', {
-      wxapp_id: App.getWxappId,
-      token: wx.getStorageSync('token'),
-      deposit_type: 10
-    },
-    function(res) {
-      console.log(res)
-    })
+        wxapp_id: App.getWxappId,
+        token: wx.getStorageSync('token'),
+        deposit_type: 10
+      },
+
+      function (res) {
+        console.log(res.data)
+        res.data &&
+          _this.setData({
+            pay_price: res.data.pay_price,
+            pay_status: res.data.pay_status.value,
+            deposit_id: res.data.deposit_id,
+            status: res.data.status // 3 退款中 4已交押金
+          })
+      })
   },
 })
