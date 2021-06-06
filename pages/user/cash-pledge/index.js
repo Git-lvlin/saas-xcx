@@ -9,7 +9,8 @@ Page({
     deposit_id: '',
     pay_status: {value:10, text: '未支付'},
     pay_price: '',
-    status: 0, // 3 退款中 4已交押金
+    status: {value:4, text: '押金中'}
+    , // 3 退款中 4已交押金
   },
 
   /**
@@ -63,7 +64,7 @@ Page({
   },
 
   rebackPledge() {
-    if(this.data.status === 4) {
+    if(this.data.status.value === 4) {
       let _this = this;
       wx.navigateTo({
         url: './reback-pledge?param='+_this.data.deposit_id,

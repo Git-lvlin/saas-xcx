@@ -11,8 +11,8 @@ Page({
     selectedShopId: '',
     shopName: '请选择门店',
     formData: {
-      deposit_id: '',
-      shop_id: '',
+      deposit_id: 0,
+      shop_id: 0,
       refund_type: 10,
       alipay_name: '',
       alipay_account: ''
