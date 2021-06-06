@@ -2,7 +2,7 @@
 <view class="cash-pledge">
   <view class="cash-pledge__state" wx:if="{{pay_status.value === 20}}">
     <text>￥{{pay_price}}</text>
-    <a style="font-size: 28rpx; color: orange; padding-left: 20rpx;">
+    <a style="font-size: 28rpx; color: orange; padding-left: 20rpx;" wx:if="status.value === 3">
       {{status.text}}
     </a>
   </view>

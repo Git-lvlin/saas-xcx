@@ -63,10 +63,12 @@ Page({
   },
 
   rebackPledge() {
-    let _this = this;
-    wx.navigateTo({
-      url: './reback-pledge?param='+_this.data.deposit_id,
-    })
+    if(this.data.status === 4) {
+      let _this = this;
+      wx.navigateTo({
+        url: './reback-pledge?param='+_this.data.deposit_id,
+      })
+    }
   },
 
   getPledgeInfo() {

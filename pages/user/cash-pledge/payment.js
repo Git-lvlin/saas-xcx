@@ -11,7 +11,6 @@ Page({
     shopName: '请选择门店',
     showPayPopup: false,
     PayTypeEnum, // 支付方式
-
   },
 
   /**
@@ -86,6 +85,7 @@ Page({
 
   // 预支付 然后调起支付
   toPrepay(pay_type) {
+   
     if(!this.data.shopName) return;
     App._post_form(
       'user.Deposit/submit?wxapp_id='+App.getWxappId(),
