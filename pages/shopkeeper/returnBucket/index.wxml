@@ -15,7 +15,7 @@
   </view>
 
   
-  <view class="weui-form-preview" wx:for="{{taskList.data}}">
+  <view class="weui-form-preview" wx:for="{{taskList.data}}" wx:key="this">
 			<view class="weui-form-preview__hd">
 				<view class="weui-form-preview__item">
 					<label class="weui-form-preview__label">押金金额</label>

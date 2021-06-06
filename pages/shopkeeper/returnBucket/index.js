@@ -68,7 +68,7 @@ Page({
 
   /*退桶事务列表 */
   returnBucketTask() {
-    let _this = that;
+    let _this = this;
     App._get('shop.bucket/pageList', {
       wxapp_id: App.getWxappId(),
       token: wx.getStorageSync('token'),

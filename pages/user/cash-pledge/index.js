@@ -7,7 +7,7 @@ Page({
    */
   data: {
     deposit_id: '',
-    pay_status: 10,
+    pay_status: {value:10, text: '未支付'},
     pay_price: '',
     status: 0, // 3 退款中 4已交押金
   },
@@ -82,7 +82,7 @@ Page({
         res.data &&
           _this.setData({
             pay_price: res.data.pay_price,
-            pay_status: res.data.pay_status.value,
+            pay_status: res.data.pay_status,
             deposit_id: res.data.deposit_id,
             status: res.data.status // 3 退款中 4已交押金
           })
