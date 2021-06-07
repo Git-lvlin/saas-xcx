@@ -63,7 +63,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
   },
 
   /*退桶事务列表 */
@@ -84,14 +83,15 @@ Page({
     })
   },
 
+
   /*用户退还桶确认*/
-  returnBucketConfirm() {
-    let _this = that;
+  returnBucketConfirm(e) {
+    let _this = this;
     App._post_form('user.Deposit/shopReceipt', {
-      deposit_id: ''
+      deposit_id: e.currentTarget.dataset.id
     }, function() {
-      App.showSuccess('退还成功')
-      that.returnBucketTask();
+      App.showSuccess('确认成功')
+      _this.returnBucketTask();
     })
   },
   

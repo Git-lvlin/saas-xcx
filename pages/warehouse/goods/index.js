@@ -53,8 +53,9 @@ Page({
       // 商品海报
       showPopup: false,
     },
-
   },
+
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -66,6 +67,15 @@ Page({
     _this.data.goods_id = e.goods_id ? e.goods_id : scene.gid;
     // 获取商品信息
     _this.getGoodsDetail();
+
+  },
+
+
+  onShow() {
+    let _this = this;
+    _this.setData({
+      cart_total_num: wx.getStorageSync("cartTotalNum")
+    }) 
   },
 
   /**

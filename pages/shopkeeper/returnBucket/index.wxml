@@ -46,7 +46,7 @@
 				</view>
 			</view>
 			<view class="weui-form-preview__ft" wx:if="{{item.status.value === 3}}">
-				<a class="weui-form-preview__btn weui-form-preview__btn_primary">确认收桶</a>
+				<button bindtap="returnBucketConfirm" class="weui-form-preview__btn weui-form-preview__btn_primary" data-id="{{item.deposit_id}}">确认收桶</button>
 			</view>
 		</view>
 </view>

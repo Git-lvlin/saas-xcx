@@ -9,8 +9,8 @@ Page({
     deposit_id: '',
     pay_status: {value:10, text: '未支付'},
     pay_price: '',
-    status: {value:4, text: '押金中'}
-    , // 3 退款中 4已交押金
+    status: {value:0, text: '未交押金'}
+    , // 1完成 2已退桶 3 退款中 4已交押金
   },
 
   /**

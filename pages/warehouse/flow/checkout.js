@@ -372,11 +372,16 @@ Page({
             _this.redirectToOrderIndex();
           });
         },
+
+        complete: () => {
+          App.setCartTotalNum(0)
+        }
       });
     }
     // 余额支付
     if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
       App.showSuccess(result.msg.success, () => {
+        App.setCartTotalNum(0)
         _this.redirectToOrderIndex();
       });
     }
