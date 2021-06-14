@@ -21,7 +21,7 @@ App({
   /**
    * 全局变量
    */
-   globalData: {
+  globalData: {
     user_id: null,
     code: '',
     openid: '',

@@ -1,6 +1,6 @@
 <!--pages/sale-men/task-flow.wxml-->
 <view class="task-flow">
-<view class="task-flow__task-description">速去处理水质问题</view>
+<view class="task-flow__task-description">{{task_object}}</view>
     <view class="task-flow__block">
         <view class="publish-date">2021-05-31 12:21:21</view>
         <view class="task-flow__description">
@@ -12,57 +12,12 @@
                 mode="aspectFit" />
         </view>
 
-        <view class="weui-gallery__img__wrp">
-            <image bindtap="previewImage" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
-                src="https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png"
-                mode="aspectFit" />
-        </view>
 
-        <view class="weui-gallery__img__wrp">
-            <image bindtap="previewImage" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
-                src="https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png"
-                mode="aspectFit" />
-        </view>
-
-        <view class="weui-gallery__img__wrp">
-            <image bindtap="previewImage" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
-                src="https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png"
-                mode="aspectFit" />
-        </view>
     </view>
 
-    <view class="task-flow__block">
-        <view class="publish-date">2021-05-31 12:21:21</view>
-        <view class="task-flow__description">
-            一些描述一些描述一些描述一些，描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述
-        </view>
-        <view class="weui-gallery__img__wrp">
-            <image bindtap="previewImage" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
-                src="https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png"
-                mode="aspectFit" />
-        </view>
-
-        <view class="weui-gallery__img__wrp">
-            <image bindtap="previewImage" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
-                src="https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png"
-                mode="aspectFit" />
-        </view>
-
-        <view class="weui-gallery__img__wrp">
-            <image bindtap="previewImage" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
-                src="https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png"
-                mode="aspectFit" />
-        </view>
-
-        <view class="weui-gallery__img__wrp">
-            <image bindtap="previewImage" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
-                src="https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png"
-                mode="aspectFit" />
-        </view>
-    </view>
 
     <view class="task-flow__write">
-        <mp-icon type="field" icon="add" color="green" size="{{30}}"></mp-icon>
+        <mp-icon type="field" icon="add" color="gray" size="{{30}}"></mp-icon>
     </view>
 
 </view>

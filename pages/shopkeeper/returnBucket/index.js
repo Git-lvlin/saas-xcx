@@ -69,7 +69,7 @@ Page({
   returnBucketTask() {
     let _this = this;
     App._get('shop.bucket/pageList', {
-      wxapp_id: App.getWxappId(),
+      wxapp_id: App.getWxappId(), 
       token: wx.getStorageSync('token'),
       status: _this.data.dataType
     },

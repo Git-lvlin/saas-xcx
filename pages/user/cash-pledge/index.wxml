@@ -9,7 +9,7 @@
   <view class="cash-pledge__state" wx:else>
     未交押金
   </view>
-  <view class="cash-pledge__button" wx:if="{{status.value === 0 || status.value === 1}}">
+  <view class="cash-pledge__button" wx:if="{{status.value === 5 || status.value === 1}}">
     <button type="primary" class="weui-btn_warn" bindtap="topay">交押金</button>
   </view>
   <view class="cash-pledge__button" wx:else>
