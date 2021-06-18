@@ -43,10 +43,22 @@ Page({
 
   /*
    */
-  toHanleTask() {
+  toHanleTask(e) {
+    if(!e.currentTarget.dataset.taskid){
+      return
+    }
+
     wx.navigateTo({
-      url: './task-flow',
+      url: './task-flow?id='+e.currentTarget.dataset.taskid,
     })
+    return;
+    
+    App._post_form('user.task/accept', {
+      wxapp_id: App.getWxappId,
+      token: wx.getStorageSync('token'),
+      task_id: e.currentTarget.dataset.taskid
+    }, 
+    res => {})
   },
 
   /**

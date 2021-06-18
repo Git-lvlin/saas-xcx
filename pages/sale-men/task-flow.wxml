@@ -1,23 +1,23 @@
 <!--pages/sale-men/task-flow.wxml-->
 <view class="task-flow">
-<view class="task-flow__task-description">{{task_object}}</view>
-    <view class="task-flow__block">
-        <view class="publish-date">2021-05-31 12:21:21</view>
+    <view class="task-flow__task-description">
+        <view style="font-size: 36rpx; color: #333; font-weight: bold;">{{task_object.title}}</view>
+        <view>{{task_object.content}}</view>
+    </view>
+
+    <view class="task-flow__block" wx:for="{{task_object.situation}}">
+        <view class="publish-date">{{item.datetime}}</view>
         <view class="task-flow__description">
-            一些描述一些描述一些描述一些，描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述
+            {{item.remark}}
         </view>
-        <view class="weui-gallery__img__wrp">
-            <image bindtap="previewImage" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
-                src="https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png"
+        <view class="weui-gallery__img__wrp" wx:for="{{item.attach}}" wx:for-item="imgurl">
+            <image bindtap="previewImage" data-url="{{imgurl}}" style="width: 80px; height: 80px" class="weui-gallery__img weui-article__img"
+                src="{{imgurl}}"
                 mode="aspectFit" />
         </view>
-
-
     </view>
 
-
-    <view class="task-flow__write">
+    <view class="task-flow__write" bindtap="goToWrite">
         <mp-icon type="field" icon="add" color="gray" size="{{30}}"></mp-icon>
     </view>
-
 </view>

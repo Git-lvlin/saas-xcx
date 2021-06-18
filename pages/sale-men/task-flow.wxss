@@ -1,5 +1,9 @@
 /* pages/sale-men/task-flow.wxss */
 
+.task-flow {
+  padding-bottom: 180rpx;
+}
+
 .weui-gallery__img__wrp {
   background-color: white;
   display: inline-block;

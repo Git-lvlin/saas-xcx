@@ -74,7 +74,7 @@ Page({
   onShow() {
     let _this = this;
     _this.setData({
-      cart_total_num: wx.getStorageSync("cartTotalNum")
+      cart_total_num: wx.getStorageSync("cartTotalNumWareHouse")
     }) 
   },
 
@@ -298,7 +298,7 @@ Page({
         App.showSuccess(result.msg);
         _this.setData(result.data);
         // 记录购物车商品数量
-        App.setCartTotalNum(result.data.cart_total_num)
+        App.setCartTotalNum(result.data.cart_total_num, 'cartTotalNumWareHouse')
       });
     }
   },

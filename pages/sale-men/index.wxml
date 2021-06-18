@@ -15,7 +15,7 @@
   <view class="weui-panel">
     <view class="weui-panel__bd">
     
-    <view class="weui-media-box weui-media-box_text" bindtap="toHanleTask" wx:for="{{task.data}}">
+    <view class="weui-media-box weui-media-box_text" bindtap="toHanleTask" wx:for="{{task.data}}" data-taskid="{{item.task_id}}">
       <h4 class="weui-media-box__title">{{item.title}}</h4>
       <view class="weui-media-box__desc">{{item.content}}</view>
       <view class="weui-media-box__info">

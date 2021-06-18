@@ -58,7 +58,8 @@ Page({
 
     if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
-        this.getTabBar().setData({
+        this.getTabBar()
+        this.setData({
           selected: 1
         })
       }
@@ -73,8 +74,8 @@ Page({
     App._get(url, {}, result => {
       const data = result.data
       // 更新购物车数量及角标
-      App.setCartTotalNum(data.order_total_num)
-      App.setCartTabBadge()
+      //App.setCartTotalNum(data.order_total_num)
+     // App.setCartTabBadge()
       // 初始化商品选中状态
       _this._initGoodsChecked(data)
     });

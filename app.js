@@ -640,8 +640,8 @@ App({
    * 记录购物车商品总数量
    * @param {*} value
    */
-   setCartTotalNum(value) {
-    wx.setStorageSync('cartTotalNum', Number(value))
+   setCartTotalNum(value, label) {
+    wx.setStorageSync(label || 'cartTotalNum', Number(value))
   },
 
   /**

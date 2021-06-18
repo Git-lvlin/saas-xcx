@@ -1,4 +1,5 @@
 // pages/sale-men/task-flow.js
+const App = getApp();
 Page({
 
   /**
@@ -6,14 +7,15 @@ Page({
    */
   data: {
     gallery: false,
-    task_object: ''
+    task_object: '',
+    task_id: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({task_object: options.task})
+    this.setData({task_id: options.id})
   },
 
   close: function() {
@@ -39,7 +41,17 @@ open: function () {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let _this = this;
+    App._get('user.task/detail', {
+      wxapp_id: App.getWxappId(),
+      token: wx.getStorageSync('token'),
+      task_id: 2
+    },
+    res => {
+      _this.setData({
+        task_object: res.data
+      })
+    })
   },
 
   /**
@@ -77,10 +89,19 @@ open: function () {
 
   },
 
-  previewImage: function() {
+  previewImage: function(e) {
+    console.log(e)
+    let url = e.currentTarget.dataset.url
     wx.previewImage({
-      current: 'https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png',
-      urls: ['https://file.wsd168.com/upload/CustomPicture/2021-05-29/6375790580712102591bogpfnj.png']
+      current: url,
+      urls: [url]
     })
   },
+
+  /*去写备忘*/
+  goToWrite() {
+    wx.navigateTo({
+      url: './write-info?id='+this.data.task_id,
+    })
+  }
 })
