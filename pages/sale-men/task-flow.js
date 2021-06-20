@@ -8,7 +8,8 @@ Page({
   data: {
     gallery: false,
     task_object: '',
-    task_id: ''
+    task_id: '',
+    status: {value: 3}
   },
 
   /**
@@ -33,9 +34,7 @@ open: function () {
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
@@ -45,11 +44,12 @@ open: function () {
     App._get('user.task/detail', {
       wxapp_id: App.getWxappId(),
       token: wx.getStorageSync('token'),
-      task_id: 2
+      task_id: _this.data.task_id
     },
     res => {
       _this.setData({
-        task_object: res.data
+        task_object: res.data,
+        status: res.data.status
       })
     })
   },
@@ -102,6 +102,29 @@ open: function () {
   goToWrite() {
     wx.navigateTo({
       url: './write-info?id='+this.data.task_id,
+    })
+  },
+
+  /* 结束任务 */
+  handleFinishTask() {
+    let _this = this;
+    if(_this.data.status.value === 3) {
+      App.showError('任务已结束')
+      return;
+    }
+
+    App._get('user.task/finish', {
+      wxapp_id: App.getWxappId(),
+      task_id: _this.data.task_id,
+      token: wx.getStorageSync('token')
+    },
+
+    res => {
+      App.showSuccess('结束任务成功', function() {
+        wx.navigateBack({
+          delta: 1,
+        })
+      })
     })
   }
 })

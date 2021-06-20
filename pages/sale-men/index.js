@@ -41,26 +41,6 @@ Page({
     //this.getOrderList(e.currentTarget.dataset.type);
   },
 
-  /*
-   */
-  toHanleTask(e) {
-    if(!e.currentTarget.dataset.taskid){
-      return
-    }
-
-    wx.navigateTo({
-      url: './task-flow?id='+e.currentTarget.dataset.taskid,
-    })
-    return;
-    
-    App._post_form('user.task/accept', {
-      wxapp_id: App.getWxappId,
-      token: wx.getStorageSync('token'),
-      task_id: e.currentTarget.dataset.taskid
-    }, 
-    res => {})
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -71,9 +51,7 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
@@ -132,6 +110,17 @@ Page({
       })
     },null, function() {
       wx.stopPullDownRefresh();
+    })
+  },
+
+   /* 查看任务详情 */
+  toHanleTask(e) {
+    if(!e.currentTarget.dataset.taskid){
+      return
+    }
+
+    wx.navigateTo({
+      url: './task-flow?id='+e.currentTarget.dataset.taskid,
     })
   },
 })

@@ -17,7 +17,8 @@
         </view>
     </view>
 
-    <view class="task-flow__write" bindtap="goToWrite">
-        <mp-icon type="field" icon="add" color="gray" size="{{30}}"></mp-icon>
+    <view class="task-flow__write footer-fixed">
+        <view class="opt-btn" bindtap="handleFinishTask">结束任务</view>
+        <view class="opt-btn btn-main" bindtap="goToWrite">添加描述</view>
     </view>
 </view>
