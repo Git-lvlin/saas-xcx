@@ -71,8 +71,8 @@ Page({
   },
 
   // 预支付 然后调起支付
-  toPrepay(pay_type) {
-   
+  toPrepay(pay_type, money) {
+    var that = this
     if(!App.globalData.shopInfo.shop_id) {
       App.showError('请先选择订水门店')
       return
@@ -82,7 +82,7 @@ Page({
     {
       token: wx.getStorageSync('token'),
       deposit_type: 10,
-      money: 100,
+      money: money,
       pay_type,
       shop_id: App.globalData.shopInfo.shop_id,
       wxapp_id: App.getWxappId()
@@ -124,7 +124,7 @@ Page({
     _this.onTogglePayPopup();
     if (!_this.data.showPayPopup) {
       // 发起付款请求
-      _this.toPrepay(e.currentTarget.dataset.value);
+      _this.toPrepay(e.currentTarget.dataset.value, _this.data.defaultSum);
     }
   },
 
