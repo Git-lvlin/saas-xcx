@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dataType: '2',
+    dataType: '1',
     task: {}
   },
 
@@ -36,7 +36,7 @@ Page({
       no_more: false,
     });
 
-    this.getTaskList(e.currentTarget.dataset.type)
+    this.getTaskList(this.data.dataType)
     // 获取订单列表
     //this.getOrderList(e.currentTarget.dataset.type);
   },
@@ -45,7 +45,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTaskList(0);
+    this.getTaskList(this.data.dataType);
   },
 
   /**
@@ -67,7 +67,7 @@ Page({
     this.setData({
       page: 1
     })
-    this.getTaskList(2)
+    this.getTaskList(this.data.dataType)
   },
 
   /**
@@ -78,7 +78,7 @@ Page({
     this.setData({
       page: _this.data.page++
     })
-    this.getTaskList(2)
+    this.getTaskList(this.data.dataType)
   },
 
   /**
