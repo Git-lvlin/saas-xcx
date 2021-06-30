@@ -83,6 +83,10 @@ Page({
         // 初始化倒计时组件
         app._initCountDownData();
         resolve(data)
+      }, err => {
+        wx.navigateBack({
+          delta: 1,
+        })
       });
     })
   },

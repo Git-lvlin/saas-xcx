@@ -76,9 +76,9 @@
                   </view>
                   <!-- 已支付取消订单 -->
                   <block wx:if="{{ item.order_status.value!=21 }}">
-                    <view wx:if="{{ item.pay_status.value==20 && item.delivery_status.value==10 }}">
+                    <!-- <view wx:if="{{ item.pay_status.value==20 && item.delivery_status.value==10 }}">
                       <view catchtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">申请取消</view>
-                    </view>
+                    </view> -->
                     <!-- 订单核销码 -->
                     <view wx:if="{{ item.pay_status.value==20 && item.delivery_type.value == DeliveryTypeEnum.EXTRACT.value && item.delivery_status.value == 10 }}">
                       <view catchtap="onExtractQRCode" class="btn-main" data-id="{{item.order_id}}">

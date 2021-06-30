@@ -63,10 +63,8 @@ Page({
    * 获取当前用户信息
    */
   getUserDetail() {
-    //let role = this.data.shop_list.length && this.data.shop_list[0].clerk_role.value || 0;
     let _this = this;
     App._get('user.index/detail', {}, function (result) {
-
       /*
       result.data = {
         menus: {},
@@ -74,34 +72,41 @@ Page({
         setting: {},
         shop_list: [],
         userInfo: {},
-        warehouse_list: []
+        warehouse_list: [],
+        storeUserInfo: {}
       }
       */
 
-      let {shop_list, warehouse_list} = result.data
+      let {shop_list, warehouse_list, storeUserInfo} = result.data
 
       let role = 0;
       if (shop_list.length) {
-        role = shop_list[0].clerk_role.value;
+        role = shop_list[0].clerk_role.value; // value = 1 或者 2 
       } else if (warehouse_list.length) {
         role = 3;
+      } else if(storeUserInfo) {
+        role = 4;
       }
 
       /* role
       0 用户
       1 店主
       2 店员
-      3 仓库*/
+      3 仓库
+      4 业务员*/
       if (role == 0) { // 不显示仓库和水店入口
         delete result.data.menus.shopkeeper_order
         delete result.data.menus.storehouse_order
+        delete result.data.menus.task_center
       } else if (role == 1) { // 不显示优惠券和我的优惠券
         delete result.data.menus.coupon;
         delete result.data.menus.my_coupon;
         delete result.data.menus.water_ticket;
-        //delete result.data.menus.sharing_order;
-        //delete result.data.menus.storehouse_order;
-
+        delete result.data.menus.task_center
+        delete result.data.menus['cash-pledge'];
+        delete result.data.menus.sharing_order;
+        delete result.data.menus.dealer;
+        
         App.globalData.shop_id = shop_list[0].shop_id;
         _this.setData({
           currentShop: shop_list[0].shop_name + " (管理员)",
@@ -112,17 +117,16 @@ Page({
         delete result.data.menus.coupon;
         delete result.data.menus.my_coupon;
         delete result.data.menus.water_ticket;
-        //delete result.data.menus.storehouse_order
+        delete result.data.menus.task_center
+        delete result.data.menus['cash-pledge'];
+        delete result.data.menus.sharing_order;
+        delete result.data.menus.dealer;
         App.globalData.shop_id = shop_list[0].shop_id;
         _this.setData({
           currentShop: shop_list[0].shop_name + " (店员)",
           shop_list
         })
       } else if (role == 3) {// 不显示收货地址、优惠券、我的优惠券，店主入口
-        //delete result.data.menus.address;
-        //delete result.data.menus.coupon;
-        //delete result.data.menus.water_ticket;
-        //delete result.data.menus.my_coupon;
         delete result.data.menus.shopkeeper_order;
         delete result.data.menus.sharing_order;
         delete result.data.menus.dealer;
@@ -130,7 +134,19 @@ Page({
         delete result.data.menus.storehouse_order;
         delete result.data.menus.coupon;
         delete result.data.menus.address;
-        delete result.data.menus.my_coupon
+        delete result.data.menus.my_coupon;
+        delete result.data.menus.task_center;
+        delete result.data.menus['cash-pledge'];
+      } else if(role == 4) {
+        delete result.data.menus.shopkeeper_order;
+        delete result.data.menus.sharing_order;
+        delete result.data.menus.dealer;
+        delete result.data.menus.water_ticket;
+        delete result.data.menus.storehouse_order;
+        delete result.data.menus.coupon;
+        delete result.data.menus.address;
+        delete result.data.menus.my_coupon;
+        delete result.data.menus['cash-pledge'];
       }
 
       _this.setData(result.data);
