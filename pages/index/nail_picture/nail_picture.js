@@ -26,18 +26,19 @@ Page({
           id: item.shop_id,
           latitude: item.latitude,
           longitude: item.longitude,
-          height: '30',
-          width: '20',
-          alpha: 0,
-          label: {
-            content: item.shop_name,
-            anchorY: -40,
-            anchorX: -20,
-            bgColor: '#e43434',
-            color: '#fff',
-            padding: '5px',
-            borderRadius: 4
-          }
+          height: '32',
+          width: '32',
+          alpha: 1,
+          iconPath: "../../../images/point.png"
+          // label: {
+          //   content: item.shop_name,
+          //   anchorY: -40,
+          //   anchorX: -20,
+          //   bgColor: '#e43434',
+          //   color: '#fff',
+          //   padding: '5px',
+          //   borderRadius: 4
+          // }
         }
       })
     })
@@ -48,6 +49,7 @@ Page({
     * 查看店铺
   */
   bindlabeltap(e) {
+    console.log(e)
     App.globalData.storeInfo = App.globalData.storeList.find(item => item.shop_id === e.detail.markerId)
     wx.navigateTo({
       url: '../storeInformation/index',

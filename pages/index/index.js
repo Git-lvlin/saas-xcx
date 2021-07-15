@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
    onLoad(options) {
+     let _this = this;
     //wx.hideTabBar()
     if (wx.getStorageSync('referee_id_Login') == 1) {
       wx.reLaunch({
@@ -34,8 +35,7 @@ Page({
     // 加载页面数据
     this.getPageData();
 
-    //请求店铺信息
-    this.getStoreList()
+  
     wx.login({
       success (res) {
         console.log(res.code)
@@ -69,6 +69,7 @@ Page({
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
       _this.setData(result.data);
+      _this.getStoreList()
       // 回调函数
       typeof callback === 'function' && callback();
     });

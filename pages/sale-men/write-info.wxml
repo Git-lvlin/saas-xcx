@@ -11,7 +11,7 @@
    </label> 
 
    <label>
-     <button class="weui-btn weui-btn_primary" bindtap="submitContent">提交</button>
+     <button class="weui-btn weui-btn_primary" bindtap="getLocationName">提交</button>
    </label>
   </form>
 </view>

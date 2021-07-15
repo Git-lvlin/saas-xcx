@@ -15,6 +15,18 @@
                 src="{{imgurl}}"
                 mode="aspectFit" />
         </view>
+
+        <view class="task-flow__location-info" 
+        wx:if="{{item.address}}" 
+        bindtap="openMap"
+        data-name="{{item.address}}"
+        data-long="{{item.longitude}}"
+        data-lat="{{item.latitude}}">
+            <view>
+            {{item.address}}
+            <text class="iconfont icon-daohang"></text>
+            </view>
+        </view>
     </view>
 
     <view class="task-flow__write footer-fixed">

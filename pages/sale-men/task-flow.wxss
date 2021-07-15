@@ -47,3 +47,9 @@
   color: #333333;
   text-align: center;
 }
+
+.task-flow__location-info {
+  padding-top: 10rpx;
+  color: #3385e4;
+  font-size: 28rpx;
+}

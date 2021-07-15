@@ -98,6 +98,7 @@ Page({
         delete result.data.menus.shopkeeper_order
         delete result.data.menus.storehouse_order
         delete result.data.menus.task_center
+        delete result.data.menus.verify_location;
       } else if (role == 1) { // 不显示优惠券和我的优惠券
         delete result.data.menus.coupon;
         delete result.data.menus.my_coupon;
@@ -106,6 +107,7 @@ Page({
         delete result.data.menus['cash-pledge'];
         delete result.data.menus.sharing_order;
         delete result.data.menus.dealer;
+        delete result.data.menus.verify_location;
         
         App.globalData.shop_id = shop_list[0].shop_id;
         _this.setData({
@@ -121,6 +123,7 @@ Page({
         delete result.data.menus['cash-pledge'];
         delete result.data.menus.sharing_order;
         delete result.data.menus.dealer;
+        delete result.data.menus.verify_location;
         App.globalData.shop_id = shop_list[0].shop_id;
         _this.setData({
           currentShop: shop_list[0].shop_name + " (店员)",
@@ -136,6 +139,7 @@ Page({
         delete result.data.menus.address;
         delete result.data.menus.my_coupon;
         delete result.data.menus.task_center;
+        delete result.data.menus.verify_location;
         delete result.data.menus['cash-pledge'];
       } else if(role == 4) {
         delete result.data.menus.shopkeeper_order;
@@ -323,5 +327,5 @@ Page({
         console.log('用户拒绝了授权 ', e)
       }
     })
-  },
+  }
 })

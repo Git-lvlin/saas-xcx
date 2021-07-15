@@ -74,7 +74,7 @@ Page({
   onShow() {
     let _this = this;
     _this.setData({
-      cart_total_num: wx.getStorageSync("cartTotalNumWareHouse")
+      //cart_total_num: wx.getStorageSync("cartTotalNumWareHouse")
     }) 
   },
 

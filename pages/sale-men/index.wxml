@@ -11,7 +11,6 @@
     <view bindtap="bindHeaderTap" class="{{dataType==='3'?'active':''}}" data-type="3">
       <text>已完成</text>
     </view>
-   
   </view>
   <view class="weui-panel">
     <view class="weui-panel__bd">

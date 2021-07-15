@@ -71,17 +71,21 @@ page {
 }
 
 .index__nail-map {
-  background-color: rgb(80, 140, 252);
+  background-color: white;
   display: inline-block;
-  width: 80rpx;
-  height: 80rpx;
+  width: 100rpx;
+  height: 100rpx;
   position: fixed;
   right: 20rpx;
-  bottom: 20rpx;
-  line-height: 80rpx;
-  color: #fff;
+  bottom: 120rpx;
+  line-height: 120rpx;
   text-align: center;
   font-size: 24rpx;
   border-radius: 4px;
   z-index: 999;
+}
+
+.index__nail-map image{
+  height: 100rpx;
+  width: 100rpx;
 }
