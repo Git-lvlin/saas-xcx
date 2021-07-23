@@ -1,20 +1,15 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/index/storeInformation/index",
     "pages/index/nail_picture/nail_picture",
+
     "pages/warehouse/index/index",
-    "pages/warehouse/order/index",
     "pages/warehouse/goods/index",
     "pages/warehouse/goods/comment/comment",
-    "pages/warehouse/order/detail/detail",
-    "pages/warehouse/order/express/express",
-    "pages/warehouse/order/comment/comment",
-    "pages/warehouse/order/refund/apply/apply",
-    "pages/warehouse/order/refund/detail/detail",
     "pages/warehouse/flow/index",
     "pages/warehouse/flow/checkout",
+
     "pages/shopkeeper/index",
     "pages/shopkeeper/sale-order/index",
     "pages/shopkeeper/sharing-order/index",

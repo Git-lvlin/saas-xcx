@@ -37,6 +37,7 @@ App({
       latitude: '23.02067'
     },
     shopInfo: {}, // 某个水店的信息，在退桶时选择完门店并显示门店
+    leastOrderQuantity: 1, //水店最小起订量
   },
 
   // api地址
@@ -275,9 +276,6 @@ App({
       content: msg,
       showCancel: false,
       success(res) {
-        // callback && (setTimeout(() => {
-        //   callback();
-        // }, 1500));
         callback && callback();
       }
     });
@@ -664,17 +662,5 @@ App({
     }
     return
   },
-
-  /*
-  动态url 根据用户身份选择不同的url
-  @arguments {String} url_1 商家
-  @arguments {String} url_2 消费者
-  */
-
-  getUrl(url_1, url_2){
-    return url_2;
-    // let role = wx.getStorageSync('role')
-    //return role > 0 ? url_1 : url_2
-  }
 
 });

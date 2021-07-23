@@ -56,7 +56,6 @@ Page({
   },
 
 
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -74,7 +73,8 @@ Page({
   onShow() {
     let _this = this;
     _this.setData({
-      //cart_total_num: wx.getStorageSync("cartTotalNumWareHouse")
+      cart_total_num: wx.getStorageSync("cartTotalNumWareHouse"),
+      goods_num: App.globalData.leastOrderQuantity
     }) 
   },
 
@@ -276,6 +276,10 @@ Page({
     }
     if (submitType === 'buyNow') {
       // 立即购买
+      if( _this.data.goods_num < App.globalData.leastOrderQuantity) {
+        App.showError('最小起订量为' + App.globalData.leastOrderQuantity + '桶')
+        return;
+      }
       wx.navigateTo({
         url: '../flow/checkout?' + util.urlEncode({
           order_type: 'buyNow',
@@ -410,8 +414,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    let url = App.getUrl('warehouse.goods/poster', 'goods/poster');
-    App._get(url, {
+    App._get("goods/poster", {
       goods_id: _this.data.goods_id
     }, (result) => {
       _this.setData(result.data, () => {

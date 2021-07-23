@@ -73,10 +73,9 @@ Page({
    */
   getGoodsDetail() {
     let _this = this;
-    let role = wx.getStorageSync('role')
-        ,url = App.getUrl('warehouse.goods/detail','goods/detail');
+    let role = wx.getStorageSync('role');
 
-    App._get(url, {
+    App._get('goods/detail', {
       goods_id: _this.data.goods_id
     }, (result) => {
       // 初始化商品详情数据
@@ -281,8 +280,7 @@ Page({
       });
     } else if (submitType === 'addCart') {
       // 加入购物车
-      let url = App.getUrl('warehouse.cart/add','cart/add' )
-      App._post_form(url, {
+      App._post_form('cart/add', {
         goods_id: _this.data.goods_id,
         goods_num: _this.data.goods_num,
         goods_sku_id: _this.data.goods_sku_id,
@@ -402,8 +400,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    let url = App.getUrl('warehouse.goods/poster', 'goods/poster');
-    App._get(url, {
+    App._get('goods/poster', {
       goods_id: _this.data.goods_id
     }, (result) => {
       _this.setData(result.data, () => {

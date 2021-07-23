@@ -51,6 +51,7 @@ Page({
     _this.setData({
       isLogin: App.checkIsLogin()
     });
+    
     if (_this.data.isLogin) {
       // 获取购物车列表
       _this.getCartList();
@@ -69,8 +70,7 @@ Page({
    */
   getCartList() {
     let _this = this;
-    let url = App.getUrl('warehouse.cart/lists', 'cart/lists');
-    App._get(url, {}, result => {
+    App._get("cart/lists", {}, result => {
       const data = result.data
       // 更新购物车数量及角标
       App.setCartTotalNum(data.order_total_num)
@@ -189,8 +189,7 @@ Page({
       title: "提示",
       content: "您确定要移除选择的商品吗?",
       success(e) {
-        url = App.getUrl('warehouse.cart/delete', 'cart/delete')
-        e.confirm && App._post_form(url, {
+        e.confirm && App._post_form("cart/delete", {
           goods_sku_id: cartIds
         }, result => {
           // 删除选中的商品
@@ -263,8 +262,7 @@ Page({
       title: '加载中',
       mask: true
     });
-    let url = App.getUrl('warehouse.cart/sub', 'cart/add')
-    App._post_form(url, {
+    App._post_form("cart/add", {
       goods_id: goods.goods_id,
       goods_num: 1,
       goods_sku_id: goodsSkuId
@@ -290,8 +288,7 @@ Page({
         title: '加载中',
         mask: true
       })
-      let url = App.getUrl('warehouse.cart/sub', 'cart/sub')
-      App._post_form(url, {
+      App._post_form("cart/sub", {
         goods_id: goods.goods_id,
         goods_sku_id: goodsSkuId
       }, () => {

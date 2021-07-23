@@ -88,6 +88,9 @@ Page({
         role = 4;
       }
 
+
+      console.log(role)
+      console.log(result.data)
       /* role
       0 用户
       1 店主

@@ -51,6 +51,8 @@ Page({
           selected: 0
         })
       }
+
+      this.getLeastOrderQuantity();
   },
 
   /**
@@ -153,5 +155,13 @@ Page({
       path: "/pages/warehouse/index/index?" + App.getShareUrlParams()
     };
   },
+
+  /*获取起订单*/
+  getLeastOrderQuantity(){
+    App._get('shop/center', {}, (res) => {
+      App.globalData.leastOrderQuantity = res.data.order.min_order_quantity || 1;
+    })
+  },
+
 
 })

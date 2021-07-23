@@ -71,7 +71,6 @@ Page({
     _this.setData({
       options
     });
-    console.log(options);
   },
 
   /**

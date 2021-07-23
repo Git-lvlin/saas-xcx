@@ -11,21 +11,17 @@ Page({
   data: {
 
     isLogin: false,
-
     // 商品列表
     goods_list: [],
-
     // 当前动作
     action: 'complete',
-
     // 选择的商品
     checkedData: [],
-
     // 是否全选
     checkedAll: false,
-
     // 商品总价格
-    cartTotalPrice: '0.00'
+    cartTotalPrice: '0.00',
+    order_total_quantity: 0
   },
 
   /**
@@ -71,13 +67,9 @@ Page({
   getCartList() {
     let _this = this;
     let url = 'warehouse.cart/lists';
-    App._get(url, {}, result => {
-      const data = result.data
-      // 更新购物车数量及角标
-      //App.setCartTotalNum(data.order_total_num)
-     // App.setCartTabBadge()
-      // 初始化商品选中状态
-      _this._initGoodsChecked(data)
+    App._get(url, {}, res => {
+      _this._initGoodsChecked(res.data)
+      App.setCartTotalNum(res.data.order_total_num, 'cartTotalNumWareHouse'); //更新购物车角标的数量
     });
   },
 
@@ -94,9 +86,11 @@ Page({
     _this.setData({
       goods_list: data.goods_list,
       order_total_price: data.order_total_price,
+      order_total_quantity: data.order_total_num,
       action: 'complete',
       checkedAll: checkedData.length == data.goods_list.length,
     });
+   
     // 更新购物车已选商品总价格
     _this.updateTotalPrice();
   },
@@ -310,33 +304,23 @@ Page({
     if (!cartIds.length) {
       App.showError('您还没有选择商品');
       return false;
+    } else if (this.data.order_total_quantity < App.globalData.leastOrderQuantity) {
+      App.showError('最小起订量为'+App.globalData.leastOrderQuantity+'桶');
+      return;
     }
     wx.navigateTo({
       url: '../flow/checkout?order_type=cart&cart_ids=' + cartIds
     });
   },
 
-  /**
-   * 加法
-   */
+  /*加法*/
   mathadd(arg1, arg2) {
-    return (Number(arg1) + Number(arg2)).toFixed(2);
+    return parseFloat((parseFloat(arg1) + parseFloat(arg2)).toFixed(2));
   },
 
-  /**
-   * 减法
-   */
+  /*减法*/
   mathsub(arg1, arg2) {
-    return (Number(arg1) - Number(arg2)).toFixed(2);
+    return parseFloat((parseFloat(arg1) - parseFloat(arg2)).toFixed(2));
   },
-
-  /**
-   * 去购物
-   */
-  // goShopping() {
-  //   wx.switchTab({
-  //     url: '../category/index',
-  //   });
-  // },
 
 })
