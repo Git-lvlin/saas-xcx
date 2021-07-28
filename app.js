@@ -356,7 +356,7 @@ App({
         'content-type': 'application/x-www-form-urlencoded',
       },
       method: 'POST',
-      data: data,
+      data: JSON.stringify(data),
       success(res) {
         if (res.statusCode !== 200 || typeof res.data !== 'object') {
           _this.showError('网络请求出错');

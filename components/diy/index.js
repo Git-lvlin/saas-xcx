@@ -1,8 +1,6 @@
 Component({
 
-  options: {
-
-  },
+  options: {},
 
   data: {
     scrollHeight: 0
@@ -15,6 +13,7 @@ Component({
   properties: {
     diyItems: Object
   },
+
   attached(){
     this.setListHeight()
   },
