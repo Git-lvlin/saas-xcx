@@ -74,8 +74,9 @@
     "pages/user/cash-pledge/reback-pledge",
     "pages/user/cash-pledge/index",
     "pages/shopkeeper/returnBucket/index",
-    "pages/shopkeeper/returnBack/index"
-
+    "pages/shopkeeper/returnBack/index",
+    "pages/shopkeeper/returnBack/returnBackRecordList/index"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#0ca64f",

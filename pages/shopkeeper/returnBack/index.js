@@ -88,7 +88,8 @@ Page({
   createMore(e) {
     let _this = this;
     let values = e.detail.value;
-    console.log(values)
+    if(!values.amount) return;
+
     let temp = [];
     temp = temp.concat(this.data.items);
     temp.push({
@@ -106,17 +107,31 @@ Page({
 
   /*submit form*/
   submitForm(e) {
+    if(this.data.items.length === 0) return;
     let _this = this;
     let values = e.detail.value;
     let query = "?token=" + wx.getStorageSync('token');
+    let fullUrl = App.api_root + "asset/refund";
     query+= "&wxapp_id=" + App.getWxappId()
-    let params = {
-      shop_id: App.globalData.shop_id || "32",
-      items: _this.data.items,
-    };
+    wx.request({
+      url: fullUrl + query,
+      method: "POST",
+      data: {
+        token: wx.getStorageSync("token"),
+        wxapp_id: App.getWxappId(),
+        shop_id: App.globalData.shop_id || "32",
+        items: _this.data.items,
+      },
+      success(res) {
+        App.showSuccess('提交成功')
+        _this.setData({items: []})
+        console.log(res)
+      },
 
-    App._post_form("asset/refund"+ query, params, function(res){
-      App.showSuccess('提交成功')
+      fail(err) {
+        console.log(err)
+      }
     })
+  
   }
 })
