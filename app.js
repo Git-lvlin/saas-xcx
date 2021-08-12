@@ -356,7 +356,7 @@ App({
         'content-type': 'application/x-www-form-urlencoded',
       },
       method: 'POST',
-      data: JSON.stringify(data),
+      data: data,
       success(res) {
         if (res.statusCode !== 200 || typeof res.data !== 'object') {
           _this.showError('网络请求出错');
@@ -594,7 +594,8 @@ App({
     wx.login({
       success(res) {
         // 发送用户信息
-        App._post_form('user/login', {
+        let queryStr = "&wxapp_id=" + App.getWxappId()
+        App._post_form('user/login' + queryStr, {
           code: res.code,
           encrypted_data: info.encryptedData,
           iv: info.iv,
@@ -607,8 +608,6 @@ App({
           wx.setStorageSync('user_id', result.data.user_id);
           wx.setStorageSync('invite_code', result.data.invite_code);
           //wx.setStorageSync('shop_list', result.data.shop_list);
-          
-
           // 执行回调函数
           callback && callback();
         }, false, () => {

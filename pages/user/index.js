@@ -12,7 +12,40 @@ Page({
     userHeaderBGC: '',
     shop_list: [], // 大于0时是店主
     currentShop: '',
-    role: 0 //0用户 1店主 2店员 3仓库
+    role: 0, //0用户 1店主 2店员 3仓库,
+    menus: {
+      "water_ticket": {
+        "name": "充值中心",
+        "url": "pages\/user\/recharge\/index",
+        "icon_uri": "https:\/\/dev.quantianxia.xin\/assets\/api\/icon\/youhuiquan.png",
+        "icon": "youhuiquan"
+      },
+      "cash-pledge": {
+        "name": "押金管理",
+        "url": "pages\/user\/cash-pledge\/index",
+        "icon_uri": "https:\/\/dev.quantianxia.xin\/assets\/api\/icon\/youhuiquan.png",
+        "icon": "youhuiquan"
+      },
+      "sharing_order": {
+        "name": "拼团订单",
+        "url": "pages\/sharing\/order\/index",
+        "icon_uri": "https:\/\/test.shop.kjcms.cn\/assets\/api\/icon\/pintuan.png",
+        "icon": "pintuan"
+      },
+      "dealer": {
+        "name": "分销中心",
+        "url": "pages\/dealer\/index\/index",
+        "icon_uri": "https:\/\/dev.quantianxia.xin\/assets\/api\/icon\/fenxiaozhongxin.png",
+        "icon": "fenxiaozhongxin"
+      },
+      "help": {
+        "name": "我的帮助",
+        "url": "pages/user/help/index",
+        "icon_uri": "https://dev.quantianxia.xin/assets/api/icon/help.png",
+        "icon": "help"
+      }
+    }
+
   },
 
   /**
@@ -77,27 +110,40 @@ Page({
       }
       */
 
-      let {shop_list, warehouse_list, storeUserInfo} = result.data
+      let {
+        shop_list,
+        warehouse_list,
+        storeUserInfo
+      } = result.data;
 
-      let role = 0;
-      if (shop_list.length) {
-        role = shop_list[0].clerk_role.value; // value = 1 或者 2 
-      } else if (warehouse_list.length) {
-        role = 3;
-      } else if(storeUserInfo) {
-        role = 4;
+      
+      if(shop_list.length) {
+        App.globalData.shop_id = shop_list[0].shop_id;
+        App.globalData.role = shop_list[0].clerk_role.value; //value = 1 或者 2 
+
+        _this.setData({
+          currentShop: shop_list[0].shop_name + " (管理员)",
+          shop_list
+        })
+        
       }
 
+      // let role = 0;
+      // if (shop_list.length) {
+      //   role = shop_list[0].clerk_role.value; // value = 1 或者 2 
+      // } else if (warehouse_list.length) {
+      //   role = 3;
+      // } else if(storeUserInfo) {
+      //   role = 4;
+      // }
 
-      console.log(role)
-      console.log(result.data)
       /* role
       0 用户
       1 店主
       2 店员
       3 仓库
       4 业务员*/
-      if (role == 0) { // 不显示仓库和水店入口
+      /*if (role == 0) { // 不显示仓库和水店入口
         delete result.data.menus.shopkeeper_order
         delete result.data.menus.storehouse_order
         delete result.data.menus.task_center
@@ -154,14 +200,15 @@ Page({
         delete result.data.menus.address;
         delete result.data.menus.my_coupon;
         delete result.data.menus['cash-pledge'];
-      }
+      }*/
 
       _this.setData(result.data);
-      _this.setData({
-        role,
-        shop_list,
-      });
-      App.globalData.role = role;
+      // _this.setData({
+      //   role,
+      //   shop_list,
+      // });
+
+      //App.globalData.role = role;
       _this.saveUserRole();
     });
   },

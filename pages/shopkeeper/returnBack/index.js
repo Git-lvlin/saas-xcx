@@ -84,18 +84,30 @@ Page({
 
   },
 
+  /* */
+  handlePickerChange(e) {
+    let _this = this;
+    let index = e.detail.value;
+    index = isNaN(index) ? 0 : Number(index);
+    _this.setData({index,category_id: _this.data.rangeData[index]})  
+  },
+
   /*新增一条*/
   createMore(e) {
     let _this = this;
     let values = e.detail.value;
     if(!values.amount) return;
-
     let temp = [];
+    let index = Number(values.category_id);
+    let item = _this.data.rangeData[index]
     temp = temp.concat(this.data.items);
+
+    console.log(item, _this.data.rangeData)
+    
     temp.push({
       type: 1,
       category_id: values.category_id,
-      category_name: _this.data.rangeData.find(item => item.category_id === values.category_id).category_name,
+      category_name: item.category_name,
       amount: values.amount
     })
     this.setData({

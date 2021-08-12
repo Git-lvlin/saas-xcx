@@ -6,7 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-
     dataType: '0', // 列表类型
     list: [], // 订单列表
     scrollHeight: null, // 列表容器高度

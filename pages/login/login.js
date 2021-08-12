@@ -110,9 +110,6 @@ Page({
     wx.switchTab({
       url: '/pages/index/index'
     })
-    // wx.navigateBack({
-    //   delta: Number(delta || 1)
-    // });
   },
 
 })

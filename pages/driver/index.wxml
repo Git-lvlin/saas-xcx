@@ -1,0 +1,34 @@
+<!--pages/driver/index.wxml-->
+<!--pages/shopkeeper/returnBack/returnBackRecordList/index.wxml-->
+<view class="driver-page">
+  <view class="return-back__list">
+    <view class="weui-form-preview" wx:for="{{returnBackData}}" wx:for-item="list">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <label class="weui-form-preview__label">总个数</label>
+          <em class="weui-form-preview__value">{{list.refend_num}}</em>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd" wx:for="{{list.attach.items}}">
+        <view class="weui-form-preview__item">
+          <label class="weui-form-preview__label">{{item.category_name}}</label>
+          <text class="weui-form-preview__value">{{item.amount}} 个</text>
+        </view>
+      </view>
+
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <label class="weui-form-preview__label">提交时间</label>
+          <text class="weui-form-preview__value">{{list.create_time}}</text>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
+        <a bindtap="confirmReturn"
+        wx:if="{{list.status.value === 1}}"
+        class="weui-form-preview__btn weui-form-preview__btn_primary" 
+        data-id="{{list.asset_log_id}}">收桶</a>
+        <a wx:else class="weui-form-preview__btn weui-form-preview__btn_primary" >已收桶</a>
+      </view>
+    </view>
+  </view>
+</view>

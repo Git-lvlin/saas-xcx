@@ -9,7 +9,11 @@
           <view class="weui-cell weui-cell_active">
             <view class="weui-cell__hd"><label class="weui-label">品牌</label></view>
             <view class="weui-cell__bd">
-              <picker name="category_id" range="{{rangeData}}" mode="selector" value="{{category_id}}"
+              <picker name="category_id" 
+              range="{{rangeData}}" 
+              mode="selector" 
+              bindchange="handlePickerChange"
+              value="{{index}}"
                 range-key="category_name">{{rangeData[index].category_name}}</picker>
             </view>
           </view>
