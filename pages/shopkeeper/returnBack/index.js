@@ -102,19 +102,26 @@ Page({
     let item = _this.data.rangeData[index]
     temp = temp.concat(this.data.items);
 
-    console.log(item, _this.data.rangeData)
-    
-    temp.push({
-      type: 1,
-      category_id: values.category_id,
-      category_name: item.category_name,
-      amount: values.amount
+    let result = temp.some(item => {
+      if(item.category_id === values.category_id) {
+        item.amount += Number(values.amount);
+        return true;
+      }
     })
+
+    if(!result) {
+      temp.push({
+        type: 1,
+        category_id: values.category_id,
+        category_name: item.category_name,
+        amount: Number(values.amount)
+      })
+    }
+    
     this.setData({
       items: temp,
       amount: ""
     })
-    console.log(this.data.items)
   },
 
   /*submit form*/

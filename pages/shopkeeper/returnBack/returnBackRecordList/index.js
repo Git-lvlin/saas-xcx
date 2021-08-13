@@ -67,7 +67,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
   },
 
   /**
@@ -102,7 +101,13 @@ Page({
         asset_log_id: id,
       },
       success(res) {
-        App.showSuccess('删除成功')
+        console.log(res)
+        if(res.data.code === 1) {
+          App.showSuccess('删除成功')
+        } else {
+          App.showSuccess(res.data.msg)
+        }
+        App.showSuccess(res.data.msg)
         let temp = _this.data.recordData.filter(item => item.asset_log_id !== id)
         _this.setData({
           recordData: temp

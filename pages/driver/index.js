@@ -110,8 +110,12 @@ Page({
      method: "POST",
      data: params,
      success: function(res){
-      App.showSuccess('收桶成功')
-      _this.getReturnbackData();
+       if(res.data.code === 1) {
+        App.showSuccess('收桶成功')
+        _this.getReturnbackData();
+       } else {
+        App.showSuccess(res.data.msg)
+       }
      }
    })
  }
