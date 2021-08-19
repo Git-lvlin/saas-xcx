@@ -24,13 +24,10 @@ Page({
        'asset/setting', 
        {wxapp_id: 10001},
        function(res){
-         console.log(res.data.category_records)
          _this.setData({
           rangeData: res.data.category_records,
           category_id: res.data.category_records[0].category_id
          })
-
-         console.log(_this.data.rangeData)
        }
        )
   },
@@ -144,7 +141,6 @@ Page({
       success(res) {
         App.showSuccess('提交成功')
         _this.setData({items: []})
-        console.log(res)
       },
 
       fail(err) {

@@ -81,7 +81,6 @@ Page({
     let _this = this;
 
     // 获取当前订单信息
-    console.log(_this.data.notRefresh)
     !_this.data.notRefresh && _this.getOrderData();
 
     App._get("warehouse.index/nearby", {

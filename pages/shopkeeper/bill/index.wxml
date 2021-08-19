@@ -13,23 +13,26 @@
 					<label class="weui-form-preview__label">日期</label>
 					<text class="weui-form-preview__value">{{item.create_time}}</text>
 				</view>
-				<view class="weui-form-preview__item">
-					<label class="weui-form-preview__label">账单类型</label>
-					<text class="weui-form-preview__value">{{item.scene.text}}</text>
-        </view>
+				
         <!-- <view class="weui-form-preview__item">
 					<label class="weui-form-preview__label">账户类型</label>
 					<text class="weui-form-preview__value">支付宝/微信/银行卡</text>
 				</view> -->
 
+			
+				<!-- <view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">销售总额</label>
+					<text class="weui-form-preview__value">{{item.amount}}</text>
+				</view> -->
+
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">账单类型</label>
+					<text class="weui-form-preview__value">{{item.scene.text}}</text>
+        </view>
+
 				<view class="weui-form-preview__item">
 					<label class="weui-form-preview__label">描述</label>
 					<text class="weui-form-preview__value">{{item.describe}}</text>
-				</view>
-
-				<view class="weui-form-preview__item">
-					<label class="weui-form-preview__label">销售总额</label>
-					<text class="weui-form-preview__value">{{item.amount}}</text>
 				</view>
 			</view>
 		</view>

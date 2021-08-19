@@ -81,7 +81,6 @@ Page({
       },
 
       function (res) {
-        console.log(res.data)
         res.data &&
           _this.setData({
             pay_price: res.data.pay_price,

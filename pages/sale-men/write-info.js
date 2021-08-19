@@ -148,7 +148,6 @@ Page({
             _this.setData({
               address: res.data.result.address
             })
-            console.log(res.data.result.address)
             _this.submitContent();
           },
           complete() {

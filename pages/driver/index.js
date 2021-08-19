@@ -1,5 +1,6 @@
 // pages/driver/index.js
 const App = getApp();
+let copyReturnBackData = [];
 Page({
 
   /**
@@ -7,6 +8,10 @@ Page({
    */
   data: {
     returnBackData: [],
+    dataType: '1',
+    no_more: false, // 没有更多数据
+    isLoading: true, // 是否正在加载中
+    page: 1 // 当前页码
   },
 
   /**
@@ -74,10 +79,10 @@ Page({
      "asset/recivePageList", 
    {wxapp_id: App.getWxappId()},
    function(res) {
-     console.log(res)
     _this.setData({
-      returnBackData: res.data.data
+      returnBackData: res.data.data.filter(item => item.status.value === 1)
      })
+     copyReturnBackData = JSON.parse(JSON.stringify(res.data.data))
    }
    )
  },
@@ -85,7 +90,6 @@ Page({
  /*
  确认收桶 */
  confirmReturn(e){
-   console.log(e.target.dataset)
    let _this = this;
 
    let queryStr = "&token=" + wx.getStorageSync('token');
@@ -118,7 +122,27 @@ Page({
        }
      }
    })
- }
+ },
 
- 
+
+  /**
+   * 切换标签
+   */
+  bindHeaderTap(e) {
+    this.setData({
+      dataType: e.currentTarget.dataset.type,
+      list: {},
+      isLoading: true,
+      page: 1,
+      no_more: false,
+    });
+
+    let temp = copyReturnBackData.filter(item => item.status.value == e.currentTarget.dataset.type)
+    this.setData({
+      returnBackData: temp
+    })
+    // 获取订单列表
+    //this.getReturnbackData(e.currentTarget.dataset.type);
+  },
+
 })

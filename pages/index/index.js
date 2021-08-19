@@ -110,6 +110,7 @@ Page({
     wx.setNavigationBarTitle({
       title: page.params.title
     });
+    console.log(page)
 
     wx.setStorageSync('titleTextColor', page.style.titleTextColor === 'white' ? '#ffffff' : '#000000');
     wx.setStorageSync('titleBackgroundColor', page.style.titleBackgroundColor);

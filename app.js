@@ -492,14 +492,12 @@ App({
    * 发起微信支付
    */
    wxPayment(option) {
-     console.log(option)
     let options = Object.assign({
       payment: {},
       success: () => {},
       fail: () => {},
       complete: () => {},
     }, option);
-    console.log(options)
     wx.requestPayment({
       timeStamp: options.payment.timeStamp,
       nonceStr: options.payment.nonceStr,

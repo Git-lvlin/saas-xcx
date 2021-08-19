@@ -450,7 +450,6 @@ Page({
             }
           },
           complete(res) {
-            console.log('complete');
             // wx.hideLoading();
           }
         })

@@ -147,7 +147,6 @@ Page({
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
       }), result => {
-        console.log(result)
         callback(result);
       });
     }

@@ -1,7 +1,7 @@
 /* pages/shopkeeper/index.wxss */
 
 .weui-grid  {
-  width: 50%;
+  width: 33%;
 }
 
 .shopkeeper__enormous-window {

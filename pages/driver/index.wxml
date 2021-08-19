@@ -1,6 +1,16 @@
 <!--pages/driver/index.wxml-->
 <!--pages/shopkeeper/returnBack/returnBackRecordList/index.wxml-->
 <view class="driver-page">
+
+  <view class="header f-28 col-3">
+    <view catchtap="bindHeaderTap" class="{{dataType==='1'?'active':''}}" data-type="1">
+      <text>未收桶</text>
+    </view>
+    <view bindtap="bindHeaderTap" class="{{dataType==='2'?'active':''}}" data-type="2">
+      <text>已收桶</text>
+    </view>
+  </view>
+
   <view class="return-back__list">
     <view class="weui-form-preview" wx:for="{{returnBackData}}" wx:for-item="list">
       <view class="weui-form-preview__hd">
@@ -9,6 +19,7 @@
           <em class="weui-form-preview__value">{{list.refend_num}}</em>
         </view>
       </view>
+
       <view class="weui-form-preview__bd" wx:for="{{list.attach.items}}">
         <view class="weui-form-preview__item">
           <label class="weui-form-preview__label">{{item.category_name}}</label>
@@ -18,10 +29,18 @@
 
       <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item">
+          <label class="weui-form-preview__label">店名</label>
+          <text class="weui-form-preview__value">{{list.shop_name}}</text>
+        </view>
+      </view>
+
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
           <label class="weui-form-preview__label">提交时间</label>
           <text class="weui-form-preview__value">{{list.create_time}}</text>
         </view>
       </view>
+
       <view class="weui-form-preview__ft">
         <a bindtap="confirmReturn"
         wx:if="{{list.status.value === 1}}"

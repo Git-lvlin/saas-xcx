@@ -179,7 +179,6 @@ Page({
       App.showError('您还没有选择商品');
       return false;
     }
-    console.log(cartIds);
     wx.showModal({
       title: "提示",
       content: "您确定要移除选择的商品吗?",

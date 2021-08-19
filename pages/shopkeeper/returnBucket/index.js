@@ -77,7 +77,6 @@ Page({
       _this.setData({
         taskList: res.data.list
       })
-      console.log(res)
     }, null, function(){
       wx.stopPullDownRefresh()
     })

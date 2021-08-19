@@ -19,7 +19,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options)
     let _this = this;
     // 记录已选中的id
     _this.setData({
@@ -90,7 +89,6 @@ Page({
           setTimeout(() => {
             // 获取用户坐标
             _this.getLocation((res) => {
-              console.log('获取用户坐标');
               _this.getShopList(res.longitude, res.latitude);
             });
           }, 1000);

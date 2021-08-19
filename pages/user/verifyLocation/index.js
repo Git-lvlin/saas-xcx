@@ -121,7 +121,6 @@ Page({
         selectedIndex: index
       })
       params.shop_id = this.data.shopList[index].id;
-      console.log(this.data.selectedIndex)
     }
   },
 

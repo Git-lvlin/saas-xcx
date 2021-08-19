@@ -117,7 +117,6 @@ Page({
   receipt(e) {
     let _this = this;
     let order_id = e.currentTarget.dataset.id;
-    console.log('order_id ', order_id)
     wx.showModal({
       title: "提示",
       content: "确认收到商品？",

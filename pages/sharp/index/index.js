@@ -105,7 +105,6 @@ Page({
 
   // 倒计时结束刷新页面
   onCountDownEnd() {
-    console.log('onCountDownEnd')
     const app = this
     setTimeout(() => {
       app.onRefreshPage()
@@ -142,7 +141,6 @@ Page({
       active_time_id: curTabbar.active_time_id,
       sharp_goods_id: e.detail.target.dataset.id,
     });
-    console.log(query);
     wx.navigateTo({
       url: `../goods/index?${query}`,
     })

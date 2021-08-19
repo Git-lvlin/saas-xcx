@@ -49,7 +49,6 @@ Page({
     * 查看店铺
   */
   bindlabeltap(e) {
-    console.log(e)
     App.globalData.storeInfo = App.globalData.storeList.find(item => item.shop_id === e.detail.markerId)
     wx.navigateTo({
       url: '../storeInformation/index',
