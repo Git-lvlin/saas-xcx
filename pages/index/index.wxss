@@ -89,3 +89,20 @@ page {
   height: 100rpx;
   width: 100rpx;
 }
+
+.fake-input {
+  height: 36px;
+  width: 90%;
+  border: 1px solid #eee;
+  border-radius: 8rpx;
+  background-color: #eee;
+  margin: 10px auto;
+  color: #999;
+  line-height: 36px;
+  
+}
+
+.fake-input navigator {
+  padding: 0 10px;
+  font-size: 28rpx;
+}

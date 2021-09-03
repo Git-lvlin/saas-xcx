@@ -49,4 +49,8 @@
 				<button bindtap="returnBucketConfirm" class="weui-form-preview__btn weui-form-preview__btn_primary" data-id="{{item.deposit_id}}">确认收桶</button>
 			</view>
 		</view>
+		<view class="title-footer p-r">
+    <text class="f-24 col-9 cont">我是有底线的</text>
+    <view class="hr"></view>
+  </view>
 </view>

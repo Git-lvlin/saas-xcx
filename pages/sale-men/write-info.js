@@ -78,7 +78,6 @@ Page({
     detail
   }) {
     var that = this;
-    console.log(detail)
 
     let query = '';
     query += '&wxapp_id=' + App.getWxappId();

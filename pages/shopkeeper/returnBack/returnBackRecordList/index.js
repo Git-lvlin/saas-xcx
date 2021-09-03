@@ -101,7 +101,6 @@ Page({
         asset_log_id: id,
       },
       success(res) {
-        console.log(res)
         if(res.data.code === 1) {
           App.showSuccess('删除成功')
         } else {

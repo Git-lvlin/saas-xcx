@@ -90,7 +90,6 @@ open: function () {
   },
 
   previewImage: function(e) {
-    console.log(e)
     let url = e.currentTarget.dataset.url
     wx.previewImage({
       current: url,
@@ -131,13 +130,11 @@ open: function () {
   /* 打开地图组件 */
   openMap(e) {
     let {dataset} = e.currentTarget;
-    console.log(dataset)
     wx.openLocation({
       longitude: parseFloat(dataset.long),
       latitude: parseFloat(dataset.lat),
       name: dataset.name,
       fail(){
-        console.log(arguments)
       },
     })
   }

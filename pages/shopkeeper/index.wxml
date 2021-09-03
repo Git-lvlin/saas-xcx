@@ -17,39 +17,39 @@
 
 	<view class="weui-grids">
 		<navigator url="/pages/shopkeeper/bill/index" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">账单</view>
 		</navigator>
 		<navigator url="/pages/warehouse/index/index" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">我要进货</view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/purchase-order/index" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">进货记录</view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/sale-order/index" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">销售记录</view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/sharing-order/index" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">拼团订单</view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/dealer/withdraw/list/list" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">提现记录</view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/returnBack/index" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">水店回桶</view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/returnBack/returnBackRecordList/index" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">回桶记录</view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/returnBucket/index" class="weui-grid">
-			<view class="weui-grid__icon"></view>
+			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">用户回桶</view>
 		</navigator>
 	</view>

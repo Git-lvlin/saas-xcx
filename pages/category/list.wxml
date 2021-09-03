@@ -37,7 +37,12 @@
     </view>
  -->
     <!-- 商品列表 -->
-    <scroll-view id="my-scroll-view" bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;"wx:if="{{list.data.length > 0}}" scroll-top="{{scrollTop}}" scroll-with-animation="true">
+    <scroll-view id="my-scroll-view" 
+    bindscrolltolower="bindDownLoad" 
+    scroll-y style="height: {{scrollHeight}}px; width: 750rpx;"
+    wx:if="{{list.data.length > 0}}" 
+    scroll-top="{{scrollTop}}" 
+    scroll-with-animation="true">
       <view class="new">
         <view class="category-list {{ showView ? 'arrange' : '' }}">
           <navigator class="list b-f {{'_'+item.category_id}}" 
