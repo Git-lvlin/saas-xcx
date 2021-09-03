@@ -36,7 +36,3 @@
 .weui-form-preview {
   margin-bottom: 10px;
 }
-
-.return-back__list {
-  padding-bottom: 80rpx;
-}

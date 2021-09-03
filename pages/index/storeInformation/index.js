@@ -14,9 +14,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      information: App.globalData.storeInfo
-    })
+    if(options.shop_id) {
+      
+      this.setData({
+        information: App.globalData.storeList.find(item => item.shop_id ==  options.shop_id)
+      })
+    } else {
+      this.setData({
+        information: App.globalData.storeInfo || options.id
+      })
+    }
   },
 
   /**

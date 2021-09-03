@@ -164,6 +164,11 @@
         <text class="flex-five col-7">实付金额：</text>
         <text class="flex-five col-m t-r">￥{{order.pay_price}}</text>
       </view>
+
+      <view class="dis-flex flow-all-list-cont">
+        <text class="flex-five col-7">备注：</text>
+        <text class="flex-five col-m t-r">{{order.remark}}</text>
+      </view>
     </view>
 
   </scroll-view>

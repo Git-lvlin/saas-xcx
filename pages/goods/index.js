@@ -437,7 +437,6 @@ Page({
             _this.onTogglePopup();
           },
           fail(err) {
-            console.log(err.errMsg);
             if (err.errMsg === 'saveImageToPhotosAlbum:fail auth deny') {
               wx.showToast({
                 title: "请允许访问相册后重试",

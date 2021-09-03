@@ -77,8 +77,8 @@
     "pages/shopkeeper/returnBack/index",
     "pages/shopkeeper/returnBack/returnBackRecordList/index",
     "pages/driver/confirmPage/index",
-    "pages/driver/index"
-
+    "pages/driver/index",
+    "pages/globalSearch/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#0ca64f",

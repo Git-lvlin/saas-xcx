@@ -1,7 +1,6 @@
 const App = getApp();
 const pageIndex = 'category/list::';
 var sliderWidth = 96;
-
 Page({
   data: {
     scrollHeight: null,
@@ -48,7 +47,12 @@ Page({
     _this.getCategoryList();
   },
 
-  onShow() {},
+  onShow() {
+    //let recentSearch = wx.getStorageSync('recentSearch') || [];
+    // if(recentSearch.length) {
+    //   let keyword = recentSearch[0];
+    // }
+  },
 
 
   /**
@@ -82,6 +86,7 @@ Page({
           'list.data': dataList.data.concat(resList.data),
           isLoading: false,
         });
+
 
       } else {
         _this.setData({
@@ -146,11 +151,11 @@ Page({
    * 切换列表显示方式
    */
   onChangeShowState() {
-    let _this = this,
-      showView = !_this.data.showView;
-    wx.setStorageSync(pageIndex + 'showView', showView);
+    let _this = this;
+      //showView = !_this.data.showView;
+    wx.setStorageSync(pageIndex + 'showView', true);
     _this.setData({
-      showView
+      showView: true
     });
   },
 

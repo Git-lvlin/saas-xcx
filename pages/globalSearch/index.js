@@ -1,53 +1,20 @@
-// pages/shopkeeper/index.js
+// pages/globalSearch/index.js
 const App = getApp();
-
+let timer = null;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    role: 2,
-    shop: {
-      extend: {
-        money: "0.00",
-        total_withdraw: "0.00",
-        order_total: 0
-      }
-    }
-  },
-
-  readyToWithdraw() {
-    if(this.data.shop.extend.money < 1) {
-      App.showError('额度太少，至少1元起提');
-      return;
-    }
-    wx.navigateTo({
-      url: '/pages/shopkeeper/dealer/withdraw/apply/apply',
-    })
+    shopList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this;
-    _this.setData({role: App.globalData.role})
-    // 获取店铺中心数据
-    if(App.globalData.role == 1) {
-      _this.getCenter();
-    }
-  },
-
-  /**
-   * 获取店铺中心数据
-   */
-  getCenter() {
-    let _this = this;
-    App._get('shop/center', {}, function(result) {
-      let data = result.data;
-      _this.setData(data);
-    });
+    this.handleSearch({detail: {value: ""}})
   },
 
   /**
@@ -61,21 +28,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({role: App.globalData.role})
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**
@@ -97,5 +62,23 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  /*全局搜索*/
+  handleSearch(e){
+    let that = this;
+    let { value } = e.detail;
+    let temp = App.globalData.storeList;
+    timer && clearTimeout(timer);
+    timer = setTimeout(function(){
+      that.setData({
+        shopList: temp.filter(item => {
+          return item.address.indexOf(value) > -1
+          || item.linkman.indexOf(value) > -1
+          || item.shop_name.indexOf(value) > -1
+        })
+      })
+    }, 400)
+  },
+
 })
