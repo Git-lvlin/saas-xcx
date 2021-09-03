@@ -19,7 +19,7 @@
 						<view class="weui-media-box__desc">
 							{{item.linkman}}
 							{{item.phone}}
-						<view>{{item.shop_name}}</view>
+						<view>{{item.address}}</view>
 						</view>
 					</view>
 				</navigator>
