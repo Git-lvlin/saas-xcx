@@ -78,6 +78,8 @@
     "pages/shopkeeper/returnBack/returnBackRecordList/index",
     "pages/driver/confirmPage/index",
     "pages/driver/index",
+    "pages/invite/index",
+    "pages/inviteAffirm/index",
     "pages/globalSearch/index"
   ],
   "window": {
