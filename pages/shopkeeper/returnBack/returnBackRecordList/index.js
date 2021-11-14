@@ -13,12 +13,14 @@ Page({
     isLoading: true, // 是否正在加载中
     recordData: [],
     page: 1, // 当前页码
+    returnBackData:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getReturnbackData();
   },
 
   /**
@@ -130,15 +132,69 @@ Page({
       },
       method: "GET",
       success(res) {
-    
         _this.setData({
           recordData: res.data.data.data
         })
-       
       },
       fail(err) {
         console.error(err)
       }
     })
+  },
+
+
+   /*
+ 确认收桶 */
+ confirmReturn(e){
+  let _this = this;
+
+  let queryStr = "&token=" + wx.getStorageSync('token');
+  queryStr += "&wxapp_id=" + App.getWxappId();
+
+  let params = {};
+  let temp = this.data.returnBackData.find(item => {
+    return item.asset_log_id === item.asset_log_id
+  })
+
+  params.asset_log_id = temp.asset_log_id;
+  params.items = temp.attach.items.map(item => {
+    return {
+     type: item.type,
+     category_id: item.category_id,
+     amount: item.category_id
+    }
+  })
+
+  wx.request({
+    url: App.api_root + "asset/recive" + queryStr,
+    method: "POST",
+    data: params,
+    success: function(res){
+      if(res.data.code === 1) {
+       App.showSuccess('收桶成功')
+       _this.getReturnbackData();
+       _this.getRecordList();
+      } else {
+       App.showSuccess(res.data.msg)
+      }
+    }
+  })
+},
+
+/*
+    获取商铺退桶记录
+  */
+ getReturnbackData() {
+  let _this = this;
+  App._get(
+    "asset/recivePageList", 
+  {wxapp_id: App.getWxappId()},
+  function(res) {
+   _this.setData({
+     returnBackData: res.data.data.filter(item => item.status.value === 1)
+    })
+   // copyReturnBackData = JSON.parse(JSON.stringify(res.data.data))
   }
+  )
+},
 })

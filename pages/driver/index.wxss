@@ -1,13 +1,13 @@
 /* pages/driver/index.wxss */
 .driver-page {
-  padding-bottom: 80rpx;
+  /* //padding-bottom: 80rpx; */
 }
 .weui-form-preview {
   margin-bottom: 10px;
 }
 
 .return-back__list {
-  padding-top: 100rpx;
+  padding-top: 20rpx;
 }
 
 .header {

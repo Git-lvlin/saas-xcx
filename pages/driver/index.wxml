@@ -2,14 +2,14 @@
 <!--pages/shopkeeper/returnBack/returnBackRecordList/index.wxml-->
 <view class="driver-page">
 
-  <view class="header f-28 col-3">
+  <!-- <view class="header f-28 col-3">
     <view catchtap="bindHeaderTap" class="{{dataType==='1'?'active':''}}" data-type="1">
-      <text>未收桶</text>
+      <text>未确认</text>
     </view>
     <view bindtap="bindHeaderTap" class="{{dataType==='2'?'active':''}}" data-type="2">
-      <text>已收桶</text>
+      <text>已确认</text>
     </view>
-  </view>
+  </view> -->
 
   <view class="return-back__list">
     <view class="weui-form-preview" wx:for="{{returnBackData}}" wx:for-item="list">
@@ -36,18 +36,23 @@
 
       <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item">
+          <label class="weui-form-preview__label">状态</label>
+          <text class="weui-form-preview__value">{{list.status.text}}</text>
+        </view>
+      </view>
+
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
           <label class="weui-form-preview__label">提交时间</label>
           <text class="weui-form-preview__value">{{list.create_time}}</text>
         </view>
       </view>
-
-      <view class="weui-form-preview__ft">
-        <a bindtap="confirmReturn"
-        wx:if="{{list.status.value === 1}}"
-        class="weui-form-preview__btn weui-form-preview__btn_primary" 
-        data-id="{{list.asset_log_id}}">收桶</a>
-        <a wx:else class="weui-form-preview__btn weui-form-preview__btn_primary" >已收桶</a>
-      </view>
     </view>
+  </view>
+
+  <!-- 底线 -->
+  <view class="title-footer p-r">
+    <text class="f-24 col-9 cont">我是有底线的</text>
+    <view class="hr"></view>
   </view>
 </view>

@@ -87,42 +87,7 @@ Page({
    )
  },
 
- /*
- 确认收桶 */
- confirmReturn(e){
-   let _this = this;
 
-   let queryStr = "&token=" + wx.getStorageSync('token');
-   queryStr += "&wxapp_id=" + App.getWxappId();
-
-   let params = {};
-   let temp = this.data.returnBackData.find(item => {
-     return item.asset_log_id === item.asset_log_id
-   })
-
-   params.asset_log_id = temp.asset_log_id;
-   params.items = temp.attach.items.map(item => {
-     return {
-      type: item.type,
-      category_id: item.category_id,
-      amount: item.category_id
-     }
-   })
-
-   wx.request({
-     url: App.api_root + "asset/recive" + queryStr,
-     method: "POST",
-     data: params,
-     success: function(res){
-       if(res.data.code === 1) {
-        App.showSuccess('收桶成功')
-        _this.getReturnbackData();
-       } else {
-        App.showSuccess(res.data.msg)
-       }
-     }
-   })
- },
 
 
   /**
@@ -143,6 +108,7 @@ Page({
     })
     // 获取订单列表
     //this.getReturnbackData(e.currentTarget.dataset.type);
+    //this.getReturnbackData();
   },
 
 })

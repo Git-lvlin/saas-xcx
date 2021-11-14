@@ -40,10 +40,10 @@
 			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">提现记录</view>
 		</navigator>
-		<navigator url="/pages/shopkeeper/returnBack/index" class="weui-grid">
+		<!-- <navigator url="/pages/shopkeeper/returnBack/index" class="weui-grid"> -->
 			<!-- <view class="weui-grid__icon"></view> -->
-			<view class="weui-grid__label">水店回桶</view>
-		</navigator>
+			<!-- <view class="weui-grid__label">水店回桶</view> -->
+		<!-- </navigator> -->
 		<navigator url="/pages/shopkeeper/returnBack/returnBackRecordList/index" class="weui-grid">
 			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">回桶记录</view>
