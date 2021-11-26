@@ -3,27 +3,19 @@ const pageIndex = 'category/list::';
 var sliderWidth = 96;
 Page({
   data: {
-    scrollHeight: null,
-
+    scrollHeight: 0,
     showView: true, // 列表显示方式
-
     sortType: 'all', // 排序类型
     sortPrice: false, // 价格从低到高
-
     option: {}, // 当前页面参数
     list: {}, // 商品列表数据
-
     no_more: false, // 没有更多数据
     isLoading: true, // 是否正在加载中
-
     page: 1, // 当前页码
-
-
     tabs: [],
     activeIndex: -1,
     scrollTop: 0,
     makeAnchorByCategory: []
-
     //sliderOffset: 0,
     //sliderLeft: 0
   },
@@ -32,7 +24,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(option) {
-
     let _this = this;
     // 设置商品列表高度
     _this.setListHeight();
@@ -41,7 +32,7 @@ Page({
       option
     });
     // 设置列表显示方式
-    _this.setShowView();
+    //_this.setShowView();
 
     // 获取分类列表
     _this.getCategoryList();
@@ -120,8 +111,9 @@ Page({
     let _this = this;
     wx.getSystemInfo({
       success: res => {
+        console.log(res)
         _this.setData({
-          scrollHeight: res.windowHeight - 109,
+          scrollHeight: res.windowHeight - 99,
         });
       }
     });
@@ -150,14 +142,14 @@ Page({
   /**
    * 切换列表显示方式
    */
-  onChangeShowState() {
-    let _this = this;
-      //showView = !_this.data.showView;
-    wx.setStorageSync(pageIndex + 'showView', true);
-    _this.setData({
-      showView: true
-    });
-  },
+  // onChangeShowState() {
+  //   let _this = this;
+  //     //showView = !_this.data.showView;
+  //   wx.setStorageSync(pageIndex + 'showView', true);
+  //   _this.setData({
+  //     showView: !_this.data.showView
+  //   });
+  // },
 
   /**
    * 下拉到底加载数据
@@ -247,7 +239,7 @@ Page({
       activeIndex: e.detail.index,
       scrollTop: _this.data.makeAnchorByCategory[e.detail.index] - 100
     });
-    //this.getGoodsList(false, false, _this.data.tabs[_this.data.activeIndex].category_id);
+    this.getGoodsList(false, false, _this.data.tabs[_this.data.activeIndex].category_id);
   },
 
   // addCard(e) {

@@ -333,7 +333,7 @@ Page({
    */
   goShopping() {
     wx.switchTab({
-      url: '../category/index',
+      url: '../category/list',
     });
   },
 

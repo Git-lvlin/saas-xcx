@@ -1,10 +1,6 @@
 /* diy组件 */
 @import "../../components/diy/index.wxss";
 
-page {
-  background: #fff !important;
-}
-
 .placeholder {
   width: 100%;
   font-size: 14px;

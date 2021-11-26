@@ -128,11 +128,7 @@ Page({
   /*页面下拉动作 */
   onPullDownRefresh() {
     let _this = this;
-    wx.startPullDownRefresh({
-      success() {
-        _this.getOrderList(false, 1)
-      },
-    })
+    _this.getOrderList(false, 1)
   },
 
   // 

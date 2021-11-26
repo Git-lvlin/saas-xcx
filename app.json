@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/category/list",
     "pages/index/index",
     "pages/index/storeInformation/index",
     "pages/index/nail_picture/nail_picture",
@@ -18,7 +19,6 @@
     "pages/shopkeeper/sharing-order/detail",
     "pages/shopkeeper/returnBucket/index",
     "pages/shopkeeper/returnBack/returnBackRecordList/index",
-    "pages/category/list",
     "pages/goods/index",
     "pages/goods/comment/comment",
     "pages/search/index",
@@ -97,17 +97,19 @@
     "backgroundColor": "#ffffff",
     "position": "bottom",
     "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/home.png",
-        "selectedIconPath": "images/home-active.png"
-      },
+      
       {
         "pagePath": "pages/category/list",
         "text": "商城",
         "iconPath": "images/cate.png",
         "selectedIconPath": "images/cate-active.png"
+      },
+
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
       },
       {
         "pagePath": "pages/flow/index",

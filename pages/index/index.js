@@ -176,8 +176,8 @@ Page({
   checkoutStoreInformation(e) {
     let id  = e.currentTarget.dataset.id;
     App.globalData.storeInfo = this.data.storeList.find(item => item.shop_id === id)
-    wx.navigateTo({
-      url: './storeInformation/index',
+    wx.switchTab({
+      url: "/pages/category/list"
     })
   }
 });

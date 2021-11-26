@@ -3,7 +3,7 @@
 @import './style/iconfont/iconfont.wxss';
 
 page {
-  background: #f7f7f7;
+  background: #f4f4f4;
 }
 
 .common-header-xian {

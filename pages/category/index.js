@@ -53,12 +53,17 @@ Page({
    * 设置分类列表高度
    */
   setListHeight() {
+   
     let _this = this;
     wx.getSystemInfo({
       success: function(res) {
+        console.log(res)
         _this.setData({
           scrollHeight: res.windowHeight - 47,
         });
+      },
+      fail(err){
+        console.error(err)
       }
     });
   },
