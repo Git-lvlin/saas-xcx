@@ -15,6 +15,9 @@
       </view> -->
     </view>
 
+  <diy-component diyItems="{{ items }}"></diy-component>
+
+
     <mp-tabs tabs="{{tabs}}" activeTab="{{activeIndex}}" swiperClass="weui-tabs-swiper" bindtabclick="tabClick" activeClass="tab-bar-title__selected">
     </mp-tabs>
 

@@ -107,7 +107,7 @@
 
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "店铺",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home-active.png"
       },

@@ -9,6 +9,7 @@
     </navigator>
   </view>
 
+
   <!-- 分类样式：一级分类(大图) 10 -->
   <view class="cate-content" wx:if="{{ templet.category_style == 10 && list.length > 0 }}">
     <view class="cate-wrapper cate_style__10">

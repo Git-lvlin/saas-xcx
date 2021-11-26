@@ -15,7 +15,9 @@ Page({
     tabs: [],
     activeIndex: -1,
     scrollTop: 0,
-    makeAnchorByCategory: []
+    makeAnchorByCategory: [],
+    items: [],
+    options: ""
     //sliderOffset: 0,
     //sliderLeft: 0
   },
@@ -36,6 +38,13 @@ Page({
 
     // 获取分类列表
     _this.getCategoryList();
+    
+
+    this.setData({
+      options:option
+    });
+
+    _this.getPageData();
   },
 
   onShow() {
@@ -77,8 +86,6 @@ Page({
           'list.data': dataList.data.concat(resList.data),
           isLoading: false,
         });
-
-
       } else {
         _this.setData({
           list: resList,
@@ -103,6 +110,7 @@ Page({
       })
     });
   },
+  
 
   /**
    * 设置商品列表高度
@@ -230,6 +238,21 @@ Page({
 
       // 获取商品列表
       _this.getGoodsList();
+    });
+  },
+
+  /**
+   * 加载页面数据
+   */
+  getPageData(callback) {
+    let _this = this;
+    App._get('page/index', {
+      page_id: _this.data.options.page_id || 0
+    }, result => {
+      // 设置顶部导航栏栏
+      _this.setData(result.data);
+      // 回调函数
+      typeof callback === 'function' && callback();
     });
   },
 
