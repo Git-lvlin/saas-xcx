@@ -1,0 +1,6 @@
+<!--pages/shopkeeper/officialaccount/binding.wxml-->
+<view class="button">
+欢迎
+<web-view bindmessage="handleGetMessage"  src="{{openUrl}}">绑定公众号”泉天下送水“</web-view>
+</view>
+

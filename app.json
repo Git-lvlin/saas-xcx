@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/category/list",
     "pages/index/index",
+    "pages/shopkeeper/index",
+    "pages/shopkeeper/officialaccount/binding",
+    "pages/category/list",
     "pages/index/storeInformation/index",
     "pages/index/nail_picture/nail_picture",
     "pages/warehouse/index/index",
@@ -9,7 +11,6 @@
     "pages/warehouse/goods/comment/comment",
     "pages/warehouse/flow/index",
     "pages/warehouse/flow/checkout",
-    "pages/shopkeeper/index",
     "pages/shopkeeper/sale-order/index",
     "pages/shopkeeper/purchase-order/index",
     "pages/shopkeeper/bill/index",
@@ -62,7 +63,6 @@
     "pages/sharing/order/refund/apply/apply",
     "pages/sharing/order/refund/detail/detail",
     "pages/shop/detail/index",
-    
     "pages/_select/extract_point/index",
     "pages/store/check/order",
     "pages/points/log/index",
@@ -76,7 +76,6 @@
     "pages/user/cash-pledge/payment",
     "pages/user/cash-pledge/reback-pledge",
     "pages/user/cash-pledge/index",
-    
     "pages/driver/index",
     "pages/driver/returnBack/index",
     "pages/invite/index",
@@ -97,14 +96,12 @@
     "backgroundColor": "#ffffff",
     "position": "bottom",
     "list": [
-      
       {
         "pagePath": "pages/category/list",
         "text": "商城",
         "iconPath": "images/cate.png",
         "selectedIconPath": "images/cate-active.png"
       },
-
       {
         "pagePath": "pages/index/index",
         "text": "店铺",
