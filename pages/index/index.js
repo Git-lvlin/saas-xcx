@@ -4,9 +4,9 @@ Page({
 
   data: {
     // 页面参数
-    options: {},
+    //options: {},
     // 页面元素
-    items: {},
+    //items: {},
     scrollTop: 0,
     storeList: []
   },
@@ -28,12 +28,13 @@ Page({
     }
 
     // 当前页面参数
-    this.setData({
-      options
-    });
+    // this.setData({
+    //   options
+    // });
 
     // 加载页面数据
-    this.getPageData();
+   //this.getPageData();
+   this.getStoreList()
 
   
     wx.login({
@@ -69,7 +70,6 @@ Page({
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
       _this.setData(result.data);
-      _this.getStoreList()
       // 回调函数
       typeof callback === 'function' && callback();
     });
@@ -125,9 +125,9 @@ Page({
    */
    onPullDownRefresh() {
     // 获取首页数据
-    this.getPageData(function () {
-      wx.stopPullDownRefresh();
-    });
+    //this.getPageData(function () {
+      //wx.stopPullDownRefresh();
+    //});
   },
 
   /**

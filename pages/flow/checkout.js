@@ -387,7 +387,6 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds,
       success(res) {
-        console.log(res)
       },
       fail(err) {
         console.error(err)

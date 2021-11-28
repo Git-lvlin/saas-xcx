@@ -540,7 +540,6 @@ App({
       });
     }
     if (!_this.globalData.session_key) {
-      console.log('_this.globalData.session_key empty')
       return;
     }
     wx.request({

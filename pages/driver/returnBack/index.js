@@ -111,7 +111,6 @@ Page({
     if(!values.amount) return;
     let temp = [];
     let index = Number(values.category_id);
-    console.log(e.detail.value)
     let item = _this.data.rangeData[index]
     temp = temp.concat(this.data.items);
 
