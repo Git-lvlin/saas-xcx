@@ -82,6 +82,7 @@ App({
           var res = resp1.data
           // 后台PHP 的 code = 1 表示成功
           if (res && res.code == 1) {
+            console.log(res.data.openid)
             _this.globalData.openid = res.data.openid
             _this.globalData.session_key = res.data.session_key
             _this.globalData.mobile_acquired = res.data.mobile_acquired
