@@ -183,4 +183,9 @@
       <button class="btn-normal" type="danger" lang="zh_CN" catchtap="onLogout">退出</button>
     </view>
   </view>
+
+
+  <mp-dialog mask="{{true}}" show="{{false}}" buttons="{{[{text: '确定'}]}}">
+    是否接收订单消息？
+  </mp-dialog>
 </view>

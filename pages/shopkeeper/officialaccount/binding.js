@@ -8,6 +8,7 @@ Page({
    */
   data: {
     openUrl: "",
+    isLoading: true,
   },
   
 
@@ -17,7 +18,7 @@ Page({
   onLoad: function (options) {
     let _this = this;
     var openUrl = App.api_root + "OfficialAccount/binding&token=" + wx.getStorageSync('token') + "&wxapp_id=" + App.getWxappId()
-    console.log("openUrl ", openUrl)
+
     this.setData({
       openUrl: openUrl,
     })
@@ -27,6 +28,9 @@ Page({
    * 获取请求数据
    */
   handleGetMessage: function (e) {
+    this.setData({
+      isLoading: false
+    })
     console.log("handleGetMessage", e.detail.data);
   },
 

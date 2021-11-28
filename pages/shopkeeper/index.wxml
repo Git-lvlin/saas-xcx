@@ -19,7 +19,7 @@
 		<navigator url="/pages/shopkeeper/officialaccount/binding" class="weui-grid">
 			<!-- <view class="weui-grid__icon"></view> -->
 			<view class="weui-grid__label">
-				绑定公众号
+				订单通知
 			</view>
 		</navigator>
 		<navigator url="/pages/shopkeeper/bill/index" class="weui-grid">
