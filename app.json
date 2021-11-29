@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/category/list",
     "pages/index/index",
     "pages/shopkeeper/index",
     "pages/shopkeeper/officialaccount/binding",
-    "pages/category/list",
     "pages/index/storeInformation/index",
     "pages/index/nail_picture/nail_picture",
     "pages/warehouse/index/index",

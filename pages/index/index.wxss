@@ -33,11 +33,20 @@
   font-size: 14px;
 }
 
-.store__info .store__name {
-  font-size: 32rpx;
+.store__info {
+  overflow: hidden;
+  white-space: normal;
+}
+
+ .store__info .store__name {
+  font-size: 28rpx;
   font-weight: bold;
   line-height: 44rpx;
   color: #333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 
 .store__list {
@@ -46,10 +55,9 @@
 
 .navigator {
   height: 80px;
-  padding: 0 5px;
+  padding: 0 20px;
   text-align: center;
   border-left: 1px solid #eee;
-  padding-left: 10px;
 }
 
 .navigator .icon-daohang {

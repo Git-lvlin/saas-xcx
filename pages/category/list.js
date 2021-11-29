@@ -11,7 +11,7 @@ Page({
     list: {}, // 商品列表数据
     no_more: false, // 没有更多数据
     isLoading: true, // 是否正在加载中
-    page: 1, // 当前页码
+    pagination: 1, // 当前页码
     tabs: [],
     activeIndex: -1,
     scrollTop: 0,
@@ -38,7 +38,6 @@ Page({
 
     // 获取分类列表
     _this.getCategoryList();
-    
 
     this.setData({
       options:option
@@ -74,6 +73,7 @@ Page({
     let _this = this;
     App._get("goods/lists", {
       page: page || 1,
+      listRows: 10,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,
       category_id: category_id || "",
@@ -95,7 +95,6 @@ Page({
       wx.nextTick(() => {
         let temp = [];
         const query = wx.createSelectorQuery();
-        
         _this.data.tabs.forEach(item => {
           query.select('._' + item.category_id).boundingClientRect(function (res) {
             res = res || {
@@ -137,9 +136,10 @@ Page({
     this.setData({
       list: {},
       isLoading: true,
-      page: 1,
+      pagination: 1,
       sortType: newSortType,
       sortPrice: newSortPrice
+
     }, () => {
       // 获取商品列表
       _this.getGoodsList();
@@ -161,16 +161,15 @@ Page({
   /**
    * 下拉到底加载数据
    */
-  bindDownLoad() {
-    // 已经是最后一页
-    if (this.data.page >= this.data.list.last_page) {
+  onReachBottom(){
+    if (this.data.pagination >= this.data.list.last_page) {
       this.setData({
         no_more: true
       });
       return false;
     }
     // 加载下一页列表
-    //this.getGoodsList(true, ++this.data.page);
+    this.getGoodsList(true, ++this.data.pagination);
   },
 
   /**
@@ -218,9 +217,11 @@ Page({
    * 获取分类列表
    */
   getCategoryList() {
+
     let _this = this;
     App._get('category/index', {}, result => {
       let data = result.data;
+      console.log(data)
       _this.setData({
         list: data.list,
         templet: data.templet,
@@ -258,10 +259,17 @@ Page({
   tabClick: function (e) {
     let _this = this;
     this.setData({
+      pagination: 1,
       activeIndex: e.detail.index,
       scrollTop: _this.data.makeAnchorByCategory[e.detail.index] - 100
     });
-    this.getGoodsList(false, false, _this.data.tabs[_this.data.activeIndex].category_id);
+    let category_id = "";
+    if(_this.data.tabs[_this.data.activeIndex].title.indexOf("首页") > -1) {
+      category_id = "";
+    } else {
+      category_id = _this.data.tabs[_this.data.activeIndex].category_id;
+    }
+    this.getGoodsList(false, 1, category_id);
   },
 
   // addCard(e) {
