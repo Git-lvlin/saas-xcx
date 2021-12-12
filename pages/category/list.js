@@ -13,7 +13,7 @@ Page({
     isLoading: true, // 是否正在加载中
     pagination: 1, // 当前页码
     tabs: [],
-    activeIndex: -1,
+    activeIndex: 0,
     scrollTop: 0,
     makeAnchorByCategory: [],
     items: [],
@@ -169,7 +169,18 @@ Page({
       return false;
     }
     // 加载下一页列表
-    this.getGoodsList(true, ++this.data.pagination);
+    let category_id = "";
+    if(this.data.activeIndex >= 0) {
+      if(this.data.tabs[this.data.activeIndex].title.indexOf("首页") > -1) {
+        category_id = "";
+      } else if(this.data.activeIndex >= 0){
+        category_id = this.data.tabs[this.data.activeIndex].category_id;
+      }
+    } else {
+      category_id = "";
+    }
+    
+    this.getGoodsList(true, ++this.data.pagination, category_id);
   },
 
   /**
