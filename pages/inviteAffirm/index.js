@@ -64,7 +64,9 @@ Page({
         console.log('用户同意了授权')
         App.getUserInfo(result, () => {
           // 跳转回原页面
-          app.onNavigateBack(1)
+          wx.switchTab({
+            url: '/pages/index/index'
+          })
         });
       },
       fail() {
