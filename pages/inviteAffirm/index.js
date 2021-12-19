@@ -63,6 +63,7 @@ Page({
       success(result) {
         console.log('用户同意了授权')
         App.getUserInfo(result, () => {
+          wx.removeStorageSync('referee_id_Login')
           // 跳转回原页面
           wx.switchTab({
             url: '/pages/index/index'
