@@ -30,6 +30,7 @@ Page({
     let _this = this;
     //同意授权
     App.getPhoneNumber(e, (res) => {
+      console.log(res);
       if(res.data.userinfo_acquired){
         // 跳转回原页面
         _this.onNavigateBack(1);

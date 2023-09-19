@@ -33,7 +33,7 @@ Page({
     // });
 
     // 加载页面数据
-   //this.getPageData();
+   this.getPageData();
    this.getStoreList()
 
   
@@ -65,7 +65,7 @@ Page({
    getPageData(callback) {
     let _this = this;
     App._get('page/index', {
-      page_id: _this.data.options.page_id || 0
+      page_id:  0
     }, result => {
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
@@ -125,9 +125,9 @@ Page({
    */
    onPullDownRefresh() {
     // 获取首页数据
-    //this.getPageData(function () {
-      //wx.stopPullDownRefresh();
-    //});
+    this.getPageData(function () {
+      wx.stopPullDownRefresh();
+    });
   },
 
   /**

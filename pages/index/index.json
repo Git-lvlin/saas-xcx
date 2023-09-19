@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "一泉天下",
+  "navigationBarTitleText": "",
   "usingComponents": {
     "diy-component": "/components/diy/index",
     "tabbar": "/components/tabbar/tabbar"

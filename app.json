@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/category/list",
     "pages/index/index",
+    "pages/category/list",
     "pages/shopkeeper/index",
     "pages/shopkeeper/officialaccount/binding",
     "pages/index/storeInformation/index",
@@ -80,12 +80,13 @@
     "pages/driver/returnBack/index",
     "pages/invite/index",
     "pages/inviteAffirm/index",
-    "pages/globalSearch/index"
+    "pages/globalSearch/index",
+    "pages/reserve/reserve"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#0ca64f",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
@@ -97,16 +98,16 @@
     "position": "bottom",
     "list": [
       {
-        "pagePath": "pages/category/list",
-        "text": "商城",
-        "iconPath": "images/cate.png",
-        "selectedIconPath": "images/cate-active.png"
-      },
-      {
         "pagePath": "pages/index/index",
         "text": "店铺",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/category/list",
+        "text": "商城",
+        "iconPath": "images/cate.png",
+        "selectedIconPath": "images/cate-active.png"
       },
       {
         "pagePath": "pages/flow/index",

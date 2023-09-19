@@ -53,11 +53,11 @@ App({
     // 小程序启动场景
     _this.onStartupScene(e.query);
 
-    wx.login({
-      success: resp0 => {
-        _this._wxLoginSuccess(resp0)
-      }
-    });
+    // wx.login({
+    //   success: resp0 => {
+    //     _this._wxLoginSuccess(resp0)
+    //   }
+    // });
 
     _this.globalData.role = wx.getStorageSync('role') || 0;
   },

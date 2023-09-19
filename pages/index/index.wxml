@@ -1,9 +1,9 @@
 <view class="container b-f">
-  <view class="fake-input">
+  <!-- <view class="fake-input">
     <navigator url="/pages/globalSearch/index">请输入关键字</navigator>
-  </view>
+  </view> -->
   <!-- DIY组件 -->
-  <!-- <diy-component diyItems="{{ items }}"></diy-component> -->
+  <diy-component diyItems="{{ items }}"></diy-component>
 
   <!-- 底线 -->
   <!-- <view class="title-footer p-r">
@@ -47,9 +47,9 @@
 
   </view>
 
-  <view class="index__nail-map" bindtap="navigateToNailMapPage">
+  <!-- <view class="index__nail-map" bindtap="navigateToNailMapPage">
     <image src="../../images/map.png" alt="" mode="aspectFit"/>
-  </view>
+  </view> -->
 
    <!-- 底线 -->
   <view class="title-footer p-r">
