@@ -20,6 +20,10 @@
       ]
     }
   },
-  "projectname": "miniprogram",
-  "setting": {}
+  "projectname": "saas-xcx",
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": false
+  },
+  "libVersion": "3.0.2"
 }

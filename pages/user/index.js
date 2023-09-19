@@ -11,7 +11,8 @@ Page({
     orderCount: {}, // 订单数量
     userHeaderBGC: '',
     shop_list: [], // 大于0时是店主
-    currentShop: '',
+		currentShop: '',
+		statusBarHeight: 0,
     role: 0, //0用户 1店主 2店员 3仓库,
     menus: {
       "water_ticket": {
@@ -65,11 +66,13 @@ Page({
 
     let _this = this;
     _this.setData({
-      userHeaderBGC: '#0ca64f'
+      userHeaderBGC: '#3781F3'
     });
 
     // 获取当前用户信息
-    _this.getUserDetail();
+		_this.getUserDetail();
+		
+		_this.getStatusBarHeight();
   },
 
   /**
@@ -356,7 +359,14 @@ Page({
       return false;
     }
     return true;
-  },
+	},
+	
+	getStatusBarHeight() {
+		const height = wx.getWindowInfo()
+		this.setData({
+			statusBarHeight: height.statusBarHeight + 9
+		})
+	},
 
   /**
    * 授权登录

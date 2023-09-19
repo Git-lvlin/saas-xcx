@@ -1,0 +1,99 @@
+.goodslist {
+	display: flex;
+	margin: 20rpx;
+	padding: 20rpx;
+	border-radius: 20rpx;
+	background: #fff;
+}
+
+.goodslist .img {
+	width: 280rpx;
+	height: 280rpx;
+	border-radius: 20rpx;
+}
+.goodslist .img image {
+	width: 100%;
+	height: 100%;
+	border-radius: 20rpx;
+}
+.goodslist .content {
+	margin-left: 22rpx;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-bottom: 20rpx;
+	width: 50%;
+}
+
+.goodslist .content .title {
+	font-size: 36rpx;
+	font-weight: 700;
+	line-height: 38rpx;
+	display: -webkit-box;
+	font-family: OPPOSans-Bold, OPPOSans;
+	color: #333333;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+	text-overflow: ellipsis; 
+	max-height: 76rpx;
+	word-break: break-all;
+}
+
+.goodslist .content .tag {
+	display: inline;
+	font-size: 20rpx;
+	padding: 5rpx 10rpx;
+	font-weight: 400;
+	background: #FFE8E9;
+	color: #FF0E0E;
+	border-radius: 4rpx;
+}
+
+.goodslist .content .foot {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: -20rpx;
+}
+
+.goodslist .content .foot .priceinfo {
+	margin-bottom: -10rpx;
+}
+
+.goodslist .content .foot .marketprice {
+	font-size: 24rpx;
+	color: #626262;
+	margin-bottom: -20rpx;
+}
+
+.goodslist .content .foot .marketprice text {
+	text-decoration: line-through;
+}
+
+.goodslist .content .foot .price {
+	font-size: 24rpx;
+	color: #ff0000;
+	font-weight: 700;
+}
+
+.goodslist .content .foot .price text {
+	font-size: 44rpx;
+}
+
+.goodslist .content .foot button {
+	background: #FC0800;
+	color: #fff;
+	height: 80rpx;
+	width: 144rpx;
+	line-height: 80rpx;
+}
+
+
+
+
+
+
+
+

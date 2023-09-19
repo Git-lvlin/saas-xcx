@@ -7,7 +7,7 @@
  'pages/category/list',
  'pages/flow/index',
  'pages/user/index',
- 'pages/sharing/index/index'
+ 'pages/sharing/index/index',
  ];
 
 // 站点配置文件

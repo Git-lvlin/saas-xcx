@@ -1,24 +1,24 @@
 <view class="container">
   <view class="list-header">
     <!-- 搜索框 -->
-    <view class="index-search-box dis-flex">
-      <view class="index-search flex-box" catchtap="triggerSearch">
+    <!-- <view class="index-search-box dis-flex"> -->
+      <!-- <view class="index-search flex-box" catchtap="triggerSearch">
         <view class="index-cont-search">
           <icon class="text-center" size="15" type="search"></icon>
           <text>{{ option.search ? option.search : '搜索商品' }}</text>
         </view>
-      </view>
+      </view> -->
       <!-- <view bindtap="onChangeShowState" class="list-right f-28">
         <text class="iconfont icon-tubiao_kuaizhuangpailie" wx:if="{{showView}}"></text>
         <text class="iconfont icon-tubiao_liebiaopailie" wx:else></text>
       </view> -->
-    </view>
+    <!-- </view> -->
 
-    <diy-component diyItems="{{ items }}"></diy-component>
+    <!-- <diy-component diyItems="{{ items }}"></diy-component> -->
 
 
-    <mp-tabs tabs="{{tabs}}" activeTab="{{activeIndex}}" swiperClass="weui-tabs-swiper" bindtabclick="tabClick" activeClass="tab-bar-title__selected">
-    </mp-tabs>
+    <!-- <mp-tabs tabs="{{tabs}}" activeTab="{{activeIndex}}" swiperClass="weui-tabs-swiper" bindtabclick="tabClick" activeClass="tab-bar-title__selected">
+    </mp-tabs> -->
 
     <!-- 筛选标签 -->
     <!--  <view class="store_nav_cont dis-flex b-f b-b">
@@ -42,32 +42,33 @@
       <view class="new">
         <view class="category-list {{ showView ? 'arrange' : '' }}">
           <navigator class="list b-f {{'_'+item.category_id}}" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="{{item.goods_id}}">
-            <view class="left">
+						<goods-list goodsItem="{{item}}"></goods-list>
+            <!-- <view class="left">
               <view class="img">
                 <image class="goodsImg" mode="scaleToFill" src="{{ item.goods_image }}"></image>
               </view>
-            </view>
-            <view class="right">
-              <view class="cont">
+            </view> -->
+            <!-- <view class="right">
+              <view class="cont"> -->
                 <!-- 商品名称 -->
-                <text class="title f-29 twolist-hidden">{{item.goods_name}}</text>
-                <block wx:if="{{ showView }}">
+                <!-- <text class="title f-29 twolist-hidden">{{item.goods_name}}</text> -->
+                <!-- <block wx:if="{{ showView }}"> -->
                   <!-- 商品卖点 -->
-                  <view class="selling_point onelist-hidden">
+                  <!-- <view class="selling_point onelist-hidden">
                     <text>{{ item.selling_point }}</text>
-                  </view>
+                  </view> -->
                   <!-- 商品销量 -->
-                  <view class="goods_sales dis-flex">
+                  <!-- <view class="goods_sales dis-flex">
                     <text class="onelist-hidden">已售{{ item.goods_sales }}件</text>
-                  </view>
-                </block>
+                  </view> -->
+                <!-- </block> -->
                 <!-- 商品价格 -->
-                <view class="detail-price">
+                <!-- <view class="detail-price">
                   <text class="goods-price f-30 col-m">￥{{item.goods_sku.goods_price}}</text>
                   <text class="line-price col-9 f-24" wx:if="{{item.goods_sku.line_price>0}}">{{item.goods_sku.line_price}}</text>
-                </view>
-              </view>
-            </view>
+                </view> -->
+              <!-- </view>
+            </view> -->
           </navigator>
         </view>
       </view>
@@ -82,5 +83,5 @@
     </view>
     <text class="cont">亲, 没有相关内容</text>
   </view>
-
+	<!-- <goods-list ></goods-list> -->
 </view>

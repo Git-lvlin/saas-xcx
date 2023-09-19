@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "个人中心",
-    "navigationBarBackgroundColor":"#0ca64f",
+    "navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor":"#337EF3",
+		"navigationStyle": "custom",
     "usingComponents": {
         "mp-dialog": "weui-miniprogram/dialog/dialog"
       }
