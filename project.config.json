@@ -5,6 +5,10 @@
     "include": []
   },
   "setting": {
+    "useCompilerPlugins": [
+      "typescript",
+      "less"
+    ],
     "urlCheck": true,
     "es6": true,
     "enhance": true,
@@ -34,13 +38,17 @@
     "enableEngineNative": false,
     "useIsolateContext": true,
     "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ],
     "minifyWXSS": true,
     "disableUseStrict": false,
     "minifyWXML": true,
     "showES6CompileOption": false,
-    "useCompilerPlugins": false,
     "condition": false
   },
   "compileType": "miniprogram",

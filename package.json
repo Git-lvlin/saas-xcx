@@ -4,9 +4,12 @@
   "description": "``` git clone http://git.daihuoduo.com/shop/wechat.miniprogram.git cd wechat.miniprogram cp siteinfo.demo.js  siteinfo.js ```",
   "main": "app.js",
   "dependencies": {
-    "@miniprogram-component-plus/tabs": "^1.0.0"
+    "@miniprogram-component-plus/tabs": "^1.0.0",
+    "@vant/weapp": "^1.11.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.12.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
