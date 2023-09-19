@@ -147,6 +147,10 @@ input {
   font-size: 60rpx;
 }
 
+.f-40 {
+	font-size: 40rpx;
+}
+
 .f-36 {
   font-size: 36rpx;
 }

@@ -2,6 +2,8 @@
   <!-- 用户信息 -->
   <view class="user">
     <view class="user-header" style="background-color:{{userHeaderBGC}}">
+			<!-- 导航栏标题 -->
+			<view class="navigation-title" style="padding-top:{{statusBarHeight}}px">个人中心</view>
       <!-- 已登录 -->
       <view wx:if="{{ isLogin }}" class="user-header-cont">
         <button class="btn-normal" catchtap="getUserInfo">
@@ -34,7 +36,7 @@
       <!-- 未登录 -->
       <view wx:else class="user-header-cont" catchtap="onLogin">
         <view class="user-header-avatar">
-          <image src="/images/default-avatar.jpg"></image>
+          <image src="/images/default-avatar.png"></image>
         </view>
         <view class="user-header-cont-name">点击登录</view>
       </view>
@@ -44,19 +46,20 @@
       <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">
         <button formType="submit" class="btn-normal">
           <view class="order-navbar-header dis-flex">
-            <text class="f-30">我的订单</text>
+            <text class="f-40">我的订单</text>
             <view class="dis-flex flex-y-center">
-              <text class="f-24 col-6">全部订单</text>
+              <text class="f-28 col-6">全部订单</text>
               <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
             </view>
           </view>
         </button>
+				<view class="line"></view>
       </form>
       
       <view class="order-navbar-footer dis-flex m-top10">
         <view class="order-navbar-item flex-box">
           <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">
-            <button formType="submit" class="btn-normal">
+            <button formType="submit" class="btn-normal"> 
               <text class="order-navbar__icon iconfont icon-form"></text>
               <text class="order-navbar__name">全部订单</text>
             </button>
@@ -93,8 +96,57 @@
     </view>
   </view>
 
+	<!-- 菜单 -->
+	<view class="menu">
+		<view class="menu_item">
+			<view class="menu_item_left">
+				<view class="menu_item_left_img">
+					<image src="/images/menu1.png" mode="scaleToFill"/>
+				</view>
+				<view class="menu_item_text">我的预约</view>
+			</view>
+			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
+		</view>
+		<view class="menu_item">
+			<view class="menu_item_left">
+				<view class="menu_item_left_img">
+					<image src="/images/menu2.png" mode="scaleToFill"/>
+				</view>
+				<view class="menu_item_text">就诊人管理</view>
+			</view>
+			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
+		</view>
+		<view class="menu_item">
+			<view class="menu_item_left">
+				<view class="menu_item_left_img">
+					<image src="/images/menu3.png" mode="scaleToFill"/>
+				</view>
+				<view class="menu_item_text">联系客服</view>
+			</view>
+			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
+		</view>
+		<view class="menu_item">
+			<view class="menu_item_left">
+				<view class="menu_item_left_img">
+					<image src="/images/menu4.png" mode="scaleToFill"/>
+				</view>
+				<view class="menu_item_text">收货地址</view>
+			</view>
+			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
+		</view>
+		<view class="menu_item">
+			<view class="menu_item_left">
+				<view class="menu_item_left_img">
+					<image src="/images/menu5.png" mode="scaleToFill"/>
+				</view>
+				<view class="menu_item_text">设置</view>
+			</view>
+			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
+		</view>
+	</view>
+
   <!-- 我的钱包 -->
-  <view class="my-asset dis-flex" wx:if="{{role <= 1}}">
+  <!-- <view class="my-asset dis-flex" wx:if="{{role <= 1}}">
     <view class="asset-left flex-box dis-flex flex-x-center">
       <view class="asset-left_item">
         <form bindsubmit="onTargetWallet" report-submit="true" wx:if="{{ setting.open_recharge }}">
@@ -158,11 +210,11 @@
         </form>
       </view>
     </view>
-  </view>
+  </view> -->
 
   <!-- 菜单列表 -->
-  <view class="menus-list">
-    <form wx:for="{{ menus }}" wx:key="this" bindsubmit="onTargetMenus" data-url="{{item.url}}" report-submit="true">
+  <!-- <view class="menus-list"> -->
+    <!-- <form wx:for="{{ menus }}" wx:key="this" bindsubmit="onTargetMenus" data-url="{{item.url}}" report-submit="true">
       <button formType="submit" class="btn-normal">
         <view class="menus-item dis-flex b-f">
 
@@ -177,12 +229,12 @@
 
         </view>
       </button>
-    </form>
+    </form> -->
     <!-- <navigator class="" url="/pages/warehouse/index/index" open-type="navigate">仓库</navigator>> -->
-    <view wx:if="{{isLogin}}" class="no-login-btn">
+    <!-- <view wx:if="{{isLogin}}" class="no-login-btn">
       <button class="btn-normal" type="danger" lang="zh_CN" catchtap="onLogout">退出</button>
-    </view>
-  </view>
+    </view> -->
+  <!-- </view> -->
 
 
   <mp-dialog mask="{{true}}" show="{{false}}" buttons="{{[{text: '确定'}]}}">

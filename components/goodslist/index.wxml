@@ -1,0 +1,24 @@
+<view class="goodslist">
+  <view class="img">
+		<image src="{{goodsItem.goods_image}}" mode="scaleToFill"/>
+	</view>
+	<view class="content">
+		<view>
+			<view class="title">{{goodsItem.goods_name}}</view>
+			<view class="tag">{{goodsItem.goods_sales}}人想买</view>
+		</view>
+		<view class="foot">
+			<view class="priceinfo">
+				<view class="marketprice">
+					市场价<text>￥{{goodsItem.goods_sku.line_price}}</text>
+				</view>
+				<view class="price">
+					￥<text>{{goodsItem.goods_sku.goods_price}}</text>
+				</view>
+			</view>
+			<view>
+				<Button>抢购</Button>
+			</view>
+		</view>
+	</view>
+</view>
