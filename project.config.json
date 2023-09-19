@@ -49,7 +49,30 @@
   "projectname": "%E6%B3%89%E5%A4%A9%E4%B8%8B",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "condition": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/troupe/index",
+          "pathName": "pages/troupe/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/invite/index",
+          "pathName": "pages/invite/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/live/index",
+          "pathName": "pages/live/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
