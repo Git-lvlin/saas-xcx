@@ -2,10 +2,10 @@
 
   <!-- 顶部选项卡 -->
   <view wx:if="{{ isShowTab }}" class="swiper-tab dis-flex flex-y-center flex-x-around">
-    <view wx:for="{{ DeliveryTypeEnum }}" wx:key="this"
+    <view wx:for="{{ DeliveryTypeEnum2 }}" wx:key="this"
       class="swiper-tab-item {{ curDelivery == item.value ? 'on' : '' }}" data-current="{{ item.value }}"
       catchtap="onSwichDelivery">
-      {{ item.name }}
+        {{ item.name }}
     </view>
   </view>
 
@@ -90,7 +90,6 @@
 
   <!-- 门店配送：配送地址 -->
   <block wx:if="{{ curDelivery == DeliveryTypeEnum.STOREDELIVERY.value }}">
-
     <view catchtap="onSelectAddress" class="flow-delivery">
       <view class="flow-delivery__detail dis-flex flex-y-center">
         <view class="detail-location dis-flex">

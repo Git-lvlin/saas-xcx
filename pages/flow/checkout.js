@@ -27,6 +27,7 @@ Page({
     // 配送方式
     isShowTab: false,
     DeliveryTypeEnum,
+    DeliveryTypeEnum2: {},
     curDelivery: null,
 
     // 支付方式
@@ -81,6 +82,7 @@ Page({
         _this.getShopList(res.longitude, res.latitude);
       });
     }
+
   },
 
   /**
@@ -116,6 +118,22 @@ Page({
       data.curDelivery = resData.delivery;
       // 如果只有一种配送方式则不显示选项卡
       data.isShowTab = resData.setting.delivery.length > 1;
+
+      const o = {}
+      var obj;
+      // resData.setting.delivery 后端配置的 配送方式
+      for(obj in DeliveryTypeEnum) {
+        if (resData.setting.delivery.indexOf(DeliveryTypeEnum[obj].value.toString()) != -1) {
+          o[obj] = DeliveryTypeEnum[obj]
+        }
+      }
+      _this.setData({
+        DeliveryTypeEnum2: o
+      },
+        () => {
+        }
+      )
+
       // 上门自提联系信息
       if (_this.data.linkman === '') {
         data.linkman = resData.last_extract.linkman;
