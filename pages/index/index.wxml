@@ -3,13 +3,98 @@
     <navigator url="/pages/globalSearch/index">请输入关键字</navigator>
   </view> -->
   <!-- DIY组件 -->
-  <diy-component diyItems="{{ items }}"></diy-component>
+  <!-- <diy-component diyItems="{{ items }}"></diy-component> -->
 
   <!-- 底线 -->
   <!-- <view class="title-footer p-r">
     <text class="f-24 col-9 cont">我是有底线的</text>
     <view class="hr"></view>
   </view> -->
+
+  <view class="custom-nav" style=" height: {{navBarHeight}}rpx;"></view>
+  <view class="page_title">约购西医诊所</view>
+
+  <view class="banner">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="674" height="218"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  </view>
+
+  
+  <view class="appointment_time">
+      <view class="business_hours">
+         <view>
+            <view class="hours">营业时间：</view>
+            <view class="week">周一至周六 </view>
+            <view class="week">09:00-22:00</view>
+         </view>
+         <image class="crisscross" src="../../images/crisscross.png"/>
+      </view>
+      <view class="booking_register">
+         <view>
+            <view class="booking">预约挂号：</view>
+            <view class="line">线上约号免排队</view>
+         </view>
+         <image class="doctor" src="../../images/doctor.png"/>
+      </view>
+  </view>
+
+  <view class="announcement">
+     <image class="announcement_png" src="../../images/announcement.png"/>
+     <view class="announcement_title">
+       <view>门诊营业时间变更为：</view>
+       <view>上午(8:30-12:00)，下午(14:00-18:30)</view>
+     </view>
+  </view>
+
+  <view class="project">
+     <view class="project_content">
+       <image class="doctor_project" src="../../images/doctor_referral.png"/>
+       <p class="doctor_referral">医生介绍</p>
+     </view>
+     <view class="project_content">
+       <image class="doctor_project" src="../../images/diagnostic_material.png"/>
+       <p class="doctor_referral">诊疗项目</p>
+     </view>
+     <view class="project_content">
+       <image class="doctor_project" src="../../images/scope_visit.png"/>
+       <p class="doctor_referral">看诊范围</p>
+     </view>
+     <view class="project_content">
+       <image class="doctor_project" src="../../images/clinic_address.png"/>
+       <p class="doctor_referral">诊所地址</p>
+     </view>
+  </view>
+
+  <view class="goods_list">
+     <view class="goods_interface">
+       <image class="goods_png" src="../../images/herpes_zoster.png"/>
+       <view class="goods_introduce">
+         <view class="goods_price">
+           <span>￥</span>
+           <span>1138</span>
+           <span>224人想买</span>
+         </view>
+         <view class="goods_title">秒杀现货带状疱疹疫苗】北京上海杭州广州深圳hpv疫苗</view>
+       </view>
+     </view>
+     <view class="goods_interface">
+       <image class="goods_png" src="../../images/subscribe.png"/>
+       <view class="goods_introduce">
+         <view class="goods_price">
+           <span>￥</span>
+           <span>1138</span>
+           <span>167人想买</span>
+         </view>
+         <view class="goods_title">秒杀现货9价疫苗】北京上海杭州广州深圳hpv疫苗</view>
+       </view>
+     </view>
+  </view>
+
   <view class="store__list">
     <view class="weui-flex" wx:for="{{storeList}}" wx:key="shop_id" catchtap="checkoutStoreInformation" data-id="{{item.shop_id}}">
       <view>
