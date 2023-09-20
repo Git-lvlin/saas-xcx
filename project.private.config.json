@@ -5,7 +5,21 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/user/index",
+          "pathName": "pages/category/list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/my-appointment/index",
           "query": "",
           "launchMode": "default",
           "scene": null

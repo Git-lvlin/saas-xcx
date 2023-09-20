@@ -1,0 +1,19 @@
+<view class="list">
+	<view class="list_img">
+		<image src="/images/doctor_female.png" mode="scaleToFill"/>
+	</view>
+	<view class="list_content">
+		<view class="list_info">
+			<view class="list_doctor">{{}}</view>
+			<view class="list_amount">{{}}</view>
+		</view>
+		<view class="list_time">{{}}</view>
+		<view class="list_opt">
+			<view>就诊人:{{}}</view>
+			<block wx-if="{{active === 0}}">
+				<button class="btn" bind:tap="onCancel">取消</button>
+			</block>
+			<block wx-else></block>
+		</view>
+	</view>
+</view>

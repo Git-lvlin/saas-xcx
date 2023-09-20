@@ -98,23 +98,27 @@
 
 	<!-- 菜单 -->
 	<view class="menu">
-		<view class="menu_item">
-			<view class="menu_item_left">
-				<view class="menu_item_left_img">
-					<image src="/images/menu1.png" mode="scaleToFill"/>
+		<view bind:tap="onTargetMySub" data-type="sub">
+			<view class="menu_item">
+				<view class="menu_item_left">
+					<view class="menu_item_left_img">
+						<image src="/images/menu1.png" mode="scaleToFill"/>
+					</view>
+					<view class="menu_item_text">我的预约</view>
 				</view>
-				<view class="menu_item_text">我的预约</view>
+				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
-			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 		</view>
-		<view class="menu_item">
-			<view class="menu_item_left">
-				<view class="menu_item_left_img">
-					<image src="/images/menu2.png" mode="scaleToFill"/>
+		<view bind:tap="onTargetMySub" data-type="visitor">
+			<view class="menu_item">
+				<view class="menu_item_left">
+					<view class="menu_item_left_img">
+						<image src="/images/menu2.png" mode="scaleToFill"/>
+					</view>
+					<view class="menu_item_text">就诊人管理</view>
 				</view>
-				<view class="menu_item_text">就诊人管理</view>
+				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
-			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 		</view>
 		<view class="menu_item">
 			<view class="menu_item_left">
@@ -139,7 +143,7 @@
 				<view class="menu_item_left_img">
 					<image src="/images/menu5.png" mode="scaleToFill"/>
 				</view>
-				<view class="menu_item_text">设置</view>
+				<view class="menu_item_text">我的报告</view>
 			</view>
 			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 		</view>

@@ -213,7 +213,21 @@ Page({
       //App.globalData.role = role;
       _this.saveUserRole();
     });
-  },
+	},
+	
+	onTargetMySub(e) {
+		console.log(e);
+		if (!this.onCheckLogin()) {
+      return false;
+		}
+
+		const urls = {
+			sub: '/pages/user/my-appointment/index'
+		}
+		wx.navigateTo({
+			url: urls[e.currentTarget.dataset.type]
+		})
+	},
 
   /**
    * 订单导航跳转

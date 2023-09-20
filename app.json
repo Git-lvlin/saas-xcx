@@ -81,7 +81,9 @@
     "pages/invite/index",
     "pages/inviteAffirm/index",
     "pages/globalSearch/index",
-    "pages/reserve/reserve"
+    "pages/reserve/reserve",
+    "pages/user/my-appointment/index",
+    "pages/user/my-appointment/component/card"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
