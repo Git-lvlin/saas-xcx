@@ -1,3 +1,60 @@
 <view class="container">
-  
+  <van-tabs line-height="{{0}}" title-active-color="#fff" title-inactive-color="#000" active="{{ active }}" bind:change="onChange">
+    <van-tab wx:for="{{text}}" text="{{item}}" wx:key="index">
+      <view class="content">
+        <van-cell-group>
+          <van-cell>
+            <view slot="title" class="title_wrap">
+              <image src="/images/doctor_male.png" />
+              <view>
+                <view class="title">刘少峰 副主任</view>
+                <view class="sub_title van-ellipsis">消化内科，擅长：传染病...</view>
+              </view>
+            </view>
+            <van-button type="info">预约</van-button>
+          </van-cell>
+        </van-cell-group>
+      </view>
+    </van-tab>
+  </van-tabs>
+  <van-popup show="{{ 1 }}" round position="bottom" custom-style="height: 80%" closeable>
+    <view class="pop-content">
+      <view class="title_wrap_box">
+        <view class="title_wrap">
+          <image src="/images/doctor_male.png" />
+          <view>
+            <view class="title">刘少峰 副主任</view>
+            <view class="sub_title van-ellipsis">消化内科，擅长：传染病...</view>
+          </view>
+        </view>
+      </view>
+      <view class="tab_wrap">
+        <van-tabs line-height="{{0}}" title-active-color="#fff" title-inactive-color="#000" active="{{ active }}" bind:change="onChange">
+          <van-tab wx:for="{{text}}" text="{{item}}" wx:key="index">
+            <view class="pop_tab_content">
+              <view class="pop_tab_title">就诊时间</view>
+              <van-radio-group class="radio_group" value="{{ radio }}" bind:change="onChange">
+                <van-radio use-icon-slot value="{{ radio }}" name="1">
+                  <view class="radio {{radio=='1'?'radio_active':''}}">
+                    <view>8:00 - 12:00 </view>
+                    <view class="sub">剩余100个号</view>
+                  </view>
+                </van-radio>
+                <van-radio use-icon-slot value="{{ radio }}" name="2">
+                  <view class="radio {{radio=='2'?'radio_active':''}}">
+                    <view>8:00 - 12:00 </view>
+                    <view class="sub">剩余100个号</view>
+                  </view>
+                </van-radio>
+              </van-radio-group>
+            </view>
+          </van-tab>
+        </van-tabs>
+      </view>
+      <view class="footer">
+        <view class="price">¥35</view>
+        <view class="btn_wrap"><van-button type="info" size="large">确认预约</van-button></view>
+      </view>
+    </view>
+  </van-popup>
 </view>

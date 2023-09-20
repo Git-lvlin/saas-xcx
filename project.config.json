@@ -1,6 +1,10 @@
 {
   "description": "项目配置文件",
   "setting": {
+    "useCompilerPlugins": [
+      "typescript",
+      "less"
+    ],
     "urlCheck": true,
     "es6": true,
     "enhance": true,
@@ -28,17 +32,26 @@
     "enableEngineNative": false,
     "useIsolateContext": true,
     "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ],
     "minifyWXSS": true,
     "disableUseStrict": false,
     "minifyWXML": true,
     "showES6CompileOption": false,
+<<<<<<< HEAD
     "useCompilerPlugins": false,
     "condition": false,
     "ignoreUploadUnusedFiles": true,
     "useApiHook": false,
     "useApiHostProcess": false
+=======
+    "condition": false
+>>>>>>> 0e30a31d38020d0e148bee0ac5077c806c0311e3
   },
   "compileType": "miniprogram",
   "simulatorType": "wechat",
