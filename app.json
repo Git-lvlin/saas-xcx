@@ -83,7 +83,8 @@
     "pages/globalSearch/index",
     "pages/reserve/reserve",
     "pages/user/my-appointment/index",
-    "pages/user/my-appointment/component/card"
+    "pages/user/my-appointment/component/card",
+    "pages/doctorInfo/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

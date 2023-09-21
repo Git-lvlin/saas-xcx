@@ -1,0 +1,22 @@
+<view>
+	<view class="info">
+		<view class="avatar">
+			<image src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+		</view>
+		<view class="introduce">
+			<view class="name">刘少峰 副主任</view>
+			<view class="skill">
+				<text>擅长：脊柱侧弯、胸椎管狭窄症、腰椎间盘突出症、颈椎病、脊柱损伤、脊柱侧弯</text>
+			</view>
+		</view>
+	</view>
+	<view class="content">
+		<view class="title">
+			<view class="line"></view>
+			<view class="title_text">
+				<text>医生介绍</text>
+			</view>
+		</view>
+		<rich-text nodes="{{htmlSnip}}"></rich-text>
+	</view>
+</view>
