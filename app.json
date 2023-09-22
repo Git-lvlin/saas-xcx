@@ -81,7 +81,8 @@
     "pages/invite/index",
     "pages/inviteAffirm/index",
     "pages/globalSearch/index",
-    "pages/reserve/reserve"
+    "pages/reserve/reserve",
+    "pages/reserve/patientInformation"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

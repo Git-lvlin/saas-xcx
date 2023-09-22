@@ -1,3 +1,9 @@
+.text_wrap {
+  color: #909090;
+  font-size: 28rpx;
+  padding: 10rpx;
+}
+
 .van-tabs__nav {
   padding: 10rpx;
 }

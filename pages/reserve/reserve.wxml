@@ -1,49 +1,46 @@
 <view class="container">
-  <van-tabs line-height="{{0}}" title-active-color="#fff" title-inactive-color="#000" active="{{ active }}" bind:change="onChange">
-    <van-tab wx:for="{{text}}" text="{{item}}" wx:key="index">
+  <view class="text_wrap">
+    <view>就诊日期</view>
+  </view>
+  <van-tabs line-height="{{0}}" title-active-color="#fff" title-inactive-color="#000" use-before-change bind:before-change="beforeChange">
+    <van-tab wx:for="{{dateList}}" text="{{item}}" wx:key="index">
       <view class="content">
         <van-cell-group>
-          <van-cell>
+          <van-cell wx:for="{{doctor}}" wx:key="index">
             <view slot="title" class="title_wrap">
-              <image src="/images/doctor_male.png" />
+              <image src="{{item.avatar}}" />
               <view>
-                <view class="title">刘少峰 副主任</view>
-                <view class="sub_title van-ellipsis">消化内科，擅长：传染病...</view>
+                <view class="title van-ellipsis">{{item.title}}</view>
+                <view class="sub_title van-ellipsis">{{item.summary}}</view>
               </view>
             </view>
-            <van-button type="info">预约</van-button>
+            <van-button type="info" data-data="{{item}}" data-index="{{index}}" bindtap="getDoctorHandle">预约</van-button>
           </van-cell>
         </van-cell-group>
       </view>
     </van-tab>
   </van-tabs>
-  <van-popup show="{{ 1 }}" round position="bottom" custom-style="height: 80%" closeable>
+  <van-popup show="{{ popVisible }}" round position="bottom" custom-style="height: 80%" closeable bind:close="onClose">
     <view class="pop-content">
       <view class="title_wrap_box">
         <view class="title_wrap">
-          <image src="/images/doctor_male.png" />
+          <image src="{{selectDoctorInfo.doctor.avatar}}" />
           <view>
-            <view class="title">刘少峰 副主任</view>
-            <view class="sub_title van-ellipsis">消化内科，擅长：传染病...</view>
+            <view class="title van-ellipsis">{{selectDoctorInfo.doctor.title}}</view>
+            <view class="sub_title van-ellipsis">{{selectDoctorInfo.doctor.summary}}</view>
           </view>
         </view>
       </view>
       <view class="tab_wrap">
-        <van-tabs line-height="{{0}}" title-active-color="#fff" title-inactive-color="#000" active="{{ active }}" bind:change="onChange">
-          <van-tab wx:for="{{text}}" text="{{item}}" wx:key="index">
+        <van-tabs id="van-tabs" line-height="{{0}}" title-active-color="#fff" title-inactive-color="#000" active="{{ active }}" bind:change="tabChange">
+          <van-tab wx:for="{{selectDoctorInfo.registration_day}}" text="{{item}}" wx:key="index">
             <view class="pop_tab_content">
               <view class="pop_tab_title">就诊时间</view>
-              <van-radio-group class="radio_group" value="{{ radio }}" bind:change="onChange">
-                <van-radio use-icon-slot value="{{ radio }}" name="1">
-                  <view class="radio {{radio=='1'?'radio_active':''}}">
-                    <view>8:00 - 12:00 </view>
-                    <view class="sub">剩余100个号</view>
-                  </view>
-                </van-radio>
-                <van-radio use-icon-slot value="{{ radio }}" name="2">
-                  <view class="radio {{radio=='2'?'radio_active':''}}">
-                    <view>8:00 - 12:00 </view>
-                    <view class="sub">剩余100个号</view>
+              <van-radio-group class="radio_group" value="{{ radio }}" bind:change="radioChange">
+                <van-radio wx:for="{{selectDoctorInfo.registration_day[index].work_plan}}" wx:key="index" wx:for-index="idx" use-icon-slot name="{{idx}}" disabled="{{item.quantity === 0}}">
+                  <view class="radio {{radio==idx?'radio_active':''}}">
+                    <view>{{item.start}} - {{item.end}}</view>
+                    <view class="sub">剩余{{item.quantity}}个号</view>
                   </view>
                 </van-radio>
               </van-radio-group>
@@ -52,8 +49,10 @@
         </van-tabs>
       </view>
       <view class="footer">
-        <view class="price">¥35</view>
-        <view class="btn_wrap"><van-button type="info" size="large">确认预约</van-button></view>
+        <view class="price">¥{{selectDoctorInfo.doctor.copay}}</view>
+        <view class="btn_wrap">
+          <van-button type="info" size="large" disabled="{{!radio && radio !=0}}" bindtap="submit">确认预约</van-button>
+        </view>
       </view>
     </view>
   </van-popup>

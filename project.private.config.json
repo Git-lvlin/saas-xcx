@@ -16,6 +16,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/reserve/patientInformation",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
@@ -23,7 +30,7 @@
   "projectname": "saas-xcx",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false
+    "urlCheck": true
   },
   "libVersion": "3.0.2"
 }

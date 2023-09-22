@@ -129,10 +129,7 @@ Page({
       }
       _this.setData({
         DeliveryTypeEnum2: o
-      },
-        () => {
-        }
-      )
+      })
 
       // 上门自提联系信息
       if (_this.data.linkman === '') {
@@ -149,6 +146,8 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
+
+    console.log('_this.data.curDelivery',_this.data.curDelivery);
 
     // 请求的参数
     let params = {
