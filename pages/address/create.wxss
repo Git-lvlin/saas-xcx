@@ -5,7 +5,35 @@
 }
 
 .address-box .left-name {
-  width: 85px;
+	width: 200rpx;
+	font-weight: 400;
+	color: #666666;
+	font-size: 32rpx;
+}
+
+.address-box textarea {
+	width: 100%;
+	height: 180rpx;
+}
+
+.default_address {
+	margin-top: 18rpx;
+	background: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 46rpx 32rpx;
+}
+
+.default_address .default_address_left {
+	color: #666666;
+	font-size: 32rpx;
+	font-family: OPPOSans-Regular, OPPOSans;
+	font-weight: 400;
+}
+
+.address_content {
+	margin-top: 18rpx;
 }
 
 .address-cont-title .list {
@@ -102,7 +130,6 @@ picker-view-column view {
 .address-box .right-cont input {
   width: 100%;
   font-size: 30rpx;
-  color: #444;
 }
 
 .f-34 {
@@ -159,4 +186,23 @@ picker-view-column view {
 
 .m-top35 {
   margin-top: 35rpx;
+}
+
+.submit_btn {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+.submit_btn button{
+	background-color: #408CFF;
+	color: #fff;
+	font-weight: 700;
+	font-size: 40rpx;
+	text-align: center;
+}
+
+.placeholder_select {
+	font-size: 32rpx;
+	color: #A5A5A5;
 }

@@ -12,7 +12,8 @@ Page({
     name: '',
     region: '',
     phone: '',
-    detail: '',
+		detail: '',
+		default: '',
     error: '',
   },
 
@@ -28,7 +29,7 @@ Page({
    */
   saveData: function(e) {
     let _this = this,
-      values = e.detail.value
+    values = e.detail.value
     values.region = this.data.region;
 
 
@@ -61,7 +62,7 @@ Page({
    */
   validation: function(values) {
     if (values.name === '') {
-      this.data.error = '收件人不能为空';
+      this.data.error = '收货人不能为空';
       return false;
     }
     if (values.phone.length < 1) {

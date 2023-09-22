@@ -1,0 +1,22 @@
+<view>
+	<view class="info">
+		<view class="avatar">
+			<image src="" mode="aspectFill"/>
+		</view>
+		<view class="introduce">
+			<view class="name"></view>
+			<view class="skill">
+				<text></text>
+			</view>
+		</view>
+	</view>
+	<view class="content">
+		<view class="title">
+			<view class="line"></view>
+			<view class="title_text">
+				<text>医生介绍</text>
+			</view>
+		</view>
+		<rich-text nodes="{{htmlSnip}}"></rich-text>
+	</view>
+</view>

@@ -8,7 +8,21 @@ Page({
     // 页面元素
     //items: {},
     scrollTop: 0,
-    storeList: []
+    storeList: [],
+    imgUrls: [
+      '../../images/banner.png',
+      '../../images/banner.png',
+      '../../images/banner.png'
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    navBarHeight: 0
+  },
+
+  properties: {
+    diyItems: Object
   },
 
   /**
@@ -42,7 +56,13 @@ Page({
         console.log(res.code)
       }
     })
-
+    
+    //获取状态栏高度
+    const systemInfo = wx.getSystemInfoSync();
+    const navBarHeight = systemInfo.statusBarHeight + 44; // 44px 是微信小程序导航栏的默认高度
+    this.setData({
+      navBarHeight: navBarHeight
+    })
   },
 
   /**

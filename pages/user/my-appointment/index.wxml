@@ -1,0 +1,22 @@
+<view>
+	<van-tabs 
+		active="{{ active }}" 
+		color='#408CFF' 
+		title-active-color="#408CFF"
+		title-inactive-color="#3D3D3D"
+		bind:change="onChange"
+	>
+		<van-tab title="待就诊" title-style="tab">
+			<my-card active="{{active}}"></my-card>
+		</van-tab>
+		<van-tab title="已就诊">
+			<my-card active="{{active}}"></my-card>
+		</van-tab>
+		<van-tab title="已取消">
+			<my-card active="{{active}}"></my-card>
+		</van-tab>
+		<van-tab title="已过期">
+			<my-card active="{{active}}"></my-card>
+		</van-tab>
+	</van-tabs>
+</view>

@@ -115,3 +115,225 @@
   padding: 0 10px;
   font-size: 28rpx;
 }
+
+.custom-nav {
+  background: #3786FF;
+}
+
+.page_title{
+  width: 750rpx;
+  height: 88rpx;
+  background: #3786FF;
+  border-radius: 0rpx 0rpx 0rpx 0rpx;
+  opacity: 1;
+  font-size: 40rpx;
+  font-family: OPPOSans-Heavy, OPPOSans;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 88rpx;
+  padding-left: 38rpx;
+}
+
+.banner{
+  width: 750rpx;
+  padding-top: 46rpx;
+  background: linear-gradient(180deg, #3786FF 0%, rgba(0,101,255,0) 100%);
+  border-radius: 0rpx 0rpx 0rpx 0rpx;
+  opacity: 1;
+}
+
+.slide-image{
+  width: 674rpx;
+  height: 218rpx;
+}
+
+.appointment_time{
+  display: flex;
+  justify-content: space-around;
+}
+
+.business_hours{
+  width: 344rpx;
+  height: 144rpx;
+  background: #FDF0E3;
+  border-radius: 12rpx 12rpx 12rpx 12rpx;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
+
+.hours{
+  font-size: 40rpx;
+  font-family: OPPOSans-Bold, OPPOSans;
+  font-weight: 700;
+  color: #E55923;
+}
+
+.week{
+  font-size: 26rpx;
+  font-family: OPPOSans-Medium, OPPOSans;
+  font-weight: 500;
+  color: #C87859;
+  line-height: 16px;
+}
+
+.crisscross{
+  width:104rpx;
+  height:82rpx;
+}
+
+.booking_register{
+  width: 344rpx;
+  height: 144rpx;
+  background: #EBF1FD;
+  border-radius: 12rpx 12rpx 12rpx 12rpx;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
+
+.booking{
+  font-size: 40rpx;
+  font-family: OPPOSans-Bold, OPPOSans;
+  font-weight: 700;
+  color: #2868FF;
+}
+
+.line{
+  font-size: 32rpx;
+  font-family: OPPOSans-Medium, OPPOSans;
+  font-weight: 500;
+  color: #6390E3;
+}
+
+.doctor{
+  width:82rpx;
+  height:84rpx;
+}
+
+.doctor_project{
+  width: 144rpx;
+  height: 144rpx;
+}
+
+.doctor_referral{
+  font-size: 32rpx;
+  font-family: OPPOSans-Medium, OPPOSans;
+  font-weight: 500;
+  color: #676767;
+}
+
+.announcement{
+  width: 708rpx;
+  height: 122rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(214,220,243,0.4);
+  border-radius: 12rpx 12rpx 12rpx 12rpx;
+  opacity: 1;
+  margin: 32rpx auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.announcement_png{
+  width: 94rpx;
+  height: 94rpx;
+}
+
+.announcement_title{
+  font-size: 32rpx;
+  font-family: OPPOSans-Medium, OPPOSans;
+  font-weight: 500;
+  color: #707481;
+}
+
+.project{
+  display: flex;
+  justify-content: space-around;
+  width: 708rpx;
+  height: 222rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(214,220,243,0.4);
+  border-radius: 12rpx 12rpx 12rpx 12rpx;
+  opacity: 1;
+  margin: 32rpx auto;
+}
+
+.project_content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.goods_list{
+  
+}
+
+.goods_interface{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 36rpx;
+}
+
+.goods_png{
+  width: 708rpx;
+  height: 708rpx;
+}
+
+.goods_introduce{
+  width: 708rpx;
+  height: 210rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(214,220,243,0.4);
+  border-radius: 0rpx 0rpx 12rpx 12rpx;
+  opacity: 1;
+}
+
+.goods_price{
+  display: flex;
+  align-items: center;
+  margin: 26rpx 0 0 28rpx;
+}
+
+.goods_price span:nth-child(1){
+  font-size: 24rpx;
+  font-family: OPPOSans-Bold, OPPOSans;
+  font-weight: 700;
+  color: #FF0000;
+}
+
+.goods_price span:nth-child(2){
+  font-size: 44rpx;
+  font-family: OPPOSans-Heavy, OPPOSans;
+  font-weight: 900;
+  color: #FF0000;
+}
+
+.goods_price span:nth-child(3){
+  width: 122rpx;
+  height: 34rpx;
+  display: inline-block;
+  text-align: center;
+  background: #FFE8E9;
+  border-radius: 4rpx 4rpx 4rpx 4rpx;
+  opacity: 1;
+  font-size: 20rpx;
+  font-family: OPPOSans-Regular, OPPOSans;
+  font-weight: 400;
+  color: #FF0000;
+  margin-left: 15rpx;
+}
+
+.goods_title{
+  width: 640rpx;
+  height: 96rpx;
+  font-size: 40rpx;
+  font-family: OPPOSans-Bold, OPPOSans;
+  font-weight: 700;
+  color: #333333;
+  line-height: 48rpx;
+  margin: 0 0 26rpx 28rpx;
+}
