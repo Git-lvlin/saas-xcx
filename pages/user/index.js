@@ -216,13 +216,13 @@ Page({
 	},
 	
 	onTargetMySub(e) {
-		console.log(e);
 		if (!this.onCheckLogin()) {
       return false;
 		}
 
 		const urls = {
-			sub: '/pages/user/my-appointment/index'
+			sub: '/pages/user/my-appointment/index',
+			address: '/pages/address/index'
 		}
 		wx.navigateTo({
 			url: urls[e.currentTarget.dataset.type]

@@ -5,7 +5,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/doctorInfo/index",
+          "pathName": "pages/address/index",
           "query": "",
           "launchMode": "default",
           "scene": null

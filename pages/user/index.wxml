@@ -129,14 +129,16 @@
 			</view>
 			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 		</view>
-		<view class="menu_item">
-			<view class="menu_item_left">
-				<view class="menu_item_left_img">
-					<image src="/images/menu4.png" mode="scaleToFill"/>
+		<view bind:tap="onTargetMySub" data-type="address">
+			<view class="menu_item">
+				<view class="menu_item_left">
+					<view class="menu_item_left_img">
+						<image src="/images/menu4.png" mode="scaleToFill"/>
+					</view>
+					<view class="menu_item_text">收货地址</view>
 				</view>
-				<view class="menu_item_text">收货地址</view>
+				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
-			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 		</view>
 		<view class="menu_item">
 			<view class="menu_item_left">
