@@ -62,7 +62,7 @@ App({
     _this.globalData.role = wx.getStorageSync('role') || 0;
   },
 
-  _wxLoginSuccess(resp0) {
+  _wxLoginSuccess(resp0, cb) {
     let _this = this;
     // 微信
     if (resp0.code) {
@@ -110,6 +110,7 @@ App({
                 url: '/pages/inviteAffirm/index',
               })
             }
+            cb && cb()
           } else {}
         }
       })
@@ -536,47 +537,52 @@ App({
     if (!_this.globalData.session_key) {
       wx.login({
         success: resp0 => {
-          _this._wxLoginSuccess(resp0)
+          _this._wxLoginSuccess(resp0,()=>{
+            wx.request({
+              url: _this.api_root + 'wxapp.Openid/save',
+              data: {
+                wxapp_id: _this.getWxappId(),
+                ciphertext: e.detail.encryptedData,
+                iv: e.detail.iv,
+                skey: _this.globalData.session_key,
+                openid: _this.globalData.openid,
+                referee_id: _this.getRefereeid(),
+                invite_code: _this.getOtherInviteCode()
+              },
+              method: "post",
+              success: function (resp) {
+                var result = resp.data
+                // 后台PHP 的 code = 1 表示成功
+                if (result && result.code == 1) {
+                  _this.globalData.mobile_acquired = true
+                  // 记录token user_id
+                  // if (result.data.userinfo_acquired) {
+                  //   wx.setStorageSync('token', result.data.token);
+                  //   wx.setStorageSync('user_id', result.data.user_id);
+                  //   wx.setStorageSync('invite_code', result.data.invite_code);
+                  // }
+                  wx.setStorageSync('token', result.data.token);
+                  wx.setStorageSync('user_id', result.data.user_id);
+                  wx.setStorageSync('invite_code', result.data.invite_code);
+                  // 执行回调函数
+                  callback && callback(result);
+                } else {
+                  wx.showToast({
+                    title: result.msg,
+                    icon: 'none',
+                    duration: 1500
+                  })
+                }
+              }
+            });
+          })
         }
       });
     }
-    if (!_this.globalData.session_key) {
-      return;
-    }
-    wx.request({
-      url: _this.api_root + 'wxapp.Openid/save',
-      data: {
-        wxapp_id: _this.getWxappId(),
-        ciphertext: e.detail.encryptedData,
-        iv: e.detail.iv,
-        skey: _this.globalData.session_key,
-        openid: _this.globalData.openid,
-        referee_id: _this.getRefereeid(),
-        invite_code: _this.getOtherInviteCode()
-      },
-      method: "post",
-      success: function (resp) {
-        var result = resp.data
-        // 后台PHP 的 code = 1 表示成功
-        if (result && result.code == 1) {
-          _this.globalData.mobile_acquired = true
-          // 记录token user_id
-          if (result.data.userinfo_acquired) {
-            wx.setStorageSync('token', result.data.token);
-            wx.setStorageSync('user_id', result.data.user_id);
-            wx.setStorageSync('invite_code', result.data.invite_code);
-          }
-          // 执行回调函数
-          callback && callback(result);
-        } else {
-          wx.showToast({
-            title: result.msg,
-            icon: 'none',
-            duration: 1500
-          })
-        }
-      }
-    });
+    // if (!_this.globalData.session_key) {
+    //   return;
+    // }
+    
   },
 
   /**

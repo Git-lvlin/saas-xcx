@@ -1,0 +1,71 @@
+.info {
+	display: flex;
+	background-color: #fff;
+	margin: 16rpx 0;
+	padding: 14rpx 32rpx 16rpx 18rpx;
+}
+.info .avatar {
+	width: 212rpx;
+	height: 212rpx;
+	border-radius: 12rpx;
+	overflow: hidden;
+}
+
+.info .avatar image {
+	width: 100%;
+	height: 100%;
+}
+
+.info .introduce {
+	flex: 1;
+	margin-left: 22rpx;
+}
+
+.info .introduce .name {
+	font-size: 40rpx;
+	font-family: OPPOSans-Bold, OPPOSans;
+	font-weight: 700;
+	color: #353535;
+}
+
+.info .introduce .skill {
+	font-size: 28rpx;
+	font-family: OPPOSans-Regular, OPPOSans;
+	font-weight: 400;
+	color: #666666;
+	margin-top: 22rpx;
+	line-height: 40rpx;
+	overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+	text-overflow: ellipsis; 
+	max-height: 132rpx;
+	word-break: break-all;
+	display: -webkit-box;
+}
+
+.content {
+	background-color: #fff;
+}
+
+.content .title {
+	display: flex;
+	align-items: center;
+	padding: 50rpx 0;
+	border-bottom: 2rpx solid #E9E9E9;
+}
+
+.content .title .line {
+	width: 10rpx;
+	height: 36rpx;
+	background-color: #408CFF;
+	margin-right: 14rpx;
+}
+
+.content .title .title_text {
+	font-size: 40rpx;
+	font-family: OPPOSans-Bold, OPPOSans;
+	font-weight: 700;
+	color: #353535;
+	line-height: 40rpx;
+}

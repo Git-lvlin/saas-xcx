@@ -12,7 +12,7 @@
   </view> -->
 
   <view class="custom-nav" style=" height: {{navBarHeight}}rpx;"></view>
-  <view class="page_title">约购西医诊所</view>
+  <view class="page_title">{{page.params.name}}</view>
 
   <view class="banner">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">

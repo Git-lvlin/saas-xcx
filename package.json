@@ -5,7 +5,8 @@
   "main": "app.js",
   "dependencies": {
     "@miniprogram-component-plus/tabs": "^1.0.0",
-    "@vant/weapp": "^1.11.0"
+    "@vant/weapp": "^1.11.0",
+    "dayjs": "^1.11.10"
   },
   "devDependencies": {
     "miniprogram-api-typings": "^3.12.0"

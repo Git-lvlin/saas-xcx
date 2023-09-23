@@ -158,9 +158,10 @@
 .select-number {
   width: 202rpx;
   height: 52rpx;
-  flex-direction: row;
+  /* flex-direction: row; */
   border: 1rpx solid rgb(231, 231, 231);
   border-radius: 5rpx;
+  display: flex;
 }
 
 .select-number .default {
