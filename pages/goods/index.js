@@ -249,8 +249,8 @@ Page({
    * 跳转购物车页面
    */
   onTriggerCart() {
-    wx.switchTab({
-      url: "../flow/index"
+    wx.navigateTo({
+      url: "/pages/flow/index"
     });
   },
 

@@ -446,6 +446,7 @@ App({
    * 支持tabBar页面
    */
   navigationTo(url) {
+    
     if (!url || url.length == 0) {
       return false;
     }
@@ -456,6 +457,7 @@ App({
         url: '/' + url
       });
     } else {
+      console.log('url',url);
       // 普通页面
       wx.navigateTo({
         url: '/' + url

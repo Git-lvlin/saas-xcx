@@ -11,14 +11,18 @@
     <view class="hr"></view>
   </view> -->
 
+  <view class="fixed">
+    <view class="custom-nav" style=" height: {{navBarHeight}}rpx;"></view>
+    <view class="page_title">{{page.params.name}}</view>
+  </view>
   <view class="custom-nav" style=" height: {{navBarHeight}}rpx;"></view>
   <view class="page_title">{{page.params.name}}</view>
 
   <view class="banner">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key="*this">
+    <block wx:for="{{bannerData.data}}" wx:key="*this">
       <swiper-item>
-        <image src="{{item}}" class="slide-image" width="674" height="218"/>
+        <image src="{{item.imgUrl}}" class="slide-image" width="674" height="218"/>
       </swiper-item>
     </block>
   </swiper>
@@ -34,7 +38,7 @@
          </view>
          <image class="crisscross" src="../../images/crisscross.png"/>
       </view>
-      <view class="booking_register">
+      <view class="booking_register" data-url="pages/reserve/reserve" bindtap="navigationTo">
          <view>
             <view class="booking">预约挂号：</view>
             <view class="line">线上约号免排队</view>
@@ -52,11 +56,11 @@
   </view>
 
   <view class="project">
-     <view class="project_content">
-       <image class="doctor_project" src="../../images/doctor_referral.png"/>
-       <p class="doctor_referral">医生介绍</p>
+     <view class="project_content" wx:for="{{navBarData.data}}" wx:key="index" data-url="{{item.linkUrl}}" bindtap="navigationTo">
+       <image class="doctor_project" src="{{item.imgUrl}}"/>
+       <p class="doctor_referral">{{item.text}}</p>
      </view>
-     <view class="project_content">
+     <!-- <view class="project_content">
        <image class="doctor_project" src="../../images/diagnostic_material.png"/>
        <p class="doctor_referral">诊疗项目</p>
      </view>
@@ -67,22 +71,22 @@
      <view class="project_content">
        <image class="doctor_project" src="../../images/clinic_address.png"/>
        <p class="doctor_referral">诊所地址</p>
-     </view>
+     </view> -->
   </view>
 
   <view class="goods_list">
-     <view class="goods_interface">
-       <image class="goods_png" src="../../images/herpes_zoster.png"/>
+     <view class="goods_interface" wx:for="{{goodsData.data}}" data-url="pages/goods/index?goods_id={{item.goods_id}}" bindtap="navigationTo">
+       <image class="goods_png" src="{{item.goods_image}}"/>
        <view class="goods_introduce">
          <view class="goods_price">
            <span>￥</span>
-           <span>1138</span>
-           <span>224人想买</span>
+           <span>{{item.goods_price}}</span>
+           <span>{{item.goods_sales}}人已买</span>
          </view>
-         <view class="goods_title">秒杀现货带状疱疹疫苗】北京上海杭州广州深圳hpv疫苗</view>
+         <view class="goods_title">{{item.goods_name}}</view>
        </view>
      </view>
-     <view class="goods_interface">
+     <!-- <view class="goods_interface">
        <image class="goods_png" src="../../images/subscribe.png"/>
        <view class="goods_introduce">
          <view class="goods_price">
@@ -92,7 +96,7 @@
          </view>
          <view class="goods_title">秒杀现货9价疫苗】北京上海杭州广州深圳hpv疫苗</view>
        </view>
-     </view>
+     </view> -->
   </view>
 
   <view class="store__list">

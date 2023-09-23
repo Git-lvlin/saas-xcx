@@ -1,5 +1,7 @@
 /* 用户信息 */
-
+.container {
+  padding-bottom: 20rpx;
+}
 .user {
   position: relative;
   background: #fff;
@@ -267,6 +269,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+  background: transparent !important;
 }
 
 .menu .menu_item .menu_item_left {

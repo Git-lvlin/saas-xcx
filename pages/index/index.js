@@ -18,7 +18,10 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    navBarHeight: 0
+    navBarHeight: 0,
+    bannerData: {},
+    navBarData: {},
+    goodsData: {},
   },
 
   properties: {
@@ -28,8 +31,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-   onLoad(options) {
-     let _this = this;
+  onLoad(options) {
+    let _this = this;
     //wx.hideTabBar()
     if (wx.getStorageSync('referee_id_Login') == 1) {
       wx.reLaunch({
@@ -47,16 +50,16 @@ Page({
     // });
 
     // 加载页面数据
-   this.getPageData();
-   this.getStoreList()
+    this.getPageData();
+    this.getStoreList()
 
-  
+
     wx.login({
-      success (res) {
+      success(res) {
         console.log(res.code)
       }
     })
-    
+
     //获取状态栏高度
     const systemInfo = wx.getSystemInfoSync();
     const navBarHeight = systemInfo.statusBarHeight + 44; // 44px 是微信小程序导航栏的默认高度
@@ -68,7 +71,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-   onShow() {
+  onShow() {
     // 更新购物车角标
     App.setCartTabBadge();
     // if (typeof this.getTabBar === 'function' &&
@@ -82,16 +85,36 @@ Page({
   /**
    * 加载页面数据
    */
-   getPageData(callback) {
+  getPageData(callback) {
     let _this = this;
     App._get('page/index', {
-      page_id:  0
+      page_id: 0
     }, result => {
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
       _this.setData(result.data);
       // 回调函数
       typeof callback === 'function' && callback();
+
+      result.data.items.forEach(item => {
+        if (item.type === 'banner') {
+          this.setData({
+            bannerData: item
+          })
+        }
+
+        if (item.type === 'navBar') {
+          this.setData({
+            navBarData: item
+          })
+        }
+
+        if (item.type === 'goods') {
+          this.setData({
+            goodsData: item
+          })
+        }
+      })
     });
   },
 
@@ -104,7 +127,7 @@ Page({
       isHighAccuracy: true,
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success(res) {
-        App.globalData.coordinate = {longitude: res.longitude, latitude: res.latitude};
+        App.globalData.coordinate = { longitude: res.longitude, latitude: res.latitude };
         App._get('shop/nearby', {
           longitude: res.longitude,
           latitude: res.latitude
@@ -119,18 +142,18 @@ Page({
           })
         })
       }
-    }) 
+    })
   },
 
   /**
    * 设置顶部导航栏
    */
-   setPageBar(page) {
+  setPageBar(page) {
     // 设置页面标题
     wx.setNavigationBarTitle({
       title: page.params.title
     });
-  
+
     wx.setStorageSync('titleTextColor', page.style.titleTextColor === 'white' ? '#ffffff' : '#000000');
     wx.setStorageSync('titleBackgroundColor', page.style.titleBackgroundColor);
     // 设置navbar标题、颜色
@@ -143,7 +166,7 @@ Page({
   /**
    * 下拉刷新
    */
-   onPullDownRefresh() {
+  onPullDownRefresh() {
     // 获取首页数据
     this.getPageData(function () {
       wx.stopPullDownRefresh();
@@ -153,7 +176,7 @@ Page({
   /**
    * 分享当前页面
    */
-   onShareAppMessage() {
+  onShareAppMessage() {
     const _this = this;
     return {
       title: _this.data.page.params.share_title,
@@ -166,7 +189,7 @@ Page({
    * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
    * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
    */
-   onShareTimeline() {
+  onShareTimeline() {
     const _this = this;
     return {
       title: _this.data.page.params.share_title,
@@ -191,13 +214,18 @@ Page({
       url: './nail_picture/nail_picture',
     })
   },
-  
+
   // 跳转水店详情页
   checkoutStoreInformation(e) {
-    let id  = e.currentTarget.dataset.id;
+    let id = e.currentTarget.dataset.id;
     App.globalData.storeInfo = this.data.storeList.find(item => item.shop_id === id)
     wx.navigateTo({
       url: "./storeInformation/index"
     })
-  }
+  },
+
+  navigationTo(e) {
+    const { url } = e.currentTarget.dataset
+    App.navigationTo(url)
+  },
 });

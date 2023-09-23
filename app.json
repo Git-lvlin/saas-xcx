@@ -85,7 +85,8 @@
     "pages/reserve/patientInformation",
     "pages/user/my-appointment/index",
     "pages/user/my-appointment/component/card",
-    "pages/doctorInfo/index"
+    "pages/doctorInfo/index",
+    "pages/article/detail/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -103,7 +104,7 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "店铺",
+        "text": "首页",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home-active.png"
       },
@@ -114,14 +115,8 @@
         "selectedIconPath": "images/cate-active.png"
       },
       {
-        "pagePath": "pages/flow/index",
-        "text": "购物车",
-        "iconPath": "images/flow.png",
-        "selectedIconPath": "images/flow-active.png"
-      },
-      {
         "pagePath": "pages/user/index",
-        "text": "我的",
+        "text": "个人中心",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user-active.png"
       }
