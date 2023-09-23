@@ -14,10 +14,10 @@ Page({
       '../../images/banner.png',
       '../../images/banner.png'
     ],
-    indicatorDots: true,
-    autoplay: true,
-    interval: 5000,
-    duration: 1000,
+    indicatorDots: true, // 是否显示面板指示点
+    autoplay: true, // 是否自动切换
+    interval: 5000, 
+    duration: 1000, // 滑动动画时长
     navBarHeight: 0
   },
 
