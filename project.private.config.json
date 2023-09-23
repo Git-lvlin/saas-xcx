@@ -12,7 +12,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/category/list",
+          "pathName": "pages/user/my-appointment/index",
           "query": "",
           "launchMode": "default",
           "scene": null

@@ -120,16 +120,17 @@ Page({
   },
 
   submit() {
-    console.log(this.data.selectDoctorInfo);
-    console.log(this.data.selectDoctorInfo.registration_day[this.data.active]);
-    const {selectDoctorInfo,active,radio} = this.data
+    const { selectDoctorInfo, active, radio } = this.data
+    if (radio === null) {
+      return
+    }
     wx.navigateTo({
-      url:'/pages/reserve/patientInformation',
+      url: '/pages/reserve/patientInformation',
       success(res) {
         res.eventChannel.emit('acceptDataFromOpenerPage', {
           clerk_id: selectDoctorInfo.doctor.clerk_id,
-          appointment_date:selectDoctorInfo.registration_day[active].date,
-          section:`${selectDoctorInfo.registration_day[active].work_plan[radio].start}-${selectDoctorInfo.registration_day[active].work_plan[radio].end}`,
+          appointment_date: selectDoctorInfo.registration_day[active].date,
+          section: `${selectDoctorInfo.registration_day[active].work_plan[radio].start}-${selectDoctorInfo.registration_day[active].work_plan[radio].end}`,
           pay_price: selectDoctorInfo.doctor.copay
         })
       }

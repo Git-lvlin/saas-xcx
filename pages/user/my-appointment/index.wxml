@@ -6,16 +6,16 @@
 		title-inactive-color="#3D3D3D"
 		bind:change="onChange"
 	>
-		<van-tab title="待就诊" title-style="tab">
+		<van-tab title="待就诊" name="3" title-style="tab">
 			<my-card active="{{active}}"></my-card>
 		</van-tab>
-		<van-tab title="已就诊">
+		<van-tab title="已就诊" name="1">
 			<my-card active="{{active}}"></my-card>
 		</van-tab>
-		<van-tab title="已取消">
+		<van-tab title="已取消" name="2">
 			<my-card active="{{active}}"></my-card>
 		</van-tab>
-		<van-tab title="已过期">
+		<van-tab title="已过期" name="4">
 			<my-card active="{{active}}"></my-card>
 		</van-tab>
 	</van-tabs>
