@@ -5,7 +5,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/address/index",
+          "pathName": "pages/user/index",
           "query": "",
           "launchMode": "default",
           "scene": null

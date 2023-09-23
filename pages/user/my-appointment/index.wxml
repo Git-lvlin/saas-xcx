@@ -5,18 +5,19 @@
 		title-active-color="#408CFF"
 		title-inactive-color="#3D3D3D"
 		bind:change="onChange"
+		sticky
 	>
-		<van-tab title="待就诊" name="3" title-style="tab">
-			<my-card active="{{active}}"></my-card>
+		<van-tab title="待就诊" name="{{3}}">
+			<my-card active="{{3}}" wx:if="{{active===3}}"></my-card>
 		</van-tab>
-		<van-tab title="已就诊" name="1">
-			<my-card active="{{active}}"></my-card>
+		<van-tab title="已就诊" name="{{1}}">
+			<my-card active="{{1}}" wx:if="{{active===1}}"></my-card>
 		</van-tab>
-		<van-tab title="已取消" name="2">
-			<my-card active="{{active}}"></my-card>
+		<van-tab title="已取消" name="{{2}}">
+			<my-card active="{{2}}" wx:if="{{active===2}}"></my-card>
 		</van-tab>
-		<van-tab title="已过期" name="4">
-			<my-card active="{{active}}"></my-card>
+		<van-tab title="已过期" name="{{4}}">
+			<my-card active="{{4}}" wx:if="{{active===4}}"></my-card>
 		</van-tab>
 	</van-tabs>
 </view>

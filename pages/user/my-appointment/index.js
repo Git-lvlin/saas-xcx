@@ -6,8 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-		active: 3,
-    page:1,
+		active: 3
 	},
 	
 	onChange(event) {
@@ -34,7 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.getData()
+
   },
 
   /**
@@ -71,12 +70,4 @@ Page({
   onShareAppMessage() {
 
   },
-
-  getData(page = 1) {
-    App._get("registration.Registration/page", { page,size:20,status:this.data.active }, res => {
-      if (res.code === 1) {
-        
-      }
-    })
-  }
 })
