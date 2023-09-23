@@ -1,9 +1,14 @@
+
+.contioner .scroll_list {
+	height: calc(100vh - 108rpx);
+	margin-top: 20rpx;
+}
+
 .list {
 	background-color: #fff;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	margin-top: 20rpx;
 	padding: 40rpx 26rpx 20rpx 32rpx;
 	border-bottom: 1rpx solid #E9E9E9;
 }
@@ -70,4 +75,23 @@
 	border-radius: 12rpx;
 	color: #408CFF;
 	margin: 0;
+}
+
+.img {
+	width: 600rpx;
+	height: 394rpx;
+	margin: 0 auto;
+	padding: 112rpx 74rpx 48rpx;
+}
+
+.img image {
+	width: 100%;
+	height: 100%;
+}
+
+.text {
+	text-align: center;
+	font-size: 40rpx;
+	font-weight: 400;
+	color: #8894A5;
 }

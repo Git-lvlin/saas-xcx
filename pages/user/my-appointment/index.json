@@ -1,6 +1,5 @@
 {
 	"navigationBarTitleText": "在线预约",
-	"enablePullDownRefresh": true,
   "usingComponents": {
 		"van-tab": "@vant/weapp/tab/index",
 		"van-tabs": "@vant/weapp/tabs/index",
