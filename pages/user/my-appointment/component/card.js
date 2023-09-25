@@ -11,7 +11,8 @@ Component({
 		isRefresher: false,
 		page: 1,
 		currentPage: 1,
-		maxPage: 1
+		maxPage: 1,
+		isLoading: true
 	},
 
 	ready: function () {
@@ -44,14 +45,16 @@ Component({
 							dataSource: dataList.data.concat(resList),
 							isRefresher: false,
 							maxPage: res.data.last_page, 
-							currentPage: res.data.current_page
+							currentPage: res.data.current_page,
+							isLoading: false
 						})
 					} else {
 						this.setData({
 							dataSource: res.data.data,
 							isRefresher: false,
 							maxPage: res.data.last_page, 
-							currentPage: res.data.current_page
+							currentPage: res.data.current_page,
+							isLoading: false
 						})
 					}
 				}

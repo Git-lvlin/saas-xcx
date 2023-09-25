@@ -5,7 +5,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/user/index",
+          "pathName": "pages/address/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -44,7 +44,7 @@
   "projectname": "saas-xcx",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": true
+    "urlCheck": false
   },
   "libVersion": "3.0.2"
 }

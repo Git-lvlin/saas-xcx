@@ -325,3 +325,10 @@
 	width: 100%;
 	height: 100%;
 }
+
+.phone {
+	font-size: 32rpx;
+	font-family: OPPOSans-Medium, OPPOSans;
+	font-weight: 500;
+	color: #FFFFFF;
+}

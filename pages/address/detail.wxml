@@ -1,7 +1,7 @@
 <view class="container">
   <view class="common-header-xian"></view>
   <!-- 表单 -->
-  <form bindsubmit="saveData" report-submit="true">
+  <!-- <form bindsubmit="saveData" report-submit="true">
     <view class="address-cont-title b-f b-b">
       <view class="list address-box dis-flex b-b">
         <view class="left-name">
@@ -46,6 +46,73 @@
     </view>
     <view class="padding-box m-top20 profile-btn">
       <button formType="submit" disabled="{{disabled}}">保存</button>
+    </view>
+  </form> -->
+	<form bindsubmit="saveData" report-submit="true">
+		<view class="address_content">
+			<view class="address-cont-title b-f b-b">
+				<view class="list address-box dis-flex b-b">
+					<view class="left-name">
+						<text class="f-30">收货人</text>
+					</view>
+					<view class="right-cont flex-box">
+						<input name="name" placeholder="请输入姓名" value="{{detail.name}}"></input>
+					</view>
+				</view>
+				<view class="list address-box dis-flex b-b">
+					<view class="left-name">
+						<text class="f-30">手机号</text>
+					</view>
+					<view class="right-cont flex-box">
+						<input name="phone" maxlength="{{11}}" placeholder="请输入手机号码" type="number" value="{{detail.phone}}"></input>
+					</view>
+				</view>
+				<view class="list address-box dis-flex b-b">
+					<view class="left-name">
+						<text class="f-30">选择地区</text>
+					</view>
+					<view class="address-cont-box flex-box">
+						<picker mode="region" bindchange="bindRegionChange">
+							<text wx:if="{{region}}" class="f-30">{{region}}</text>
+							<text wx:else class="placeholder_select">请选择</text>
+						</picker>
+					</view>
+				</view>
+				<view class="dis-flex list address-box">
+					<view class="left-name">
+						<text class="f-30">详细地址</text>
+					</view>
+					<view class="right-cont flex-box">
+						<textarea 
+							name="detail" 
+							placeholder="请输入详细地址，例如：康盛大厦1座1101" 
+							type="text" 
+							value="{{detail.detail}}"
+						>
+						</textarea>
+					</view>
+				</view>
+			</view>
+			<!-- <view class="default_address">
+				<view class="default_address_left">
+					<text class="f-32">设为默认收货地址</text>
+				</view>
+				<view class="default_address_right">
+					<switch name="default" value="{{detail.default}}"></switch>
+				</view>
+			</view> -->
+		</view>
+    <!-- <view class="padding-box m-top35 btn-green btn-sm" wx:if="{{!name}}">
+      <button class="f-32" catchtap="chooseAddress">一键获取微信地址</button>
+    </view> -->
+
+    <!-- <view class="padding-box m-top20 profile-btn"  wx:if="{{!name}}">
+      <button formType="submit"  disabled="{{disabled}}" >保存</button>
+    </view> -->
+
+    <view class="submit_btn">
+			<button class="del_btn" bindtap="removeAddress" data-id="{{detail.address_id}}">删除</button>
+      <button class="save_btn" formType="submit">保存</button>
     </view>
   </form>
 </view>
