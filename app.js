@@ -654,18 +654,18 @@ App({
    * 设置购物车tabbar的角标
    */
    setCartTabBadge() {
-    const number = wx.getStorageSync('cartTotalNum')
-    if (number > 0) {
-      wx.setTabBarBadge({
-        index: 2,
-        text: `${number}`
-      })
-    } else {
-      wx.removeTabBarBadge({
-        index: 2
-      })
-    }
-    return
+    // const number = wx.getStorageSync('cartTotalNum')
+    // if (number > 0) {
+    //   wx.setTabBarBadge({
+    //     index: 2,
+    //     text: `${number}`
+    //   })
+    // } else {
+    //   wx.removeTabBarBadge({
+    //     index: 2
+    //   })
+    // }
+    // return
   },
 
 });
