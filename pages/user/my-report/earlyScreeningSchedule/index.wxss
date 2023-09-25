@@ -1,0 +1,80 @@
+page {
+    background-color: #fff;
+  }
+
+.earlyScreeningSchedule{
+    padding: 20rpx;
+}
+.earlyScreeningSchedule .earlyScreeningDetail{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20rpx 20rpx 40rpx 20rpx;
+}
+.earlyScreeningSchedule .headFixation{
+    font-size: 28rpx;
+    font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+    font-weight: 400;
+    color: #666666;
+    line-height: 34rpx;
+}
+
+.earlyScreeningDetail .informed_consent{
+    font-size: 28rpx;
+    font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+    font-weight: 400;
+    color: #408CFF;
+    line-height: 34rpx;
+    display: flex;
+    align-items: center;
+}
+
+.earlyScreeningDetail .informed_consent .informed_consent_img{
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.earlyScreeningSchedule .query{
+    width: 640rpx;
+    height: 34rpx;
+    font-size: 28rpx;
+    font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+    font-weight: 400;
+    color: #999999;
+    line-height: 34rpx;
+    margin: 50rpx 0 0 20rpx;
+}
+
+.earlyScreeningSchedule .next_step{
+    margin: 40rpx auto;
+    text-align: center;
+ }
+ 
+ .earlyScreeningSchedule .next_step button{
+    width: 700rpx;
+    height: 98rpx;
+    background: #408CFF;
+    box-shadow: 0rpx 6rpx 12rpx 0rpx rgba(47,108,229,0.4);
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    opacity: 1;
+    color: #fff;
+    position: fixed;
+    transform: translateX(-50%);
+    bottom: 50rpx;
+    left: 50%;
+ }
+
+ .earlyScreeningSchedule .arrows{
+    font-size: 28rpx;
+    font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+    font-weight: 400;
+    color: #CD0303;
+    line-height: 34rpx;
+    display: flex;
+    align-items: center;
+}
+
+.earlyScreeningSchedule .arrows image{
+    width: 28rpx;
+    height: 28rpx;
+}

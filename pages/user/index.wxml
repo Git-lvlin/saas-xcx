@@ -143,15 +143,18 @@
 				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
 		</view>
-		<view class="menu_item">
-			<view class="menu_item_left">
-				<view class="menu_item_left_img">
-					<image src="/images/menu5.png" mode="scaleToFill"/>
-				</view>
-				<view class="menu_item_text">我的报告</view>
-			</view>
-			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
-		</view>
+
+        <view bind:tap="onTargetMySub" data-type="myReport">
+            <view class="menu_item">
+                <view class="menu_item_left">
+                    <view class="menu_item_left_img">
+                        <image src="/images/menu5.png" mode="scaleToFill"/>
+                    </view>
+                    <view class="menu_item_text">我的报告</view>
+                </view>
+                <view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
+            </view>
+        </view>
 	</view>
 
   <!-- 我的钱包 -->
