@@ -3,7 +3,8 @@ let App = getApp();
 Page({
   data: {
     list: [],
-    default_id: null,
+		default_id: null,
+		isLoading: true
   },
 
   onLoad: function(options) {
@@ -20,9 +21,16 @@ Page({
    * 获取收货地址列表
    */
   getAddressList: function() {
+		wx.showLoading({
+			title: '加载中~',
+		})
     let _this = this;
     App._get('address/lists', {}, function(result) {
-      _this.setData(result.data);
+			_this.setData({
+				...result.data,
+				isLoading: false
+			});
+			wx.hideLoading()
     });
   },
 
