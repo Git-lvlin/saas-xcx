@@ -86,7 +86,9 @@
     "pages/user/my-appointment/index",
     "pages/user/my-appointment/component/card",
     "pages/doctorInfo/index",
-    "pages/article/detail/index"
+    "pages/article/detail/index",
+    "pages/user/my-report/earlyScreeningList/index",
+    "pages/user/my-report/earlyScreeningSchedule/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

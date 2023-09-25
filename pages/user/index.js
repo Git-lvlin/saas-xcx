@@ -219,11 +219,12 @@ Page({
 	onTargetMySub(e) {
 		if (!this.onCheckLogin()) {
       return false;
-		}
+        }
 
 		const urls = {
 			sub: '/pages/user/my-appointment/index',
-			address: '/pages/address/index'
+            address: '/pages/address/index',
+			myReport: '/pages/user/my-report/earlyScreeningList/index',
 		}
 		wx.navigateTo({
 			url: urls[e.currentTarget.dataset.type]
