@@ -3,7 +3,7 @@
 <view class="earlyScreeningSchedule">
     <view class="earlyScreeningDetail">
         <view class="headFixation">我的早筛码：{{signcode | 356584}}</view>
-        <view class="informed_consent">查看知情同意书 <image src='../../../../images/informed_consent.png' class="informed_consent_img" /></view>
+        <!-- <view class="informed_consent">查看知情同意书 <image src='../../../../images/informed_consent.png' class="informed_consent_img" /></view> -->
     </view>
     <van-steps
       steps="{{ steps }}"
