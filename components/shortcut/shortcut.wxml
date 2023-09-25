@@ -1,4 +1,4 @@
-<view class="shortcut" style="right: {{ right }}; bottom: {{ bottom }};">
+<view class="shortcut" wx:if="{{false}}" style="right: {{ right }}; bottom: {{ bottom }};">
 
   <!-- 首页 -->
   <form bindsubmit="_onTargetPage" report-submit="true">
