@@ -69,10 +69,13 @@ Page({
         })
         this.setData({
           active,
+          popVisible: true,
           selectDoctorInfo: {
             ...res.data,
             registration_day: arr,
           }
+        },() => {
+          this.selectComponent('#van-tabs').scrollIntoView()
         })
         cb && cb()
       }
@@ -81,13 +84,7 @@ Page({
 
   getDoctorHandle(e) {
     const { dataset } = e.currentTarget
-    this.getDoctor(dataset.data.clerk_id, () => {
-      this.setData({
-        popVisible: true,
-      }, () => {
-        this.selectComponent('#van-tabs').scrollIntoView()
-      })
-    })
+    this.getDoctor(dataset.data.clerk_id)
   },
 
   beforeChange(e) {

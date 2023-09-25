@@ -337,3 +337,9 @@
   line-height: 48rpx;
   margin: 0 0 26rpx 28rpx;
 }
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}

@@ -5,7 +5,7 @@
 	<view class="content">
 		<view>
 			<view class="title">{{goodsItem.goods_name}}</view>
-			<view class="tag">{{goodsItem.goods_sales}}人想买</view>
+			<view class="tag">{{goodsItem.goods_sales}}人已买</view>
 		</view>
 		<view class="foot">
 			<view class="priceinfo">

@@ -260,7 +260,7 @@ Page({
    */
   onTriggerCart() {
     wx.navigateTo({
-      url: "../flow/index"
+      url: "/pages/flow/index"
     });
   },
 

@@ -112,7 +112,7 @@
 				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
 		</view>
-		<view bind:tap="onTargetMySub" data-type="visitor">
+		<!-- <view bind:tap="onTargetMySub" data-type="visitor">
 			<view class="menu_item">
 				<view class="menu_item_left">
 					<view class="menu_item_left_img">
@@ -122,8 +122,8 @@
 				</view>
 				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
-		</view>
-		<view class="menu_item">
+		</view> -->
+		<button class="menu_item" open-type="contact">
 			<view class="menu_item_left">
 				<view class="menu_item_left_img">
 					<image src="/images/menu3.png" mode="scaleToFill"/>
@@ -131,7 +131,7 @@
 				<view class="menu_item_text">联系客服</view>
 			</view>
 			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
-		</view>
+		</button>
 		<view bind:tap="onTargetMySub" data-type="address">
 			<view class="menu_item">
 				<view class="menu_item_left">
