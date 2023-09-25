@@ -27,6 +27,8 @@
   display: flex;
 	padding-left: 32rpx;
 	padding-top: 52rpx;
+	z-index: 999;
+	position: relative;
 }
 
 .user-header .user-header-cont .user-header-avatar {
