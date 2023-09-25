@@ -93,14 +93,14 @@
 					</view>
 				</view>
 			</view>
-			<view class="default_address">
+			<!-- <view class="default_address">
 				<view class="default_address_left">
 					<text class="f-32">设为默认收货地址</text>
 				</view>
 				<view class="default_address_right">
 					<switch name="default" value="{{detail.default}}"></switch>
 				</view>
-			</view>
+			</view> -->
 		</view>
     <!-- <view class="padding-box m-top35 btn-green btn-sm" wx:if="{{!name}}">
       <button class="f-32" catchtap="chooseAddress">一键获取微信地址</button>
