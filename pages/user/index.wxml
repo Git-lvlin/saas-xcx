@@ -1,6 +1,9 @@
 <view class="container">
   <!-- 用户信息 -->
   <view class="user">
+		<view class="background_img">
+			<image src="/images/user-background.png" mode="scaleToFill"/>
+		</view>
     <view class="user-header" style="background-color:{{userHeaderBGC}}">
 			<!-- 导航栏标题 -->
 			<view class="navigation-title" style="padding-top:{{statusBarHeight}}px">个人中心</view>
