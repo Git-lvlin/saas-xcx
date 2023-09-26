@@ -22,7 +22,7 @@
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{bannerData.data}}" wx:key="*this">
       <swiper-item>
-        <image src="{{item.imgUrl}}" class="slide-image" width="674" height="218"/>
+        <image bindtap="navigationTo" data-url="{{item.linkUrl}}" src="{{item.imgUrl}}" class="slide-image" width="674" height="218"/>
       </swiper-item>
     </block>
   </swiper>
