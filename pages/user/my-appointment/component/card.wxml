@@ -1,44 +1,47 @@
-<block wx:if="{{dataSource.length > 0}}">
-	<view class="contioner">
-		<scroll-view 
-			enable-passive 
-			bindscrolltolower ="getLowerData" 
-			refresher-enabled
-			bindrefresherrefresh="getData"
-			refresher-triggered="{{isRefresher}}"
-			class="scroll_list"
-			scroll-y
-		>
-			<block wx:for="{{dataSource}}" wx:key="id">
-				<view class="list">
-					<view class="list_img">
-						<image src="{{item.clerk_avatar}}" mode="scaleToFill"/>
-					</view>
-					<view class="list_content">
-						<view class="list_info">
-							<view class="list_doctor">{{item.clerk_title}}</view>
-							<view class="list_amount">￥{{item.pay_price}}</view>
+<view wx:if="{{isLoading}}"></view>
+<view wx:else>
+	<block wx:if="{{dataSource.length > 0}}">
+		<view class="contioner">
+			<scroll-view 
+				enable-passive 
+				bindscrolltolower ="getLowerData" 
+				refresher-enabled
+				bindrefresherrefresh="getData"
+				refresher-triggered="{{isRefresher}}"
+				class="scroll_list"
+				scroll-y
+			>
+				<block wx:for="{{dataSource}}" wx:key="id">
+					<view class="list">
+						<view class="list_img">
+							<image src="{{item.clerk_avatar}}" mode="scaleToFill"/>
 						</view>
-						<view class="list_time">{{item.appointment_date}} {{item.section}}</view>
-						<view class="list_opt">
-							<view>就诊人: {{item.patient_name}}</view>
-							<block wx:if="{{active === 3}}">
-								<button class="btn" bind:tap="onCancel" id="{{item.id}}">取消</button>
-							</block>
-							<block wx:else></block>
+						<view class="list_content">
+							<view class="list_info">
+								<view class="list_doctor">{{item.clerk_title}}</view>
+								<view class="list_amount">￥{{item.pay_price}}</view>
+							</view>
+							<view class="list_time">{{item.appointment_date}} {{item.section}}</view>
+							<view class="list_opt">
+								<view>就诊人: {{item.patient_name}}</view>
+								<block wx:if="{{active === 3}}">
+									<button class="btn" bind:tap="onCancel" id="{{item.id}}">取消</button>
+								</block>
+								<block wx:else></block>
+							</view>
 						</view>
 					</view>
-				</view>
-			</block>
-		</scroll-view>
-	</view>
-</block>
+				</block>
+			</scroll-view>
+		</view>
+	</block>
 
-<block wx:else>
-	<view class="img">
-		<image src="/images/no-content-backup.png" mode="scaleToFill"/>
-	</view>
-	<view class="text">
-		<text>暂无预约</text>
-	</view>
-</block>
+	<block wx:else>
+		<view class="img">
+			<image src="/images/no-content-backup.png" mode="scaleToFill"/>
+		</view>
+		<view class="text">
+			<text>暂无预约</text>
+		</view>
+	</block>
+</view>

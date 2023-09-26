@@ -18,7 +18,10 @@
         <view class="user-header-right">
           <button class="btn-normal" catchtap="getUserInfo">
             <!-- 微信昵称 -->
-            <open-data class="user-header-cont-name" lang="zh_CN" type="userNickName"></open-data>
+          	<open-data class="user-header-cont-name" lang="zh_CN" type="userNickName"></open-data>
+						<view class="phone">
+							<text>{{userInfo.mobile}}</text>
+						</view>
           </button>
 
           <!-- 会员等级 -->
@@ -112,7 +115,7 @@
 				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
 		</view>
-		<!-- <view bind:tap="onTargetMySub" data-type="visitor">
+		<view bind:tap="onTargetMySub" data-type="visitor">
 			<view class="menu_item">
 				<view class="menu_item_left">
 					<view class="menu_item_left_img">
@@ -122,16 +125,18 @@
 				</view>
 				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
-		</view> -->
-		<button class="menu_item" open-type="contact">
-			<view class="menu_item_left">
-				<view class="menu_item_left_img">
-					<image src="/images/menu3.png" mode="scaleToFill"/>
+		</view>
+		<view bind:tap="onTargetMySub" data-type="fee">
+			<view class="menu_item">
+				<view class="menu_item_left">
+					<view class="menu_item_left_img">
+						<image src="/images/menu7.png" mode="scaleToFill"/>
+					</view>
+					<view class="menu_item_text">门诊缴费</view>
 				</view>
-				<view class="menu_item_text">联系客服</view>
+				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
-			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
-		</button>
+		</view>
 		<view bind:tap="onTargetMySub" data-type="address">
 			<view class="menu_item">
 				<view class="menu_item_left">
@@ -143,18 +148,24 @@
 				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
 		</view>
-
-        <view bind:tap="onTargetMySub" data-type="myReport">
-            <view class="menu_item">
-                <view class="menu_item_left">
-                    <view class="menu_item_left_img">
-                        <image src="/images/menu5.png" mode="scaleToFill"/>
-                    </view>
-                    <view class="menu_item_text">我的报告</view>
-                </view>
-                <view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
-            </view>
-        </view>
+		<view class="menu_item">
+			<view class="menu_item_left">
+				<view class="menu_item_left_img">
+					<image src="/images/menu5.png" mode="scaleToFill"/>
+				</view>
+				<view class="menu_item_text">我的报告</view>
+			</view>
+			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
+		</view>
+		<button class="menu_item" open-type="contact">
+			<view class="menu_item_left">
+				<view class="menu_item_left_img">
+					<image src="/images/menu8.png" mode="scaleToFill"/>
+				</view>
+				<view class="menu_item_text">联系客服</view>
+			</view>
+			<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
+		</button>
 	</view>
 
   <!-- 我的钱包 -->

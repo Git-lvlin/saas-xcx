@@ -127,9 +127,11 @@ picker-view-column view {
   background-color: #eee;
 }
 
-.address-box .right-cont input {
+.address-box .right-cont input,
+.address-box .right-cont textarea {
   width: 100%;
-  font-size: 30rpx;
+	font-size: 30rpx;
+	color: #303030;
 }
 
 .f-34 {

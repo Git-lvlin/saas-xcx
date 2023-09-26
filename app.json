@@ -99,7 +99,7 @@
   "tabBar": {
     "custom": false,
     "color": "#6e6d6b",
-    "selectedColor": "#fd4a5f",
+    "selectedColor": "#408CFF",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "position": "bottom",
@@ -107,20 +107,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/home.png",
-        "selectedIconPath": "images/home-active.png"
+        "iconPath": "images/tabbar1.png",
+        "selectedIconPath": "images/tabbar1_s.png"
       },
       {
         "pagePath": "pages/category/list",
         "text": "商城",
-        "iconPath": "images/cate.png",
-        "selectedIconPath": "images/cate-active.png"
+        "iconPath": "images/tabbar2.png",
+        "selectedIconPath": "images/tabbar2_s.png"
       },
       {
         "pagePath": "pages/user/index",
         "text": "个人中心",
-        "iconPath": "images/user.png",
-        "selectedIconPath": "images/user-active.png"
+        "iconPath": "images/tabbar3.png",
+        "selectedIconPath": "images/tabbar3_s.png"
       }
     ]
   },

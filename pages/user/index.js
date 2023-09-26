@@ -126,7 +126,8 @@ Page({
 
         _this.setData({
           currentShop: shop_list[0].shop_name + " (管理员)",
-          shop_list
+					shop_list,
+					userInfo: result.data.userInfo
         }) 
       }
 
