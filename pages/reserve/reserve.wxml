@@ -14,7 +14,7 @@
                 <view class="sub_title van-ellipsis">{{item.summary}}</view>
               </view>
             </view>
-            <van-button type="info" data-data="{{item}}" data-index="{{index}}" bindtap="getDoctorHandle">预约</van-button>
+            <van-button type="info" disabled="{{item.quantity === 0}}" data-data="{{item}}" data-index="{{index}}" bindtap="getDoctorHandle">预约</van-button>
           </van-cell>
         </van-cell-group>
       </view>
@@ -37,10 +37,11 @@
             <view class="pop_tab_content">
               <view class="pop_tab_title">就诊时间</view>
               <van-radio-group class="radio_group" value="{{ radio }}" bind:change="radioChange">
-                <van-radio wx:for="{{selectDoctorInfo.registration_day[index].work_plan}}" wx:key="index" wx:for-index="idx" use-icon-slot name="{{idx}}" disabled="{{item.quantity === 0}}">
+                <van-radio wx:for="{{selectDoctorInfo.registration_day[index].work_plan}}" wx:key="index" wx:for-index="idx" use-icon-slot name="{{idx}}" disabled="{{item.quantity === 0 || item.expired}}">
                   <view class="radio {{radio==idx?'radio_active':''}}">
                     <view>{{item.start}} - {{item.end}}</view>
-                    <view class="sub">剩余{{item.quantity}}个号</view>
+                    <view class="sub" wx:if="{{item.quantity >0}}">剩余{{item.quantity}}个号</view>
+                    <view class="sub" wx:else>约满</view>
                   </view>
                 </van-radio>
               </van-radio-group>

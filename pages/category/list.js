@@ -83,7 +83,7 @@ Page({
     let _this = this;
     App._get("goods/lists", {
       page: page || 1,
-      listRows: 10,
+      listRows: 999,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,
       category_id: category_id || "",

@@ -9,14 +9,14 @@
 			<view class="navigation-title" style="padding-top:{{statusBarHeight}}px">个人中心</view>
       <!-- 已登录 -->
       <view wx:if="{{ isLogin }}" class="user-header-cont">
-        <button class="btn-normal" catchtap="getUserInfo">
+        <button class="btn-normal">
           <view class="user-header-avatar">
             <!-- 微信头像 -->
             <open-data class="" lang="zh_CN" type="userAvatarUrl"></open-data>
           </view>
         </button>
         <view class="user-header-right">
-          <button class="btn-normal" catchtap="getUserInfo">
+          <button class="btn-normal">
             <!-- 微信昵称 -->
           	<open-data class="user-header-cont-name" lang="zh_CN" type="userNickName"></open-data>
 						<view class="phone">

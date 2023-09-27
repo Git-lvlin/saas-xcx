@@ -34,7 +34,7 @@ Page({
             ...item,
             type: 2,
             p: dayjs(item.date).format('MM-DD'),
-            b: item.week
+            b: item.quantity<1?'约满':item.week
           }
         }))
         this.setData({
@@ -65,7 +65,10 @@ Page({
           if (item.date === this.data.dateList[this.data.active].date) {
             active = index
           }
-          arr.push({ ...item, p: dayjs(item.date).format('MM-DD'), b: item.week })
+          item.work_plan.forEach(it => {
+            it['expired'] = +new Date() >= +new Date(`${item.date} ${it.end}:00`)
+          })
+          arr.push({ ...item, p: dayjs(item.date).format('MM-DD'), b: item.week,})
         })
         this.setData({
           active,
