@@ -12,11 +12,11 @@
       active-color="#0079FE"
     />
     <view class="query">如有疑问请联系客服或您的服务人员。</view>
-    <view class="next_step" wx:if="{{ active==2 }}">
+    <!-- <view class="next_step" wx:if="{{ active==2 }}">
         <van-button 
          bindtap="showSharePopup"
         >
          查看检测报告
         </van-button>
-    </view>
+    </view> -->
 </view>

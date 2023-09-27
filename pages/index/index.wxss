@@ -142,7 +142,7 @@
     line-height: 88rpx;
     text-indent: 38rpx;
     background: linear-gradient(180deg, #3786FF 30%, rgba(0,101,255,0) 70%);
-    position: absolute;
+    /* position: absolute; */
 }
 
 .custom_nav{
@@ -151,20 +151,23 @@
 
 .banner{
   width: 100%;
-  padding-top: 46rpx;
+  /* padding-top: 46rpx; */
   border-radius: 0rpx 0rpx 0rpx 0rpx;
   opacity: 1;
+  margin-top: -400rpx;
+  margin-bottom: 30rpx;
 }
 
 .slide-image{
-  width: 674rpx;
-  height: 218rpx;
-  border-radius: 16rpx 16rpx 16rpx 16rpx;
+  width: 100%;
+  height: 327rpx;
+  /* border-radius: 16rpx 16rpx 16rpx 16rpx; */
 }
 
 .appointment_time{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 20rpx;
 }
 
 .business_hours{
@@ -297,6 +300,7 @@
 .goods_png{
   width: 708rpx;
   height: 708rpx;
+  border-radius: 12rpx 12rpx 0rpx 0rpx;
 }
 
 .goods_introduce{

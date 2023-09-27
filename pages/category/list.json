@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "商品列表",
     "enablePullDownRefresh": true,
+    "navigationBarBackgroundColor": "#3786FF",
+    "navigationBarTextStyle": "white",
     "usingComponents": {
         "mp-tabs": "@miniprogram-component-plus/tabs",
 				"diy-component": "/components/diy/index",

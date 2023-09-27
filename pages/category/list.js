@@ -45,15 +45,15 @@ Page({
 
     _this.getPageData();
 
-    var titleTextColor = wx.getStorageSync('titleTextColor')
-    var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
-    if (titleTextColor && titleBackgroundColor) {
-      // 设置navbar标题、颜色
-      wx.setNavigationBarColor({
-        frontColor: titleTextColor,
-        backgroundColor: titleBackgroundColor
-      })
-    }
+    // var titleTextColor = wx.getStorageSync('titleTextColor')
+    // var titleBackgroundColor = wx.getStorageSync('titleBackgroundColor')
+    // if (titleTextColor && titleBackgroundColor) {
+    //   // 设置navbar标题、颜色
+    //   wx.setNavigationBarColor({
+    //     frontColor: titleTextColor,
+    //     backgroundColor: titleBackgroundColor
+    //   })
+    // }
   },
 
   onShow() {
