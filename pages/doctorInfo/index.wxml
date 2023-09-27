@@ -1,12 +1,12 @@
 <view>
 	<view class="info">
 		<view class="avatar">
-			<image src="" mode="aspectFill"/>
+			<image src="{{info.avatar}}" mode="aspectFill"/>
 		</view>
 		<view class="introduce">
-			<view class="name"></view>
+			<view class="name">{{info.real_name}} {{info.title}}</view>
 			<view class="skill">
-				<text></text>
+				<text>{{info.summary}}</text>
 			</view>
 		</view>
 	</view>
@@ -17,6 +17,6 @@
 				<text>医生介绍</text>
 			</view>
 		</view>
-		<rich-text nodes="{{htmlSnip}}"></rich-text>
+		<rich-text nodes="{{info.detail}}"></rich-text>
 	</view>
 </view>

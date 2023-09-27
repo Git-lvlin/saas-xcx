@@ -5,8 +5,8 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/address/index",
-          "query": "",
+          "pathName": "pages/doctorInfo/index",
+          "query": "clerk_id=3",
           "launchMode": "default",
           "scene": null
         },
