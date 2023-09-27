@@ -44,6 +44,7 @@ Page({
       this.getDoctorList('')
     })
   },
+  
 
   getDoctorList(date, cb) {
     App._get("registration.Registration/doctorList", { date }, res => {

@@ -63,6 +63,11 @@ Page({
     // }
   },
 
+  onPullDownRefresh() {
+    // 获取首页数据
+    this.getGoodsList();
+  },
+
 
   /**
    * 设置默认列表显示方式
@@ -117,6 +122,8 @@ Page({
           makeAnchorByCategory: temp
         })
       })
+
+      wx.stopPullDownRefresh();
     });
   },
   
