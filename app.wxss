@@ -1,6 +1,7 @@
 /* common.wxss */
 @import "/utils/common.wxss";
 @import './style/iconfont/iconfont.wxss';
+@import './miniprogram_npm/@vant/weapp/common/index.wxss';
 
 page {
   background: #f4f4f4;

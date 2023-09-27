@@ -140,6 +140,11 @@
 
   </view>
 
+  <button open-type="contact" class="fix-contact">
+    <text class="iconfont icon-kefu "></text>
+  </button>
+        
+
   <!-- <view class="index__nail-map" bindtap="navigateToNailMapPage">
     <image src="../../images/map.png" alt="" mode="aspectFit"/>
   </view> -->

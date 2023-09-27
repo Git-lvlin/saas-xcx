@@ -7,10 +7,10 @@
       <view class="content">
         <van-cell-group>
           <van-cell wx:for="{{doctor}}" wx:key="index">
-            <view slot="title" class="title_wrap">
+            <view slot="title" class="title_wrap" data-url="pages/doctorInfo/index?clerk_id={{item.clerk_id}}" bindtap="navigationTo">
               <image src="{{item.avatar}}" />
               <view>
-                <view class="title van-ellipsis">{{item.title}}</view>
+                <view class="title van-ellipsis">{{item.real_name}} {{item.title}}</view>
                 <view class="sub_title van-ellipsis">{{item.summary}}</view>
               </view>
             </view>
@@ -23,10 +23,10 @@
   <van-popup show="{{ popVisible }}" round position="bottom" custom-style="height: 80%" closeable bind:close="onClose">
     <view class="pop-content">
       <view class="title_wrap_box">
-        <view class="title_wrap">
+        <view class="title_wrap" data-url="pages/doctorInfo/index?clerk_id={{selectDoctorInfo.doctor.clerk_id}}" bindtap="navigationTo">
           <image src="{{selectDoctorInfo.doctor.avatar}}" />
           <view>
-            <view class="title van-ellipsis">{{selectDoctorInfo.doctor.title}}</view>
+            <view class="title van-ellipsis">{{selectDoctorInfo.doctor.real_name}} {{selectDoctorInfo.doctor.title}}</view>
             <view class="sub_title van-ellipsis">{{selectDoctorInfo.doctor.summary}}</view>
           </view>
         </view>

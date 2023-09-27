@@ -84,7 +84,6 @@
     "pages/reserve/reserve",
     "pages/reserve/patientInformation",
     "pages/user/my-appointment/index",
-    "pages/user/my-appointment/component/card",
     "pages/doctorInfo/index",
     "pages/article/detail/index",
     "pages/user/my-report/earlyScreeningList/index",

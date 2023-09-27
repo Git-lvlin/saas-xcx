@@ -113,9 +113,10 @@ Page({
     })
   },
 
-  tabChange() {
+  tabChange(e) {
     this.setData({
-      radio: null
+      radio: null,
+      active: e.detail.index
     })
   },
 
@@ -135,6 +136,10 @@ Page({
         })
       }
     })
-  }
+  },
+  navigationTo(e) {
+    const { url } = e.currentTarget.dataset
+    App.navigationTo(url)
+  },
 
 })
