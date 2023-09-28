@@ -125,7 +125,7 @@ Page({
     wx.setStorageSync('user_id', '');
     wx.removeStorageSync('invite_code');
     wx.setStorageSync('role', 0);
-
+    App.globalData.session_key=''
     wx.navigateBack({
       delta: 1 
     })
