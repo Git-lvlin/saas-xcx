@@ -43,7 +43,7 @@
 .edit{
     display: flex;
     align-items: center;
-    margin-right: 5rpx;
+    margin-right: 0rpx;
     background-color: #ffffff;
     color: #666666;
 }
