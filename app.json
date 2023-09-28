@@ -88,7 +88,8 @@
     "pages/doctorInfo/index",
     "pages/article/detail/index",
     "pages/user/my-report/earlyScreeningList/index",
-    "pages/user/my-report/earlyScreeningSchedule/index"
+    "pages/user/my-report/earlyScreeningSchedule/index",
+    "pages/user/userInfo/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

@@ -8,7 +8,7 @@
 			<!-- 导航栏标题 -->
 			<view class="navigation-title" style="padding-top:{{statusBarHeight}}px">个人中心</view>
       <!-- 已登录 -->
-      <view wx:if="{{ isLogin }}" class="user-header-cont">
+      <view wx:if="{{ isLogin }}" class="user-header-cont" catchtap="onUserInfo">
         <button class="btn-normal">
           <view class="user-header-avatar">
             <!-- 微信头像 -->

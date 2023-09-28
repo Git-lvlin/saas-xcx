@@ -1,0 +1,32 @@
+<view class="userInfo">
+    <van-cell-group>
+        <view class="head_portrait">
+          <view class="label_portrait">
+            <view class="label">头像</view>
+            <view class="portrait"><image src="{{ avatarUrl }}"/></view>
+          </view>
+          <button open-type="chooseAvatar" class="edit" bind:chooseavatar="onChooseAvatar" >
+            修改 <image src="../../../images/jianto.png"/>
+          </button>
+        </view>
+        <van-field label="昵称" type="nickname" custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center; border-bottom: 2rpx #E9E9E9 solid ;"  maxlength="8" value="{{ nickName }}" placeholder="请输入" border="{{ false }}" data-type="nickName" bind:change="onChange" />
+        <!-- <input type="nickname" class="weui-input" placeholder="请输入昵称"/> -->
+        <van-field  custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center; " bind:tap="genderShowOpen" readonly label="性别" data-type="gender" model:value="{{ gender.text }}" placeholder="请选择" is-link />
+        <van-popup show="{{ genderShow }}" position="bottom">
+          <van-picker show-toolbar bind:cancel="genderShowClose" columns="{{ genderColumns }}" bind:confirm="genderConfirm" />
+        </van-popup>
+    </van-cell-group>
+    
+    <view class="block"></view>
+    <van-cell-group>
+        <van-field  label="账号" custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center;" maxlength="11" type="number" value="{{ mobile }}" placeholder="请输入" data-type="mobile" border="{{ false }}"/>
+        <view class="logOut">
+            退出
+        </view>
+    </van-cell-group>
+
+    <view class="footer">
+      <van-button custom-style=" width: 654rpx;height: 108rpx;background: #408CFF;border-radius: 24rpx; opacity: 1; font-size: 40rpx;" block type="info" bindtap="submit">保存</van-button>
+      <view class="safe_view"></view>
+    </view>
+</view>
