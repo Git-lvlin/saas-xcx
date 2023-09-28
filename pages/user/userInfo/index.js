@@ -1,4 +1,4 @@
-// pages/user/userInfo/index.ts
+
 const App = getApp();
 Page({
 
@@ -68,6 +68,7 @@ Page({
 
   },
   onChange(e) {
+      console.log('e',e)
     const { type } = e.currentTarget.dataset
     this.setData({
       [type]: e.detail
@@ -98,38 +99,66 @@ Page({
     })
   },
 
+  //退出
+  doLogout() {
+    wx.setStorageSync('token', '');
+    wx.setStorageSync('user_id', '');
+    wx.removeStorageSync('invite_code');
+    wx.setStorageSync('role', 0);
+
+    wx.navigateBack({
+      delta: 1 
+    })
+  },
+
+  formSubmit(e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+  },
+
+  formReset(e) {
+    console.log('form发生了reset事件，携带数据为：', e.detail.value)
+    this.setData({
+      chosen: ''
+    })
+  },
+
   //保存
   submit() {
     const { nickName, gender } =this.data
-    let query = '';
-    query += '&wxapp_id=' + App.getWxappId();
-    query += '&token=' + wx.getStorageSync('token');
-    console.log('query',query)
+
     wx.uploadFile({
-        url: 'https://dev.quantianxia.xin/index.php?s=/api/upload/image' + query,
+        url: App.api_root + 'upload/image',
         filePath: this.data.avatarUrl,
         name: 'iFile',
+        formData: {
+            wxapp_id: App.getWxappId(),
+            token: wx.getStorageSync('token')
+          },
         success(res) {
             console.log('res',res)
+            if(JSON.parse(res.data).code==1){
+                const params={
+                    nickname: nickName, 
+                    gender: gender.value,
+                    avatar_id: JSON.parse(res.data).data.file_id
+                }
+                console.log('params',params)
+                App._get('user/info', params, function (result) {
+                    console.log('result',result)
+                    if(result.code==1){
+                        wx.navigateBack({
+                            delta: 1 
+                        })
+                    }
+                });
+            }
         },
         fail(err) {
             console.log('err',err)
         }
       })
 
-    const params={
-        nickName, 
-        gender: gender.value
-    }
-    console.log('params',params)
-    // App._get('user/info', params, function (result) {
-    //     console.log('result',result)
-    //     if(result.code==1){
-    //         wx.navigateBack({
-    //             delta: 1 
-    //         })
-    //     }
-    // });
+
   }
 
 })
