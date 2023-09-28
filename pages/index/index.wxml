@@ -37,7 +37,7 @@
       <view class="business_hours">
          <view>
             <view class="hours">营业时间：</view>
-            <view class="week">周一至周六 </view>
+            <view class="week">周一至周日 </view>
             <view class="week">09:00-22:00</view>
          </view>
          <image class="crisscross" src="../../images/crisscross.png"/>
@@ -51,13 +51,13 @@
       </view>
   </view>
 
-  <view class="announcement">
+  <!-- <view class="announcement">
      <image class="announcement_png" src="../../images/announcement.png"/>
      <view class="announcement_title">
        <view>门诊营业时间变更为：</view>
        <view>上午(8:30-12:00)，下午(14:00-18:30)</view>
      </view>
-  </view>
+  </view> -->
 
   <view class="project">
      <view class="project_content" wx:for="{{navBarData.data}}" wx:key="index" data-url="{{item.linkUrl}}" bindtap="navigationTo">

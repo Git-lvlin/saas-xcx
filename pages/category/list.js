@@ -220,13 +220,13 @@ Page({
   /**
    * 设置分享内容
    */
-  onShareAppMessage() {
-    // 构建分享参数
-    return {
-      title: "全部分类",
-      path: "/pages/category/index?" + App.getShareUrlParams()
-    };
-  },
+  // onShareAppMessage() {
+  //   // 构建分享参数
+  //   return {
+  //     title: "全部分类",
+  //     path: "/pages/category/index?" + App.getShareUrlParams()
+  //   };
+  // },
 
   /**
    * 分享到朋友圈

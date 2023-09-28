@@ -158,6 +158,10 @@
   margin-bottom: 30rpx;
 }
 
+.banner swiper {
+  height: 327rpx;
+}
+
 .slide-image{
   width: 100%;
   height: 327rpx;

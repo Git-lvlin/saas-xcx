@@ -180,7 +180,8 @@ Page({
     const _this = this;
     return {
       title: _this.data.page.params.share_title,
-      path: "/pages/index/index?" + App.getShareUrlParams()
+      path: "/pages/index/index?" + App.getShareUrlParams(),
+      imageUrl: "../../images/cover.png"
     };
   },
 
@@ -189,13 +190,13 @@ Page({
    * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
    * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
    */
-  onShareTimeline() {
-    const _this = this;
-    return {
-      title: _this.data.page.params.share_title,
-      path: "/pages/index/index?" + App.getShareUrlParams()
-    };
-  },
+  // onShareTimeline() {
+  //   const _this = this;
+  //   return {
+  //     title: _this.data.page.params.share_title,
+  //     path: "/pages/index/index?" + App.getShareUrlParams()
+  //   };
+  // },
 
   // 导航去水店
   readyNavigator(e) {

@@ -6,7 +6,7 @@ page {
 }
 
 .container {
-  padding: 20rpx;
+  /* padding: 20rpx; */
 }
 
 .article-content {
@@ -15,4 +15,8 @@ page {
 
 .wxParse-img {
   width: 708rpx;
+}
+
+.article-little {
+  padding: 0 20rpx;
 }

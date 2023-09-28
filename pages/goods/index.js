@@ -382,7 +382,7 @@ Page({
     let _this = this;
     if (e.detail.index === 0) {
       // 显示商品海报
-      _this._showPoster();
+      // _this._showPoster();
     }
     _this.onCloseShare();
   },
@@ -485,7 +485,8 @@ Page({
     });
     return {
       title: _this.data.detail.goods_name,
-      path: "/pages/goods/index?" + params
+      path: "/pages/goods/index?" + params,
+      imageUrl: _this.data.detail.image[0].file_path
     };
   },
 
@@ -494,16 +495,16 @@ Page({
    * 本接口为 Beta 版本，暂只在 Android 平台支持，详见分享到朋友圈 (Beta)
    * https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share-timeline.html
    */
-  onShareTimeline() {
-    const _this = this;
-    // 构建页面参数
-    const params = App.getShareUrlParams({
-      'goods_id': _this.data.goods_id
-    });
-    return {
-      title: _this.data.detail.goods_name,
-      path: "/pages/goods/index?" + params
-    };
-  },
+  // onShareTimeline() {
+  //   const _this = this;
+  //   // 构建页面参数
+  //   const params = App.getShareUrlParams({
+  //     'goods_id': _this.data.goods_id
+  //   });
+  //   return {
+  //     title: _this.data.detail.goods_name,
+  //     path: "/pages/goods/index?" + params
+  //   };
+  // },
 
 })
