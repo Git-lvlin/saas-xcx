@@ -19,7 +19,7 @@
     
     <view class="block"></view>
     <van-cell-group>
-        <van-field  label="账号" custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center;" maxlength="11" type="number" value="{{ mobile }}" placeholder="请输入" data-type="mobile" border="{{ false }}"/>
+        <van-field readonly label="账号" custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center;" maxlength="11" type="number" value="{{ mobile }}" placeholder="请输入" data-type="mobile" border="{{ false }}"/>
         <view class="logOut" catchtap="doLogout">
             退出
         </view>
