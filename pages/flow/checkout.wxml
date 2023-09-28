@@ -279,7 +279,7 @@
   <!-- 买家留言 -->
   <view class="flow-all-money b-f m-top20">
     <view class="ipt-wrapper dis-flex flow-all-list">
-      <input bindinput="bindRemark" placeholder="选填：买家留言（50字以内）" value="{{remark}}"></input>
+      <input bindinput="bindRemark" maxlength="50" placeholder="选填：买家留言（50字以内）" value="{{remark}}"></input>
     </view>
   </view>
 
