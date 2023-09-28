@@ -103,7 +103,7 @@
      </view> -->
   </view>
 
-  <view class="store__list">
+  <!-- <view class="store__list">
     <view class="weui-flex" wx:for="{{storeList}}" wx:key="shop_id" catchtap="checkoutStoreInformation" data-id="{{item.shop_id}}">
       <view>
         <view class="placeholder thumb">
@@ -115,9 +115,9 @@
           {{item.shop_name}}
         </view>
 
-        <!-- <view class="placeholder">
+        <view class="placeholder">
           评分： 5分
-        </view> -->
+        </view>
 
         <view class="placeholder">
           电话：{{item.phone}}
@@ -138,7 +138,7 @@
       </view>
     </view>
 
-  </view>
+  </view> -->
 
   <button open-type="contact" class="fix-contact">
     <text class="iconfont icon-kefu "></text>

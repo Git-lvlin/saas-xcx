@@ -251,6 +251,9 @@ Page({
    * 跳转购物车页面
    */
   onTriggerCart() {
+    if (!App.checkLogin()) {
+      return 
+    }
     wx.navigateTo({
       url: "/pages/flow/index"
     });
@@ -462,6 +465,9 @@ Page({
    * 确认购买弹窗
    */
   onToggleTrade() {
+    if (!App.checkLogin()) {
+      return 
+    }
     let _this = this;
     _this.setData({
       showBottomPopup: !_this.data.showBottomPopup
