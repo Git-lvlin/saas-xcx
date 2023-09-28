@@ -1,18 +1,20 @@
 // pages/doctorInfo/index.ts
+let App = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		htmlSnip: ''
+		info: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-
+  onLoad(options) {
+		this.getDoctorInfo(options.clerk_id)
   },
 
   /**
@@ -62,5 +64,28 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+	},
+	
+	getDoctorInfo (id) {
+		App._get('registration.Registration/doctorDetail', {clerk_id: id}, (res)=> {
+			if(res.code === 1) {
+				let str = res.data.detail
+				const lt = /&lt;/gim
+				const gt = /&gt;/gim
+				const quot = /&quot;/gim
+				const img = /img/gim
+				str = str.replaceAll(lt, '<')
+				str = str.replaceAll(gt, '>')
+				str = str.replaceAll(quot, '"')
+				str = str.replaceAll(img, 'img style="width: 100%;"')
+				this.setData({
+					info: {
+						...res.data,
+						detail: str
+					}
+				})
+			}
+		})
+	}
+
 })

@@ -369,3 +369,20 @@
   height: 88rpx;
   /* background: linear-gradient(180deg, #3786FF 30%, rgba(0,101,255,0) 100%); */
 }
+
+.fix-contact {
+  position: fixed;
+  bottom: 30rpx;
+  right: 30rpx;
+  background: transparent;
+  width: 80rpx;
+  height: 80rpx;
+  background: #eee;
+  border-radius: 50%;
+  line-height: 80rpx;
+  padding: 0;
+}
+
+.fix-contact .icon-kefu {
+  font-size: 80rpx;
+}

@@ -87,7 +87,7 @@
            <span>{{item.goods_price}}</span>
            <span>{{item.goods_sales}}人已买</span>
          </view>
-         <view class="goods_title">{{item.goods_name}}</view>
+         <view class="goods_title van-multi-ellipsis--l2">{{item.goods_name}}</view>
        </view>
      </view>
      <!-- <view class="goods_interface">
@@ -139,6 +139,11 @@
     </view>
 
   </view>
+
+  <button open-type="contact" class="fix-contact">
+    <text class="iconfont icon-kefu "></text>
+  </button>
+        
 
   <!-- <view class="index__nail-map" bindtap="navigateToNailMapPage">
     <image src="../../images/map.png" alt="" mode="aspectFit"/>

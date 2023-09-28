@@ -3,7 +3,6 @@
     "navigationBarTextStyle": "white",
 		"navigationBarBackgroundColor":"#337EF3",
 		"navigationStyle": "custom",
-		"enablePullDownRefresh": true,
     "usingComponents": {
         "mp-dialog": "weui-miniprogram/dialog/dialog"
       }

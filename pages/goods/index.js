@@ -42,14 +42,16 @@ Page({
       show: false,
       cancelWithMask: true,
       cancelText: '关闭',
-      actions: [{
-        name: '生成商品海报',
-        className: 'action-class',
-        loading: false
-      }, {
-        name: '发送给朋友',
-        openType: 'share'
-      }],
+      actions: [
+        // {
+        //   name: '生成商品海报',
+        //   className: 'action-class',
+        //   loading: false
+        // },
+        {
+          name: '发送给朋友',
+          openType: 'share'
+        }],
       // 商品海报
       showPopup: false,
     },

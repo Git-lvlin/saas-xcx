@@ -44,6 +44,7 @@ Page({
       this.getDoctorList('')
     })
   },
+  
 
   getDoctorList(date, cb) {
     App._get("registration.Registration/doctorList", { date }, res => {
@@ -113,9 +114,10 @@ Page({
     })
   },
 
-  tabChange() {
+  tabChange(e) {
     this.setData({
-      radio: null
+      radio: null,
+      active: e.detail.index
     })
   },
 
@@ -135,6 +137,10 @@ Page({
         })
       }
     })
-  }
+  },
+  navigationTo(e) {
+    const { url } = e.currentTarget.dataset
+    App.navigationTo(url)
+  },
 
 })

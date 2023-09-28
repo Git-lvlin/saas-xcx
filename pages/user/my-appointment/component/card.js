@@ -76,6 +76,10 @@ Component({
 			if(this.data.maxPage < this.data.current_page) {
 				this.getData(this.data.current_page + 1, true)
 			}
-		}
+		},
+		navigationTo(e) {
+			const { url } = e.currentTarget.dataset
+			App.navigationTo(url)
+		},
 	}
 });
