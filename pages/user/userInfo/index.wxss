@@ -1,0 +1,94 @@
+/* pages/user/userInfo/index.wxss */
+
+.head_portrait{
+    width: 100%;
+    height: 172rpx;
+    background: #FFFFFF;
+    border-radius: 0rpx 0rpx 0rpx 0rpx;
+    opacity: 1;
+    margin-top: 16rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 36rpx;
+    font-family: OPPOSans-Regular, OPPOSans;
+    font-weight: 400;
+    color: #666666;
+    border-bottom: 2rpx #E9E9E9 solid ;
+}
+
+.label_portrait{
+    display: flex;
+    width: 380rpx;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 32rpx;
+}
+
+.portrait{
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 70rpx;
+    /* display: flex; 
+    justify-content: center;
+    align-items: center; */
+}
+
+.portrait image{
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 70rpx;
+}
+
+.edit{
+    display: flex;
+    align-items: center;
+    margin-right: 32rpx;
+    background-color: #ffffff;
+    color: #666666;
+}
+
+.edit image{
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.block {
+    height: 20rpx;
+}
+
+
+.footer {
+    width: 100%;
+    position: fixed;
+    background: #fff;
+    bottom: 0;
+    height: 164rpx;
+    border-radius: 0rpx 0rpx 0rpx 0rpx;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.save{
+    /* border-radius: 12rpx !important; */
+    width: 654rpx;
+    height: 108rpx;
+    background: #408CFF;
+    border-radius: 24rpx !important;
+    opacity: 1;
+}
+
+.logOut{
+    width: 100%;
+    height: 134rpx;
+    background: #ffffff;
+    border-top: 2rpx #E9E9E9 solid;
+    font-size: 36rpx;
+    font-family: OPPOSans-Bold, OPPOSans;
+    font-weight: 700;
+    color: #408CFF;
+    line-height: 134rpx;
+    text-align: center;
+}

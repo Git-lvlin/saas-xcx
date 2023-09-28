@@ -93,6 +93,7 @@ Page({
     //     selected: 3
     //   })
     // }
+    this.getUserDetail()
   },
 
   /**
@@ -402,5 +403,16 @@ Page({
         console.log('用户拒绝了授权 ', e)
       }
     })
+  },
+
+  //跳转用户信息
+  onUserInfo(e) {
+    const { userInfo } = this.data
+    wx.navigateTo({
+      url: '/pages/user/userInfo/index',
+      success(res) {
+        res.eventChannel.emit('userInfo', userInfo)
+      }
+    });
   }
 })
