@@ -197,8 +197,8 @@
 }
 
 .crisscross{
-  width:104rpx;
-  height:82rpx;
+  width:100rpx;
+  height:100rpx;
 }
 
 .booking_register{
@@ -227,8 +227,8 @@
 }
 
 .doctor{
-  width:82rpx;
-  height:84rpx;
+  width:100rpx;
+  height:100rpx;
 }
 
 .doctor_project{
@@ -372,17 +372,17 @@
 
 .fix-contact {
   position: fixed;
-  bottom: 30rpx;
-  right: 30rpx;
+  bottom: 50rpx;
+  right: 50rpx;
   background: transparent;
-  width: 80rpx;
-  height: 80rpx;
-  background: #eee;
+  width: 100rpx;
+  height: 100rpx;
+  /* background: #eee; */
   border-radius: 50%;
-  line-height: 80rpx;
   padding: 0;
 }
 
-.fix-contact .icon-kefu {
-  font-size: 80rpx;
+.fix-contact .fix_button {
+  width: 100rpx;
+  height: 100rpx;
 }

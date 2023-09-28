@@ -12,7 +12,8 @@
     </view>
   </view>
   <view class="article-content m-top20">
-    <template is="wxParse" data="{{ wxParseData:content.nodes }}"></template>
+    <rich-text nodes="{{str}}"></rich-text>
+    <!-- <template is="wxParse" data="{{ wxParseData:content.nodes }}"></template> -->
   </view>
 </view>
 

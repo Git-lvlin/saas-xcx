@@ -12,6 +12,7 @@ Page({
 
     // 文章详情
     detail: {},
+    str: ''
 
   },
 
@@ -33,11 +34,14 @@ Page({
     }, function (result) {
       let detail = result.data.detail;
       // 富文本转码
+      let str = ''
       if (detail.article_content.length > 0) {
-        wxParse.wxParse('content', 'html', detail.article_content, _this, 0);
+        str = detail.article_content
+        str = str.replace(/img/g, 'img style="width: 100%;"')
       }
       _this.setData({
-        detail
+        detail,
+        str,
       });
     });
   },

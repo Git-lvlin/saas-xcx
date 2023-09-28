@@ -284,8 +284,8 @@
 }
 
 .menu .menu_item .menu_item_left_img {
-	width: 48rpx;
-	height: 48rpx;
+	width: 100rpx;
+	height: 100rpx;
 	margin: 24rpx;
 }
 

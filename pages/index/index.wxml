@@ -141,7 +141,7 @@
   </view> -->
 
   <button open-type="contact" class="fix-contact">
-    <text class="iconfont icon-kefu "></text>
+    <image class="fix_button" src="../../images/fix_button.png" />
   </button>
         
 

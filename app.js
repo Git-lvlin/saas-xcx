@@ -231,14 +231,19 @@ App({
     });
   },
 
-  doLogout(goto) {
-    if (!goto) {
-      goto = '/pages/index/index'
-    }
+  clearUserInfo() {
     wx.setStorageSync('token', '');
     wx.setStorageSync('user_id', '');
     wx.removeStorageSync('invite_code');
     wx.setStorageSync('role', 0);
+    this.globalData.session_key = ''
+  },
+
+  doLogout(goto) {
+    if (!goto) {
+      goto = '/pages/index/index'
+    }
+    this.clearUserInfo()
 
     wx.switchTab({
       url: goto
@@ -314,6 +319,7 @@ App({
             // 登录态失效, 重新登录
             wx.hideNavigationBarLoading();
             _this.doLogin(2);
+            _this.clearUserInfo()
           } else if (res.data.code === 0) {
             _this.showError(res.data.msg, () => {
               fail && fail(res);

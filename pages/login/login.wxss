@@ -24,6 +24,11 @@ page {
   box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
 }
 
+.wechatapp .header image {
+  width: 190rpx;
+  height: 190rpx;
+}
+
 .auth-title {
   color: #585858;
   font-size: 34rpx;
