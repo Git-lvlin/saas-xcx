@@ -667,5 +667,13 @@ App({
     // }
     // return
   },
+  checkLogin() {
+    if (!this.checkIsLogin()) {
+      this.doLogin(2)
+      return false
+    }
+
+    return true
+  },
 
 });

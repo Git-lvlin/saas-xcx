@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    warpActive: 0,
     active: 0,
     radio: null,
     dateList: [
@@ -63,7 +64,7 @@ Page({
         let active = 0
         const arr = []
         res.data.registration_day.forEach((item, index) => {
-          if (item.date === this.data.dateList[this.data.active].date) {
+          if (item.date === this.data.dateList[this.data.warpActive].date) {
             active = index
           }
           item.work_plan.forEach(it => {
@@ -96,7 +97,7 @@ Page({
     this.getDoctorList(dateList[e.detail.index].date, () => {
       e.detail.callback(true)
       this.setData({
-        active: e.detail.index
+        warpActive: e.detail.index
       })
     })
   },
@@ -122,6 +123,11 @@ Page({
   },
 
   submit() {
+
+    if (!App.checkLogin()) {
+      return 
+    }
+
     const { selectDoctorInfo, active, radio } = this.data
     if (radio === null) {
       return
