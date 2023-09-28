@@ -68,22 +68,26 @@ Page({
   onUnload() {
 
   },
+  //表单事件
   onChange(e) {
     const { type } = e.currentTarget.dataset
     this.setData({
       [type]: e.detail
     })
   },
+  //性别弹窗打开
   genderShowOpen() {
     this.setData({
       genderShow: true
     })
   },
+  //性别弹窗关闭
   genderShowClose() {
     this.setData({
       genderShow: false
     })
   },
+  //性别弹窗确认
   genderConfirm({ detail }) {
     this.setData({
       gender: detail.value,
@@ -119,7 +123,7 @@ Page({
       })
   },
 
-  //退出
+  //退出登录
   doLogout() {
     wx.setStorageSync('token', '');
     wx.setStorageSync('user_id', '');

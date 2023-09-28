@@ -19,7 +19,7 @@
 
 .label_portrait{
     display: flex;
-    width: 380rpx;
+    width: 340rpx;
     justify-content: space-between;
     align-items: center;
     margin-left: 32rpx;
@@ -43,7 +43,7 @@
 .edit{
     display: flex;
     align-items: center;
-    margin-right: 32rpx;
+    margin-right: 5rpx;
     background-color: #ffffff;
     color: #666666;
 }

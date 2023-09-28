@@ -11,7 +11,7 @@
         </view>
         <van-field label="昵称" name="nickname" type="nickname" custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center; border-bottom: 2rpx #E9E9E9 solid ;"  maxlength="8" value="{{ nickName }}" placeholder="请输入" border="{{ false }}" data-type="nickName" bind:change="onChange"/>
         <van-field  custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center;" bind:tap="genderShowOpen" readonly label="性别" data-type="gender" model:value="{{ gender.text }}" placeholder="请选择" />
-        <image style="width: 40rpx; height: 40rpx; position: absolute; bottom: 55rpx; right: 60rpx;" src="../../../images/jianto.png"/>
+        <image style="width: 40rpx; height: 40rpx; position: absolute; bottom: 55rpx; right: 30rpx;" src="../../../images/jianto.png"/>
         <van-popup show="{{ genderShow }}" position="bottom">
           <van-picker show-toolbar bind:cancel="genderShowClose" columns="{{ genderColumns }}" bind:confirm="genderConfirm" />
         </van-popup>
