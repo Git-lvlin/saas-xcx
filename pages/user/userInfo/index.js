@@ -15,6 +15,7 @@ Page({
     ], // 1,2
     mobile: '',
     avatarUrl: '',
+    avatar_id: '',
     gender: {}
   },
 
@@ -91,12 +92,34 @@ Page({
     })
     this.genderShowClose()
   },
+  //修改微信头像
   onChooseAvatar(e) {
     console.log('e',e)
-    const { avatarUrl } = e.detail 
+    const { avatarUrl } = e.detail
+    let _this=this 
     this.setData({
       avatarUrl,
     })
+    wx.uploadFile({
+        url: App.api_root + 'upload/image',
+        filePath: avatarUrl,
+        name: 'iFile',
+        formData: {
+            wxapp_id: App.getWxappId(),
+            token: wx.getStorageSync('token')
+          },
+        success(res) {
+            console.log('res',res)
+            if(JSON.parse(res.data).code==1){
+                _this.setData({
+                    avatar_id: JSON.parse(res.data).data.file_id
+                })
+            }
+        },
+        fail(err) {
+            console.log('err',err)
+        }
+      })
   },
 
   //退出
@@ -124,39 +147,22 @@ Page({
 
   //保存
   submit() {
-    const { nickName, gender } =this.data
+    const { nickName, gender, avatar_id } =this.data
 
-    wx.uploadFile({
-        url: App.api_root + 'upload/image',
-        filePath: this.data.avatarUrl,
-        name: 'iFile',
-        formData: {
-            wxapp_id: App.getWxappId(),
-            token: wx.getStorageSync('token')
-          },
-        success(res) {
-            console.log('res',res)
-            if(JSON.parse(res.data).code==1){
-                const params={
-                    nickname: nickName, 
-                    gender: gender.value,
-                    avatar_id: JSON.parse(res.data).data.file_id
-                }
-                console.log('params',params)
-                App._get('user/info', params, function (result) {
-                    console.log('result',result)
-                    if(result.code==1){
-                        wx.navigateBack({
-                            delta: 1 
-                        })
-                    }
-                });
-            }
-        },
-        fail(err) {
-            console.log('err',err)
+    const params={
+        nickname: nickName, 
+        gender: gender.value,
+        avatar_id: avatar_id
+    }
+    console.log('params',params)
+    App._post_form('user/info', params, function (result) {
+        console.log('result',result)
+        if(result.code==1){
+            wx.navigateBack({
+                delta: 1 
+            })
         }
-      })
+    });
 
 
   }

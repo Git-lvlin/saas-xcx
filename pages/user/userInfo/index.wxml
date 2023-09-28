@@ -1,5 +1,4 @@
 <view class="userInfo">
-  <!-- <form catchsubmit="formSubmit" catchreset="formReset"> -->
     <van-cell-group>
         <view class="head_portrait">
           <view class="label_portrait">
@@ -10,10 +9,9 @@
             修改 <image src="../../../images/jianto.png"/>
           </button>
         </view>
-        <van-field label="昵称" name="nickname" type="nickname" custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center; border-bottom: 2rpx #E9E9E9 solid ;"  maxlength="8" value="{{ nickName }}" placeholder="请输入" border="{{ false }}" data-type="nickName" bind:change="onChange" />
-        <!-- <input type="nickname" class="weui-input" placeholder="请输入昵称"/> -->
-        <van-field  custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center; position: relative;" bind:tap="genderShowOpen" readonly label="性别" data-type="gender" model:value="{{ gender.text }}" placeholder="请选择"/>
-        <!-- <image style="position: absolute; width: 40rpx; height: 40rpx; right: 0; top: -20rpx;" src="../../../images/jianto.png"/> -->
+        <van-field label="昵称" name="nickname" type="nickname" custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center; border-bottom: 2rpx #E9E9E9 solid ;"  maxlength="8" value="{{ nickName }}" placeholder="请输入" border="{{ false }}" data-type="nickName" bind:change="onChange"/>
+        <van-field  custom-style="height: 150rpx; font-size: 36rpx; display: flex; align-items: center;" bind:tap="genderShowOpen" readonly label="性别" data-type="gender" model:value="{{ gender.text }}" placeholder="请选择" />
+        <image style="width: 40rpx; height: 40rpx; position: absolute; bottom: 55rpx; right: 60rpx;" src="../../../images/jianto.png"/>
         <van-popup show="{{ genderShow }}" position="bottom">
           <van-picker show-toolbar bind:cancel="genderShowClose" columns="{{ genderColumns }}" bind:confirm="genderConfirm" />
         </van-popup>
@@ -31,5 +29,4 @@
       <van-button form-type="submit" custom-style=" width: 654rpx;height: 108rpx;background: #408CFF;border-radius: 24rpx; opacity: 1; font-size: 40rpx;" block type="info" bindtap="submit">保存</van-button>
       <view class="safe_view"></view>
     </view>
-  <!-- </form> -->
 </view>

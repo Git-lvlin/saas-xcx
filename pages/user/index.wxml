@@ -12,13 +12,13 @@
         <button class="btn-normal">
           <view class="user-header-avatar">
             <!-- 微信头像 -->
-            <open-data class="" lang="zh_CN" type="userAvatarUrl"></open-data>
+            <image src="{{ userInfo.avatarUrl }}"/>
           </view>
         </button>
         <view class="user-header-right">
           <button class="btn-normal">
             <!-- 微信昵称 -->
-          	<open-data class="user-header-cont-name" lang="zh_CN" type="userNickName"></open-data>
+          	<text class="user-header-cont-name">{{userInfo.nickName}}</text>
 						<view class="phone">
 							<text>{{userInfo.mobile}}</text>
 						</view>
