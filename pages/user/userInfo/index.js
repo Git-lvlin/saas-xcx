@@ -69,7 +69,6 @@ Page({
 
   },
   onChange(e) {
-      console.log('e',e)
     const { type } = e.currentTarget.dataset
     this.setData({
       [type]: e.detail
@@ -86,7 +85,6 @@ Page({
     })
   },
   genderConfirm({ detail }) {
-      console.log('detail',detail)
     this.setData({
       gender: detail.value,
     })
@@ -94,7 +92,6 @@ Page({
   },
   //修改微信头像
   onChooseAvatar(e) {
-    console.log('e',e)
     const { avatarUrl } = e.detail
     let _this=this 
     this.setData({
@@ -131,17 +128,6 @@ Page({
 
     wx.navigateBack({
       delta: 1 
-    })
-  },
-
-  formSubmit(e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-  },
-
-  formReset(e) {
-    console.log('form发生了reset事件，携带数据为：', e.detail.value)
-    this.setData({
-      chosen: ''
     })
   },
 
