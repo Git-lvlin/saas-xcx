@@ -66,8 +66,12 @@ Page({
     let scene = App.getSceneData(e);
     // 商品id
     _this.data.goods_id = e.goods_id ? e.goods_id : scene.gid;
+    
+  },
+
+  onShow() {
     // 获取商品信息
-    _this.getGoodsDetail();
+    this.getGoodsDetail();
   },
 
   /**

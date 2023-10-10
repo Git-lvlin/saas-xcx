@@ -75,7 +75,7 @@
   font-size: 28rpx;
   font-weight: 400;
   color: #666666;
-  width: 400rpx;
+  width: 380rpx;
 }
 
 .van-cell__title {

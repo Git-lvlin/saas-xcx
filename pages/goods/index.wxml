@@ -126,7 +126,7 @@
           </view>
         </view>
         <!-- 底部操作栏 -->
-        <view class="footer-fixed f-30">
+        <view class="footer-fixed pop_foot f-30">
           <block wx:if="{{stock_num > 0}}">
             <view class="order-number" catchtap="onConfirmSubmit" data-type="addCart">加入购物车</view>
             <view class="order-bt" catchtap="onConfirmSubmit" data-type="buyNow"> 立即购买</view>

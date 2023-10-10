@@ -25,7 +25,7 @@
   <view>1、填写的姓名、身份证号将用于就医过程登记，请确保信息真实准确。</view>
   <view>2、手机号将用于电话(短信)通知，请认真填写。</view>
   <view class="block"></view>
-  <view class="text">如有问题，请咨询0917-8957114</view>
+  <view class="text" bindtap="callPhone">如有问题，请咨询{{shopInfo.phone}}</view>
 </view>
 <view class="footer">
   <van-button block type="info" bindtap="submit">确定</van-button>

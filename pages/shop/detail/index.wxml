@@ -1,7 +1,7 @@
 <view wx:if="{{ detail.shop_id }}" class="container">
   <view class="header">
     <view class="shop-logo">
-      <image src="{{ detail.logo.file_path }}"></image>
+      <image src="{{ detail.logo_url }}"></image>
     </view>
     <view class="shop-name">
       <text>{{ detail.shop_name }}</text>

@@ -16,6 +16,8 @@
 .list .list_img {
 	width: 126rpx;
 	height: 126rpx;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 .list .list_img image {
@@ -67,7 +69,7 @@
 }
 
 .list .list_content .list_opt .btn {
-	width: 138rpx;
+	min-width: 138rpx;
 	height: 70rpx;
 	font-size: 24rpx;
 	line-height: 70rpx;

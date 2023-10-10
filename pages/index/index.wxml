@@ -80,7 +80,7 @@
 
   <view class="goods_list">
      <view class="goods_interface" wx:for="{{goodsData.data}}" data-url="pages/goods/index?goods_id={{item.goods_id}}" bindtap="navigationTo">
-       <image class="goods_png" src="{{item.goods_image}}"/>
+       <image lazy-load class="goods_png" src="{{item.goods_image}}"/>
        <view class="goods_introduce">
          <view class="goods_price">
            <span>￥</span>

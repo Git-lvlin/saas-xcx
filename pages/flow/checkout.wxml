@@ -350,6 +350,8 @@
   <!-- Toast组件 -->
   <zan-toast id="zan-toast"></zan-toast>
 
+  <view class="block"></view>
+
 </view>
 
 <!-- 快捷导航 -->

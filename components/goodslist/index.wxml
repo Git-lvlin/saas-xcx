@@ -1,6 +1,6 @@
 <view class="goodslist">
   <view class="img">
-		<image src="{{goodsItem.goods_image}}" mode="scaleToFill"/>
+		<image lazy-load src="{{goodsItem.goods_image}}" mode="scaleToFill"/>
 	</view>
 	<view class="content">
 		<view>

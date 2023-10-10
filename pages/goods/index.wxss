@@ -413,8 +413,9 @@
 .popup__trade {
   width: 750rpx;
   position: relative;
-  padding-bottom: 92rpx;
   z-index: 999;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .popup__trade .trade-close {
@@ -488,4 +489,9 @@
 }
 .goods-discounts-trip{
   color: red;
+}
+
+.pop_foot {
+  position: relative !important;
+  padding: 0 !important;
 }

@@ -27,6 +27,8 @@ Page({
     patient_address: '',
     remark: '',
     region: {},
+    tmplIds: [],
+    shopInfo: {}
   },
   info: {},
 
@@ -40,6 +42,20 @@ Page({
         this.info = data;
       })
     }
+    App._get('wxapp.submsg/setting', {}, (res) => {
+      if (res.code === 1) {
+        this.setData({
+          tmplIds: [res.data.setting.registration.expiration_reminder.template_id]
+        })
+      }
+    });
+    App._get('shop/lists', {}, (res) => {
+      if (res.code === 1) {
+        this.setData({
+          shopInfo: res.data.list[0]
+        })
+      }
+    });
   },
 
   /**
@@ -188,12 +204,22 @@ Page({
       // pay_price: this.info.pay_price,
     }
   },
+  subscribeMessage(cb) {
+    wx.requestSubscribeMessage({
+      tmplIds: this.data.tmplIds,
+      complete: res => {
+        console.log('res',res);
+        cb && cb()
+      }
+    })
+  },
   pay(params) {
     App._get('registration.Registration/pay', params, res => {
       if (res.code === 1) {
-        App.showSuccess(res.msg.success, () => {
+        this.subscribeMessage(() => {
           wx.reLaunch({url:'/pages/user/my-appointment/index'})
-        });
+        })
+        App.showSuccess(res.msg.success);
       }
     })
   },
@@ -205,7 +231,10 @@ Page({
           App.wxPayment({
             payment: res.data.payment,
             success: res => {
-              wx.reLaunch({url:'/pages/user/my-appointment/index'})
+              this.subscribeMessage(()=>{
+                wx.reLaunch({url:'/pages/user/my-appointment/index'})
+              })
+              
             },
             fail: res => {
               App.showError(res.msg.error);
@@ -236,5 +265,10 @@ Page({
     } catch (error) {
       App.showError(error.message)
     }
+  },
+  callPhone() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.shopInfo.phone
+    });
   }
 })
