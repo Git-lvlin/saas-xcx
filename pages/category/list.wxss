@@ -28,6 +28,7 @@
 
 .container {
   position: relative;
+  padding-bottom: 150rpx;
 }
 
 .index-cont-search icon {

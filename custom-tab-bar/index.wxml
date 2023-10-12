@@ -1,0 +1,16 @@
+<view class="bar_container">
+  <block
+    wx:for="{{tabList}}"
+    wx:key="index"
+  >
+    <view
+      class="bar_item"
+      data-path="{{item.pagePath}}"
+      data-index="{{index}}"
+      bindtap="onToPath"
+    >
+      <image class="bar_icon" src="{{selectedIndex === index ? item.selectedIconPath : item.iconPath}}" />
+      <view class="bar_title {{selectedIndex === index ? 'bar_title_act' : ''}}">{{index}}{{item.text}}</view>
+    </view>
+  </block>
+</view>

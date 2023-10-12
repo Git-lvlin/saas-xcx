@@ -2,7 +2,7 @@
   <view class="text_wrap">
     <view>就诊日期</view>
   </view>
-  <van-tabs sticky line-height="{{0}}" title-active-color="#fff" title-inactive-color="#000" use-before-change bind:before-change="beforeChange">
+  <van-tabs custom-class="cus-tabs" sticky line-height="{{0}}" title-active-color="#fff" title-inactive-color="#000" use-before-change bind:before-change="beforeChange">
     <van-tab wx:for="{{dateList}}" text="{{item}}" wx:key="index">
       <view class="content">
         <van-cell-group>
@@ -20,7 +20,8 @@
       </view>
     </van-tab>
   </van-tabs>
-  <van-popup show="{{ popVisible }}" round position="bottom" custom-style="height: 80%" closeable bind:close="onClose">
+  <reserve-pop visible="{{popVisible}}" doctorInfo="{{selectDoctorInfo}}" bindclose="onClose" active="{{active}}"/>
+  <!-- <van-popup show="{{ popVisible }}" round position="bottom" custom-style="height: 80%" closeable bind:close="onClose">
     <view class="pop-content">
       <view class="title_wrap_box">
         <view class="title_wrap" data-url="pages/doctorInfo/index?clerk_id={{selectDoctorInfo.doctor.clerk_id}}" bindtap="navigationTo">
@@ -56,5 +57,5 @@
         </view>
       </view>
     </view>
-  </van-popup>
+  </van-popup> -->
 </view>

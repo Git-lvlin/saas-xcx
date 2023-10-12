@@ -39,6 +39,7 @@ Page({
     const eventChannel = this.getOpenerEventChannel()
     if (eventChannel) {
       eventChannel.on('acceptDataFromOpenerPage', (data) => {
+        console.log('data',data);
         this.info = data;
       })
     }

@@ -10,6 +10,7 @@
 .container {
   background-color: white;
   overflow: hidden;
+  padding-bottom: 150rpx !important;
 }
 
 .weui-flex {
@@ -185,18 +186,22 @@
   justify-content:space-around;
 }
 
+.business_hours:nth-last-of-type(1) {
+  background: #EBF1FD;
+}
+
 .hours{
   font-size: 40rpx;
   font-family: OPPOSans-Bold, OPPOSans;
   font-weight: 700;
-  color: #E55923;
+  /* color: #E55923; */
 }
 
 .week{
   font-size: 26rpx;
   font-family: OPPOSans-Medium, OPPOSans;
   font-weight: 500;
-  color: #C87859;
+  /* color: #C87859; */
   line-height: 16px;
 }
 
@@ -257,11 +262,13 @@
   margin: 32rpx auto;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .announcement_png{
   width: 94rpx;
   height: 94rpx;
+  flex-shrink: 0;
 }
 
 .announcement_title{
@@ -269,6 +276,7 @@
   font-family: OPPOSans-Medium, OPPOSans;
   font-weight: 500;
   color: #707481;
+  width: 500rpx;
 }
 
 .project{

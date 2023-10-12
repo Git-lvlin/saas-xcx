@@ -25,7 +25,7 @@
           </button>
 
           <!-- 会员等级 -->
-          <view wx:if="{{ userInfo.grade_id > 0 }}" class="user-header-grade dis-flex flex-y-center">
+          <!-- <view wx:if="{{ userInfo.grade_id > 0 }}" class="user-header-grade dis-flex flex-y-center">
             <view class="user-grade_icon">
               <image src="/images/grade_icon.png"></image>
             </view>
@@ -35,7 +35,7 @@
           </view>
           <view v-if="role === 1 || role === 2" class="user__shop-name">
             {{currentShop}}
-          </view>
+          </view> -->
 
         </view>
       </view>
@@ -126,7 +126,7 @@
 				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
 		</view> -->
-		<!-- <view bind:tap="onTargetMySub" data-type="fee">
+		<view bind:tap="onTargetMySub" data-type="fee">
 			<view class="menu_item">
 				<view class="menu_item_left">
 					<view class="menu_item_left_img">
@@ -136,7 +136,7 @@
 				</view>
 				<view class="iconfont icon-xiangyoujiantou menu_jiantou"></view>
 			</view>
-		</view> -->
+		</view>
 		<view bind:tap="onTargetMySub" data-type="address">
 			<view class="menu_item">
 				<view class="menu_item_left">

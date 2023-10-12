@@ -1,6 +1,6 @@
 /* 用户信息 */
 .container {
-  padding-bottom: 20rpx;
+  padding-bottom: 150rpx;
 }
 .user {
   position: relative;

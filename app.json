@@ -112,7 +112,7 @@
       },
       {
         "pagePath": "pages/category/list",
-        "text": "商城",
+        "text": "健康推荐",
         "iconPath": "images/tabbar2.png",
         "selectedIconPath": "images/tabbar2_s.png"
       },

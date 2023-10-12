@@ -30,9 +30,9 @@
           <button class="btn-normal" formType="submit" data-type="10">
             <view class="switch-item {{ serviceType==10?'active':'' }}">退货退款</view>
           </button>
-          <button class="btn-normal dis-flex" formType="submit" data-type="20">
+          <!-- <button class="btn-normal dis-flex" formType="submit" data-type="20">
             <view class="switch-item {{ serviceType==20?'active':'' }}">换货</view>
-          </button>
+          </button> -->
         </view>
       </form>
     </view>

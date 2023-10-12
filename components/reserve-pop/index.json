@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "在线预约",
+  "component": true,
+  "styleIsolation": "shared",
   "usingComponents": {
     "van-tab": "/components/vant/tab/index",
     "van-tabs": "/components/vant/tabs/index",
@@ -8,7 +9,6 @@
     "van-button": "@vant/weapp/button/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-radio": "@vant/weapp/radio/index",
-    "van-radio-group": "@vant/weapp/radio-group/index",
-    "reserve-pop": "/components/reserve-pop/index"
+    "van-radio-group": "@vant/weapp/radio-group/index"
   }
 }

@@ -22,34 +22,66 @@
 
   <view class="background_gradient"></view>
 
-  <view class="banner">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" 	indicator-color="#D6E0F4" 	indicator-active-color="#0065FF">
-    <block wx:for="{{bannerData.data}}" wx:key="*this">
-      <swiper-item>
-        <image bindtap="navigationTo" data-url="{{item.linkUrl}}" src="{{item.imgUrl}}" class="slide-image" width="674" height="218"/>
-      </swiper-item>
-    </block>
-    </swiper>
-  </view>
+  <block wx:for="{{items}}">
+    <view class="banner" wx:if="{{item.type === 'banner'}}">
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" 	indicator-color="#D6E0F4" 	indicator-active-color="#0065FF">
+      <block wx:for="{{item.data}}" wx:key="*this">
+        <swiper-item>
+          <image bindtap="navigationTo" data-url="{{item.linkUrl}}" src="{{item.imgUrl}}" class="slide-image" width="674" height="218"/>
+        </swiper-item>
+      </block>
+      </swiper>
+    </view>
+
+
+
+    <view class="announcement" wx:if="{{item.type === 'notice'}}">
+      <image class="announcement_png" src="{{item.params.icon}}"/>
+      <view class="announcement_title" style="color: {{item.style.textColor}}">
+        <view class="van-ellipsis" wx:for="{{item.textArr}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="appointment_time" wx:if="{{item.type === 'navBarLeft'}}">
+        <view class="business_hours" wx:for="{{item.data}}" data-url="pages/reserve/reserve" bindtap="navigationTo">
+            <view style="color: {{item.color}}">
+              <view class="hours">{{item.title}}</view>
+              <view class="week" wx:for="{{item.textArr}}">{{item}}</view>
+              <!-- <view class="week">09:00-22:00</view> -->
+            </view>
+            <image class="crisscross" src="{{item.imgUrl}}"/>
+        </view>
+        <!-- <view class="booking_register" data-url="pages/reserve/reserve" bindtap="navigationTo">
+            <view>
+              <view class="booking">预约挂号：</view>
+              <view class="line">线上约号免排队</view>
+            </view>
+            <image class="doctor" src="../../images/doctor.png"/>
+        </view> -->
+    </view>
+
+  </block>
+<!-- <view class="appointment_time">
+    <view class="business_hours">
+        <view>
+          <view class="hours">营业时间：</view>
+          <view class="week">周一至周日 </view>
+          <view class="week">09:00-22:00</view>
+        </view>
+        <image class="crisscross" src="../../images/crisscross.png"/>
+    </view>
+    <view class="booking_register" data-url="pages/reserve/reserve" bindtap="navigationTo">
+        <view>
+          <view class="booking">预约挂号：</view>
+          <view class="line">线上约号免排队</view>
+        </view>
+        <image class="doctor" src="../../images/doctor.png"/>
+    </view>
+</view> -->
+  
 
   
-  <view class="appointment_time">
-      <view class="business_hours">
-         <view>
-            <view class="hours">营业时间：</view>
-            <view class="week">周一至周日 </view>
-            <view class="week">09:00-22:00</view>
-         </view>
-         <image class="crisscross" src="../../images/crisscross.png"/>
-      </view>
-      <view class="booking_register" data-url="pages/reserve/reserve" bindtap="navigationTo">
-         <view>
-            <view class="booking">预约挂号：</view>
-            <view class="line">线上约号免排队</view>
-         </view>
-         <image class="doctor" src="../../images/doctor.png"/>
-      </view>
-  </view>
+  
 
   <!-- <view class="announcement">
      <image class="announcement_png" src="../../images/announcement.png"/>
@@ -58,7 +90,15 @@
        <view>上午(8:30-12:00)，下午(14:00-18:30)</view>
      </view>
   </view> -->
-
+  <!-- <view class="banner">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" 	indicator-color="#D6E0F4" 	indicator-active-color="#0065FF">
+    <block wx:for="{{bannerData.data}}" wx:key="*this">
+      <swiper-item>
+        <image bindtap="navigationTo" data-url="{{item.linkUrl}}" src="{{item.imgUrl}}" class="slide-image" width="674" height="218"/>
+      </swiper-item>
+    </block>
+    </swiper>
+  </view> -->
   <view class="project">
      <view class="project_content" wx:for="{{navBarData.data}}" wx:key="index" data-url="{{item.linkUrl}}" bindtap="navigationTo">
        <image class="doctor_project" src="{{item.imgUrl}}"/>
