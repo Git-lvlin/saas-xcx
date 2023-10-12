@@ -90,6 +90,14 @@
     "pages/user/my-report/earlyScreeningSchedule/index",
     "pages/user/userInfo/index"
   ],
+  "subpackages": [
+    {
+      "root": "subpages/health-popularization",
+      "pages": [
+        "list/index"
+      ]
+    }
+  ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
