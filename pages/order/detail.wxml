@@ -154,7 +154,7 @@
     </view>
 
     <view class="flow-num-box b-f">
-      <text>共{{order.goods.length}}件商品，合计: </text>
+      <text>共{{order.total_num}}件商品，合计: </text>
       <text class="flow-money col-m">￥{{order.total_price}}</text>
     </view>
 

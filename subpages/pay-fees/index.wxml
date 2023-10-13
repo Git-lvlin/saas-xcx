@@ -1,0 +1,17 @@
+<view class="text">金额</view>
+<view class="wrap">
+  <text class="symbol">¥</text>
+  <van-field
+    value="{{ value }}"
+    placeholder="输入金额"
+    border="{{ false }}"
+    bind:change="onChange"
+    placeholder-style="font-size:50rpx"
+    custom-style="font-size:50rpx"
+    type="digit"
+    adjust-position="{{false}}"
+  />
+</view>
+
+
+<van-button type="info" bindtap="pay" block disabled="{{disabled}}" loading="{{loading}}" >付款</van-button>

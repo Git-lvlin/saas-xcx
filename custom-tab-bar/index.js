@@ -19,13 +19,21 @@ Component({
         "iconPath": "/images/tabbar1.png",
         "selectedIconPath": "/images/tabbar1_s.png"
       }, {
+        index: 2,
+        "pagePath": "",
+        "text": "在线咨询",
+        "iconPath": "/images/tabbar4.png",
+        "selectedIconPath": "/images/tabbar4_s.png",
+        type: 'contact',
+      }, {
         index: 1,
         "pagePath": "/pages/category/list",
-        "text": "商城",
+        "text": "健康推荐",
         "iconPath": "/images/tabbar2.png",
         "selectedIconPath": "/images/tabbar2_s.png"
-      }, {
-        index: 2,
+      },
+      {
+        index: 3,
         "pagePath": "/pages/user/index",
         "text": "个人中心",
         "iconPath": "/images/tabbar3.png",
@@ -84,7 +92,6 @@ Component({
       const currPage = pages[pages.length - 1].route
       // console.log('currpage', currPage)
       // console.log('url', url)
-      // const index = event.currentTarget.dataset.index;
       // this.setData({
       //   selectedIndex: index,
       // })

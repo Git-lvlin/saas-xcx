@@ -130,7 +130,7 @@
 			<view class="menu_item">
 				<view class="menu_item_left">
 					<view class="menu_item_left_img">
-						<image src="/images/menu7.png" mode="scaleToFill"/>
+						<image src="/images/memu7.png" mode="scaleToFill"/>
 					</view>
 					<view class="menu_item_text">门诊缴费</view>
 				</view>

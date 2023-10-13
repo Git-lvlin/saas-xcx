@@ -34,7 +34,7 @@
 						</view>
 					</view>
 				</view> -->
-				<view class="address_container">
+				<view class="address_container" bindtap="setDefault" data-value="{{item.address_id}}">
 					<view class="address_top">
 						<text class="address_name">{{item.name}}</text>
 						<text>{{item.phone}}</text>
@@ -44,7 +44,7 @@
 							<text wx:if="{{item.address_id == default_id}}" class="address_tag">默认</text>
 							<text>{{item.region.province}} {{item.region.city}} {{item.region.region}} {{item.detail}}</text>
 						</view>
-						<view class="address_edit" bindtap="editAddress" data-id="{{item.address_id}}">
+						<view class="address_edit" catch:tap="editAddress" data-id="{{item.address_id}}">
 							<image class="img" src="/images/edit.png" mode="scaleToFill"/>
 						</view>
 					</view>

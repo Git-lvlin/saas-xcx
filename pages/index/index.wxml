@@ -4,54 +4,44 @@
   </view> -->
   <!-- DIY组件 -->
   <!-- <diy-component diyItems="{{ items }}"></diy-component> -->
-
   <!-- 底线 -->
   <!-- <view class="title-footer p-r">
     <text class="f-24 col-9 cont">我是有底线的</text>
     <view class="hr"></view>
   </view> -->
-
-
   <view class="fixed">
     <view class="custom_nav" style=" height: {{navBarHeight}}rpx;"></view>
     <view class="page_title">{{page.params.name}}</view>
   </view>
- 
   <view class="custom_nav" style=" height: {{navBarHeight}}rpx;"></view>
   <view class="head_title" style="top: {{navBarHeight}}rpx; left: 0;"></view>
-
   <view class="background_gradient"></view>
-
-  <block wx:for="{{items}}">
+  <block wx:for="{{items}}" wx:key="index">
     <view class="banner" wx:if="{{item.type === 'banner'}}">
-      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" 	indicator-color="#D6E0F4" 	indicator-active-color="#0065FF">
-      <block wx:for="{{item.data}}" wx:key="*this">
-        <swiper-item>
-          <image bindtap="navigationTo" data-url="{{item.linkUrl}}" src="{{item.imgUrl}}" class="slide-image" width="674" height="218"/>
-        </swiper-item>
-      </block>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#D6E0F4" indicator-active-color="#0065FF">
+        <block wx:for="{{item.data}}" wx:key="index">
+          <swiper-item>
+            <image bindtap="navigationTo" data-url="{{item.linkUrl}}" src="{{item.imgUrl}}" class="slide-image" width="674" height="218" />
+          </swiper-item>
+        </block>
       </swiper>
     </view>
-
-
-
     <view class="announcement" wx:if="{{item.type === 'notice'}}">
-      <image class="announcement_png" src="{{item.params.icon}}"/>
+      <image class="announcement_png" src="{{item.params.icon}}" />
       <view class="announcement_title" style="color: {{item.style.textColor}}">
-        <view class="van-ellipsis" wx:for="{{item.textArr}}">{{item}}</view>
+        <view class="van-ellipsis" wx:key="index" wx:for="{{item.textArr}}">{{item}}</view>
       </view>
     </view>
-
     <view class="appointment_time" wx:if="{{item.type === 'navBarLeft'}}">
-        <view class="business_hours" wx:for="{{item.data}}" data-url="pages/reserve/reserve" bindtap="navigationTo">
-            <view style="color: {{item.color}}">
-              <view class="hours">{{item.title}}</view>
-              <view class="week" wx:for="{{item.textArr}}">{{item}}</view>
-              <!-- <view class="week">09:00-22:00</view> -->
-            </view>
-            <image class="crisscross" src="{{item.imgUrl}}"/>
+      <view class="business_hours" wx:key="index" wx:for="{{item.data}}" data-url="pages/reserve/reserve" bindtap="navigationTo">
+        <view style="color: {{item.color}}">
+          <view class="hours">{{item.title}}</view>
+          <view class="week" wx:key="index" wx:for="{{item.textArr}}">{{item}}</view>
+          <!-- <view class="week">09:00-22:00</view> -->
         </view>
-        <!-- <view class="booking_register" data-url="pages/reserve/reserve" bindtap="navigationTo">
+        <image class="crisscross" src="{{item.imgUrl}}" />
+      </view>
+      <!-- <view class="booking_register" data-url="pages/reserve/reserve" bindtap="navigationTo">
             <view>
               <view class="booking">预约挂号：</view>
               <view class="line">线上约号免排队</view>
@@ -59,9 +49,40 @@
             <image class="doctor" src="../../images/doctor.png"/>
         </view> -->
     </view>
-
+    <view class="project" wx:if="{{item.type === 'navBar'}}">
+      <view class="project_content" wx:for="{{item.data}}" wx:key="index" data-url="{{item.linkUrl}}" bindtap="navigationTo">
+        <image class="doctor_project" src="{{item.imgUrl}}" />
+        <p class="doctor_referral">{{item.text}}</p>
+      </view>
+    </view>
+    <view class="goods_list" wx:if="{{item.type === 'goods'}}">
+      <view class="goods_interface" wx:key="index" wx:for="{{item.data}}" data-url="pages/goods/index?goods_id={{item.goods_id}}" bindtap="navigationTo">
+        <image lazy-load class="goods_png" src="{{item.goods_image}}" />
+        <view class="goods_introduce">
+          <view class="goods_price">
+            <span>￥</span>
+            <span>{{item.goods_price}}</span>
+            <span>{{item.goods_sales}}人已买</span>
+          </view>
+          <view class="goods_title van-multi-ellipsis--l2">{{item.goods_name}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="doctor_list" wx:if="{{item.type === 'doctor'}}">
+      <view class="doctor_list_title">医生推荐</view>
+      <view class="doctor_list_item" wx:for="{{item.data}}" wx:key="index" data-url="pages/doctorInfo/index?clerk_id={{item.clerk_id}}" bindtap="navigationTo">
+        <image class="avatar" src="{{item.avatar}}" />
+        <view>
+          <view class="doctor_list_item_title">
+            <text class="doctor_list_item_sub_title">{{item.real_name}}</text>
+            {{item.title}}
+          </view>
+          <view class="doctor_list_item_info van-multi-ellipsis--l2">{{item.summary}}</view>
+        </view>
+      </view>
+    </view>
   </block>
-<!-- <view class="appointment_time">
+  <!-- <view class="appointment_time">
     <view class="business_hours">
         <view>
           <view class="hours">营业时间：</view>
@@ -78,11 +99,6 @@
         <image class="doctor" src="../../images/doctor.png"/>
     </view>
 </view> -->
-  
-
-  
-  
-
   <!-- <view class="announcement">
      <image class="announcement_png" src="../../images/announcement.png"/>
      <view class="announcement_title">
@@ -99,50 +115,6 @@
     </block>
     </swiper>
   </view> -->
-  <view class="project">
-     <view class="project_content" wx:for="{{navBarData.data}}" wx:key="index" data-url="{{item.linkUrl}}" bindtap="navigationTo">
-       <image class="doctor_project" src="{{item.imgUrl}}"/>
-       <p class="doctor_referral">{{item.text}}</p>
-     </view>
-     <!-- <view class="project_content">
-       <image class="doctor_project" src="../../images/diagnostic_material.png"/>
-       <p class="doctor_referral">诊疗项目</p>
-     </view>
-     <view class="project_content">
-       <image class="doctor_project" src="../../images/scope_visit.png"/>
-       <p class="doctor_referral">看诊范围</p>
-     </view>
-     <view class="project_content">
-       <image class="doctor_project" src="../../images/clinic_address.png"/>
-       <p class="doctor_referral">诊所地址</p>
-     </view> -->
-  </view>
-
-  <view class="goods_list">
-     <view class="goods_interface" wx:for="{{goodsData.data}}" data-url="pages/goods/index?goods_id={{item.goods_id}}" bindtap="navigationTo">
-       <image lazy-load class="goods_png" src="{{item.goods_image}}"/>
-       <view class="goods_introduce">
-         <view class="goods_price">
-           <span>￥</span>
-           <span>{{item.goods_price}}</span>
-           <span>{{item.goods_sales}}人已买</span>
-         </view>
-         <view class="goods_title van-multi-ellipsis--l2">{{item.goods_name}}</view>
-       </view>
-     </view>
-     <!-- <view class="goods_interface">
-       <image class="goods_png" src="../../images/subscribe.png"/>
-       <view class="goods_introduce">
-         <view class="goods_price">
-           <span>￥</span>
-           <span>1138</span>
-           <span>167人想买</span>
-         </view>
-         <view class="goods_title">秒杀现货9价疫苗】北京上海杭州广州深圳hpv疫苗</view>
-       </view>
-     </view> -->
-  </view>
-
   <!-- <view class="store__list">
     <view class="weui-flex" wx:for="{{storeList}}" wx:key="shop_id" catchtap="checkoutStoreInformation" data-id="{{item.shop_id}}">
       <view>
@@ -179,17 +151,13 @@
     </view>
 
   </view> -->
-
-  <button open-type="contact" class="fix-contact">
+  <!-- <button open-type="contact" class="fix-contact">
     <image class="fix_button" src="../../images/fix_button.png" />
-  </button>
-        
-
+  </button> -->
   <!-- <view class="index__nail-map" bindtap="navigateToNailMapPage">
     <image src="../../images/map.png" alt="" mode="aspectFit"/>
   </view> -->
-
-   <!-- 底线 -->
+  <!-- 底线 -->
   <view class="title-footer p-r">
     <text class="f-24 col-9 cont">我是有底线的</text>
     <view class="hr"></view>
