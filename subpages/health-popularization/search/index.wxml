@@ -1,0 +1,55 @@
+<view class="container">
+  <van-search 
+   value="{{ searchText }}"
+   placeholder="请输入搜索关键词"
+   show-action
+   bind:search="onSearch"
+   bind:cancel="onCancel"
+   background="#F4F4F4"
+  />
+  <view class="flex_fix search_history" wx:if="{{!isSearch}}" >
+      <view class="history_clear">
+        <view class="title">历史搜索</view>
+        <view class="{{historySearch.length?'clear':'later'}}" bindtap="clearSearchHistory">
+          删除记录
+        </view>
+      </view>
+      <view class="option_list" wx:if="{{historySearch.length}}">
+        <view
+          class="item"
+          wx:for="{{historySearch}}"
+          wx:key="index"
+          data-keyword="{{item.keyword}}"
+          bindtap="onSearchLabel"
+        >{{item.keyword}}</view>
+      </view>
+      <view class="noSearch" wx:else>没有历史搜索记录~</view>
+  </view>
+  <view wx:if="{{isSearch}}">
+      <ScrollViewComponent bind:sendDoctor="onReceiveDoctor" searchText="{{searchText}}"/>
+  </view>
+  <view class="hot_search" wx:if="{{doctor.data.length&&!doctorSearch.length}}">
+    <view class="hot_title">热门内容</view>
+      <scroll-view 
+        scroll-y
+        scroll-top="{{scrollTop}}"
+        bindscrolltolower="handleScrollBottom"
+        bindscroll="onViewScroll"
+        style="height:{{scrollHeight}}px;"
+      >
+      <view class="content">
+        <van-cell-group>
+          <van-cell wx:for="{{doctor.data}}" wx:key="index">
+            <view slot="title" class="title_wrap" data-url="pages/article/detail/index?article_id={{item.article_id}}" bindtap="navigationTo">
+              <view class="article_title">{{item.article_title}}</view>
+              <image src="{{item.image.file_path}}" />
+            </view>
+          </van-cell>
+        </van-cell-group>
+        </view>
+        <view class="loading"  wx:if="{{ searchLoading }}">加载中...</view> 
+        <view class="loading complete" wx:if="{{ searchLoadingComplete }}">——  没有更多了  ——</view> 
+    </scroll-view>
+  </view>
+
+</view>
