@@ -38,12 +38,6 @@
   line-height: 36rpx;
 }
 
-.clear_icon {
-  width: 36rpx;
-  height: 36rpx;
-  vertical-align: middle;
-}
-
 .noSearch{
   padding: 0 0 40rpx 40rpx;
   color: #333333;
@@ -70,13 +64,6 @@
   border-radius: 8rpx;
 }
 
-.icon {
-  width: 40rpx;
-  height: 40rpx;
-  vertical-align: middle;
-  margin-right: 6rpx;
-}
-
 .hot_title {
   font-size: 28rpx;
   color: #333;
@@ -100,10 +87,6 @@
   flex-direction: column;
   justify-content: center;
   flex: 1;
-}
-
-.article_title{
- 
 }
 
 .loading{ 

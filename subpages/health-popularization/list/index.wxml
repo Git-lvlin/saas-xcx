@@ -1,6 +1,6 @@
 <view class="container">
   <van-search value="{{ value }}" input-align="center" readonly placeholder="搜索" background="#F4F4F4" bindtap="navigationTo"/>
-  <van-tabs active="{{ active }}" bind:change="beforeChange">
+  <van-tabs active="{{ active }}" bind:change="beforeChange" color="#1ABC9C" line-width="70">
     <van-tab wx:for="{{dateList}}" title="{{item.name}}" wx:key="{{index}}" name="{{item.category_id}}">
       <ScrollViewComponent category_id="{{category_id}}"/>
     </van-tab>

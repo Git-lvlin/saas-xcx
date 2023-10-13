@@ -32,7 +32,6 @@ Page({
 
   //切换导航栏
   beforeChange(e) {
-    console.log('e',e)
     this.setData({
       active: e.detail.name,
       category_id: e.detail.name,
