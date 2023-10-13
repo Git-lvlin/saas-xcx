@@ -79,7 +79,9 @@
           </view>
           <view class="doctor_list_item_info van-multi-ellipsis--l2">{{item.summary}}</view>
         </view>
+        <van-button class="doctor_list_item_btn" type="info">预约</van-button>
       </view>
+      
     </view>
   </block>
   <!-- <view class="appointment_time">
