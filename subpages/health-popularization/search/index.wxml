@@ -32,7 +32,6 @@
     <view class="hot_title">热门内容</view>
       <scroll-view 
         scroll-y
-        scroll-top="{{scrollTop}}"
         bindscrolltolower="handleScrollBottom"
         bindscroll="onViewScroll"
         style="height:{{scrollHeight}}px;"

@@ -40,12 +40,6 @@ Component({
         scrollHeight
       });
     },
-    // 监听页面滚动
-    onViewScroll({ detail}) {
-      this.setData({
-        scrollTop: detail.scrollTop
-      });
-    },
 
     getDoctorList(isPage, page) {
       let _this = this;

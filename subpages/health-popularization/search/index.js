@@ -6,8 +6,6 @@ Page({
    */
   data: {
     active: 0,
-    // 分类列表
-    dateList: ['肿瘤营养','乳腺癌','肺癌','HIV专区','肝病','胃癌','免疫治疗','血液肿瘤','食道癌'],
 
     historySearch: [],
     searchLoading: false,
@@ -15,7 +13,6 @@ Page({
     page: 1,
     doctor: {},
     scrollHeight: 0,
-    scrollTop: 0,
     // 是否已搜索 
     isSearch: false,
     searchText: "",

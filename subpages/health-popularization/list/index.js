@@ -9,7 +9,7 @@ Page({
     // 分类列表
     dateList: [],
 
-    // 当前的分类id (0则代表首页)
+    // 当前的分类id 
     category_id: 0,
 
   },
