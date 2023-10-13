@@ -94,7 +94,8 @@
     {
       "root": "subpages/health-popularization",
       "pages": [
-        "list/index"
+        "list/index",
+        "search/index"
       ]
     },
     {

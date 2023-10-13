@@ -1,0 +1,30 @@
+  .loading{ 
+    padding: 10rpx; 
+    text-align: center; 
+    color: var(--tab-text-color,#646566);
+   }
+  
+  .content {
+    background: #fff;
+    border-top: 1rpx solid #F2F4F5;
+  }
+  
+  .title_wrap {
+    display: flex;
+    justify-content: space-around;
+    padding: 15rpx 20rpx;
+    border-bottom: 1rpx solid #F2F4F5;
+  }
+  
+  .title_wrap > image {
+    width: 124rpx;
+    height: 124rpx;
+    margin-right: 20rpx;
+  }
+  
+  .title_wrap > view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }

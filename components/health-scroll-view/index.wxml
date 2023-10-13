@@ -1,0 +1,19 @@
+  <scroll-view 
+    scroll-y
+    bindscrolltolower="handleScrollBottom"
+    bindscroll="onViewScroll"
+    style="height:{{scrollHeight}}px;"
+    >
+    <view class="content">
+      <van-cell-group>
+        <van-cell wx:for="{{doctor.data}}" wx:key="index">
+          <view slot="title" class="title_wrap" data-url="pages/article/detail/index?article_id={{item.article_id}}" bindtap="navigationTo">
+            <view class="article_title">{{item.article_title}}</view>
+            <image src="{{item.image.file_path}}" />
+          </view>
+        </van-cell>
+      </van-cell-group>
+      </view>
+      <view class="loading"  wx:if="{{ searchLoading }}">加载中...</view> 
+      <view class="loading complete" wx:if="{{ searchLoadingComplete }}">{{searchText&&!doctor.data.length?'没有搜索到相关记录~':'——  没有更多了  ——'}}</view> 
+  </scroll-view>
