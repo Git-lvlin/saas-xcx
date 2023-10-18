@@ -5,37 +5,43 @@ Component({
     category_id: {
       type: Number,
       observer: function(newVal, oldVal) {
-      this.setData({
-        page: 1,
-        searchLoadingComplete: false,
-        searchLoading: false,
-      });
-        this.getDoctorList('');
+        if (newVal !== oldVal) {
+          if (!this.data.searchLoading) {
+            this.getDoctorList('');
+          }
+        }
       }
     },
     //搜索查询
     searchText: {
       type: String,
       observer: function(newVal, oldVal) {
-          this.getDoctorList('');
+        if (newVal && newVal.trim() !== '' && newVal !== oldVal) {
+          if (!this.data.searchLoading) {
+            this.getDoctorList('');
+          }
         }
+      }
+    },
+    //前面内容高度
+    totalHeight: {
+      type: String,
     }
   },
   data: {
     searchLoading: false,
     searchLoadingComplete: false,
     page: 1,
-    doctor: {}
+    doctor: {},
   },
   attached(){
     this.setListHeight()
-    this.getDoctorList('')
   },
   methods: {
     //计算高度
     setListHeight() {
       let systemInfo = wx.getSystemInfoSync(),
-        scrollHeight = systemInfo.windowHeight - 100; // swiper高度
+        scrollHeight = systemInfo.windowHeight - this.data.totalHeight; // swiper高度
       this.setData({
         scrollHeight
       });
@@ -65,22 +71,14 @@ Component({
           });
         }
         //第一次就渲染完展示没有更多了
-        if (_this.data.page >= _this.data.doctor.last_page) {
+        if (_this.data.page >= resList.last_page) {
           _this.setData({
             searchLoadingComplete: true
           });
         }
         //数据回调
         _this.triggerEvent('sendDoctor', { doctor: _this.data.doctor });
-
-        //没有数据调整高度
-        if(!resList.data.length){
-          _this.setData({
-            scrollHeight: 100
-          });
-        }else{
-          _this.setListHeight()
-        }
+        _this.setListHeight()
       });
     },
     // 监听滚动到底部

@@ -16,7 +16,6 @@ page {
     font-family: Source Han Sans CN-Regular, Source Han Sans CN;
     font-weight: 400;
     color: #666666;
-    line-height: 34rpx;
 }
 
 .earlyScreeningDetail .informed_consent{
@@ -35,13 +34,10 @@ page {
 }
 
 .earlyScreeningSchedule .query{
-    width: 640rpx;
-    height: 34rpx;
     font-size: 28rpx;
     font-family: Source Han Sans CN-Regular, Source Han Sans CN;
     font-weight: 400;
     color: #999999;
-    line-height: 34rpx;
     margin: 50rpx 0 0 20rpx;
 }
 
@@ -77,4 +73,38 @@ page {
 .earlyScreeningSchedule .arrows image{
     width: 28rpx;
     height: 28rpx;
+}
+
+.van-step__title{
+    margin-left: 18rpx;
+}
+
+.van-step__title view:nth-child(1){
+    font-size: 40rpx;
+    font-family: Source Han Sans CN-Medium, Source Han Sans CN;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 24rpx;
+}
+
+.van-step__title view:nth-child(2){
+    font-size: 32rpx;
+    font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+    font-weight: 400;
+    color: #666666;
+}
+
+.van-step__circle{
+    background-color: #07C160 !important;
+    width: 24rpx !important;
+    height: 24rpx !important;
+}
+
+.van-step__line{
+    background-color: #E4E4E4 !important;
+}
+
+.van-icon{
+    color: #07C160 !important;
+    font-size: 48rpx !important;
 }

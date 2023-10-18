@@ -1,3 +1,4 @@
+<view class="health_scroll_view">
   <scroll-view 
     scroll-y
     bindscrolltolower="handleScrollBottom"
@@ -8,12 +9,20 @@
       <van-cell-group>
         <van-cell wx:for="{{doctor.data}}" wx:key="index">
           <view slot="title" class="title_wrap" data-url="pages/article/detail/index?article_id={{item.article_id}}" bindtap="navigationTo">
-            <view class="article_title">{{item.article_title}}</view>
+            <view>
+              <view class="article_title">{{item.article_title}}</view>
+              <view class="visitor_volume">
+                <view><image src="../../images/look.png" />{{ item.show_views+item.virtual_views }}</view>
+                <view><image src="../../images/upvote.png" />346</view>
+                <view><image src="../../images/share.png" />356w</view>
+              </view>
+            </view>
             <image src="{{item.image.file_path}}" />
           </view>
         </van-cell>
       </van-cell-group>
       </view>
       <view class="loading"  wx:if="{{ searchLoading }}">加载中...</view> 
-      <view class="loading complete" wx:if="{{ searchLoadingComplete }}">{{searchText&&!doctor.data.length?'没有搜索到相关记录~':'——  没有更多了  ——'}}</view> 
+      <view class="loading" wx:else="{{ searchLoadingComplete }}">——  没有更多了  ——</view> 
   </scroll-view>
+</view>
