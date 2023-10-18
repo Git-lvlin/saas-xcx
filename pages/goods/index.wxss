@@ -443,6 +443,7 @@
 .popup__trade .trade-main .goods-info .goods-image {
   margin-top: -40px;
   margin-right: 20rpx;
+  background: #fff;
 }
 
 .popup__trade .trade-main .goods-info .goods-image image {
