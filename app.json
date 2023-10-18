@@ -99,11 +99,13 @@
       ]
     },
     {
-<<<<<<< HEAD
       "root": "subpages/webview",
-=======
+      "pages": [
+        "index"
+      ]
+    },
+    {
       "root": "subpages/pay-fees",
->>>>>>> 76f9804d30d9fc0b78b160d4d13a692612963631
       "pages": [
         "index"
       ]
