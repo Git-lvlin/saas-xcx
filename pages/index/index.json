@@ -2,9 +2,7 @@
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "",
   "usingComponents": {
-    "diy-component": "/components/diy/index",
-    "tabbar": "/components/tabbar/tabbar",
-    "diy-banner": "/components/diy/banner/banner"
+    "van-button": "@vant/weapp/button/index"
   },
   "navigationStyle": "custom"
 }

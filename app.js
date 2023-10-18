@@ -99,16 +99,16 @@ App({
             }
             if (!_this.checkIsLogin() && wx.getStorageSync('referee_id')) {
               wx.setStorageSync('referee_id_Login', 1)
-              wx.reLaunch({
-                url: '/pages/invite/index',
-              })
+              // wx.reLaunch({
+              //   url: '/pages/invite/index',
+              // })
             }
             let newUser = _this.getRefereeid() || _this.getMyInviteCode() ? true : false;
             if (_this.globalData.mobile_acquired && !_this.globalData.userinfo_acquired && newUser) {
               wx.setStorageSync('referee_id_Login', 2)
-              wx.reLaunch({
-                url: '/pages/inviteAffirm/index',
-              })
+              // wx.reLaunch({
+              //   url: '/pages/inviteAffirm/index',
+              // })
             }
             cb && cb()
           } else {}

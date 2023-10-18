@@ -1,4 +1,4 @@
-// pages/doctorInfo/index.ts
+import dayjs from 'dayjs'
 let App = getApp()
 
 Page({
@@ -7,13 +7,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-		info: ''
+		info: '',
+    popVisible: false,
+    doctorInfo:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.options = options
 		this.getDoctorInfo(options.clerk_id)
   },
 
@@ -65,6 +68,36 @@ Page({
   onShareAppMessage() {
 
 	},
+
+  getDoctor() {
+    App._get("registration.Registration/doctor", { clerk_id: this.options.clerk_id }, res => {
+      if (res.code === 1) {
+        const arr = []
+        res.data.registration_day.forEach((item, index) => {
+          
+          item.work_plan.forEach(it => {
+            it['expired'] = +new Date() >= +new Date(`${item.date} ${it.end}:00`)
+          })
+          arr.push({ ...item, p: dayjs(item.date).format('MM-DD'), b: item.week,})
+        })
+        this.setData({
+          popVisible: true,
+          doctorInfo: {
+            ...res.data,
+            registration_day: arr,
+          }
+        },() => {
+          // this.selectComponent('#van-tabs').scrollIntoView()
+        })
+      }
+    })
+  },
+
+  onClose() {
+    this.setData({
+      popVisible: false,
+    })
+  },
 	
 	getDoctorInfo (id) {
 		App._get('registration.Registration/doctorDetail', {clerk_id: id}, (res)=> {
@@ -87,5 +120,4 @@ Page({
 			}
 		})
 	}
-
 })

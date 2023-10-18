@@ -138,10 +138,10 @@
           <!-- 商品数量和单价 -->
           <view class="flow-list-cont dis-flex flex-x-between flex-y-center">
             <text class="small">×{{item.total_num}}</text>
-            <text class="flow-cont {{ item.is_user_grade ? 'price-delete' : '' }}">￥{{item.goods_price}}</text>
+            <text class="flow-cont {{ item.is_user_grade ? 'price-delete' : '' }}">￥{{ item.is_user_grade ?item.line_price:item.goods_price}}</text>
           </view>
           <!-- 会员折扣价 -->
-          <view wx:if="{{ item.is_user_grade }}" class="grade-price">
+          <view wx:if="{{ item.is_user_grade }}" class="grade-price" >
             <text>会员折扣价：￥{{ item.grade_goods_price }}</text>
           </view>
           <!-- 申请售后 -->
@@ -154,7 +154,7 @@
     </view>
 
     <view class="flow-num-box b-f">
-      <text>共{{order.goods.length}}件商品，合计: </text>
+      <text>共{{order.total_num}}件商品，合计: </text>
       <text class="flow-money col-m">￥{{order.total_price}}</text>
     </view>
 

@@ -1,0 +1,29 @@
+<view class="bar_container">
+  <block
+    wx:for="{{tabList}}"
+    wx:key="index"
+  >
+    <button
+      open-type="contact"
+      class="bar_item"
+      data-path="{{item.pagePath}}"
+      data-index="{{item.index}}"
+      data-type="{{item.type}}"
+      wx:if="{{item.type === 'contact'}}"
+    >
+      <image class="bar_icon" src="{{selectedIndex === item.index ? item.selectedIconPath : item.iconPath}}" />
+      <view class="bar_title {{selectedIndex === item.index ? 'bar_title_act' : ''}}">{{item.text}}</view>
+    </button>
+    <view
+      wx:else
+      class="bar_item"
+      data-path="{{item.pagePath}}"
+      data-index="{{item.index}}"
+      data-type="{{item.type}}"
+      bindtap="onToPath"
+    >
+      <image class="bar_icon" src="{{selectedIndex === item.index ? item.selectedIconPath : item.iconPath}}" />
+      <view class="bar_title {{selectedIndex === item.index ? 'bar_title_act' : ''}}">{{item.text}}</view>
+    </view>
+  </block>
+</view>

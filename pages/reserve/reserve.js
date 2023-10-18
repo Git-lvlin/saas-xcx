@@ -80,7 +80,7 @@ Page({
             registration_day: arr,
           }
         },() => {
-          this.selectComponent('#van-tabs').scrollIntoView()
+          // this.selectComponent('#van-tabs').scrollIntoView()
         })
         cb && cb()
       }

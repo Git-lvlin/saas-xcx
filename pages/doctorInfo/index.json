@@ -1,4 +1,7 @@
 {
 	"navigationBarTitleText": "医生介绍",
-  "usingComponents": {}
+  "usingComponents": {
+    "reserve-pop": "/components/reserve-pop/index",
+    "van-button": "@vant/weapp/button/index"
+  }
 }

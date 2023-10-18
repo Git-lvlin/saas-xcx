@@ -41,7 +41,7 @@
     <view id="my-scroll-view" bindscrolltolower="bindDownLoad" wx:if="{{list.data.length > 0}}" scroll-top="{{scrollTop}}" scroll-with-animation="true">
       <view class="new">
         <view class="category-list {{ showView ? 'arrange' : '' }}">
-          <navigator class="list b-f {{'_'+item.category_id}}" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="{{item.goods_id}}">
+          <navigator class="list b-f {{'_'+item.category_id}}" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="index">
 						<goods-list goodsItem="{{item}}"></goods-list>
             <!-- <view class="left">
               <view class="img">

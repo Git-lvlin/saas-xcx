@@ -6,7 +6,7 @@ Page({
     // 页面参数
     //options: {},
     // 页面元素
-    //items: {},
+    items: [],
     scrollTop: 0,
     storeList: [],
     imgUrls: [
@@ -92,11 +92,29 @@ Page({
     }, result => {
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
-      _this.setData(result.data);
+      
       // 回调函数
       typeof callback === 'function' && callback();
 
       result.data.items.forEach(item => {
+        if (item.type === 'navBarLeft') {
+          item.data.forEach(it => {
+            if (/\[换行\]/.test(it.text)) {
+              const arr = it.text.split('[换行\]')
+              const [title,...rest] = arr
+              it.title = title
+              it.textArr = rest
+            }
+          })
+        }
+
+        if (item.type === 'notice') {
+          if (/\[换行\]/.test(item.params.text)) {
+            const arr = item.params.text.split('[换行\]')
+            item.textArr = arr
+          }
+        }
+
         if (item.type === 'banner') {
           this.setData({
             bannerData: item
@@ -115,6 +133,8 @@ Page({
           })
         }
       })
+
+      _this.setData(result.data);
     });
   },
 
@@ -227,6 +247,9 @@ Page({
 
   navigationTo(e) {
     const { url } = e.currentTarget.dataset
+    if (!url) {
+      return
+    }
     App.navigationTo(url)
   },
 });

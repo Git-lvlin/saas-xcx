@@ -1,11 +1,11 @@
 {
-    "navigationBarTitleText": "商品列表",
+    "navigationBarTitleText": "健康推荐",
     "enablePullDownRefresh": true,
     "navigationBarBackgroundColor": "#3786FF",
     "navigationBarTextStyle": "white",
     "usingComponents": {
         "mp-tabs": "@miniprogram-component-plus/tabs",
-				"diy-component": "/components/diy/index",
-				"goods-list": "/components/goodslist/index"
+        "diy-component": "/components/diy/index",
+        "goods-list": "/components/goodslist/index"
     }
 }

@@ -81,7 +81,7 @@
           <text>联系电话：</text>
         </view>
         <view class="item_ipt flex-box dis-flex flex-y-center">
-          <input placeholder="请填写联系电话" bindinput="onInputPhone" value="{{ phone }}"></input>
+          <input placeholder="请填写联系电话" maxlength="11" bindinput="onInputPhone" value="{{ phone }}"></input>
         </view>
       </view>
     </view>

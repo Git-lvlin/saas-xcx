@@ -99,7 +99,11 @@
       ]
     },
     {
+<<<<<<< HEAD
       "root": "subpages/webview",
+=======
+      "root": "subpages/pay-fees",
+>>>>>>> 76f9804d30d9fc0b78b160d4d13a692612963631
       "pages": [
         "index"
       ]
@@ -112,7 +116,7 @@
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
-    "custom": false,
+    "custom": true,
     "color": "#6e6d6b",
     "selectedColor": "#408CFF",
     "borderStyle": "black",
@@ -127,7 +131,7 @@
       },
       {
         "pagePath": "pages/category/list",
-        "text": "商城",
+        "text": "健康推荐",
         "iconPath": "images/tabbar2.png",
         "selectedIconPath": "images/tabbar2_s.png"
       },

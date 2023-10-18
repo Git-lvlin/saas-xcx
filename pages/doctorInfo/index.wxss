@@ -1,3 +1,7 @@
+page {
+	padding-bottom: 100rpx;
+}
+
 .info {
 	display: flex;
 	background-color: #fff;
@@ -68,4 +72,23 @@
 	font-weight: 700;
 	color: #353535;
 	line-height: 40rpx;
+}
+
+.footer_wrap {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  position: fixed;
+  background: #fff;
+  bottom: 0;
+}
+
+.van-button {
+  border-radius: 12rpx !important;
+}
+
+.safe_view {
+  width: 100%;
+  height: constant(safe-area-inset-bottom);
+  height: env(safe-area-inset-bottom);
 }

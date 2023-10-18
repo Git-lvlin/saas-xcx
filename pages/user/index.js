@@ -226,6 +226,7 @@ Page({
 			sub: '/pages/user/my-appointment/index',
             address: '/pages/address/index',
 			myReport: '/pages/user/my-report/earlyScreeningList/index',
+			fee: '/subpages/pay-fees/index',
 		}
 		wx.navigateTo({
 			url: urls[e.currentTarget.dataset.type]

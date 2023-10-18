@@ -76,7 +76,7 @@ Page({
    */
   setDefault: function(e) {
     let _this = this,
-      address_id = e.detail.value;
+      address_id = e.currentTarget.dataset.value;
     _this.setData({
       default_id: parseInt(address_id)
     });

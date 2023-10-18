@@ -1,9 +1,3 @@
-.container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .text_wrap {
   color: #909090;
   font-size: 28rpx;
