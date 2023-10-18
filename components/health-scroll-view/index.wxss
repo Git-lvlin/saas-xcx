@@ -1,3 +1,6 @@
+  .health_scroll_view{
+   
+  }
   .loading{ 
     padding: 10rpx; 
     text-align: center; 
@@ -17,9 +20,10 @@
   }
   
   .title_wrap > image {
-    width: 124rpx;
-    height: 124rpx;
-    margin-right: 20rpx;
+    width: 218rpx;
+    height: 152rpx;
+    border-radius: 22rpx 22rpx 22rpx 22rpx;
+    opacity: 1;
   }
   
   .title_wrap > view {
@@ -27,4 +31,47 @@
     flex-direction: column;
     justify-content: center;
     flex: 1;
+    margin-right: 40rpx;
+  }
+
+  .article_title{
+    font-size: 32rpx;
+    font-family: OPPOSans-Regular, OPPOSans;
+    font-weight: 400;
+    color: #333333;
+    line-height: 44rpx;
+  }
+
+  .visitor_volume{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10rpx;
+  }
+
+  .visitor_volume>view{
+    font-size: 24rpx;
+    font-family: OPPOSans-Medium, OPPOSans;
+    font-weight: 500;
+    color: #999999;
+    line-height: 44rpx;
+    display: flex;
+    align-items: center;
+  }
+
+  .visitor_volume view:nth-child(1) image{
+    width: 30.94rpx;
+    height: 22.69rpx;
+    margin-right: 10rpx;
+  }
+
+  .visitor_volume view:nth-child(2) image{
+    width: 28rpx;
+    height: 26.79rpx;
+    margin-right: 10rpx;
+  }
+
+  .visitor_volume view:nth-child(3) image{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 10rpx;
   }

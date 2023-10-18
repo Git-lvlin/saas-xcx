@@ -16,7 +16,8 @@ Page({
     // 是否已搜索 
     isSearch: false,
     searchText: "",
-    doctorSearch: []
+    doctorSearch: [],
+    showScrollView: false
   },
 
   /**
@@ -31,28 +32,54 @@ Page({
     this.getHistorySearch();
   },
 
-  //搜索
-  onSearch({ detail }) {
-    this.setData({
-      isSearch: true,
-      searchText: detail
-    })
-    
-    // 获取已经存在的搜索历史
-    let history = wx.getStorageSync('historySearch') || [];
-    
-    // 将新的搜索内容添加到历史列表中
-    history.push({ keyword:detail });
-
-    // 存储更新后的搜索历史
-    wx.setStorageSync('historySearch', history);
+  onChange({ detail }){
+    if(detail){
+      this.setData({
+        searchText: detail
+      })
+    }else{
+      this.onCancel()
+    }
   },
+  //搜索
+  onSearch() {
+    const { searchText } = this.data
+    if(searchText){
+      this.setData({
+        isSearch: true,
+        searchText: searchText,
+        showScrollView: true
+      })
+      
+      // 获取已经存在的搜索历史
+      let history = wx.getStorageSync('historySearch') || [];
+      
+      // 检查搜索内容是否已经存在于历史列表中
+      let exists = history.some(item => item.keyword === searchText);
+      
+      // 如果不存在，则将新的搜索内容添加到历史列表中
+      if (!exists) {
+        // 检查历史列表的长度
+        if (history.length >= 10) {
+          // 移除最早的搜索历史
+          history.shift();
+        }
+        
+        // 添加新的搜索历史
+        history.push({ keyword:searchText });
+      }
+
+      // 存储更新后的搜索历史
+      wx.setStorageSync('historySearch', history);
+    }
+  },
+
 
   //搜索结果
   onReceiveDoctor(e) {
-    console.log(e.detail.doctor);  // 这里就可以获取到doctor数据了
     this.setData({
-      doctorSearch: e.detail.doctor.data
+      doctorSearch: e.detail.doctor.data,
+      showScrollView: e.detail.doctor.data.length > 0
     })
   },
 
@@ -62,7 +89,8 @@ Page({
     this.setData({
       isSearch: false,
       searchText: '',
-      doctorSearch: []
+      doctorSearch: [],
+      showScrollView: false
     })
     this.getHistorySearch();
   },
@@ -91,18 +119,22 @@ Page({
     } = currentTarget.dataset;
     this.setData({
       searchText: keyword,
-      isSearch: true
+      isSearch: true,
+      showScrollView: true
     })
   },
 
   //计算高度
   setListHeight() {
     let systemInfo = wx.getSystemInfoSync(),
-      scrollHeight = systemInfo.windowHeight - 200; // swiper高度
+      scrollHeight = systemInfo.windowHeight - 230; // swiper高度
     this.setData({
       scrollHeight
     });
   },
+
+
+  
 
   //列表数据
   getDoctorList(isPage, page) {

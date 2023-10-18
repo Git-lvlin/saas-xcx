@@ -1,35 +1,39 @@
 <view class="container">
   <van-search 
    value="{{ searchText }}"
-   placeholder="请输入搜索关键词"
-   show-action
+   placeholder="搜索想要了解的内容"
+   use-action-slot
    bind:search="onSearch"
-   bind:cancel="onCancel"
-   background="#F4F4F4"
-  />
-  <view class="flex_fix search_history" wx:if="{{!isSearch}}" >
+   bind:clear="onCancel"
+   bind:change="onChange"
+   class="vansearch"
+  >
+    <view class="search" slot="action" bindtap="onSearch">搜索</view>
+  </van-search>
+  <view class="search_history" wx:if="{{!isSearch}}" >
       <view class="history_clear">
-        <view class="title">历史搜索</view>
-        <view class="{{historySearch.length?'clear':'later'}}" bindtap="clearSearchHistory">
-          删除记录
+        <view class="option_list" wx:if="{{historySearch.length}}">
+          <view
+            class="item"
+            wx:for="{{historySearch}}"
+            wx:key="index"
+            data-keyword="{{item.keyword}}"
+            bindtap="onSearchLabel" 
+          >{{item.keyword}}</view>
         </view>
+        <view class="noSearch" wx:else>没有历史搜索记录~</view>
+        <image src="../../../images/delete.png" class="clear" bindtap="clearSearchHistory"/>
       </view>
-      <view class="option_list" wx:if="{{historySearch.length}}">
-        <view
-          class="item"
-          wx:for="{{historySearch}}"
-          wx:key="index"
-          data-keyword="{{item.keyword}}"
-          bindtap="onSearchLabel"
-        >{{item.keyword}}</view>
-      </view>
-      <view class="noSearch" wx:else>没有历史搜索记录~</view>
   </view>
-  <view wx:if="{{isSearch}}">
-      <ScrollViewComponent bind:sendDoctor="onReceiveDoctor" searchText="{{searchText}}"/>
+  <view wx:if="{{isSearch&&showScrollView}}">
+      <ScrollViewComponent bind:sendDoctor="onReceiveDoctor" searchText="{{searchText}}" totalHeight="56"/>
   </view>
-  <view class="hot_search" wx:if="{{doctor.data.length&&!doctorSearch.length}}">
-    <view class="hot_title">热门内容</view>
+  <view wx:elif="{{searchText&&isSearch&&doctorSearch.length === 0}}" class="noSearch"> 
+    <image src="/images/ineffectiveness.png"/>
+    <view class="search_noresults">搜索无结果</view>
+  </view>
+  <view class="hot_search" wx:if="{{doctor.data.length&&doctorSearch.length === 0}}">
+    <view class="hot_title"><view></view>热门推荐</view>
       <scroll-view 
         scroll-y
         bindscrolltolower="handleScrollBottom"
@@ -40,7 +44,14 @@
         <van-cell-group>
           <van-cell wx:for="{{doctor.data}}" wx:key="index">
             <view slot="title" class="title_wrap" data-url="pages/article/detail/index?article_id={{item.article_id}}" bindtap="navigationTo">
-              <view class="article_title">{{item.article_title}}</view>
+              <view>
+                <view class="article_title">{{item.article_title}}</view>
+                <view class="visitor_volume">
+                  <view><image src="/images/look.png" />{{ item.show_views+item.virtual_views }}</view>
+                  <view><image src="/images/upvote.png" />346</view>
+                  <view><image src="/images/share.png" />356w</view>
+                </view>
+              </view>
               <image src="{{item.image.file_path}}" />
             </view>
           </van-cell>

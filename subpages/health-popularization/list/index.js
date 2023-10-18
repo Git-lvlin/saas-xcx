@@ -18,7 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let { dateList } = this.data
     App._get("article/categoryByTag", { tag: '健康科普' }, res => {
       if (res.code === 1) {
         this.setData({
@@ -27,7 +26,6 @@ Page({
         })
       }
     })
-
   },
 
   //切换导航栏

@@ -97,6 +97,12 @@
         "list/index",
         "search/index"
       ]
+    },
+    {
+      "root": "subpages/webview",
+      "pages": [
+        "index"
+      ]
     }
   ],
   "window": {
