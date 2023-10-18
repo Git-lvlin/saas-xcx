@@ -62,17 +62,18 @@ Page({
         // 检查历史列表的长度
         if (history.length >= 10) {
           // 移除最早的搜索历史
-          history.shift();
+          history.pop();
         }
         
-        // 添加新的搜索历史
-        history.push({ keyword:searchText });
+        // 添加新的搜索历史到最前面
+        history.unshift({ keyword:searchText });
       }
 
       // 存储更新后的搜索历史
       wx.setStorageSync('historySearch', history);
     }
   },
+
 
 
   //搜索结果

@@ -38,7 +38,8 @@
 
 .history_clear {
   padding: 22rpx 24rpx 20rpx;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 
 .van-search__action-button{
@@ -55,9 +56,7 @@
 .clear {
   width: 32rpx;
   height: 32rpx;
-  position: absolute;
-  right: 30rpx;
-  top: 30rpx;
+  flex-shrink: 0;
 }
 
 .noSearch{
