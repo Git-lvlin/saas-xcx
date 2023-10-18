@@ -25,11 +25,11 @@ Page({
           reporturl:options.reporturl
         })
         App._post_form('external.index/index&reqCode=healthyScreenSignProcess', { code:options.code }, function (result) {
-          console.log('result',result)
           if(result.code==1){
             that.setData({
               steps: result.data.map(item=>({ text: item.name, desc: item.timeStr })),
-              active: result.data.filter(item=>item.enable == 1).length-1
+              active: result.data.filter(item=>item.enable == 1).length-1,
+              showSharePopup: result.data.filter(item=>item.actionUrl != '').length
             })
           }
       });
@@ -41,10 +41,5 @@ Page({
       wx.navigateTo({
         url: `/subpages/webview/index?url=${this.data.reporturl}`
       })
-    },
-    onHideSharePopup() {
-        this.setData({
-            showSharePopup: false,
-        })
     },
 })

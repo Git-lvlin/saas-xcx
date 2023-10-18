@@ -10,7 +10,7 @@
       active-color="#07C160"
     />
     <view class="query">如有疑问请联系客服或您的服务人员。</view>
-    <view class="next_step" wx:if="{{ active==3 }}">
+    <view class="next_step" wx:if="{{ showSharePopup }}">
         <van-button 
          bindtap="showSharePopup"
         >
