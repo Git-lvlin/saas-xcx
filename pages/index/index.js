@@ -1,3 +1,5 @@
+import Dialog from '@vant/weapp/dialog/dialog';
+
 const App = getApp();
 
 Page({
@@ -22,6 +24,7 @@ Page({
     bannerData: {},
     navBarData: {},
     goodsData: {},
+    setting: {}
   },
 
   properties: {
@@ -34,31 +37,29 @@ Page({
   onLoad(options) {
     let _this = this;
     //wx.hideTabBar()
-    if (wx.getStorageSync('referee_id_Login') == 1) {
-      wx.reLaunch({
-        url: '/pages/invite/index',
-      })
-    } else if (wx.getStorageSync('referee_id_Login') == 2) {
-      wx.reLaunch({
-        url: '/pages/inviteAffirm/index',
-      })
-    }
+    // if (wx.getStorageSync('referee_id_Login') == 1) {
+    //   wx.reLaunch({
+    //     url: '/pages/invite/index',
+    //   })
+    // } else if (wx.getStorageSync('referee_id_Login') == 2) {
+    //   wx.reLaunch({
+    //     url: '/pages/inviteAffirm/index',
+    //   })
+    // }
 
     // 当前页面参数
     // this.setData({
     //   options
     // });
 
-    // 加载页面数据
-    this.getPageData();
-    this.getStoreList()
+    
 
 
-    wx.login({
-      success(res) {
-        console.log(res.code)
-      }
-    })
+    // wx.login({
+    //   success(res) {
+    //     console.log(res.code)
+    //   }
+    // })
 
     //获取状态栏高度
     const systemInfo = wx.getSystemInfoSync();
@@ -72,6 +73,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+
+    // 加载页面数据
+    this.getPageData()
+    this.getStoreList()
+
     // 更新购物车角标
     App.setCartTabBadge();
     // if (typeof this.getTabBar === 'function' &&
@@ -133,6 +139,26 @@ Page({
           })
         }
       })
+
+      const popup_id = wx.getStorageSync('popup_id')
+      const setting = result.data.setting
+
+      if (setting.popup_id === popup_id) {
+        setting.popup_mode = 0
+      }
+      wx.setStorageSync('popup_id',setting.popup_id)
+
+      // if (setting.popup_mode === 1) {
+      //   Dialog.alert({
+      //     title: setting.popup_title,
+      //     message: setting.popup_body,
+      //     confirmButtonText: '知道了',
+      //     'confirm-button-color': '#000'
+      //     // overlayStyle: "z-index:9999"
+      //   })
+      // }
+
+      
 
       _this.setData(result.data);
     });

@@ -238,7 +238,7 @@ Page({
               
             },
             fail: res => {
-              App.showError(res.errMsg);
+              // App.showError(res.errMsg);
             },
           });
         }

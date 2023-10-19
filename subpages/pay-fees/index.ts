@@ -53,7 +53,7 @@ Page({
               App.showSuccess("支付成功")
             },
             fail: res => {
-              App.showError(res.errMsg);
+              // App.showError(res.errMsg);
             },
           });
         }
