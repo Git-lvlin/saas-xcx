@@ -164,4 +164,25 @@
     <text class="f-24 col-9 cont">我是有底线的</text>
     <view class="hr"></view>
   </view>
+
+  <van-dialog
+    title="{{setting.popup_title}}"
+    show="{{setting.popup_mode===1}}"
+    message="{{setting.popup_body}}"
+    confirm-button-color="#3786FF"
+    confirm-button-text="我知道了"
+  />
+
+  <van-dialog
+    title="{{setting.popup_title}}"
+    show="{{setting.popup_mode===2}}"
+    message="{{setting.popup_body}}"
+    confirm-button-color="#3786FF"
+    confirm-button-text="我知道了"
+    use-slot
+  >
+    <view class="dialog_wrap">
+      <image class="dialog_img" mode="widthFix" src="{{setting.popup_body}}" />
+    </view>
+  </van-dialog>
 </view>
