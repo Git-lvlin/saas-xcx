@@ -26,40 +26,15 @@
       </view>
   </view>
   <view wx:if="{{isSearch&&showScrollView}}">
-      <ScrollViewComponent bind:sendDoctor="onReceiveDoctor" searchText="{{searchText}}" totalHeight="56"/>
+      <ScrollViewComponent bind:sendDoctor="onReceiveDoctor" searchText="{{searchText}}" totalHeight="56" apiUrl="article/lists"/>
   </view>
   <view wx:elif="{{searchText&&isSearch&&doctorSearch.length === 0}}" class="noSearch"> 
     <image src="/images/ineffectiveness.png"/>
     <view class="search_noresults">搜索无结果</view>
   </view>
-  <view class="hot_search" wx:if="{{doctor.data.length&&doctorSearch.length === 0}}">
+  <view class="hot_search" wx:if="{{doctorSearch.length === 0 || !searchText}}">
     <view class="hot_title"><view></view>热门推荐</view>
-      <scroll-view 
-        scroll-y
-        bindscrolltolower="handleScrollBottom"
-        bindscroll="onViewScroll"
-        style="height:{{scrollHeight}}px;"
-      >
-      <view class="content">
-        <van-cell-group>
-          <van-cell wx:for="{{doctor.data}}" wx:key="index">
-            <view slot="title" class="title_wrap" data-url="pages/article/detail/index?article_id={{item.article_id}}" bindtap="navigationTo">
-              <view>
-                <view class="article_title">{{item.article_title}}</view>
-                <view class="visitor_volume">
-                  <view><image src="/images/look.png" />{{ item.show_views+item.virtual_views }}</view>
-                  <view><image src="/images/upvote.png" />346</view>
-                  <view><image src="/images/share.png" />356w</view>
-                </view>
-              </view>
-              <image src="{{item.image.file_path}}" />
-            </view>
-          </van-cell>
-        </van-cell-group>
-        </view>
-        <view class="loading"  wx:if="{{ searchLoading }}">加载中...</view> 
-        <view class="loading complete" wx:if="{{ searchLoadingComplete }}">——  没有更多了  ——</view> 
-    </scroll-view>
+      <ScrollViewComponent  totalHeight="230" apiUrl="article/hot" tag="健康科普" listRows="6"/>
   </view>
 
 </view>

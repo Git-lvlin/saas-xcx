@@ -1,4 +1,3 @@
-<import src="../../../wxParse/wxParse.wxml"></import>
 <view class="container b-f p-b">
   <view class="article-little">
     <text class="f-32">{{ detail.article_title }}</text>
@@ -11,9 +10,21 @@
       <text class="article-views f-24 col-8">{{ detail.view_time }}</text>
     </view>
   </view>
+  <view class="hr"></view>
   <view class="article-content m-top20">
     <rich-text nodes="{{str}}"></rich-text>
-    <!-- <template is="wxParse" data="{{ wxParseData:content.nodes }}"></template> -->
+  </view>
+  <view class="share_help" wx:if="{{ is_show_buttom_bar }}">
+    <view bindtap="onHelp">
+      <image src="{{ flage?'../../../images/upvoteLikeBlue.png':'../../../images/upvoteLike.png' }}" />
+      有帮助
+    </view>
+    <view>
+       <button open-type="share"  bindtap="onShare">
+      <image src="../../../images/WeChat.png" />
+       分享
+    </button>
+    </view>
   </view>
 </view>
 

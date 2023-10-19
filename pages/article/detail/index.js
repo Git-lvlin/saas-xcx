@@ -12,8 +12,9 @@ Page({
 
     // 文章详情
     detail: {},
-    str: ''
-
+    str: '',
+    flage: false,
+    is_show_buttom_bar: 0
   },
 
   /**
@@ -42,6 +43,8 @@ Page({
       _this.setData({
         detail,
         str,
+        flage: detail.is_thumb_up,
+        is_show_buttom_bar: detail.is_show_buttom_bar
       });
     });
   },
@@ -71,9 +74,27 @@ Page({
       'article_id': this.data.detail.article_id
     });
     return {
-      // title: this.data.detail.article_title,
+      title: this.data.detail.article_title,
       path: "/pages/article/detail/index?" + params
     };
+  },
+
+  onHelp() {
+    App._post_form('article/thumbup', { article_id:this.data.detail.article_id }, (result) => {
+      console.log('result',result)
+      if(result.code==1){
+        this.setData({
+          flage: !this.data.flage
+        })
+      }
+    });
+  },
+  onShare() {
+    App._post_form('article/shareCallback', { article_id:this.data.detail.article_id }, function (result) {
+      if(result.code==1){
+
+      }
+    });
   }
 
 })
