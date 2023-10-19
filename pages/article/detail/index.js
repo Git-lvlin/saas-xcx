@@ -40,6 +40,9 @@ Page({
         str = detail.article_content
         str = str.replace(/img/g, 'img style="width: 100%;"')
       }
+      wx.setNavigationBarTitle({
+        title: detail.category.tag || '资讯详情'
+      });
       _this.setData({
         detail,
         str,
