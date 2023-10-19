@@ -32,7 +32,7 @@
     <image src="/images/ineffectiveness.png"/>
     <view class="search_noresults">搜索无结果</view>
   </view>
-  <view class="hot_search" wx:if="{{doctorSearch.length === 0}}">
+  <view class="hot_search" wx:if="{{doctorSearch.length === 0 || !searchText}}">
     <view class="hot_title"><view></view>热门推荐</view>
       <ScrollViewComponent  totalHeight="230" apiUrl="article/hot" tag="健康科普" listRows="6"/>
   </view>
