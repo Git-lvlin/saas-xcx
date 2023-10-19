@@ -1,6 +1,6 @@
 <view class="container">
   <view class="van-search__field" bindtap="navigationTo"><image src="../../../images/magnifying.png" class="magnifying"/>搜索想要了解的内容</view>
-  <van-tabs active="{{ active }}"  bind:change="beforeChange" color="#408CFF" line-width="70">
+  <van-tabs active="{{ active }}"  bind:change="beforeChange" color="#408CFF" line-width="70" ellipsis="false">
     <van-tab wx:for="{{dateList}}" title="{{item.name}}" wx:key="{{index}}" name="{{item.category_id}}">
       <ScrollViewComponent category_id="{{category_id}}" totalHeight="80" apiUrl="article/lists"/>
     </van-tab>
