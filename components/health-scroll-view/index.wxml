@@ -13,8 +13,8 @@
               <view class="article_title">{{item.article_title}}</view>
               <view class="visitor_volume">
                 <view><image src="../../images/look.png" />{{ item.show_views+item.virtual_views }}</view>
-                <view><image src="../../images/upvote.png" />346</view>
-                <view><image src="../../images/share.png" />356w</view>
+                <view><image src="../../images/upvote.png" />{{ item.thumb_up }}</view>
+                <view><image src="../../images/share.png" />{{ item.share_count }}</view>
               </view>
             </view>
             <image src="{{item.image.file_path}}" />

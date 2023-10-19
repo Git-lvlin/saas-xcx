@@ -8,6 +8,9 @@ Component({
         if (newVal !== oldVal) {
           if (!this.data.searchLoading) {
             this.getDoctorList('');
+            this.setData({
+              skipGetDoctorList: true
+            })
           }
         }
       }
@@ -19,6 +22,9 @@ Component({
         if (newVal && newVal.trim() !== '' && newVal !== oldVal) {
           if (!this.data.searchLoading) {
             this.getDoctorList('');
+            this.setData({
+              skipGetDoctorList: true
+            })
           }
         }
       }
@@ -26,6 +32,18 @@ Component({
     //前面内容高度
     totalHeight: {
       type: String,
+    },
+    //接口地址
+    apiUrl: {
+      type: String,
+    },
+    //热门推荐
+    tag: {
+      type: String,
+    },
+    //展示条数
+    listRows: {
+      type: Number,
     }
   },
   data: {
@@ -33,9 +51,13 @@ Component({
     searchLoadingComplete: false,
     page: 1,
     doctor: {},
+    skipGetDoctorList: false,
   },
   attached(){
     this.setListHeight()
+    if (!this.data.skipGetDoctorList) { // 首次调用
+      this.getDoctorList('');
+    }
   },
   methods: {
     //计算高度
@@ -52,10 +74,12 @@ Component({
       _this.setData({
         searchLoading: true,
       });
-      App._get('article/lists', {
+      App._get(_this.data.apiUrl, {
         page: page || 1,
         category_id: _this.data.category_id,
-        kwd: _this.data.searchText
+        kwd: _this.data.searchText,
+        tag: _this.data.tag,
+        listRows: _this.data.listRows
       }, function (result) {
         let resList = result.data.list
         let dataList = _this.data.doctor;

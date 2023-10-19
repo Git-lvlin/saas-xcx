@@ -24,8 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.setListHeight()
-    this.getDoctorList('')
+
   },
 
   onShow() {
@@ -123,67 +122,5 @@ Page({
       isSearch: true,
       showScrollView: true
     })
-  },
-
-  //计算高度
-  setListHeight() {
-    let systemInfo = wx.getSystemInfoSync(),
-      scrollHeight = systemInfo.windowHeight - 230; // swiper高度
-    this.setData({
-      scrollHeight
-    });
-  },
-
-
-  
-
-  //列表数据
-  getDoctorList(isPage, page) {
-    let _this = this;
-    _this.setData({
-      searchLoading: true,
-    });
-    App._get('article/hot', {
-      page: page || 1,
-      tag: '健康科普',
-      listRows: 6
-    }, function (result) {
-      let resList = result.data.list
-      let dataList = _this.data.doctor;
-      if (isPage == true) {
-        _this.setData({
-          'doctor.data': dataList.data.concat(resList.data),
-          searchLoading: false,
-        });
-      } else {
-        _this.setData({
-          doctor: resList,
-          searchLoading: false,
-        });
-      }
-      if (_this.data.page >= _this.data.doctor.last_page) {
-        _this.setData({
-          searchLoadingComplete: true
-        });
-      }
-    });
-  },
-
-  // 监听滚动到底部
-  handleScrollBottom() {
-    if (this.data.page >= this.data.doctor.last_page) {
-      this.setData({
-        searchLoadingComplete: true
-      });
-      return false;
-    }
-    this.getDoctorList(true, ++this.data.page);
-  },
-
-  //跳转详情
-  navigationTo(e) {
-    const { url } = e.currentTarget.dataset
-    App.navigationTo(url)
-  },
-
+  }, 
 })

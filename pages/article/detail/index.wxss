@@ -1,6 +1,3 @@
-/* wxParse.wxss */
-@import "/wxParse/wxParse.wxss";
-
 page {
   background: #fff;
 }
@@ -10,7 +7,14 @@ page {
 }
 
 .article-content {
-  font-size: 28rpx;
+  font-size: 36rpx;
+  font-family: OPPOSans-Regular, OPPOSans;
+  font-weight: 400;
+  color: #333333;
+  padding: 0 22rpx 55rpx 22rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
 .wxParse-img {
@@ -19,4 +23,67 @@ page {
 
 .article-little {
   padding: 0 20rpx;
+  font-size: 48rpx;
+  font-family: OPPOSans-Bold, OPPOSans;
+  font-weight: 700;
+  color: #333333;
+}
+
+.hr{
+  width: 720rpx;
+  height: 2rpx;
+  background: #E9E9E9;
+  border-radius: 0rpx 0rpx 0rpx 0rpx;
+  opacity: 1;
+  margin: 0 auto;
+}
+
+.share_help{
+  width: 100%;
+  height: 144rpx;
+  background: #FFFFFF;
+  box-shadow: 0rpx -8rpx 8rpx 0rpx rgba(0,0,0,0.05);
+  border-radius: 0rpx 0rpx 0rpx 0rpx;
+  opacity: 1;
+  font-size: 24rpx;
+  font-family: OPPOSans-Regular, OPPOSans;
+  font-weight: 400;
+  color: #333333;
+  position: fixed;
+  transform: translateX(-50%);
+  bottom: 0;
+  left: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.share_help view{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share_help view:nth-child(1) image{
+  width: 40rpx;
+  height: 38rpx;
+  display: block;
+}
+
+.share_help button{
+  background-color: #FFFFFF;
+  font-size: 24rpx;
+  font-family: OPPOSans-Regular, OPPOSans;
+  font-weight: 400;
+  line-height: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: block;
+}
+
+.share_help button image{
+  width: 46rpx;
+  height: 36.85rpx;
+  display: block;
 }
