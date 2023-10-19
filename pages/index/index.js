@@ -36,6 +36,11 @@ Page({
    */
   onLoad(options) {
     let _this = this;
+
+    // 加载页面数据
+    this.getPageData()
+    this.getStoreList()
+    
     //wx.hideTabBar()
     // if (wx.getStorageSync('referee_id_Login') == 1) {
     //   wx.reLaunch({
@@ -74,9 +79,7 @@ Page({
    */
   onShow() {
 
-    // 加载页面数据
-    this.getPageData()
-    this.getStoreList()
+  
 
     // 更新购物车角标
     App.setCartTabBadge();
