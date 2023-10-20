@@ -38,7 +38,6 @@ Page({
       let str = ''
       if (detail.article_content.length > 0) {
         str = detail.article_content
-        str = str.replace(/img/g, 'img style="width: 100%;"')
       }
       wx.setNavigationBarTitle({
         title: detail.category.tag || '资讯详情'
@@ -84,7 +83,6 @@ Page({
 
   onHelp() {
     App._post_form('article/thumbup', { article_id:this.data.detail.article_id }, (result) => {
-      console.log('result',result)
       if(result.code==1){
         this.setData({
           flage: !this.data.flage

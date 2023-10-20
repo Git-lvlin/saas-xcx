@@ -86,3 +86,7 @@ page {
   height: 36.85rpx;
   display: block;
 }
+
+video{
+  width: 100%;
+}

@@ -59,7 +59,7 @@ Page({
       // 如果不存在，则将新的搜索内容添加到历史列表中
       if (!exists) {
         // 检查历史列表的长度
-        if (history.length >= 10) {
+        if (history.length >= 20) {
           // 移除最早的搜索历史
           history.pop();
         }

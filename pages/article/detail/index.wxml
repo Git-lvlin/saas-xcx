@@ -12,7 +12,7 @@
   </view>
   <view class="hr"></view>
   <view class="article-content m-top20" style="{{ is_show_buttom_bar?' padding: 0 22rpx 144rpx 22rpx;':'padding:20rpx' }}">
-    <rich-text nodes="{{str}}"></rich-text>
+    <mp-html content="{{str}}" />
   </view>
   <view class="share_help" wx:if="{{ is_show_buttom_bar }}">
     <view bindtap="onHelp">

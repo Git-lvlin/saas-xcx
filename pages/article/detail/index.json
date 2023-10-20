@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "shortcut": "/components/shortcut/shortcut"
+    "shortcut": "/components/shortcut/shortcut",
+    "mp-html": "mp-html"
   }
 }
