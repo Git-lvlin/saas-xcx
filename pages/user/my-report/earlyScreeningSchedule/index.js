@@ -38,8 +38,18 @@ Page({
 
     },
     showSharePopup() {
-      wx.navigateTo({
-        url: `/subpages/webview/index?url=${this.data.reporturl}`
+      wx.downloadFile({
+        // 示例 url，并非真实存在
+        url: this.data.reporturl,
+        success: function (res) {
+          const filePath = res.tempFilePath
+          wx.openDocument({
+            filePath: filePath,
+            success: function (res) {
+              console.log('打开文档成功')
+            }
+          })
+        }
       })
     },
 })
