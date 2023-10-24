@@ -197,7 +197,7 @@ Page({
       patient_city_name: region.value[1],
       patient_region_name: region.value[2],
       patient_address,
-      pay_type: PayTypeEnum.WECHAT.value,
+      pay_type: PayTypeEnum.BALANCE.value,
       ...this.info
       // clerk_id: this.info.clerk_id,
       // appointment_date: this.info.appointment_date,

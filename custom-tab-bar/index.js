@@ -1,3 +1,4 @@
+const App = getApp();
 
 
 Component({
@@ -85,6 +86,10 @@ Component({
     //     })
     //   });
     // },
+
+    consultAdd() {
+      App._post_form('registration.registration/consultAdd')
+    },
 
     onToPath(event) {
       const url = event.currentTarget.dataset.path;

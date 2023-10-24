@@ -347,7 +347,7 @@ App({
   /**
    * post提交
    */
-   _post_form(url, data, success, fail, complete, isShowNavBarLoading) {
+   _post_form(url, data = {}, success, fail, complete, isShowNavBarLoading) {
     let _this = this;
 
     isShowNavBarLoading || true;
