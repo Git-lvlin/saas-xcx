@@ -18,7 +18,7 @@
         <view class="user-header-right">
           <button class="btn-normal">
             <!-- 微信昵称 -->
-          	<text class="user-header-cont-name">{{userInfo.nickName}}</text>
+          	<text class="user-header-cont-name">{{userInfo.nickName || '微信用户'}}</text>
 						<view class="phone">
 							<text>{{userInfo.mobile}}</text>
 						</view>

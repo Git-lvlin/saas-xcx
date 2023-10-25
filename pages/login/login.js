@@ -27,11 +27,9 @@ Page({
   },
 
   getPhoneNumber(e) {
-    console.log("🚀 ~ file: login.js:30 ~ getPhoneNumber ~ e:", e)
     let _this = this;
     //同意授权
     App.getPhoneNumber(e, (res) => {
-      console.log(1,res);
       if(res.data.userinfo_acquired){
         // 跳转回原页面
         _this.onNavigateBack(1);
