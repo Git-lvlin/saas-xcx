@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "class-good": "/components/classgood-card/index"
+  }
+}

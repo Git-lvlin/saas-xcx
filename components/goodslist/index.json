@@ -1,3 +1,6 @@
 {
-	"component": true
+	"component": true,
+	"usingComponents": {
+        "classgoods-popup": "/components/classgoods-popup/index"
+    }
 }
