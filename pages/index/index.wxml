@@ -176,6 +176,7 @@
   <van-dialog
     title="{{setting.popup_title}}"
     show="{{setting.popup_mode===2}}"
+    wx:if="{{setting.popup_mode===2}}"
     message="{{setting.popup_body}}"
     confirm-button-color="#3786FF"
     confirm-button-text="我知道了"

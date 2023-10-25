@@ -1,13 +1,13 @@
 module.exports = {
   name: "",
   siteroot: "https://clinic-2-uat.yeahgo.com/", // 必填: api地址
-  uniacid: "10001", // 10001 10004
+  uniacid: "10001",
 };
 /**
  * pro
  * 10001
  * wxf9e07900e09b5f2b
- * https://clinic-2-dev.yeahgo.com/
+ * https://clinic-2-fat.yeahgo.com/
  * 
  * 
  * uat
