@@ -1,3 +1,8 @@
+.container {
+  position: relative;
+  padding-bottom: 180rpx;
+}
+
 .fixed {
   position: fixed;
   width: 100%;
@@ -33,109 +38,7 @@
   background: #3786FF !important;
 }
 
-
-.store_nav_cont {
-  padding: 20rpx 0;
-  font-size: 25rpx;
-}
-
-.store_nav_cont #list-true {
-  color: #ff495e;
-}
-
-.store_nav_cont #list-0 {
-  color: #333;
-}
-
-.store_nav_cont .price__arrow {
-  padding-left: 20rpx;
-  font-size: 18rpx;
-  color: #777;
-  line-height: 1;
-}
-
-.store_nav_cont .flex-box {
-  line-height: 64rpx;
-}
-
-.store_nav_cont #list-true .price__arrow text.active {
-  color: #ff495e;
-}
-
-.container {
-  position: relative;
-  padding-bottom: 180rpx;
-}
-
-.index-cont-search icon {
-  left: 0;
-  margin-left: 20rpx;
-}
-
-.index-search-box {
-  background: #fff;
-  padding: 18rpx 13rpx;
-  border-bottom: 1rpx solid #eee;
-}
-
-.index-search {
-  border-bottom: 0;
-  background: #fff;
-  border-radius: 50rpx;
-  overflow: hidden;
-  position: relative;
-  font-size: 32rpx;
-  color: #999;
-  box-sizing: border-box;
-  height: 64rpx;
-  line-height: 64rpx;
-  margin: 0 10rpx;
-}
-
-.list-right {
-  width: 60rpx;
-}
-
-.list-right text {
-  height: 60rpx;
-  line-height: 60rpx;
-  font-size: 40rpx;
-}
-
 .list-header {
-  padding-top: 250rpx;
+  padding-top: 200rpx;
 }
-
-/* 商品卖点 */
-
-.selling_point {
-  width: 100%;
-  font-size: 24rpx;
-  line-height: 1.4;
-  color: #ff495e;
-}
-
-.goods_sales {
-  color: #999;
-  font-size: 24rpx;
-}
-
-/* 商品价格 */
-
-.detail-price {
-  font-size: 24rpx;
-}
-
-.detail-price .goods-price {
-  margin-right: 8rpx;
-}
-
-.detail-price .line-price {
-  text-decoration: line-through;
-}
-
-.weui-navbar__title {
-  font-size: 24rpx;
-}
-
 

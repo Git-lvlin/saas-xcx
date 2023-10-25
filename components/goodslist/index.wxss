@@ -98,10 +98,6 @@
   padding: 160rpx 0;
 }
   
-  /* .category-list {
-	overflow: hidden;
-  } */
-  
   .category-list .list {
 	/* box-sizing: border-box;
 	width: 50%;
