@@ -109,6 +109,12 @@
       "pages": [
         "index"
       ]
+    },
+    {
+      "root": "subpages/classGood",
+      "pages": [
+        "index"
+      ]
     }
   ],
   "window": {

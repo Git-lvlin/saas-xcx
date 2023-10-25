@@ -695,3 +695,8 @@ page {
 .weui-tabs-bar__title {
   margin: 0px 10px;
 }
+
+.flex_middle {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,30 @@
+<van-popup
+  show="{{ showHomePopup }}"
+  z-index="{{1000}}"
+  position="right"
+  custom-style="background-color: transparent;"
+  bind:close="onCloseClass"
+>
+  <view class="second_class_popup" style="padding-bottom: {{$.systemInfo.bottomBarHeight}}rpx;">
+    <view class="second_class_box">
+      <view class="nav_box" style="height: {{$.systemInfo.navBarHeight}}rpx;padding-top: {{$.systemInfo.statusHeight}}rpx;">
+        <view class="nav_title">{{className}}</view>
+        <image class="nav_close" src="../../images/close_x.png" bindtap="onCloseClass"/>
+      </view>
+
+      <view class="second_class_list">
+        <view
+          class="second_class_item"
+          wx:for="{{ child }}"
+          wx:key="id"
+          data-data="{{item}}"
+          bindtap="onSecondClass"
+        >
+          <image class="class_icon" src="{{item.image.file_path}}" />
+          <view class="class_name">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom_bar_height" />
+  </view>
+</van-popup>

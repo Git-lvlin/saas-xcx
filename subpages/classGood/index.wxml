@@ -1,0 +1,4 @@
+
+<view class="container">
+   <class-good  category_id="{{ category_id }}"/>
+</view>

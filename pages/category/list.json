@@ -1,11 +1,14 @@
 {
-    "navigationBarTitleText": "健康推荐",
+    "navigationBarTitleText": "",
     "enablePullDownRefresh": true,
     "navigationBarBackgroundColor": "#3786FF",
     "navigationBarTextStyle": "white",
     "usingComponents": {
         "mp-tabs": "@miniprogram-component-plus/tabs",
         "diy-component": "/components/diy/index",
-        "goods-list": "/components/goodslist/index"
-    }
+        "goods-list": "/components/goodslist/index",
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index"
+    },
+    "navigationStyle": "custom"
 }

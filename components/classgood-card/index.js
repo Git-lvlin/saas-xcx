@@ -16,14 +16,6 @@ Component({
             }
           }
         }
-      },
-      curIndex:{
-        type: Number,
-        value: 0
-      },
-      dateList:{
-        type: Array,
-        value: []
       }
   },
   data: {
@@ -37,7 +29,6 @@ Component({
     searchLoadingComplete: false, //没有更多了
     page: 1, //当前页码
 
-    showHomePopup: false,//分类弹窗
   },
   attached(){
     // 设置商品列表高度
@@ -48,7 +39,7 @@ Component({
    setListHeight() {
       let systemInfo = wx.getSystemInfoSync()
       this.setData({
-        scrollHeight: systemInfo.windowHeight - 289// swiper高度
+        scrollHeight: systemInfo.windowHeight// swiper高度
       });
 
     },
@@ -92,33 +83,6 @@ Component({
         return false;
       }
       this.getGoodsList(true, ++this.data.page);
-    },
-
-    // 点击二级分类
-    onSecondClass({
-      currentTarget,
-    }) {
-      const {
-        data,
-      } = currentTarget.dataset; 
-      wx.navigateTo({
-        url: `/subpages/classGood/index?name=${data.name}&category_id=${data.category_id}`
-      })
-
-    },
-
-    // 打开二级分类弹窗
-    onOpenClass() {
-      this.setData({
-        showHomePopup: true
-      })
-    },
-
-    //回调关闭弹窗
-    onShowHomePopup(){
-      this.setData({
-        showHomePopup: false
-      })
-    },
+    }
   }
 });
