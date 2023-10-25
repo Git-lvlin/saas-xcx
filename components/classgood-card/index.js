@@ -57,20 +57,22 @@ Component({
         sortPrice: _this.data.sortPrice ? 1 : 0,
         category_id: _this.data.category_id || "",
       }, result => {
-        let resList = result.data.list,
+        if(result.code == 1){
+          let resList = result.data.list,
           dataList = _this.data.list;
-        if (isPage == true) {
-          _this.setData({
-            'list.data': dataList.data.concat(resList.data),
-            isLoading: false,
-          });
-        } else {
-          _this.setData({
-            list: resList,
-            isLoading: false,
-          });
+          if (isPage == true) {
+            _this.setData({
+              'list.data': dataList.data.concat(resList.data),
+              isLoading: false,
+            });
+          } else {
+            _this.setData({
+              list: resList,
+              isLoading: false,
+            });
+          }
+          _this.setListHeight()
         }
-        _this.setListHeight()
       });
     },
 

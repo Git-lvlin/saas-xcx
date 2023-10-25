@@ -193,20 +193,22 @@ Page({
 
     let _this = this;
     App._get('category/index', {}, result => {
-      let data = result.data;
-      _this.setData({
-        dateList: data.list,
-        templet: data.templet,
-        category_id: data.list.length > 0 ? data.list[0].category_id : 0,
-        notcont: !data.list.length,
-        tabs: data.list.map(item => {
-          return {
-            category_name: item.name,
-            category_id: item.category_id,
-            title: item.name
-          }
-        })
-      });
+      if(result.code == 1){
+        let data = result.data;
+        _this.setData({
+          dateList: data.list,
+          templet: data.templet,
+          category_id: data.list.length > 0 ? data.list[0].category_id : 0,
+          notcont: !data.list.length,
+          tabs: data.list.map(item => {
+            return {
+              category_name: item.name,
+              category_id: item.category_id,
+              title: item.name
+            }
+          })
+        });
+      }
     });
   },
 
