@@ -1,15 +1,15 @@
 <view class="container">
  <!-- 自定义导航栏 -->
- <view class="fixed">
+  <view class="fixed">
     <view class="custom_nav" style=" height: {{navBarHeight}}rpx;"></view>
     <view class="page_title">健康推荐</view>
   </view>
   <view class="background_gradient"></view>
 
-  <view class="list-header">
+  <view class="list-header" style="padding-top:{{ elementHeight }}rpx;">
     <van-tabs active="{{ active }}" class="vanTabs" bind:change="beforeChange" color="#FFD400" sticky="{{ true }}" line-width="27" ellipsis="{{false}}" title-inactive-color="rgba(255,255,255,0.8)" title-active-color="#FFFFFF">
     <van-tab wx:for="{{ tabs }}" title="{{item.category_name}}" wx:key="{{index}}" name="{{item.category_id}}">
-      <goods-list category_id="{{category_id}}" curIndex="{{ curIndex }}"  dateList="{{ dateList }}"/>
+      <goods-list category_id="{{category_id}}" curIndex="{{ curIndex }}"  dateList="{{ dateList }}" elementHeight="{{ elementHeight }}"/>
     </van-tab>
   </van-tabs>
   </view>

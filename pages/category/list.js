@@ -34,6 +34,7 @@ Page({
 
 
     navBarHeight: 0,
+    elementHeight: 0,
 
     
   },
@@ -62,16 +63,19 @@ Page({
     const systemInfo = wx.getSystemInfoSync();
     console.log('systemInfo.statusBarHeight',systemInfo.statusBarHeight)
     const navBarHeight = systemInfo.statusBarHeight + 44; // 44px 是微信小程序导航栏的默认高度
-    this.setData({
-      navBarHeight: navBarHeight
-    })
 
-    // let query = wx.createSelectorQuery();
-    // query.select('.fixed').boundingClientRect();
-    // query.exec(function(res){
-    //   console.log('res',res)
-    //   let tabsHeight = res[0].height; // 单位是px
-    // });
+
+    let query = wx.createSelectorQuery();
+    query.select('.fixed').boundingClientRect();
+    query.exec((res)=>{
+      console.log('res',res[0].height)
+      console.log('res',navBarHeight)
+      let tabsHeight = res[0].height; // 单位是px
+      this.setData({
+        navBarHeight: navBarHeight,
+        elementHeight: tabsHeight+navBarHeight+44,
+      })
+    });
   },
 
 

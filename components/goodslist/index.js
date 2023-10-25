@@ -24,6 +24,10 @@ Component({
       dateList:{
         type: Array,
         value: []
+      },
+      elementHeight:{
+        type: Number,
+        value: 0
       }
   },
   data: {
@@ -48,7 +52,7 @@ Component({
    setListHeight() {
       let systemInfo = wx.getSystemInfoSync()
       this.setData({
-        scrollHeight: systemInfo.windowHeight - 180// swiper高度 259
+        scrollHeight: systemInfo.windowHeight - this.data.elementHeight// swiper高度 259
       });
 
     },

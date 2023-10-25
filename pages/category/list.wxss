@@ -38,7 +38,3 @@
   background: #3786FF !important;
 }
 
-.list-header {
-  padding-top: 200rpx;
-}
-
