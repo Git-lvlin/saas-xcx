@@ -7,7 +7,7 @@
 	>
 	<!-- 商品列表 -->
 	<view class="category-list">
-		<navigator class="list b-f {{'_'+item.category_id}}" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="index">
+		<navigator class="list b-f {{'_'+item.category_id}}" hover-class="none" url="../../pages/goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="index">
 			<view class="img">
 				<image lazy-load src="{{item.goods_image}}" mode="scaleToFill"/>
 			</view>

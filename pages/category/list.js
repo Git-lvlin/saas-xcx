@@ -87,6 +87,7 @@ Page({
       category_id: e.detail.name,
       curIndex: parseInt(e.detail.index),
     })
+    this.getCategoryList()
   },
 
   onShow() {

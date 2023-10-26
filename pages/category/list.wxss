@@ -38,3 +38,7 @@
   background: #3786FF !important;
 }
 
+.van-sticky-wrap--fixed{
+  position:initial !important;
+}
+
