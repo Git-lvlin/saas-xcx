@@ -95,7 +95,7 @@
 .no-mores { 
   text-align: center;
   color: #737373;
-  padding: 160rpx 0;
+  padding: 200rpx 0;
 }
   
   .category-list .list {
