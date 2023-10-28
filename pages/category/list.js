@@ -208,7 +208,7 @@ Page({
         _this.setData({
           dateList: data.list,
           templet: data.templet,
-          category_id: data.list.length > 0 ? data.list[0].category_id : 0,
+          category_id: this.data.category_id?this.data.category_id:data?.list?.[0].category_id,
           notcont: !data.list.length,
           tabs: data.list.map(item => {
             return {

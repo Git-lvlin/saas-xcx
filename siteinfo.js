@@ -1,6 +1,6 @@
 module.exports = {
   name: "",
-  siteroot: "https://clinic-2-fat.yeahgo.com/", // 必填: api地址
+  siteroot: "https://clinic-2-uat.yeahgo.com/", // 必填: api地址
   uniacid: "10001",
 };
 /**
