@@ -9,7 +9,7 @@
   <view class="list-header" style="padding-top:{{ elementHeight }}rpx;">
     <van-tabs active="{{ active }}" class="vanTabs" bind:change="beforeChange" color="#FFD400" sticky="{{ true }}" line-width="27" ellipsis="{{false}}" title-inactive-color="rgba(255,255,255,0.8)" title-active-color="#FFFFFF">
     <van-tab  wx:for="{{ dateList }}" title="{{item.name}}" wx:key="{{index}}" name="{{item.category_id}}">
-      <goods-list category_id="{{category_id}}" curIndex="{{ curIndex }}"  dateList="{{ dateList }}" elementHeight="{{ elementHeight }}"/>
+      <goods-list category_id="{{category_id}}" curIndex="{{ curIndex }}"  dateList="{{ dateList }}" elementHeight="{{ elementHeight }}" navBarHeight="{{ navBarHeight }}"/>
     </van-tab>
   </van-tabs>
   </view>

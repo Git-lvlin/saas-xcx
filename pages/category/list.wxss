@@ -1,7 +1,10 @@
 .container {
   position: relative;
   padding-bottom: 180rpx;
+  height: 100vh;
+  box-sizing: border-box;
 }
+
 
 .fixed {
   position: fixed;
@@ -41,4 +44,9 @@
 .van-sticky-wrap--fixed{
   position:initial !important;
 }
+
+.van-popup{
+  overscroll-behavior-y: contain !important; 
+}
+
 

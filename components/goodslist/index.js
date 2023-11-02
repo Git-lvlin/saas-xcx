@@ -13,6 +13,7 @@ Component({
                 page: 1, // 重置页码
                 'list.data': [],  //清空商品列表缓存
               });
+              // this.classification()
             }
           }
         }
@@ -23,9 +24,37 @@ Component({
       },
       dateList:{
         type: Array,
-        value: []
+        value: [],
+        observer: function(newVal, oldVal) {
+          let query = wx.createSelectorQuery().in(this);
+          console.log()
+          query.select('.classification').boundingClientRect();
+          query.exec((res)=>{
+            if(res?.[0]?.height){
+              var windowWidth = wx.getSystemInfoSync().windowWidth;
+              let info = wx.getSystemInfoSync();
+
+              if (info.platform === 'android' || info.platform === 'devtools') {
+                // Android设备需要执行的代码
+                this.setData({
+                  classificationHeight: (res?.[0]?.height+res?.[0]?.top)* 750 / windowWidth
+                })
+              } else if (info.platform === 'ios' || info.platform === 'devtools') {
+                // iOS设备需要执行的代码
+                this.setData({
+                  classificationHeight: ((res?.[0]?.height+res?.[0]?.top)-(this.data.navBarHeight-44))* 750 / windowWidth
+                })
+              }
+              
+            }
+          });
+        }
       },
       elementHeight:{
+        type: Number,
+        value: 0
+      },
+      navBarHeight:{
         type: Number,
         value: 0
       }
@@ -42,6 +71,8 @@ Component({
     page: 1, //当前页码
 
     showHomePopup: false,//分类弹窗
+
+    classificationHeight: 0
   },
   attached(){
     // 设置商品列表高度
@@ -56,7 +87,6 @@ Component({
       });
 
     },
-
 
     getGoodsList(isPage, page) {  
       let _this = this;

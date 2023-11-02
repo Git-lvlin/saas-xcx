@@ -17,13 +17,16 @@ Component({
       type: String,
       value: ''
     },
+    classificationHeight: {
+      type: Number,
+      value: 0,
+    },
   },
 
   data: {
-
   },
   attached(){
-
+   
   },
 
   methods: {

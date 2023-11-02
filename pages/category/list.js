@@ -59,11 +59,11 @@ Page({
 
     // _this.getPageData();
 
+
     //获取状态栏高度
     const systemInfo = wx.getSystemInfoSync();
     const navBarHeight = systemInfo.statusBarHeight + 44; // 44px 是微信小程序导航栏的默认高度
-
-
+    
     let query = wx.createSelectorQuery();
     query.select('.fixed').boundingClientRect();
     query.exec((res)=>{
@@ -73,6 +73,7 @@ Page({
         elementHeight: tabsHeight+navBarHeight+44,
       })
     });
+
   },
 
 
