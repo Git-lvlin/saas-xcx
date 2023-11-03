@@ -2,14 +2,14 @@
   show="{{ showHomePopup }}"
   z-index="{{1000}}"
   position="right"
-  custom-style="background-color: transparent;"
+  custom-style="background-color: transparent; top: {{ classificationHeight }}rpx"
   bind:close="onCloseClass"
   safe-area-inset-top="{{ true }}"
   root-portal="{{ true }}"
 >
-  <view class="second_class_popup" style="padding-bottom: {{$.systemInfo.bottomBarHeight}}rpx;">
-    <view class="second_class_box" style="top:{{ classificationHeight }}rpx;">
-      <view class="nav_box" style="height: {{$.systemInfo.navBarHeight}}rpx;padding-top: {{$.systemInfo.statusHeight}}rpx;">
+  <view class="second_class_popup" style="height: {{ popupHeight }}rpx;  ">
+    <view class="second_class_box">
+      <view class="nav_box">
         <view class="nav_title">{{className}}</view>
         <image class="nav_close" src="../../images/close_x.png" bindtap="onCloseClass"/>
       </view>

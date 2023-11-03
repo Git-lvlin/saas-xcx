@@ -3,22 +3,17 @@
   display: flex;
   flex-direction: column;
   width: 548rpx;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+  border-radius: 24rpx 0rpx 0rpx 24rpx;
 }
 
 .second_class_box {
   flex: 1;
-  width: 100%;
-  background-color: #FFF;
-  border-radius: 24rpx 0rpx 0rpx 0rpx;
-  padding: 20rpx 0;
   width: 548rpx;
-  position: absolute;
-  /* top: 521rpx; */
-  right: 0;
-  bottom: 98rpx;
+  background-color: #FFF;
+  width: 548rpx;
+  padding-bottom: 20rpx;
+  border-radius: 24rpx 0rpx 0rpx 24rpx;
+  overflow: auto;
 }
 
 
@@ -26,7 +21,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 32rpx;
+  position: fixed;
+  background-color: #FFF;
+  width: 548rpx;
+  border-radius: 24rpx 0rpx 0rpx 0rpx;
 }
 
 .nav_title {
@@ -34,12 +32,14 @@
   font-weight: 600;
   color: #333333;
   line-height: 50rpx;
+  margin: 15rpx;
 }
 
 .nav_close {
   width: 36rpx;
   height: 36rpx;
   vertical-align: middle;
+  margin: 15rpx;
 }
 
 
@@ -47,10 +47,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0 8rpx;
-  height: 100%;
-  overflow: auto;
-  padding-bottom: 200rpx;
-  box-sizing: border-box;
+  margin-top: 50rpx;
 }
 
 .second_class_item {

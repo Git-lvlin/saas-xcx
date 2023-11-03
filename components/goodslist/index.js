@@ -37,12 +37,12 @@ Component({
               if (info.platform === 'android' || info.platform === 'devtools') {
                 // Android设备需要执行的代码
                 this.setData({
-                  classificationHeight: (res?.[0]?.height+res?.[0]?.top)* 750 / windowWidth
+                  classificationHeight: (res?.[0]?.top)* 750 / windowWidth
                 })
               } else if (info.platform === 'ios' || info.platform === 'devtools') {
                 // iOS设备需要执行的代码
                 this.setData({
-                  classificationHeight: ((res?.[0]?.height+res?.[0]?.top)-(this.data.navBarHeight-44))* 750 / windowWidth
+                  classificationHeight: ((res?.[0]?.top)-(this.data.navBarHeight-44))* 750 / windowWidth
                 })
               }
               
@@ -55,6 +55,10 @@ Component({
         value: 0
       },
       navBarHeight:{
+        type: Number,
+        value: 0
+      },
+      barHeight:{
         type: Number,
         value: 0
       }

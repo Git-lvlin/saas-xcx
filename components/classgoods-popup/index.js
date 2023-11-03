@@ -21,12 +21,23 @@ Component({
       type: Number,
       value: 0,
     },
+    barHeight: {
+      type: Number,
+      value: 0,
+    },
   },
 
   data: {
   },
   attached(){
-   
+   var systemInfo = wx.getSystemInfoSync();
+    console.log(systemInfo.windowHeight);
+    var windowWidth = wx.getSystemInfoSync().windowWidth;
+    const windowHeight=systemInfo.windowHeight* 750 / windowWidth
+    const popupHeight=windowHeight-(this.data.classificationHeight+this.data.barHeight)
+    this.setData({
+      popupHeight: popupHeight
+    })
   },
 
   methods: {

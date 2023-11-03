@@ -35,6 +35,7 @@ Page({
 
     navBarHeight: 0,
     elementHeight: 0,
+    barHeight: 0
 
     
   },
@@ -72,6 +73,27 @@ Page({
         navBarHeight: navBarHeight,
         elementHeight: tabsHeight+navBarHeight+44,
       })
+    });
+
+    //获取底部栏高度
+    query.select('.tab-bar').boundingClientRect();
+    query.exec((res)=>{
+      var windowWidth = wx.getSystemInfoSync().windowWidth;
+      let info = wx.getSystemInfoSync();
+
+      if (info.platform === 'android' || info.platform === 'devtools') {
+        // Android设备需要执行的代码
+        const barHeight=(res[0].height+res[0].bottom-54)* 750 / windowWidth
+        this.setData({
+          barHeight: barHeight
+        })
+      } else if (info.platform === 'ios' || info.platform === 'devtools') {
+        // iOS设备需要执行的代码
+        const barHeight=(res[0].height+res[0].bottom)* 750 / windowWidth
+        this.setData({
+          barHeight: barHeight
+        })
+      }
     });
 
   },

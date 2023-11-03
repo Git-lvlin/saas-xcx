@@ -49,4 +49,8 @@
   overscroll-behavior-y: contain !important; 
 }
 
+.van-popup--right{
+  transform: none !important;
+}
+
 

@@ -20,7 +20,7 @@
 	</view>
 
 	<!-- 分类弹窗 -->
-    <classgoods-popup wx:if="{{ showHomePopup&&classificationHeight !== 0 }}" classificationHeight="{{ classificationHeight }}"  showHomePopup="{{ showHomePopup }}" child="{{dateList[curIndex].child}}"  bind:onShowHomePopup="onShowHomePopup" className="{{ dateList[curIndex].name }}"/>
+    <classgoods-popup wx:if="{{ showHomePopup&&classificationHeight !== 0 }}" classificationHeight="{{ classificationHeight }}" barHeight="{{ barHeight }}"  showHomePopup="{{ showHomePopup }}" child="{{dateList[curIndex].child}}"  bind:onShowHomePopup="onShowHomePopup" className="{{ dateList[curIndex].name }}"/>
 
 	<!-- 商品列表 -->
 	<view class="category-list">
